@@ -61,3 +61,5 @@ User.init(
     modelName: 'routes'
     }
 );
+
+module.exports = Routes;
