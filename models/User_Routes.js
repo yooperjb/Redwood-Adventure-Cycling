@@ -1,12 +1,11 @@
 // import Model Class and Datatypes from sequelize
-const { Model, DataTypes, STRING } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 // create the User Model - inherits from Model
-class User_Routes extends Model {
+class User_Routes extends Model {};
 
-};
-
+// define User_Routes table columns and configuration
 User_Routes.init(
     {
     // TABLE column definition
