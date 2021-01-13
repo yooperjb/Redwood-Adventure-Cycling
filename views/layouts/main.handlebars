@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Adventure Series</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+</head>
+
+<body>
+    <!--Header-->
+    <header>
+
+        <nav id="subnav">
+            <div id="subnav-cont">
+                <ul id="nav-links">
+                    <li><img class="race-icon" src="/images/bicycle-race-1.png" /></li>
+                    <li><a href="#" class="subnav-link">homepage</a></li>
+                    {{#if loggedIn}}
+                    <li><a href="/dashboard">dashboard</a></li>
+                    {{/if}}
+
+                    <li><a href="/bikeroutes" class="subnav-link">bike routes</a></li>
+                    <li><a href="/guidelines" class="subnav-link">guidelines</a></li>
+                    <li><a href="/leaderboard" class="subnav-link">leaderboard</a></li>
+
+                    {{#if loggedIn}}
+                    <li><button id="logout" class="btn-no-style">logout</button></li>
+                    {{#if admin}}
+                    <li><a href="/admin" class="subnav-link">admin</a></li>
+                    {{/if}}
+                    {{else}}
+                    <li><a href="/login">login</a></li>
+                    {{/if}}
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!--End Header-->
+    <!--Hero-->
+    <div class="hero">
+        <div id="site-logo">
+            <h1>The Adventure Series</h1>
+        </div>
+    </div>
+    <!--End Hero-->
+    <!--Main Section-->
+    <main>
+        <section>
+
+            {{{ body }}}
+
+        </section>
+    </main>
+    <!--End Main-->
+
+
+
+</body>
+
+</html>
