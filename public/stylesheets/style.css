@@ -167,9 +167,9 @@ main {
 
 section {
     height: 100%;
-    text-align:left;   
+    text-align:left;
+    border: solid red 2px;   
 }
-
 
 h2 {
     color: var(--quad-color);
@@ -185,7 +185,6 @@ p
     }
 a {
     color: var(--seventh-color);
-
     font-weight: bold;
     text-decoration: none;
 }
@@ -193,9 +192,60 @@ a {
 a:hover {
     color: var(--eight-color);
     font-weight: bold;
-
-
 }
+
+
+.form-container {
+  margin: auto;
+  width: 300px;
+  /* border: 3px solid green;*/
+}
+
+form {
+  text-align:left;
+  display: block;
+}
+
+.login-form .signup-form {
+  padding: 10px;
+}
+
+textarea, input {
+  padding: .5%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  height: 30px;
+  width: 90%;
+  margin-bottom: 10px;
+}
+
+textarea:focus, input:focus {
+  outline: none;
+  border: 1px solid #fa4568;
+}
+
+textarea {
+  width: 90%;
+  min-height: 200px;
+  font-size: 15px;
+}
+
+button {
+  background-color: #0067e8;
+  border: 0;
+  padding: 5px;
+  color: white;
+  font-weight: bold;
+  transition: background-color .1s;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color:#86e2ef;
+  color: #043e9e;
+}
+
 
 /* footer {
 
