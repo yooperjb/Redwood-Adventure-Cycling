@@ -6,7 +6,7 @@ const sequelize = require('../config/connection');
 class Routes extends Model {};
 
 // define Routes table columns and configuration
-User.init(
+Routes.init(
     {
         // TABLE column definitions
         id: {
