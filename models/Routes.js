@@ -42,6 +42,10 @@ Routes.init(
         difficulty: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        map: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
     },
     {

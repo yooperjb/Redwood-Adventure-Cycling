@@ -38,7 +38,8 @@ router.post('/', (req, res) => {
         elevation: req.body.elevation,
         points: req.body.points,
         first_bonus: req.body.first_bonus,
-        difficulty: req.body.difficulty
+        difficulty: req.body.difficulty,
+        map: req.body.map
     })
         .then(dbRoutesData => res.json(dbRoutesData))
         .catch(err => {
@@ -56,7 +57,8 @@ router.put('/:id', (req, res) => {
             elevation: req.body.elevation,
             points: req.body.points,
             first_bonus: req.body.first_bonus,
-            difficulty: req.body.difficulty
+            difficulty: req.body.difficulty,
+            map: req.body.map
         },
         {
             where: {
