@@ -8,21 +8,22 @@ class Routes extends Model {};
 // define Routes table columns and configuration
 Routes.init(
     {
-        // TABLE column definitions
+        // ROUTES TABLE column definitions
+        // id will come from the route id on strava (not auto incremented)
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: false
         },
         name: {
             type: DataTypes.STRING,
             allowNull: false,        
         },
-        url: {
-            type: DataTypes.STRING,
-            allowNull: false,  
-        },
+        // url: {
+        //     type: DataTypes.STRING,
+        //     allowNull: false,  
+        // },
         mileage: {
             type: DataTypes.FLOAT,
             allowNull: false

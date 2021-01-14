@@ -8,7 +8,7 @@ class User_Routes extends Model {};
 // define User_Routes table columns and configuration
 User_Routes.init(
     {
-    // TABLE column definition
+    // USER_ROUTE TABLE column definition
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -27,7 +27,7 @@ User_Routes.init(
         type: DataTypes.STRING,
         allowNull: false
     },
-    data_completed: {
+    date_completed: {
         type: DataTypes.DATE,
         allowNull: false,
     },
@@ -40,7 +40,7 @@ User_Routes.init(
         allowNull: false,
     },
     route_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false
     }
     },
