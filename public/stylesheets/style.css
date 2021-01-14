@@ -174,7 +174,15 @@ section {
 h2 {
     color: var(--quad-color);
     font-size: 3em; 
-    line-height: 1.5em;
+    line-height: 1.1em;
+    margin-bottom: .25em;
+}
+
+h3 {
+  color: var(--quad-color);
+  font-size: 2em; 
+  line-height: 1.1em;
+  margin-bottom: .25em;
 }
 
 p 
@@ -182,6 +190,7 @@ p
         font-size: 1.0em; 
         line-height:1.5em; 
         color: var(--quad-color);
+        margin-bottom: .75em;
     }
 a {
     color: var(--seventh-color);
