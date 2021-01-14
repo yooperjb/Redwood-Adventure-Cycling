@@ -7,7 +7,6 @@ const sequelize = require('./config/connection');
 const exphbs = require('express-handlebars');
 const helpers = require('./utils/helpers');
 const negotiate = require('express-negotiate');
-
 const app = express();
 const PORT = process.env.PORT || 3001;
 
