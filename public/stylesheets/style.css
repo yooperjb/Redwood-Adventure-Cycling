@@ -251,17 +251,6 @@ button {
   border-radius: 5px;
 }
 
-/* #file-upload-button {
-  background-color: var(--quad-color);
-  border: 0;
-  padding: 10px;
-  color: white;
-  font-weight: bold;
-  letter-spacing: .09em;
-  transition: background-color .1s;
-  cursor: pointer;
-  border-radius: 5px;
-} */
 
 button:hover {
   background-color:#86e2ef;
