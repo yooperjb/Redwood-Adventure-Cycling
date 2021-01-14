@@ -1,6 +1,7 @@
 <div class="form-container">
-    <H2>Login</H2>
-    <form class="login-form">
+    {{!-- <H2>Login</H2> --}}
+    
+    {{!-- <form class="login-form">
         <div>
             <label for="email-login">email:</label>
             <input type="text" id="email-login" />
@@ -12,10 +13,13 @@
         <div>
             <button type="submit">login</button>
         </div>
-    </form><br>
-    <h3>OR</h3>
-    <h2>Sign up</h2>
-    <form class="signup-form">
+    </form><br> --}}
+    {{!-- <h3>OR</h3>
+    <h2>Sign up</h2> --}}
+    <h3>Login with Strava</h3>
+    <p>A Strava account is required to access portions of this site and to submit your rides. You will need to grant permission on your first time logging in. </p>
+    <a href="/login/strava"><img src="../public/images/strava.png"></a>
+    {{!-- <form class="signup-form">
         <div>
             <label for="username-signup">username:</label>
             <input type="text" id="username-signup" />
@@ -34,6 +38,6 @@
         <div>
             <button type="submit">signup</button>
         </div>
-    </form>
+    </form> --}}
     <!-- Don't forget <script src="/javascript/login.js"></script> and <script src="/javascript/signup.js"></script> -->
 </div>
