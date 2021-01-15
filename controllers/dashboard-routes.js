@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const negotiate =require('express-negotiate');
+const negotiate = require('express-negotiate');
 const sequelize = require('../config/connection');
 const { User_Routes, User } = require('../models');
 const withAuth = require('../utils/auth');
@@ -7,30 +7,30 @@ const withAuth = require('../utils/auth');
 
 router.get('/dashboard', (req, res) => {
     req.negotiate({
-    User_Routes.findAll({
-        where: {
-            // use the ID from the session - need to compund with approved
-            user_id: req.session.user_id
-        },
-        attributes: [
-            'route_id',
-            'photo',
-            'ride_time',
-            'date_completed',
-            'url',
-            "user_id"
+        User_Routes.findAll({
+            where: {
+                // use the ID from the session - need to compund with approved
+                user_id: req.session.user_id
+            },
+            attributes: [
+                'route_id',
+                'photo',
+                'ride_time',
+                'date_completed',
+                'url',
+                "user_id"
             Include - user model'admin'
-        ]
-    })
-        .then(dbRouteData => {
-            // serialize data before passing to template
-            const route = dbRouteData.map(route => route.get({ plain: true }));
-            res.render('dashboard', { routes, loggedIn: true });
+            ]
         })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+            .then(dbRouteData => {
+                // serialize data before passing to template
+                const route = dbRouteData.map(route => route.get({ plain: true }));
+                res.render('dashboard', { routes, loggedIn: true });
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(500).json(err);
+            });
     });
 });
 
