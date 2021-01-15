@@ -1,0 +1,90 @@
+<div class="form-container">
+    <H2>Dashboard</H2>
+    <h3>Submit a Route</h3>
+    <form class="route-form">
+        <input type="text" name="route-id" id="route-id" value="{{id}}" style="display: none;">
+        <div><label for="cars">Choose a route: </label><select name="route-name" id="route-name">
+                <option value="{{name}}">{{name}}</option>
+                <option value="{{name}}">{{name}}</option>
+            </select>
+        </div>
+        <div>
+            <label for="route-date">Date Completed:</label>
+            <input type="date" min="today" max="2021-12-31" id="route-date">
+        </div>
+        <div>
+            <label for="route-time">Ride Time:</label>
+            <input type="text" class="bs-timepicker" id="route-time">
+        </div>
+
+        <div>
+            <label for="route-link">Strava link:</label>
+            <input type="text" id="route-link" />
+        </div>
+        <div>
+            <label for="route-photo">Photo:</label>
+        </div>
+        <div class="input-group mb-3 px-2 py-2  bg-white shadow-sm">
+            <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0">
+            <label id="upload-label" for="upload" class="font-weight-light text-muted">Choose file</label>
+            <div class="input-group-append">
+                <label for="upload" class="btn btn-light m-0 pill px-4"> <i
+                        class="fa fa-cloud-upload mr-2 text-muted"></i><small
+                        class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
+            </div>
+        </div>
+        <div class="image-area mt-4"><img id="imageResult" src="#" alt=""
+                class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+        <div>
+            <button type="submit">submit your ride</button>
+        </div>
+    </form>
+    {{!-- <br>
+    <hr>
+    <br>
+
+
+    <h3>Your Stats</h3>
+    <table>
+        <tr>
+            <th>Route Name</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Place</th>
+            <th>points</th>
+        </tr>
+        <tr>
+            <td>Route Name 1</td>
+            <td>1/20/21</td>
+            <td>5:23</td>
+            <td>5</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td colspan="5"><img src="https://placekitten.com/408/287" /><br></td>
+        </tr>
+        <tr>
+            <td colspan="5"><br></td>
+        </tr>
+        <tr>
+            <td>Route Name 2</td>
+            <td>3/16/21</td>
+            <td>6:26</td>
+            <td>7</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td colspan="5"><img src="https://placekitten.com/408/287" /></td>
+        </tr>
+        <tr>
+            <td colspan="5"><br></td>
+        </tr>
+        <tr>
+            <td><b>Total Points</b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><b>10</b></td>
+        </tr>
+    </table> --}}
+</div>
