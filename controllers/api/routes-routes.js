@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Routes } = require('../../models');
 const sequelize = require('../../config/connection');
 
-// get all routes
+// FRONT END ROUTES
 router.get('/', (req, res) => {
     Routes.findAll()
         .then(dbRoutesData => res.json(dbRoutesData))
@@ -29,6 +29,7 @@ router.get('/:id', (req, res) => {
             res.status(500).json(err);
         });
 });
+//END FRONT END ROUTES
 
 router.post('/', (req, res) => {
     Routes.create({
