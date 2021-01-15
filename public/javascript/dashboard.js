@@ -5,7 +5,6 @@ document.querySelector("#today").value = today;
 
 
 
-
 /*  ==========================================
     SHOW UPLOADED IMAGE
 * ========================================== */
@@ -39,4 +38,5 @@ function showFileName(event) {
     var fileName = input.files[0].name;
     infoArea.textContent = 'File name: ' + fileName;
 }
+
 
