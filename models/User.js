@@ -15,6 +15,14 @@ User.init(
             primaryKey: true,
             autoIncrement: false
         },
+        accessToken: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        refreshToken: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         // This info is not needed for passport-strava. Keeping it here in case we jump ship. 
         // username: {
         //     type: DataTypes.STRING,

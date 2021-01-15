@@ -13,13 +13,19 @@ const router = require('express').Router();
 //app.use(passport.session());
 
 // route to home page
-router.get('/', (req, res) => {
-    console.log("req",{user: req.user});
-    res.render('homepage',
-    // don't think anything needs to be passed to homepage
-    { user: req.user });
+// router.get('/', (req, res) => {
+//     console.log("Home req", [{ user: req.user }]);
     
-});
+//     // not sure how to render this?
+//     res.render('homepage', { user: req.user });
+    
+// });
+router.get('/',
+  function(req, res) {
+    res.render('homepage', { user: req.user });
+    //console.log("User: ", req.user);
+    
+  });
 
 // route to login page
 router.get('/login',

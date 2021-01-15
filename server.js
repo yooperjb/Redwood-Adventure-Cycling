@@ -44,24 +44,39 @@ passport.use(new StravaStrategy({
   },
   function(accessToken, refreshToken, profile, cb) {
     
-    User.findOne
+    User.findOne({
+        where: {
+            id: profile.id
+        },
+
+    }) .then(dbUserData => {
+        if (!dbUserData) {
+            User.create({
+                id: profile.id,
+                accessToken: accessToken,
+                refreshToken: refreshToken
+            })
+        }
+    })
+
     // In this example, the user's STRAVA profile is supplied as the user
     // record.  In a production-quality application, the STRAVA profile should
     // be associated with a user record in the application's database, which
     // allows for account linking and authentication with other identity
     // providers.
-    console.log("Profile", profile);
+    //console.log("Profile", profile);
     console.log("displayname", profile.displayName);
+    console.log("This happens 1st");
     //console.log("req", req );
     return cb(null, profile);
   }));
 
 //In order to restore authentication state across HTTP requests, Passport needs
 // to serialize users into and deserialize users out of the session. Needs to eventually be user ID, not full user
-// This occurs after authentication - is passed profile
+// This occurs after authentication - is passed profile obj
 passport.serializeUser(function(user, cb) {
 cb(null, user);
-console.log("User:",user);
+//console.log("Serialized User:",user);
 });
 passport.deserializeUser(function(obj, cb) {
 cb(null, obj);
@@ -96,12 +111,20 @@ app.get('/login/strava',
     passport.authenticate('strava'));
 
 // Check STRAVA authentication
-app.get('/return', 
+app.get('/return',
   // if authentication fails return to login page
   passport.authenticate('strava', { failureRedirect: '/login' }),
   // if user authenticated go to homepage
   function(req, res) {
+      //console.log("This happens 2nd?");
     res.redirect('/');
+    
+    user = { user: req.user };
+    console.log("User: ", req.user);
+    //console.log("Redirect User:", user);
+    //console.log(session.Store);
+    //console.log(session.MemoryStore);
+    //console.log(session);
   });
 
 //this is the profile page (dashboard) which uses ensureLoggedIn library
