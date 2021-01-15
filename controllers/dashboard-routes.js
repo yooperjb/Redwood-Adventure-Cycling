@@ -1,15 +1,45 @@
 const router = require('express').Router();
-const negotiate = require('express-negotiate');
 const sequelize = require('../config/connection');
 const { User_Routes, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 
 router.get('/dashboard', (req, res) => {
-    req.negotiate({
+    if (isAdmin) {
         User_Routes.findAll({
             where: {
-                // use the ID from the session - need to compund with approved
+                // use the ID from the session - need to compound with approved
+                unapproved: req.session.unapproved
+            },
+            attributes: [
+                'route_id',
+                'photo',
+                'ride_time',
+                'date_completed',
+                'url',
+                "user_id"
+            ],
+            Include: [
+                {
+                    model: User,
+                    attributes: ['admin']
+                }
+            ]
+        })
+
+            .then(dbRoutesData => {
+                // serialize data before passing to template
+                const routes = dbRoutesData.map(route => route.get({ plain: true }));
+                res.render('dashboard', { routes, loggedIn: true });
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(500).json(err);
+            });
+    } else {
+        User_Routes.findAll({
+            where: {
+                // use the ID from the session - need to compound with approved
                 user_id: req.session.user_id
             },
             attributes: [
@@ -19,45 +49,189 @@ router.get('/dashboard', (req, res) => {
                 'date_completed',
                 'url',
                 "user_id"
-            Include - user model'admin'
+            ],
+            Include: [
+                {
+                    model: User,
+                    attributes: ['admin']
+                }
             ]
         })
-            .then(dbRouteData => {
+
+            .then(dbRoutesData => {
                 // serialize data before passing to template
-                const route = dbRouteData.map(route => route.get({ plain: true }));
+                const routes = dbRoutesData.map(route => route.get({ plain: true }));
                 res.render('dashboard', { routes, loggedIn: true });
             })
             .catch(err => {
                 console.log(err);
                 res.status(500).json(err);
             });
-    });
+    }
 });
 
-// router.get('/edit/:id', withAuth, (req, res) => {
-//     User_Routes.findByPk(req.params.id, {
-//         attributes: [
-//                 'id',
-//                 'time',
-//                 'date',
-//                 'link'
-//             ]
-//     })
-//         .then(dbRouteData => {
-//             if (dbRouteData) {
-//                 const route = dbRouteData.get({ plain: true });
+// router.get('/dashboard',
+//     (req, res, next) => {
+//         if (admin === true) {
+//             User_Routes.findAll({
+//                 attributes: [
+//                     'route_id',
+//                     'photo',
+//                     'ride_time',
+//                     'date_completed',
+//                     'url',
+//                     "user_id"
+//                 ],
+//                 Include: [
+//                     {
+//                         model: User,
+//                         attributes: ['admin']
+//                     }
+//                 ]
+//             })
 
-//                 res.render('edit-route', {
-//                     route,
-//                     loggedIn: true
+//                 .then(dbRoutesData => {
+//                     // serialize data before passing to template
+//                     const routes = dbRoutesData.map(route => route.get({ plain: true }));
+//                     res.render('dashboard', { routes, loggedIn: true });
+//                 })
+//                 .catch(err => {
+//                     console.log(err);
+//                     res.status(500).json(err);
 //                 });
-//             } else {
-//                 res.status(404).end();
-//             }
+//         } else {
+//             next();
+//         }
+//     },
+//     (req, res, next) => {
+//         User_Routes.findAll({
+//             where: {
+//                 // use the ID from the session - need to compound with approved
+//                 user_id: req.session.user_id
+//             },
+//             attributes: [
+//                 'route_id',
+//                 'photo',
+//                 'ride_time',
+//                 'date_completed',
+//                 'url',
+//                 "user_id"
+//             ],
+//             Include: [
+//                 {
+//                     model: User,
+//                     attributes: ['admin']
+//                 }
+//             ]
 //         })
-//         .catch(err => {
-//             res.status(500).json(err);
-//         });
-// });
+
+//             .then(dbRoutesData => {
+//                 // serialize data before passing to template
+//                 const routes = dbRoutesData.map(route => route.get({ plain: true }));
+//                 res.render('dashboard', { routes, loggedIn: true });
+//             })
+//             .catch(err => {
+//                 console.log(err);
+//                 res.status(500).json(err);
+//             });
+//     }
+// );
+
+router.post('/dashboard', (req, res) => {
+
+    User_Routes.create({
+        photo: req.body.photo,
+        ride_time: req.body.ride_time,
+        ride_link: req.body.ride_link,
+        date_completed: req.body.date_completed,
+        route_id: req.body.route_id,
+        user_id: req.session.user_id
+    })
+        .then(dbRoutesData => res.json(dbRoutesData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
+router.get('/:id', (req, res) => {
+    Post.findOne({
+        where: {
+            id: req.params.id
+        },
+        attributes: [
+            'route_id',
+            'photo',
+            'ride_time',
+            'date_completed',
+            'url',
+            "user_id"
+        ],
+        Include: [
+            {
+                model: User,
+                attributes: ['admin']
+            }
+        ]
+    })
+        .then(dbRouteData => {
+            if (!dbRouteData) {
+                res.status(404).json({ message: 'No route found with this id' });
+                return;
+            }
+            res.json(dbRouteData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
+router.put('/:id', (req, res) => {
+    if (isAdmin) {
+        Post.update(
+            {
+                photo: req.body.photo,
+                ride_time: req.body.ride_time,
+                ride_link: req.body.ride_link,
+                date_completed: req.body.date_completed,
+                route_id: req.body.route_id,
+                user_id: req.session.user_id
+            }
+        )
+            .then(dbRouteData => {
+                if (!dbRouteData) {
+                    res.status(404).json({ message: 'No route found with this id' });
+                    return;
+                }
+                res.json(dbRouteData);
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(500).json(err);
+            });
+    }
+});
+
+router.delete('/:id', (req, res) => {
+    if (isAdmin) {
+        Post.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+            .then(dbRouteData => {
+                if (!dbRouteData) {
+                    res.status(404).json({ message: 'No route found with this id' });
+                    return;
+                }
+                res.json(dbRouteData);
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(500).json(err);
+            });
+    }
+});
 
 module.exports = router;
