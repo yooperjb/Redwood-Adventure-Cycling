@@ -19,15 +19,14 @@
 <body>
     <!--Header-->
     <header>
-
         <nav id="subnav">
             <div id="subnav-cont">
                 <ul id="nav-links">
                     <li><img class="race-icon" src="/images/bicycle-race-1.png" /></li>
                     <li><a href="/" class="subnav-link">homepage</a></li>
-                    <li><a href="/dashboard">dashboard</a></li>
-                    {{#if loggedIn}}
 
+                    {{#if loggedIn}}
+                    <li><a href="/dashboard">dashboard</a></li>
                     {{/if}}
 
                     <li><a href="/bikeroutes" class="subnav-link">bike routes</a></li>
