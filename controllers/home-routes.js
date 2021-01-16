@@ -27,10 +27,10 @@ router.get('/return',
     });
 
 // route to profile page (dashboard) which uses ensureLoggedIn library
-router.get('/dashboard',
-    ensureLoggedIn('/login'),
-    function(req, res){
-        res.render('dashboard', { user: req.user });
-    });
+// router.get('/dashboard',
+//     ensureLoggedIn('/login'),
+//     function(req, res){
+//         res.render('dashboard', { user: req.user });
+//     });
 
 module.exports = router;
