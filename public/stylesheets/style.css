@@ -361,13 +361,15 @@ div.image-area.mt-4 {
 .item1 { grid-area: header; }
 .item2 { grid-area: menu; }
 .item3 { grid-area: main; }
+.item4 { grid-area: footer; }
 
 
 .grid-container {
   display: grid;
   grid-template-areas:
     'header header header header header header'
-    'menu main main main main main';
+    'menu main main main main main'
+    'footer footer footer footer footer footer';
   grid-gap: 1px;
   background-color: #2196F3;
   padding: 1px;
@@ -380,7 +382,7 @@ div.image-area.mt-4 {
   padding: 20px 10px;
 }
 
-.grid-container h4 {
+.grid-container h3 {
   font-size: 1.2em;
   font-weight: bold;
 }

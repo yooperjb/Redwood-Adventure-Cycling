@@ -1,11 +1,11 @@
 <section>
-    <h3 class="completed">Bike Routes</h3>
+    <h2 class="completed">Bike Routes</h2>
 
 
-    {{#each routes.name}}
+    {{!-- {{#each routes.name}} --}}
     <div class="grid-container">
         <div class="item1">
-            <h4>{{routes.name}}</h4>
+            <h3>{{routes.name}}</h3>
         </div>
         <div class="item2">
             <p><b>Mileage:</b> {{routes.mileage}} </p>
@@ -14,7 +14,14 @@
             <p><b>First bonus:</b>{{routes.first_bonus}} </p>
             <p><b>Difficulty:</b> {{routes.difficulty}}</p>
         </div>
-        <div class="item3"> <a href="/images/{{routes.map}}" width="300" /> </div>
+        <div class="item3">
+            {{!-- <a href="/images/{{routes.map}}" width="300" /> --}}
+        </div>
+        <div class="item4">
+
+            <p><b>Description:</b> {{routes.note}}</p>
+
+        </div>
     </div>
-    {{/each}}
+    {{!-- {{/each}} --}}
 </section>
