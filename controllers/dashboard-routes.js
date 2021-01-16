@@ -19,7 +19,7 @@ router.get('/', ensureLoggedIn('/login'), (req, res) => {
                 'photo',
                 'ride_time',
                 'date_completed',
-                'url',
+                'ride_link',
                 'user_id',
                 'approved'
             ]
@@ -146,32 +146,6 @@ router.post('/', (req, res) => {
         });
 });
 
-router.get('/:id', (req, res) => {
-    User_Routes.findOne({
-        where: {
-            id: req.params.id
-        },
-        attributes: [
-            'route_id',
-            'photo',
-            'ride_time',
-            'date_completed',
-            'ride_link',
-            "user_id"
-        ],
-    })
-        .then(dbRouteData => {
-            if (!dbRouteData) {
-                res.status(404).json({ message: 'No route found with this id' });
-                return;
-            }
-            res.json(dbRouteData);
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
-});
 
 router.put('/:id', (req, res) => {
     if (req.user.isAdmin) {
@@ -199,25 +173,25 @@ router.put('/:id', (req, res) => {
     }
 });
 
-router.delete('/:id', (req, res) => {
-    if (req.user.isAdmin) {
-        User_Routes.destroy({
-            where: {
-                id: req.params.id
-            }
-        })
-            .then(dbRouteData => {
-                if (!dbRouteData) {
-                    res.status(404).json({ message: 'No route found with this id' });
-                    return;
-                }
-                res.json(dbRouteData);
-            })
-            .catch(err => {
-                console.log(err);
-                res.status(500).json(err);
-            });
-    }
-});
+// router.delete('/:id', (req, res) => {
+//     if (req.user.isAdmin) {
+//         User_Routes.destroy({
+//             where: {
+//                 id: req.params.id
+//             }
+//         })
+//             .then(dbRouteData => {
+//                 if (!dbRouteData) {
+//                     res.status(404).json({ message: 'No route found with this id' });
+//                     return;
+//                 }
+//                 res.json(dbRouteData);
+//             })
+//             .catch(err => {
+//                 console.log(err);
+//                 res.status(500).json(err);
+//             });
+//     } 
+// });
 
 module.exports = router;
