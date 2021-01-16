@@ -6,7 +6,6 @@ const passport = require('../config/passport');
 router.get('/', (req, res) => {
     res.render('homepage', { 
       user: req.user,
-      loggedIn: req.session.loggedIn
     });
 });
 
@@ -32,7 +31,9 @@ router.get('/return',
 // route to guidelines page /guidelines
 router.get('/guidelines',
   function(req, res){
-    res.render('guidelines');
+    res.render('guidelines',{ 
+      user: req.user, 
+    });
 });
 
 module.exports = router;
