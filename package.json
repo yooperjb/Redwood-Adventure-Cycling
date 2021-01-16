@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/webprinc3ss/the-adventure-series#readme",
   "dependencies": {
+    "connect-ensure-login": "^0.1.1",
     "connect-session-sequelize": "^7.0.4",
+    "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",

@@ -1,12 +1,27 @@
-<h2>Bike Routes</h2>
-<div id="route-card-container">
-    <div class="route-card">
-        <div class="route-map-div">{{ map }}</div>
-        <h3>{{ name }}</h3>
-        <p><span>Difficulty: </span>{{ difficulty }}</p>
-        <p><span>Route Mileage: </span>{{ mileage }}</p>
-        <p><span>Route Elevation: </span>{{ elevation }}</p>
-        <p><span>Points: </span>{{ points }}</p>
-        <p><span>First Bonus: </span>{{ first_bonus }} points</p>
+<section>
+    <h2 class="completed">Bike Routes</h2>
+
+
+{{#each routes as |route|}}
+    <div class="grid-container">
+        <div class="item1">
+            <h3>{{route.name}}</h3>
+        </div>
+        <div class="item2">
+            <p><b>Mileage:</b> {{route.mileage}} </p>
+            <p><b>Elevation:</b> {{route.elevation}}</p>
+            <p><b>Points:</b> {{route.points}}</p>
+            <p><b>First bonus:</b>{{route.first_bonus}} </p>
+            <p><b>Difficulty:</b> {{route.difficulty}}</p>
+        </div>
+        <div class="item3">
+            {{!-- <a href="/images/{{routes.map}}" width="300" /> --}}
+        </div>
+        <div class="item4">
+
+            <p><b>Description:</b> {{route.note}}</p>
+
+        </div>
     </div>
-</div>
+{{/each}}
+</section>
