@@ -35,7 +35,7 @@
 
                     {{#if loggedIn}}
                     <li><button id="logout" class="btn-no-style">logout</button></li>
-                    {{#if admin}}
+                    {{#if user.Isadmin}}
                     <li><a href="/admin" class="subnav-link">admin</a></li>
                     {{/if}}
                     {{else}}

@@ -63,11 +63,9 @@ header {
 
   }
 
-  #subnav #subnav-cont > ul li {
+  #subnav #subnav-cont >  ul li {
     display: inline-block;
-    padding: 0 10px;
     height: 50px;
-
     line-height: 50px;
     white-space: nowrap;
   }
@@ -185,6 +183,11 @@ h3 {
   margin-bottom: .25em;
 }
 
+h3.completed {
+  margin-top: 1em;
+
+}
+
 p 
     {
         font-size: 1.0em; 
@@ -247,7 +250,7 @@ label {
 button {
   background-color: var(--quad-color);
   border: 0;
-  padding: 10px;
+  padding: 5px;
   color: white;
   font-weight: bold;
   letter-spacing: .09em;
@@ -309,7 +312,39 @@ div.image-area.mt-4 {
   padding:20px;
 }
 
+/*
+*
+* ==========================================
+* GRID LAYOUT FOR BIKE ROUTES COMPLETED
+* ==========================================
+*
+*/
 
-/* footer {
+.item1 { grid-area: header; }
+.item2 { grid-area: menu; }
+.item3 { grid-area: main; }
 
-} */
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header header'
+    'menu main main main main main';
+  grid-gap: 1px;
+  background-color: #2196F3;
+  padding: 1px;
+  /* border-radius: 2%; */
+}
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: left;
+  padding: 20px 10px;
+}
+
+.grid-container h4 {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+
