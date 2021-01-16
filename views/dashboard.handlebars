@@ -1,61 +1,96 @@
-<div class="form-container">
-    <H2>Dashboard</H2>
-    <h3>Submit a Route</h3>
-    <form class="route-form">
-        <input type="text" name="route-id" id="route-id" value="{{id}}" style="display: none;">
-        <div><label for="cars">Choose a route: </label><select name="route-name" id="route-name">
-                <option value="{{name}}">{{name}}</option>
-                <option value="{{name}}">{{name}}</option>
-            </select>
-        </div>
-        <div>
-            <label for="route-date">Date Completed:</label>
-            <input type="date" min="today" max="2021-12-31" id="route-date">
-        </div>
-        <div>
-            <label for="route-time">Ride Time:</label>
-            <input type="text" class="bs-timepicker" id="route-time">
-        </div>
-
-        <div>
-            <label for="route-link">Strava link:</label>
-            <input type="text" id="route-link" />
-        </div>
-        <div>
-            <label for="route-photo">Photo:</label>
-        </div>
-        <div class="input-group mb-3 px-2 py-2  bg-white shadow-sm">
-            <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0">
-            <label id="upload-label" for="upload" class="font-weight-light text-muted">Choose file</label>
-            <div class="input-group-append">
-                <label for="upload" class="btn btn-light m-0 pill px-4"> <i
-                        class="fa fa-cloud-upload mr-2 text-muted"></i><small
-                        class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
+<section>
+    <div class="form-container">
+        <H2>Dashboard</H2>
+        <h3>Submit a Route</h3>
+        <form class="route-form">
+            <input type="text" name="route-id" id="route-id" value="{{user_routes.id}}" style="display: none;">
+            <div><label for="cars">Choose a route: </label><select name="route-name" id="route-name">
+                    {{!-- {{#each routes.name}}
+                    <option value="{{name}}">{{name}}</option>
+                    {{#each routes.name}} --}}
+                </select>
             </div>
-        </div>
-        <div class="image-area mt-4"><img id="imageResult" src="#" alt=""
-                class="img-fluid rounded shadow-sm mx-auto d-block"></div>
-        <div>
-            <button type="submit">submit your ride</button>
-        </div>
-    </form>
-</div>
-<div>
+            <div>
+                <label for="route-date">Date Completed:</label>
+                <input type="date" min="today" max="2021-12-31" id="route-date">
+            </div>
+            <div>
+                <label for="route-time">Ride Time:</label>
+                <input type="text" class="bs-timepicker" id="route-time">
+            </div>
+
+            <div>
+                <label for="route-link">Strava link:</label>
+                <input type="text" id="route-link" />
+            </div>
+            <div>
+                <label for="route-photo">Photo:</label>
+            </div>
+            <div class="input-group mb-3 px-2 py-2  bg-white shadow-sm">
+                <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0">
+                <label id="upload-label" for="upload" class="font-weight-light text-muted">Choose file</label>
+                <div class="input-group-append">
+                    <label for="upload" class="btn btn-light m-0 pill px-4"> <i
+                            class="fa fa-cloud-upload mr-2 text-muted"></i><small
+                            class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
+                </div>
+            </div>
+            <div class="image-area mt-4"><img id="imageResult" src="#" alt=""
+                    class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+            <div>
+                <button type="submit">submit your ride</button>
+            </div>
+        </form>
+    </div>
+</section>
+<section>
     <h3 class="completed">Completed Routes</h3>
 
     <div class="grid-container">
         <div class="item1">
-            {{!-- <h4>{{Bike Route Name}}</h4> --}}
+            <h4>routes.name</h4>
         </div>
         <div class="item2">
-            <p><b>Date Completed:</b> {{user_route.date_completed}}</p>
-            <p><b>Ride time:</b> {{user_route.ride_time}}</p>
-            <p><b>Points:</b> {{routes.points}}</p>
+            <p><b>Date Completed:</b> user_route.date_completed</p>
+            <p><b>Ride time:</b> user_route.ride_time</p>
+            <p><b>Points:</b> routes.points</p>
         </div>
-        <div class="item3"><img src="http://www.linkgoes here/images/ {{user_route.photo}} />
-        </div>
-
-            
+        <div class="item3">user_routes.photo
         </div>
     </div>
-</div>
+</section>
+<section>
+    <h3 class="completed">Admin</h3>
+
+
+    {{!--#If needsApproved, show --}}
+    <form>
+        <div class="grid-container">
+            <div class="item1">
+                <h4>Approve Submissions</h4>
+            </div>
+            {{!-- {{#each user_routes.id}} --}}
+            <div class="item2">
+                <p><b>Username:</b> user.displayName</p>
+                <p><b>Date Completed:</b> user_route.date_completed</p>
+                <p><b>Ride time:</b> user_route.ride_time</p>
+                <p><b>Strava Link :</b> https://www.strava.com/activities/{activity_id}</p>
+                <p><b>Points:</b> routes.points</p>
+                <div class="checkbox">
+                    <label for="user_routes-approved">
+                        Approved&nbsp;&nbsp;<input type="checkbox" id="user_routes-approved" name="user_routes-approved"
+                            value="approved" />
+                    </label>
+                </div>
+            </div>
+            <div class="item3">user_routes.photo
+            </div>
+            {{!-- {{/each}} --}}
+        </div>
+        <br>
+        <button type="submit">Approve!</button>
+    </form>
+    {{!-- else --}}
+    All user submissions are up to date!
+    {{!-- /if --}}
+</section>
