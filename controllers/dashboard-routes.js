@@ -28,7 +28,10 @@ router.get('/', ensureLoggedIn('/login'), (req, res) => {
             .then(dbRoutesData => {
                 // serialize data before passing to template
                 const routes = dbRoutesData.map(route => route.get({ plain: true }));
-                res.render('dashboard', { routes });
+                res.render('dashboard', { 
+                    routes,
+                    user: req.user
+                });
             })
             .catch(err => {
                 console.log(err);
@@ -53,7 +56,10 @@ router.get('/', ensureLoggedIn('/login'), (req, res) => {
             .then(dbRoutesData => {
                 // serialize data before passing to template
                 const routes = dbRoutesData.map(route => route.get({ plain: true }));
-                res.render('dashboard', { routes });
+                res.render('dashboard', { 
+                    routes,
+                    user: req.user
+                });
             })
             .catch(err => {
                 console.log(err);
