@@ -5,69 +5,65 @@ const withAuth = require('../utils/auth');
 
 
 router.get('/dashboard', (req, res) => {
-    if (isAdmin) {
-        User_Routes.findAll({
-            where: {
-                // use the ID from the session - need to compound with approved
-                unapproved: req.session.unapproved
-            },
-            attributes: [
-                'route_id',
-                'photo',
-                'ride_time',
-                'date_completed',
-                'url',
-                "user_id"
-            ],
-            Include: [
-                {
-                    model: User,
-                    attributes: ['admin']
-                }
-            ]
-        })
+    console.log("isAdmin")
+    // if (isAdmin) {
+    //     User_Routes.findAll({
+    //         where: {
+    //             // use the ID from the session - need to compound with approved
+    //             approved: false
+    //         },
+    //         attributes: [
+    //             'route_id',
+    //             'photo',
+    //             'ride_time',
+    //             'date_completed',
+    //             'url',
+    //             'user_id',
+    //             'approved'
+    //         ]
+    //     })
 
-            .then(dbRoutesData => {
-                // serialize data before passing to template
-                const routes = dbRoutesData.map(route => route.get({ plain: true }));
-                res.render('dashboard', { routes, loggedIn: true });
-            })
-            .catch(err => {
-                console.log(err);
-                res.status(500).json(err);
-            });
-    } else {
-        User_Routes.findAll({
-            where: {
-                // use the ID from the session - need to compound with approved
-                user_id: req.session.user_id
-            },
-            attributes: [
-                'route_id',
-                'photo',
-                'ride_time',
-                'date_completed',
-                'url',
-                "user_id"
-            ],
-            Include: [
-                {
-                    model: User,
-                    attributes: ['admin']
-                }
-            ]
-        })
+    //         .then(dbRoutesData => {
+    //             // serialize data before passing to template
+    //             const routes = dbRoutesData.map(route => route.get({ plain: true }));
+    //             res.render('dashboard', { routes, loggedIn: true });
+    //         })
+    //         .catch(err => {
+    //             console.log(err);
+    //             res.status(500).json(err);
+    //         });
+    // } else {
+    //     User_Routes.findAll({
+    //         where: {
+    //             // use the ID from the session - need to compound with approved
+    //             user_id: req.session.user_id
+    //         },
+    //         attributes: [
+    //             'route_id',
+    //             'photo',
+    //             'ride_time',
+    //             'date_completed',
+    //             'url',
+    //             "user_id"
+    //         ],
+    //         Include: [
+    //             {
+    //                 model: User,
+    //                 attributes: ['admin']
+    //             }
+    //         ]
+    //     })
 
-            .then(dbRoutesData => {
-                // serialize data before passing to template
-                const routes = dbRoutesData.map(route => route.get({ plain: true }));
-                res.render('dashboard', { routes, loggedIn: true });
-            })
-            .catch(err => {
-                console.log(err);
-                res.status(500).json(err);
-            });
-    }
+    //         .then(dbRoutesData => {
+    //             // serialize data before passing to template
+    //             const routes = dbRoutesData.map(route => route.get({ plain: true }));
+    //             res.render('dashboard', { routes, loggedIn: true });
+    //         })
+    //         .catch(err => {
+    //             console.log(err);
+    //             res.status(500).json(err);
+    //         });
+    // }
 });
 
 // router.get('/dashboard',
