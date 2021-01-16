@@ -33,4 +33,10 @@ router.get('/dashboard',
         res.render('dashboard', { user: req.user });
     });
 
+// route to guidelines page /guidelines
+router.get('/guidelines',
+  function(req, res){
+    res.render('guidelines');
+});
+
 module.exports = router;
