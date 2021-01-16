@@ -47,6 +47,10 @@ Routes.init(
         map: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        note: {
+            type: DataTypes.TEXT,
+            allowNull: true
         }
     },
     {
