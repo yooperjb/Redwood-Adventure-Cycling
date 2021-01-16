@@ -4,7 +4,10 @@ const passport = require('../config/passport');
 
 // route to home page
 router.get('/', (req, res) => {
-    res.render('homepage', { user: req.user });
+    res.render('homepage', { 
+      user: req.user,
+      loggedIn: req.session.loggedIn
+    });
 });
 
 // route to login page
@@ -26,11 +29,10 @@ router.get('/return',
       res.redirect('/');
     });
 
-// route to profile page (dashboard) which uses ensureLoggedIn library
-router.get('/dashboard',
-    ensureLoggedIn('/login'),
-    function(req, res){
-        res.render('dashboard', { user: req.user });
-    });
+// route to guidelines page /guidelines
+router.get('/guidelines',
+  function(req, res){
+    res.render('guidelines');
+});
 
 module.exports = router;

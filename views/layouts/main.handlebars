@@ -25,7 +25,8 @@
                     <li><img class="race-icon" src="/images/bicycle-race-1.png" /></li>
                     <li><a href="/" class="subnav-link">homepage</a></li>
 
-                    {{#if loggedIn}}
+                    {{!-- Check if user is loggedin --}}
+                    {{#if user}}
                     <li><a href="/dashboard">dashboard</a></li>
                     {{/if}}
 
@@ -33,11 +34,8 @@
                     <li><a href="/guidelines" class="subnav-link">guidelines</a></li>
                     <li><a href="/leaderboard" class="subnav-link">leaderboard</a></li>
 
-                    {{#if loggedIn}}
+                    {{#if user}}
                     <li><button id="logout" class="btn-no-style">logout</button></li>
-                    {{#if admin}}
-                    <li><a href="/admin" class="subnav-link">admin</a></li>
-                    {{/if}}
                     {{else}}
                     <li><a href="/login">login</a></li>
                     {{/if}}

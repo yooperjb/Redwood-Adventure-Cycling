@@ -1,36 +1,34 @@
 const router = require('express').Router();
+const { ensureLoggedIn } = require('connect-ensure-login');
 const sequelize = require('../config/connection');
 const { User_Routes, User } = require('../models');
-const withAuth = require('../utils/auth');
+const passport = require('../config/passport');
+// const withAuth = require('../utils/auth');
 
 
-router.get('/dashboard', (req, res) => {
-    if (isAdmin) {
+router.get('/', ensureLoggedIn('/login'), (req, res) => {
+   
+    if (req.user.isAdmin) {
         User_Routes.findAll({
             where: {
                 // use the ID from the session - need to compound with approved
-                unapproved: req.session.unapproved
+                approved: false
             },
             attributes: [
                 'route_id',
                 'photo',
                 'ride_time',
                 'date_completed',
-                'url',
-                "user_id"
-            ],
-            Include: [
-                {
-                    model: User,
-                    attributes: ['admin']
-                }
+                'ride_link',
+                'user_id',
+                'approved'
             ]
         })
 
             .then(dbRoutesData => {
                 // serialize data before passing to template
                 const routes = dbRoutesData.map(route => route.get({ plain: true }));
-                res.render('dashboard', { routes, loggedIn: true });
+                res.render('dashboard', { routes });
             })
             .catch(err => {
                 console.log(err);
@@ -40,28 +38,22 @@ router.get('/dashboard', (req, res) => {
         User_Routes.findAll({
             where: {
                 // use the ID from the session - need to compound with approved
-                user_id: req.session.user_id
+                user_id: req.user.id
             },
             attributes: [
                 'route_id',
                 'photo',
                 'ride_time',
                 'date_completed',
-                'url',
+                'ride_link',
                 "user_id"
             ],
-            Include: [
-                {
-                    model: User,
-                    attributes: ['admin']
-                }
-            ]
         })
 
             .then(dbRoutesData => {
                 // serialize data before passing to template
                 const routes = dbRoutesData.map(route => route.get({ plain: true }));
-                res.render('dashboard', { routes, loggedIn: true });
+                res.render('dashboard', { routes });
             })
             .catch(err => {
                 console.log(err);
@@ -136,102 +128,5 @@ router.get('/dashboard', (req, res) => {
 //             });
 //     }
 // );
-
-router.post('/dashboard', (req, res) => {
-
-    User_Routes.create({
-        photo: req.body.photo,
-        ride_time: req.body.ride_time,
-        ride_link: req.body.ride_link,
-        date_completed: req.body.date_completed,
-        route_id: req.body.route_id,
-        user_id: req.session.user_id
-    })
-        .then(dbRoutesData => res.json(dbRoutesData))
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
-});
-
-router.get('/:id', (req, res) => {
-    Post.findOne({
-        where: {
-            id: req.params.id
-        },
-        attributes: [
-            'route_id',
-            'photo',
-            'ride_time',
-            'date_completed',
-            'url',
-            "user_id"
-        ],
-        Include: [
-            {
-                model: User,
-                attributes: ['admin']
-            }
-        ]
-    })
-        .then(dbRouteData => {
-            if (!dbRouteData) {
-                res.status(404).json({ message: 'No route found with this id' });
-                return;
-            }
-            res.json(dbRouteData);
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
-});
-
-router.put('/:id', (req, res) => {
-    if (isAdmin) {
-        Post.update(
-            {
-                photo: req.body.photo,
-                ride_time: req.body.ride_time,
-                ride_link: req.body.ride_link,
-                date_completed: req.body.date_completed,
-                route_id: req.body.route_id,
-                user_id: req.session.user_id
-            }
-        )
-            .then(dbRouteData => {
-                if (!dbRouteData) {
-                    res.status(404).json({ message: 'No route found with this id' });
-                    return;
-                }
-                res.json(dbRouteData);
-            })
-            .catch(err => {
-                console.log(err);
-                res.status(500).json(err);
-            });
-    }
-});
-
-router.delete('/:id', (req, res) => {
-    if (isAdmin) {
-        Post.destroy({
-            where: {
-                id: req.params.id
-            }
-        })
-            .then(dbRouteData => {
-                if (!dbRouteData) {
-                    res.status(404).json({ message: 'No route found with this id' });
-                    return;
-                }
-                res.json(dbRouteData);
-            })
-            .catch(err => {
-                console.log(err);
-                res.status(500).json(err);
-            });
-    }
-});
 
 module.exports = router;
