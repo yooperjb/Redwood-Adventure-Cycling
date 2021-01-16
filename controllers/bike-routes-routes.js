@@ -5,15 +5,6 @@ const sequelize = require('../config/connection');
 const { Routes } = require('../models');
 
 router.get('/', (req, res) => {
-<<<<<<< HEAD
-    res.render('bikeroutes', {
-        name: 'test_route',
-        difficulty: 'Medium',
-        mileage: 33.22,
-        elevation: 7777.77,
-        points: 56,
-        first_bonus: 5
-=======
     Routes.findAll({
         // Query configuration
         attributes: [
@@ -33,7 +24,6 @@ router.get('/', (req, res) => {
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
->>>>>>> feature/cycle-routes
     });
 });
 
