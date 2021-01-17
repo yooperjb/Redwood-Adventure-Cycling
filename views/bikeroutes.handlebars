@@ -1,25 +1,68 @@
 <section>
-    <h2 class="completed">Bike Routes</h2>
+    <h2 class="routes-header">Bike Routes</h2>
+    <div class="routes-container">
 
+        {{#each routes}}
+        <div class="grid-container">
+            {{!-- <div class="item1">
 
-    {{#each routes}}
-    <div class="grid-container">
-        <div class="item1">
-            <h3>{{this.name}}</h3>
-        </div>
-        <div class="item2">
-            <p><b>Mileage:</b> {{this.mileage}} </p>
-            <p><b>Elevation:</b> {{this.elevation}}</p>
-            <p><b>Points:</b> {{this.points}}</p>
-            <p><b>First bonus:</b>{{this.first_bonus}} </p>
-            <p><b>Difficulty:</b> {{this.difficulty}}</p>
-        </div>
-        <div class="item3">
-            <img src="/images/{{this.map}}" width="300" />
-        </div>
-        <div class="item4">
-            <p>{{this.note}}</p>
-        </div>
-    </div>
-    {{/each}}
+            </div> --}}
+            <div class="item2">
+                <h3>{{this.name}}</h3>
+                <!--Data Table-->
+                <br>
+                <table>
+                    {{!-- <tr>
+                        <td colspan="3">
+                            <h3>{{this.name}}</h3>
+                        </td>
+                    </tr> --}}
+                    <tr>
+                        <td>
+                            <p><b>Mileage: </b></p>
+                        </td>
+                        <td>&nbsp;&nbsp;&nbsp;</td>
+                        <td>
+                            <p> {{this.mileage}}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p><b>Points:</b> </p>
+                        </td>
+                        <td>&nbsp;&nbsp;&nbsp;</td>
+                        <td>
+                            <p> {{this.points}}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p><b>First bonus:</b></p> </b>
+                        </td>
+                        <td>&nbsp;&nbsp;&nbsp;</td>
+                        <td>
+                            <p> {{this.first_bonus}} </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p><b>Difficulty:</b>
+                        </td>
+                        <td>&nbsp;&nbsp;&nbsp;</td>
+                        <td>
+                            <p>{{this.difficulty}}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                    </tr>
+                </table>
+            </div>
+            <div class="item3">
+                <img class="routes-image" src="/images/{{this.map}}" />
+            </div>
+            <div class="item4">
+                <p>{{this.note}}</p>
+            </div>
+        </div><br><br>
+        {{/each}}
 </section>
