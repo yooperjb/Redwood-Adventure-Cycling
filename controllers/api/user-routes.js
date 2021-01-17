@@ -22,8 +22,8 @@ router.post('/', (req, res) => {
         date_completed: req.body.date_completed,
         // get from session user
         user_id: req.user.id,
-        // hard coded until dropdown works
-        route_id: "2784001562258115506",
+        // route_id from dropdown
+        route_id: req.body.route_id,
     })
         .then(dbRoutesData => res.json(dbRoutesData))
         .catch(err => {
