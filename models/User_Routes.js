@@ -16,7 +16,7 @@ User_Routes.init(
         autoIncrement: true
     },
     photo: {
-        type: DataTypes.BLOB,
+        type: DataTypes.STRING,
         allowNull: true
     },
     ride_time: {
