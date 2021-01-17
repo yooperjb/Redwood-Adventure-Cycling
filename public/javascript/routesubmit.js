@@ -28,7 +28,7 @@ async function routeSubmitFormHandler(event) {
             console.log("Ride submitted");
             document.location.reload();
         } else {
-            console.log("nothing happened");
+            console.log("Rid NOT submitted");
             alert(response.statusText);
         }
     }
