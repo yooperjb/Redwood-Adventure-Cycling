@@ -3,7 +3,6 @@ let today = new Date().toISOString().substr(0, 10);
 document.querySelector("#today").value = today;
 
 
-
 // https://bootstrapious.com/p/bootstrap-image-upload
 /*  ==========================================
     SHOW UPLOADED IMAGE
@@ -38,5 +37,3 @@ function showFileName(event) {
     var fileName = input.files[0].name;
     infoArea.textContent = 'File name: ' + fileName;
 }
-
-
