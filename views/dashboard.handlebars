@@ -3,11 +3,14 @@
         <H2>Dashboard</H2>
         <h3>Submit a Route</h3>
         <form class="route-form">
-            <input type="text" name="route-id" id="route-id" value="{{user_routes.id}}" style="display: none;">
-            <div><label for="cars">Choose a route: </label><select name="route-name" id="route-name">
-                    {{!-- {{#each routes.name}}
-                    <option value="{{name}}">{{name}}</option>
-                    {{#each routes.name}} --}}
+            {{!-- <input type="text" name="route-id" id="route-id" value="{{user_routes.id}}" style="display: none;"> --}}
+            <div>
+                <label for="route-name">Choose a route: </label>
+                <select name="route-name" id="route-name">
+                    <option value=""></option>
+                    {{#each routes.routes as |routes|}}
+                    <option value="{{routes.id}}">{{routes.name}}</option>
+                    {{/each}}
                 </select>
             </div>
             <div>
@@ -20,8 +23,8 @@
             </div>
 
             <div>
-                <label for="route-link">Strava link:</label>
-                <input type="text" id="route-link" />
+                <label for="ride-link">Strava link:</label>
+                <input type="text" id="ride-link" />
             </div>
             <div>
                 <label for="route-photo">Photo:</label>
@@ -97,5 +100,6 @@
 <script>
     $('.bs-timepicker').timepicker({defaultTime: 'value'});
 </script>
-<script src="/javascript/dashboard.js"></script>
 <script src="/javascript/admin.js"></script>
+<script src="/javascript/dashboard.js"></script>
+<script src="/javascript/routesubmit.js"></script>
