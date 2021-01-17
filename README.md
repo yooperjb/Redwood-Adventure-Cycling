@@ -9,7 +9,7 @@ The Adventure Series is a website that enables bikers in Humboldt county to logi
 1. Clone this repository
 2. Run "npm install"
 3. Create a .env file which includes:
--- mysql database name
--- mysql environment variables
--- strava api client id
--- strava api client secret
+  - mysql database name
+  - mysql environment variables
+  - strava api client id
+  - strava api client secret
