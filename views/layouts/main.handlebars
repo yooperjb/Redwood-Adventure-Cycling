@@ -19,28 +19,36 @@
 <body>
     <!--Header-->
     <header>
-        <nav id="subnav">
-            <div id="subnav-cont">
-                <ul id="nav-links">
-                    <li><img class="race-icon" src="/images/bicycle-race-1.png" /></li>
-                    
-                    <li><a href="/" class="subnav-link">homepage</a></li>
+        <nav class="navbar navbar-expand-lg navbar-dark" id="subnav">
+            <div class="container-fluid" id="subnav-cont">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img class="race-icon" src="/images/bicycle-race-1.png" /></a>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav-links">
+                        {{!-- <li><img class="race-icon" src="/images/bicycle-race-1.png" /></li> --}}
 
-                    {{!-- Check if user is loggedin --}}
-                    {{#if user}}
-                    <li><a href="/dashboard">dashboard</a></li>
-                    {{/if}}
-        
-                    <li><a href="/bikeroutes" class="subnav-link">bike routes</a></li>
-                    <li><a href="/guidelines" class="subnav-link">guidelines</a></li>
-                    <li><a href="/leaderboard" class="subnav-link">leaderboard</a></li>
-                   
-                    {{#if user}}
-                    <li><button id="logout" class="btn-no-style">logout</button></li>
-                    {{else}}
-                    <li><a href="/login">login</a></li>
-                    {{/if}}
-                </ul>
+                        <li class="nav-item"><a href="/" class="nav-link">homepage</a></li>
+
+                        {{!-- Check if user is loggedin --}}
+                        {{#if user}}
+                        <li class="nav-item"><a href="/dashboard">dashboard</a></li>
+                        {{/if}}
+
+                        <li class="nav-item"><a href="/bikeroutes" class="nav-link">bike routes</a></li>
+                        <li class="nav-item"><a href="/guidelines" class="nav-link">guidelines</a></li>
+                        <li class="nav-item"><a href="/leaderboard" class="nav-link">leaderboard</a></li>
+
+                        {{#if user}}
+                        <li class="nav-item"><button id="logout" class="btn-no-style">logout</button></li>
+                        {{else}}
+                        <li class="nav-item"><a href="/login">login</a></li>
+                        {{/if}}
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>
