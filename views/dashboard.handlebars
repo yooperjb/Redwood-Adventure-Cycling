@@ -16,7 +16,7 @@
             </div>
             <div>
                 <label for="route-time">Ride Time:</label>
-                <input type="text" class="bs-timepicker" id="route-time">
+                <input type="text" class="bs-timepicker" id="route-time" value="00:00">
             </div>
 
             <div>
@@ -95,7 +95,7 @@
     {{!-- /if --}}
 </section>
 <script>
-    $('.bs-timepicker').timepicker();
+    $('.bs-timepicker').timepicker({defaultTime: 'value'});
 </script>
 <script src="/javascript/dashboard.js"></script>
 <script src="/javascript/admin.js"></script>
