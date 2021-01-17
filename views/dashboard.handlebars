@@ -3,7 +3,7 @@
         <H2>Dashboard</H2>
         <h3>Submit a Route</h3>
         <form class="route-form">
-            {{!-- <input type="text" name="route-id" id="route-id" value="{{user_routes.id}}" style="display: none;"> --}}
+            
             <div>
                 <label for="route-name">Choose a route: </label>
                 <select name="route-name" id="route-name">
@@ -46,25 +46,30 @@
         </form>
     </div>
 </section>
+
+{{!-- User Completed Routes Section --}}
 <section>
     <h3 class="completed">Completed Routes</h3>
 
+    {{#each userRoutes.userRoutes as |userRoutes|}}
     <div class="grid-container">
         <div class="item1">
-            <h4>routes.name</h4>
+            <h4>{{userRoutes.route.name}}</h4>
         </div>
         <div class="item2">
-            <p><b>Date Completed:</b> user_route.date_completed</p>
-            <p><b>Ride time:</b> user_route.ride_time</p>
-            <p><b>Points:</b> routes.points</p>
+            {{!-- need to format the date --}}
+            <p><b>Date Completed:</b> {{userRoutes.date_completed}}</p>
+            <p><b>Ride time:</b> {{userRoutes.ride_time}}</p>
+            <p><b>Points:</b> {{userRoutes.route.points}}</p>
         </div>
         <div class="item3">user_routes.photo
         </div>
     </div>
+    {{/each}}
 </section>
+
 <section>
     <h3 class="completed">Admin</h3>
-
 
     {{!--#If needsApproved, show --}}
     <form class="approve-form">

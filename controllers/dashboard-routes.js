@@ -55,6 +55,13 @@ router.get('/', ensureLoggedIn('/login'), (req, res) => {
                     'ride_link',
                     "user_id"
                 ],
+                include: [
+                    // include Route data
+                    {
+                        model: Routes,
+                        attributes: ['name', 'points']
+                    }
+                ]
             })
             .then(dbUserRoutesData => dbUserRoutesData),
             
@@ -77,9 +84,10 @@ router.get('/', ensureLoggedIn('/login'), (req, res) => {
                     routes: {routes},
                     user: req.user
                 })
-                console.log("userRoutes:", {userRoutes: userRoutes});
-                console.log("routes:", {routes: routes});
-                console.log({routes});
+                console.log("userRoutes:", {userRoutes});
+                console.log("routes:", {routes});
+                console.log("userRoutes.route:", userRoutes[0].route);
+                //console.log({routes});
             })
             
             .catch(err => {
