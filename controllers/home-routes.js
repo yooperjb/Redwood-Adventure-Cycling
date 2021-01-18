@@ -42,11 +42,13 @@ router.delete('/logout',
     req.session.destroy(() => {
       res.sendStatus(204) //successful, but not sending info back
     })
-
-
   }
-
-
 )
+
+// route to leaderboard page
+router.get('/leaderboard',
+  function (req, res) {
+    res.render('leaderboard');
+  });
 
 module.exports = router;
