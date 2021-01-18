@@ -16,7 +16,8 @@ passport.use(new StravaStrategy({
             user = await User.create({
                 id: profile.id,
                 accessToken: accessToken,
-                refreshToken: refreshToken
+                refreshToken: refreshToken,
+                
             })
         }
     // check for user by primary key in database. if none, add to db
