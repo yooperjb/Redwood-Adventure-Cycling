@@ -101,13 +101,11 @@
                         </td>
                         <td>&nbsp;&nbsp;&nbsp;</td>
                         <td>
-                            {{!-- <p>
-                                {{#each userRoutes.approved }}
-                                Yes
-                                {{else}}
-                                No
-                                {{/each}}
-                            </p> --}}
+                            {{#if userRoutes.approved}}
+                            Yes
+                            {{else}}
+                            No
+                            {{/if}}
                         </td>
                     </tr>
                 </table>
