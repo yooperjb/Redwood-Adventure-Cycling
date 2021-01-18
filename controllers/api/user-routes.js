@@ -32,6 +32,7 @@ router.post('/', (req, res) => {
         });
 });
 
+// PUT /api/user-routes/:id - update a user-route
 router.put('/:id', (req, res) => {
     if (req.user.isAdmin) {
         User_Routes.update(
@@ -56,6 +57,33 @@ router.put('/:id', (req, res) => {
                 res.status(500).json(err);
             });
     }
+});
+
+// PUT /api/user-routes/ - update a user-route bulk
+router.put('/', (req, res) => {
+        console.log("body", req.body);
+        User_Routes.update(
+            {
+                approved: true,
+            },
+            {
+            where:{
+                id: [7,8]
+            }}
+        )
+        console.log(req.body)
+            .then(dbUserRouteData => {
+                if (!dbUserRouteData) {
+                    res.status(404).json({ message: 'No route found with this id' });
+                    return;
+                }
+                res.json(dbUserRouteData);
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(500).json(err);
+            });
+            
 });
 
 module.exports = router;

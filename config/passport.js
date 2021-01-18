@@ -11,20 +11,20 @@ passport.use(new StravaStrategy({
   },
   async function(accessToken, refreshToken, profile, cb) {
     
-    // let user = await User.findByPk(profile.id)
-    //     if (!user) {
-    //         user = await User.create({
-    //             id: profile.id,
-    //             accessToken: accessToken,
-    //             refreshToken: refreshToken
-    //         })
-    //     }
+    let user = await User.findByPk(profile.id)
+        if (!user) {
+            user = await User.create({
+                id: profile.id,
+                accessToken: accessToken,
+                refreshToken: refreshToken
+            })
+        }
     // check for user by primary key in database. if none, add to db
-    const user = await User.findByPk(profile.id)??await User.create({
-        id: profile.id,
-        accessToken: accessToken,
-        refreshToken: refreshToken
-    })
+    // const user = await User.findByPk(profile.id)??await User.create({
+    //     id: profile.id,
+    //     accessToken: accessToken,
+    //     refreshToken: refreshToken
+    // })
         
     // profile is req.user that is passed from passport-strava strategy
     return cb(null, {...profile, isAdmin: user.admin});
