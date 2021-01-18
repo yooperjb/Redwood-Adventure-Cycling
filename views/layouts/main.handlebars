@@ -39,7 +39,9 @@
                     <li class="list-unstyled"><a href="/bikeroutes" class="subnav-link">bike routes</a></li>
                     <li class="list-unstyled"><a href="/guidelines" class="subnav-link">guidelines</a></li>
                     <li class="list-unstyled"><a href="/leaderboard" class="subnav-link">leaderboard</a></li>
-
+                    {{#if user.isAdmin}}
+                     <li class="list-unstyled"><a href="/admin" class="subnav-link">admin</a></li>
+                    {{/if}}
                     {{#if user}}
                     <li class="list-unstyled"><button id="logout" class="btn-no-style">logout</button></li>
                     {{else}}

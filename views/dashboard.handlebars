@@ -68,43 +68,9 @@
     {{/each}}
 </section>
 
-<section>
-    <h3 class="completed">Admin</h3>
-
-    {{!--#If needsApproved, show --}}
-    <form class="approve-form">
-        <div class="grid-container">
-            <div class="item1">
-                <h4>Approve Submissions</h4>
-            </div>
-            {{!-- {{#each user_routes.id}} --}}
-            <div class="item2">
-                <p><b>Username:</b> user.displayName</p>
-                <p><b>Date Completed:</b> user_route.date_completed</p>
-                <p><b>Ride time:</b> user_route.ride_time</p>
-                <p><b>Strava Link :</b> https://www.strava.com/activities/{activity_id}</p>
-                <p><b>Points:</b> routes.points</p>
-                <div class="checkbox">
-                    <label for="user_routes-approved">
-                        Approved&nbsp;&nbsp;<input type="checkbox" id="user_routes-approved" name="user_routes-approved"
-                            value="approved" />
-                    </label>
-                </div>
-            </div>
-            <div class="item3">user_routes.photo
-            </div>
-            {{!-- {{/each}} --}}
-        </div>
-        <br>
-        <button type="submit">Approve!</button>
-    </form>
-    {{!-- else --}}
-    All user submissions are up to date!
-    {{!-- /if --}}
-</section>
 <script>
     $('.bs-timepicker').timepicker({ defaultTime: 'value' });
 </script>
-<script src="/javascript/admin.js"></script>
+
 <script src="/javascript/dashboard.js"></script>
 <script src="/javascript/routesubmit.js"></script>
