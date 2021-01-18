@@ -5,8 +5,6 @@ async function approvalFormHandler(event) {
     
     const container = document.querySelector('.approve-form');
     const approve = container.querySelectorAll('input, checkbox');
-    //console.log("approve",approve);
-    //console.log(typeof(approve));
 
     ids = [];
     
@@ -16,12 +14,12 @@ async function approvalFormHandler(event) {
         }
     });
 
-    console.log("ids",ids)
+    console.log("ids",JSON.stringify(ids));
+    
 
-    const response = await fetch('/api/user_routes/', {
+    const response = await fetch('/api/user-routes/', {
         method: 'PUT',
-        body: ids,
-        
+        body: JSON.stringify(ids),
         headers: {
             'Content-Type': 'application/json'
         }
