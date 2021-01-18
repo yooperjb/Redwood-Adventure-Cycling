@@ -22,7 +22,8 @@ router.get('/', ensureLoggedIn('/login'), (req, res) => {
                 'ride_time',
                 'date_completed',
                 'ride_link',
-                "user_id"
+                "user_id",
+                "approved"
             ],
             include: [
                 // include Route data
