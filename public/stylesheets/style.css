@@ -191,6 +191,7 @@ h2 {
     font-size: 3em; 
     line-height: 1.1em;
     margin-bottom: .25em;
+    text-align:center;
 }
 
 h3 {
@@ -198,10 +199,19 @@ h3 {
   font-size: 2em; 
   line-height: 1.1em;
   margin-bottom: .25em;
+  text-align:center;
+}
+
+h3.home {
+  text-align:left;
 }
 
 h3.completed {
   margin-top: 1em;
+}
+
+h4 {
+  font-weight: 600;
 }
 
 p {
@@ -224,7 +234,7 @@ a:hover {
 
 .form-container {
   margin: auto;
-  width: 300px;
+  width: 400px;
   /* border: 3px solid green;*/
 }
 
@@ -242,7 +252,7 @@ textarea, input, select {
   border-radius: 5px;
   border: 1px solid #ccc;
   height: 30px;
-  width: 90%;
+  width:100%;
   margin-bottom: 10px;
 }
 

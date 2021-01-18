@@ -7,7 +7,7 @@ const passport = require('../config/passport');
 
 // GET route /dashboard
 router.get('/', ensureLoggedIn('/login'), (req, res) => {
-   
+
     // check if user is admin (from user table)
     if (req.user.isAdmin) {
         User_Routes.findAll({
@@ -40,7 +40,7 @@ router.get('/', ensureLoggedIn('/login'), (req, res) => {
     } else {
         // if user not admin get all routes for dropdown and list all routes user has completed.
         return Promise.all([
-            
+
             // find all routes user has completed
             User_Routes.findAll({
                 where: {
@@ -59,41 +59,42 @@ router.get('/', ensureLoggedIn('/login'), (req, res) => {
                     // include Route data
                     {
                         model: Routes,
-                        attributes: ['name', 'points']
+                        attributes: ['name', 'points', 'map']
                     }
                 ]
             })
-            .then(dbUserRoutesData => dbUserRoutesData),
-            
+                .then(dbUserRoutesData => dbUserRoutesData),
+
             // find all routes in routes table for dropdown
             Routes.findAll({
-                attributes:[
+                attributes: [
                     'id',
-                    'name'
+                    'name',
+                    'map'
                 ],
             })
         ])
-            .then( ([dbUserRoutesData,dbRoutesData]) => {
+            .then(([dbUserRoutesData, dbRoutesData]) => {
                 // serialize the promise returns from both of the db findAll()
                 const userRoutes = dbUserRoutesData.map(route => route.get({ plain: true }))
                 const routes = dbRoutesData.map(route => route.get({ plain: true }))
-                
+
                 // render dashboard page and pass userRoutes, routes, and loggedIn user 
                 res.render('dashboard', {
-                    userRoutes: {userRoutes},
-                    routes: {routes},
+                    userRoutes: { userRoutes },
+                    routes: { routes },
                     user: req.user
                 })
-                console.log("userRoutes:", {userRoutes});
-                console.log("routes:", {routes});
+                console.log("userRoutes:", { userRoutes });
+                console.log("routes:", { routes });
                 console.log("userRoutes.route:", userRoutes[0].route);
                 //console.log({routes});
             })
-            
+
             .catch(err => {
                 console.log(err);
                 res.status(500).json(err);
-            });   
+            });
     }
 });
 

@@ -7,6 +7,8 @@ const sequelize = require('./config/connection');
 const exphbs = require('express-handlebars');
 const helpers = require('./utils/helpers');
 const passport = require('./config/passport');
+// create handlebars
+const hbs = exphbs.create({ helpers });
 
 // Create a new Express application
 const app = express();
@@ -34,8 +36,7 @@ const PORT = process.env.PORT || 3001;
 // };
 // app.use(session(sess));
 
-// create handlebars
-const hbs = exphbs.create({});
+
 
 //Configure view engine to render handlebars templates
 app.engine('handlebars', hbs.engine);

@@ -1,9 +1,34 @@
-module.exports = {
-    format_plural: (word, amount) => {
-        if (amount !== 1) {
-            return `${word}s`;
-        }
+// // module.exports = function (handlebars) {
+// //     return function () {
+// //         return new handlebars.SafeString('Hello!');
+// //     };
+// // }
 
-        return word;
-    }
-}
+
+// Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
+
+//     switch (operator) {
+//         case '==':
+//             return (v1 == v2) ? options.fn(this) : options.inverse(this);
+//         case '===':
+//             return (v1 === v2) ? options.fn(this) : options.inverse(this);
+//         case '!=':
+//             return (v1 != v2) ? options.fn(this) : options.inverse(this);
+//         case '!==':
+//             return (v1 !== v2) ? options.fn(this) : options.inverse(this);
+//         case '<':
+//             return (v1 < v2) ? options.fn(this) : options.inverse(this);
+//         case '<=':
+//             return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+//         case '>':
+//             return (v1 > v2) ? options.fn(this) : options.inverse(this);
+//         case '>=':
+//             return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+//         case '&&':
+//             return (v1 && v2) ? options.fn(this) : options.inverse(this);
+//         case '||':
+//             return (v1 || v2) ? options.fn(this) : options.inverse(this);
+//         default:
+//             return options.inverse(this);
+//     }
+// });
