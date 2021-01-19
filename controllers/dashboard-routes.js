@@ -7,9 +7,9 @@ const passport = require('../config/passport');
 
 // GET route /dashboard
 router.get('/', ensureLoggedIn('/login'), (req, res) => {
-   
+
     return Promise.all([
-        
+
         // find all routes user has completed
         User_Routes.findAll({
             where: {
@@ -29,40 +29,40 @@ router.get('/', ensureLoggedIn('/login'), (req, res) => {
                 // include Route data
                 {
                     model: Routes,
-                    attributes: ['name', 'points']
+                    attributes: ['name', 'points', 'map']
                 }
             ]
         })
-        .then(dbUserRoutesData => dbUserRoutesData),
-        
+            .then(dbUserRoutesData => dbUserRoutesData),
+
         // find all routes in routes table for dropdown
         Routes.findAll({
-            attributes:[
+            attributes: [
                 'id',
                 'name'
             ],
         })
     ])
-        .then( ([dbUserRoutesData,dbRoutesData]) => {
+        .then(([dbUserRoutesData, dbRoutesData]) => {
             // serialize the promise returns from both of the db findAll()
             const userRoutes = dbUserRoutesData.map(route => route.get({ plain: true }))
             const routes = dbRoutesData.map(route => route.get({ plain: true }))
-            
+
             // render dashboard page and pass userRoutes, routes, and loggedIn user 
             res.render('dashboard', {
-                userRoutes: {userRoutes},
-                routes: {routes},
+                userRoutes: { userRoutes },
+                routes: { routes },
                 user: req.user
             })
             //console.log("userRoutes:", {userRoutes});
             //console.log("routes:", {routes});
         })
-        
+
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
-        });   
-    }
+        });
+}
 );
 
 module.exports = router;

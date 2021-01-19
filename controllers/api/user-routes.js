@@ -4,19 +4,19 @@ const sequelize = require('../../config/connection');
 
 
 // GET /api/user-routes for testing
-router.get('/', (req,res) => {
+router.get('/', (req, res) => {
     console.log("User:", req.user);
     console.log("id:", req.user.id);
 });
 
 // POST /api/user-routes - create new user-route
 router.post('/', (req, res) => {
-    
+
     console.log(req.user);
     //console.log("ID:" ,req.user.id);
-    
+
     User_Routes.create({
-        photo: req.body.photo,
+        // photo: req.body.photo,
         ride_time: req.body.ride_time,
         ride_link: req.body.ride_link,
         date_completed: req.body.date_completed,
@@ -61,28 +61,29 @@ router.post('/', (req, res) => {
 
 // PUT /api/user-routes/ - update a user-route bulk
 router.put('/', (req, res) => {
-        User_Routes.update(
-            {
-                approved: true,
-            },
-            {
-            where:{
-                id:req.body
-            }}
-        )
-            .then(dbUserRouteData => {
-                //console.log("dbUserRouteData",dbUserRouteData);
-                if (!dbUserRouteData) {
-                    res.status(404).json({ message: 'No routes were approved' });
-                    return;
-                }
-                res.json(dbUserRouteData);
-            })
-            .catch(err => {
-                console.log(err);
-                res.status(500).json(err);
-            });
-            
+    User_Routes.update(
+        {
+            approved: true,
+        },
+        {
+            where: {
+                id: req.body
+            }
+        }
+    )
+        .then(dbUserRouteData => {
+            //console.log("dbUserRouteData",dbUserRouteData);
+            if (!dbUserRouteData) {
+                res.status(404).json({ message: 'No routes were approved' });
+                return;
+            }
+            res.json(dbUserRouteData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+
 });
 
 module.exports = router;

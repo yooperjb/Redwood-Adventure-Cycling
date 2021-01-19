@@ -439,8 +439,8 @@ text-align: center;
 * ========================================== */
 
 .routes-image {
-  height: 200px;
-  width: 200px;
+  height: 10em;
+  width: 10em;
   border-radius: 10px;
   box-shadow: 0px 3px 8px 3px rgba(0,0,0,0.25);
 }
@@ -466,7 +466,10 @@ text-align: center;
 
 ul.normal {
   padding-left: 60px;
+}
 
+ul.no-dot {
+  list-style-type: none;
 }
 
 
