@@ -38,9 +38,17 @@ router.get('/guidelines',
     res.render('guidelines', { user: req.user });
   });
 
-// route to leaderboard page
+// route to leaderboard page /leaderboard
 router.get('/leaderboard',
   function (req, res) {
+    User_Routes.findAll({
+      where: {
+        approved: 1
+      },
+      attributes: [
+        
+      ]
+    })
     res.render('leaderboard');
   });
 
