@@ -3,11 +3,14 @@
         <H2>Dashboard</H2>
         <h3>Submit a Route</h3>
         <form class="route-form">
-            <input type="text" name="route-id" id="route-id" value="{{user_routes.id}}" style="display: none;">
-            <div><label for="cars">Choose a route: </label><select name="route-name" id="route-name">
-                    {{!-- {{#each routes.name}}
-                    <option value="{{name}}">{{name}}</option>
-                    {{#each routes.name}} --}}
+            
+            <div>
+                <label for="route-name">Choose a route: </label>
+                <select name="route-name" id="route-name">
+                    <option value=""></option>
+                    {{#each routes.routes as |routes|}}
+                    <option value="{{routes.id}}">{{routes.name}}</option>
+                    {{/each}}
                 </select>
             </div>
             <div>
@@ -15,18 +18,18 @@
                 <input type="date" min="today" max="2021-12-31" id="route-date">
             </div>
             <div>
-                <label for="route-time">Ride Time:</label>
-                <input type="text" class="bs-timepicker" id="route-time" value="00:00">
+                <label for="ride-time">Ride Time:</label>
+                <input type="text" class="bs-timepicker" id="ride-time" value="00:00">
             </div>
 
             <div>
-                <label for="route-link">Strava link:</label>
-                <input type="text" id="route-link" />
+                <label for="ride-link">Strava link:</label>
+                <input type="text" id="ride-link" />
             </div>
             <div>
                 <label for="route-photo">Photo:</label>
             </div>
-            <div class="input-group mb-3 px-2 py-2  bg-white shadow-sm">
+            <div class="input-group  px-2 py-2  bg-white ">
                 <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0">
                 <label id="upload-label" for="upload" class="font-weight-light text-muted">Choose file</label>
                 <div class="input-group-append">
@@ -43,25 +46,30 @@
         </form>
     </div>
 </section>
+
+{{!-- User Completed Routes Section --}}
 <section>
     <h3 class="completed">Completed Routes</h3>
 
+    {{#each userRoutes.userRoutes as |userRoutes|}}
     <div class="grid-container">
         <div class="item1">
-            <h4>routes.name</h4>
+            <h4>{{userRoutes.route.name}}</h4>
         </div>
         <div class="item2">
-            <p><b>Date Completed:</b> user_route.date_completed</p>
-            <p><b>Ride time:</b> user_route.ride_time</p>
-            <p><b>Points:</b> routes.points</p>
+            {{!-- need to format the date --}}
+            <p><b>Date Completed:</b> {{userRoutes.date_completed}}</p>
+            <p><b>Ride time:</b> {{userRoutes.ride_time}}</p>
+            <p><b>Points:</b> {{userRoutes.route.points}}</p>
         </div>
         <div class="item3">user_routes.photo
         </div>
     </div>
+    {{/each}}
 </section>
+
 <section>
     <h3 class="completed">Admin</h3>
-
 
     {{!--#If needsApproved, show --}}
     <form class="approve-form">
@@ -95,7 +103,8 @@
     {{!-- /if --}}
 </section>
 <script>
-    $('.bs-timepicker').timepicker({defaultTime: 'value'});
+    $('.bs-timepicker').timepicker({ defaultTime: 'value' });
 </script>
-<script src="/javascript/dashboard.js"></script>
 <script src="/javascript/admin.js"></script>
+<script src="/javascript/dashboard.js"></script>
+<script src="/javascript/routesubmit.js"></script>

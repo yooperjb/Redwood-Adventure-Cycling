@@ -14,6 +14,10 @@
     box-sizing:0;
 }
 
+/* *, ::after, ::before {
+  box-sizing: content-box;
+} */
+
 html{
     height: 100%;
 }
@@ -29,6 +33,7 @@ header {
     overflow: auto;
     background-color: var(--quad-color);
     background-attachment: fixed;
+    background-image: linear-gradient(#011740, #043e9e);
     width: 100%;
     box-shadow: 0px 3px 15px 10px rgba(0,0,0,0.49);
     position: sticky;
@@ -40,6 +45,15 @@ header {
     flex-wrap: wrap;
 }
 
+nav {
+  height:70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+
 #subnav {
     width: 100%;
     overflow: auto;
@@ -50,8 +64,9 @@ header {
     display: flex;
     margin: 0 auto;
     /* padding: 0 1.5%; */
-    max-width: 1280px;
+    max-width:1200px;
     flex: 1;
+    
     padding: 10px 0px;
     color: var(--primary-color);
     font-size: 1.0em;
@@ -74,7 +89,7 @@ header {
     flex: 2;
     text-align: center;
     align-items: center;
-    padding-top: 5px;
+    padding-top:15px;
     justify-content: space-between;
   }
 
@@ -83,6 +98,7 @@ header {
     text-align: right;
     color: var(--tertiary-color);
     text-decoration: none;
+    align-items: center;
   }
 
 #nav-links a:hover {
@@ -106,8 +122,9 @@ header {
   }
 
 .race-icon {
-    height:1.6em;
-    margin-top: 10px;
+    height:2.0em;
+    margin-top: 0px;
+    padding-bottom: 5px;
 }
 
 .email-icon {
@@ -185,11 +202,9 @@ h3 {
 
 h3.completed {
   margin-top: 1em;
-
 }
 
-p 
-    {
+p {
         font-size: 1.0em; 
         line-height:1.5em; 
         color: var(--quad-color);
@@ -353,38 +368,76 @@ div.image-area.mt-4 {
 /*
 *
 * ==========================================
-* GRID LAYOUT FOR BIKE ROUTES COMPLETED
+* GRID LAYOUT FOR BIKE ROUTES 
 * ==========================================
 *
 */
 
-.item1 { grid-area: header; }
-.item2 { grid-area: menu; }
-.item3 { grid-area: main; }
-.item4 { grid-area: footer; }
 
+.routes-container {
+  margin: auto;
+  width: 80%;
+  /* border: 3px solid green;*/
+}
+
+.item1 {
+   grid-area: header; 
+
+  }
+.item2 { 
+  grid-area: stats; 
+
+}
+.item3 { 
+  grid-area: main; 
+  text-align: right !important;
+
+}
+.item4 { 
+  grid-area: footer; 
+}
 
 .grid-container {
   display: grid;
   grid-template-areas:
     'header header header header header header'
-    'menu main main main main main'
+    'stats stats stats stats stats main'
     'footer footer footer footer footer footer';
-  grid-gap: 1px;
-  background-color: #2196F3;
-  padding: 1px;
-  /* border-radius: 2%; */
+  grid-gap: 0px;
+  background-color: #abdbe3;
+  /* padding: 1px; */
+border-radius: 10px;
+box-shadow: 0px 3px 8px 3px rgba(0,0,0,0.25);
+/* width:70%; */
+padding: 15px 10px;
 }
 
 .grid-container > div {
-  background-color: rgba(255, 255, 255, 0.8);
+  /* background-color: rgba(255, 255, 255, 0.8); */
   text-align: left;
-  padding: 20px 10px;
+  padding: 5px 0px;
+
 }
 
 .grid-container h3 {
-  font-size: 1.2em;
+  font-size: 24px;
   font-weight: bold;
+  line-height: 35px; 
 }
+
+h2.routes-header {
+text-align: center;
+
+}
+
+.routes-image {
+  height: 200px;
+  width: 200px;
+  border-radius: 10px;
+  box-shadow: 0px 3px 8px 3px rgba(0,0,0,0.25);
+}
+
+
+
 
 

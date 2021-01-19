@@ -9,18 +9,20 @@ class User_Routes extends Model {};
 User_Routes.init(
     {
     // USER_ROUTE TABLE column definition
+    
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true
     },
+    // submitted photo
     photo: {
         type: DataTypes.STRING,
         allowNull: true
     },
     ride_time: {
-        type: DataTypes.TIME,
+        type: DataTypes.STRING,
         allowNull: false,
     },
     ride_link: {
@@ -28,17 +30,19 @@ User_Routes.init(
         allowNull: false
     },
     date_completed: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
         allowNull: false,
     },
     approved: {
         type: DataTypes.BOOLEAN,
-        allowNull: false
+        allowNull: false,
+        defaultValue: false,
     },
     user_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
+    // route id from strava routes - 2784001562258115506
     route_id: {
         type: DataTypes.STRING,
         allowNull: false
