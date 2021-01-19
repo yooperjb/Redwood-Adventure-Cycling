@@ -69,8 +69,8 @@ router.get('/', ensureLoggedIn('/login'), (req, res) => {
             Routes.findAll({
                 attributes: [
                     'id',
-                    'name',
-                    'map'
+                    'name'
+
                 ],
             })
         ])
