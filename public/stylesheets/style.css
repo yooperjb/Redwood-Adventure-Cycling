@@ -526,7 +526,32 @@ ul.no-dot {
 
 /* MEDIA QUERY FOR TABLETS AND SMALLER */
 @media screen and (max-width: 768px) {
-
+  div.hero {
+    min-height: 170px;
+  }
+  div#site-logo h1 {
+    font-size: 2.2em;
+  }
+  main {
+    padding: 1em 1.2em 1em 1.2em;
+  }
+  article h2 {
+    font-size: 2em;
+  }
+  article #welcome-paragraph {
+    text-align: center;
+    font-size: 1em;
+    line-height: 1.3em;
+    padding-bottom: 1em;
+  }
+  img.pretty-images {
+    height: 133px;
+    padding: 5px;
+  }
+  article p {
+    font-size: .88em;
+    line-height: 1.2em;
+  }
 }
 
 /* MEDIA QUERY FOR MOBILE PHONES AND SMALLER */
