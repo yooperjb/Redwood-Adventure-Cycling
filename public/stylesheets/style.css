@@ -208,7 +208,9 @@ h3.completed {
 }
 
 h4 {
+  font-size: 1.2em;
   font-weight: 600;
+  line-height: 1.7em;
 }
 
 p {
@@ -431,12 +433,34 @@ padding: 15px 10px;
 
 h2.routes-header {
 text-align: center;
-
 }
 
+/* * ==========================================
+* GRID TABLE COMPLETED
+* ========================================== */
+
+.grid-container-completed {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 0;
+  /* background-color: #2196F3; */
+  padding: 0;
+}
+
+.grid-container-completed > div {
+  /* background-color: rgba(255, 255, 255, 0.8); */
+  text-align: left;
+  padding: 10px 0;
+  /* font-size: 12px; */
+}
+/* 
+li.completed {
+  font-size: 1.0em;
+  line-height: 1.5em;
+} */
 
 /* * ==========================================
-* CSS TABLE
+* CSS TABLE ADMIN
 * ========================================== */
 
 .table-grid-container {
