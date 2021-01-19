@@ -7,6 +7,8 @@ const sequelize = require('./config/connection');
 const exphbs = require('express-handlebars');
 const helpers = require('./utils/helpers');
 const passport = require('./config/passport');
+// create handlebars
+const hbs = exphbs.create({ helpers });
 
 // Create a new Express application
 const app = express();
@@ -34,8 +36,7 @@ const PORT = process.env.PORT || 3001;
 // };
 // app.use(session(sess));
 
-// create handlebars
-const hbs = exphbs.create({});
+
 
 //Configure view engine to render handlebars templates
 app.engine('handlebars', hbs.engine);
@@ -45,7 +46,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('cookie-parser')());
-app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+app.use(session({ secret: [process.env.SESSION_SECRET], resave: true, saveUninitialized: true }));
 
 // Initialize Passport and restore authentication state, if any, from the
 // session.
