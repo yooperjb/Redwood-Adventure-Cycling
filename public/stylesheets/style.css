@@ -434,6 +434,39 @@ text-align: center;
 
 }
 
+
+/* * ==========================================
+* CSS TABLE
+* ========================================== */
+
+.table-grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+  grid-gap: 0px;
+  background-color: #2196F3;
+  padding: 0px;
+  border: 1px solid black;
+}
+
+.table-grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  font-size: 1em;
+  padding: 10px;
+}
+
+.admin-table-header {
+  font-weight: bold;
+
+}
+.leader-left {
+text-align:left;
+}
+
+.leader-right {
+text-align:right;
+}
+
 /* * ==========================================
 * PRETTIFY
 * ========================================== */

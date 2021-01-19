@@ -28,8 +28,8 @@ $(function () {
 /*  ==========================================
     SHOW UPLOADED IMAGE NAME
 * ========================================== */
-var input = document.getElementById('upload');
-var infoArea = document.getElementById('upload-label');
+// var input = document.getElementById('upload');
+// var infoArea = document.getElementById('upload-label');
 
 // input.addEventListener('change', showFileName);
 // function showFileName(event) {

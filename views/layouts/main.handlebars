@@ -7,7 +7,8 @@
     <title>The Adventure Series</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    {{!--
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" /> --}}
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
 
@@ -40,7 +41,7 @@
                     <li class="list-unstyled"><a href="/guidelines" class="subnav-link">guidelines</a></li>
                     <li class="list-unstyled"><a href="/leaderboard" class="subnav-link">leaderboard</a></li>
                     {{#if user.isAdmin}}
-                     <li class="list-unstyled"><a href="/admin" class="subnav-link">admin</a></li>
+                    <li class="list-unstyled"><a href="/admin" class="subnav-link">admin</a></li>
                     {{/if}}
                     {{#if user}}
                     <li class="list-unstyled"><button id="logout" class="btn-no-style">logout</button></li>
