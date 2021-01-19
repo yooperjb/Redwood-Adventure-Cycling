@@ -7,7 +7,8 @@
     <title>The Adventure Series</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    {{!--
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" /> --}}
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
 
@@ -23,38 +24,34 @@
 
 <body>
     <!--Header-->
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark" id="subnav">
-            {{!-- <div class="container-fluid" id="subnav-cont"> --}}
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a class="navbar-brand" href="#"><img class="race-icon" src="/images/bicycle-race-1.png" /></a>
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" id="nav-links">
-                        {{!-- <li><img class="race-icon" src="/images/bicycle-race-1.png" /></li> --}}
+    <header class="list-unstyled">
+        <nav id="subnav" class="list-unstyled">
+            <div id="subnav-cont" class="list-unstyled">
+                <ul id="nav-links" class="list-unstyled">
+                    <li class="list-unstyled"><a href="/"><img class=" race-icon"
+                                src="/images/bicycle-race-1.png" /></a>
+                    </li>
 
-                        <li class="nav-item"><a href="/" class="nav-link">homepage</a></li>
+                    {{!-- <li class="list-unstyled"><a href="/" class="subnav-link">homepage</a></li> --}}
 
-                        {{!-- Check if user is loggedin --}}
-                        {{#if user}}
-                        <li class="nav-item"><a href="/dashboard">dashboard</a></li>
-                        {{/if}}
+                    {{!-- Check if user is loggedin --}}
+                    {{#if user}}
+                    <li class="list-unstyled"><a href="/dashboard">dashboard</a></li>
+                    {{/if}}
 
-                        <li class="nav-item"><a href="/bikeroutes" class="nav-link">bike routes</a></li>
-                        <li class="nav-item"><a href="/guidelines" class="nav-link">guidelines</a></li>
-                        <li class="nav-item"><a href="/leaderboard" class="nav-link">leaderboard</a></li>
-
-                        {{#if user}}
-                        <li class="nav-item"><button id="logout" class="btn-no-style">logout</button></li>
-                        {{else}}
-                        <li class="nav-item"><a href="/login">login</a></li>
-                        {{/if}}
-                    </ul>
-                </div>
-            {{!-- </div> --}}
+                    <li class="list-unstyled"><a href="/bikeroutes" class="subnav-link">bike routes</a></li>
+                    <li class="list-unstyled"><a href="/guidelines" class="subnav-link">guidelines</a></li>
+                    <li class="list-unstyled"><a href="/leaderboard" class="subnav-link">leaderboard</a></li>
+                    {{#if user.isAdmin}}
+                    <li class="list-unstyled"><a href="/admin" class="subnav-link">admin</a></li>
+                    {{/if}}
+                    {{#if user}}
+                    <li class="list-unstyled"><button id="logout" class="btn-no-style">logout</button></li>
+                    {{else}}
+                    <li class="list-unstyled"><a href="/login">login</a></li>
+                    {{/if}}
+                </ul>
+            </div>
         </nav>
     </header>
     <!--End Header-->

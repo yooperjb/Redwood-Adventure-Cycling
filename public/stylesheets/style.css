@@ -19,7 +19,7 @@
 } */
 
 html{
-    height: 100%;
+    height: 70%;
 }
 
 body {
@@ -46,13 +46,12 @@ header {
 }
 
 nav {
-  height:70px;
+  height:100px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
-
 
 #subnav {
     width: 100%;
@@ -60,22 +59,20 @@ nav {
     font-size: 1.1rem;
     text-align: center;
   }
+
   #subnav #subnav-cont {
     display: flex;
     margin: 0 auto;
     /* padding: 0 1.5%; */
     max-width:1200px;
     flex: 1;
-    
     padding: 10px 0px;
     color: var(--primary-color);
     font-size: 1.0em;
     letter-spacing: .1em;
-
     height: 50px;
     line-height: 50px;
     white-space: nowrap;
-
   }
 
   #subnav #subnav-cont >  ul li {
@@ -84,12 +81,13 @@ nav {
     line-height: 50px;
     white-space: nowrap;
   }
+  
   #subnav #subnav-cont #nav-links {
     display:flex;
     flex: 2;
     text-align: center;
     align-items: center;
-    padding-top:15px;
+    /* padding-top:15px; */
     justify-content: space-between;
   }
 
@@ -122,14 +120,9 @@ nav {
   }
 
 .race-icon {
-    height:2.0em;
+    height:2.2em;
     margin-top: 0px;
     padding-bottom: 5px;
-}
-
-.email-icon {
-    height:1.3em;
-    margin-top: 10px;
 }
 
 .hero {
@@ -143,9 +136,6 @@ nav {
     z-index: 9998;
     box-shadow: 0px 3px 15px 10px rgba(0,0,0,0.49);
     border-bottom: 1px solid #011740;
-    /* display: flex;
-    justify-content: center;
-    align-items: right; */
   }
 
   #site-logo {
@@ -162,7 +152,6 @@ nav {
     text-shadow: 0 0 10px rgba(0, 0, 0, 1.0);
     color: var(--primary-color);
     letter-spacing: .1em;
-
   }
 
 
@@ -191,6 +180,7 @@ h2 {
     font-size: 3em; 
     line-height: 1.1em;
     margin-bottom: .25em;
+    text-align:center;
 }
 
 h3 {
@@ -198,15 +188,26 @@ h3 {
   font-size: 2em; 
   line-height: 1.1em;
   margin-bottom: .25em;
+  text-align:center;
+}
+
+h3.home {
+  text-align:left;
 }
 
 h3.completed {
   margin-top: 1em;
 }
 
+h4 {
+  font-size: 1.2em;
+  font-weight: 600;
+  line-height: 1.7em;
+}
+
 p {
         font-size: 1.0em; 
-        line-height:1.5em; 
+        line-height:1.7em; 
         color: var(--quad-color);
         margin-bottom: .75em;
     }
@@ -224,7 +225,7 @@ a:hover {
 
 .form-container {
   margin: auto;
-  width: 300px;
+  width: 400px;
   /* border: 3px solid green;*/
 }
 
@@ -242,7 +243,7 @@ textarea, input, select {
   border-radius: 5px;
   border: 1px solid #ccc;
   height: 30px;
-  width: 90%;
+  width:100%;
   margin-bottom: 10px;
 }
 
@@ -317,7 +318,6 @@ div.checkbox input {
   top: -1px;
 }
 
-
 /*
 *
 * ==========================================
@@ -372,8 +372,6 @@ div.image-area.mt-4 {
 * ==========================================
 *
 */
-
-
 .routes-container {
   margin: auto;
   width: 80%;
@@ -427,15 +425,99 @@ padding: 15px 10px;
 
 h2.routes-header {
 text-align: center;
-
 }
 
+/* * ==========================================
+* GRID TABLE COMPLETED
+* ========================================== */
+
+.grid-container-completed {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 0;
+  /* background-color: #2196F3; */
+  padding: 0;
+}
+
+.grid-container-completed > div {
+  /* background-color: rgba(255, 255, 255, 0.8); */
+  text-align: left;
+  padding: 10px 0;
+  /* font-size: 12px; */
+}
+
+/* * ==========================================
+* CSS TABLE ADMIN
+* ========================================== */
+
+.table-grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+  grid-gap: 0px;
+  background-color: #2196F3;
+  padding: 0px;
+  border: 1px solid black;
+}
+
+.table-grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  font-size: 1em;
+  padding: 10px;
+}
+
+.admin-table-header {
+  font-weight: bold;
+
+}
+.leader-left {
+text-align:left;
+}
+
+.leader-right {
+text-align:right;
+}
+
+/* * ==========================================
+* PRETTIFY
+* ========================================== */
+
 .routes-image {
-  height: 200px;
-  width: 200px;
+  height: 10em;
+  width: 10em;
   border-radius: 10px;
   box-shadow: 0px 3px 8px 3px rgba(0,0,0,0.25);
 }
+
+.pretty-images {
+  height: 250px;
+  padding:10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  float: right;
+  border-radius: 10px;
+  box-shadow: 0px 3px 8px 3px rgba(0,0,0,0.25);
+}
+
+.reg-image {
+  width: 400px;
+  padding: 5px;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0px 3px 8px 3px rgba(0,0,0,0.25);
+}
+
+ul.normal {
+  padding-left: 60px;
+  padding-bottom: 10px;
+}
+
+ul.no-dot {
+  list-style-type: none;
+}
+
+
 
 
 

@@ -1,0 +1,39 @@
+<section>
+    <h3 class="completed">Admin Approvals</h3>
+    <br>
+    {{#if userRoutes.userRoutes.length}}
+    <form class="approve-form">
+        {{!-- Data Table Grid --}}
+        <div class="table-grid-container">
+            <div class="admin-table-header">Rider Name</div>
+            <div class="admin-table-header">Bike Route</div>
+            <div class="admin-table-header">Date Completed</div>
+            <div class="admin-table-header">Ride Time</div>
+            <div class="admin-table-header">Strava Link</div>
+            <div class="admin-table-header">Approved</div>
+            {{#each userRoutes.userRoutes as |userRoutes|}}
+            <div class="leader-left">{{userRoutes.user.name}}</div>
+            <div class="leader-left">{{userRoutes.route.name}}</div>
+            <div>{{userRoutes.date_completed}}</div>
+            <div class="leader-right">{{userRoutes.ride_time}}</div>
+            <div><a href="{{userRoutes.ride_link}}" target="_blank">Activity</a></div>
+            <div>
+                <div class="checkbox">
+                    {{!-- <label for="user_routes-approved-{{userRoutes.id}}">Approve&nbsp;&nbsp; --}}
+                        <input type="checkbox" id="user_routes-approved-{{userRoutes.id}}" name="user_routes-approved"
+                            value="{{userRoutes.id}}">
+                    </label>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <br>
+        <button type="submit">Approve!</button>
+    </form>
+
+    {{!-- If all rides have been approved show --}}
+    {{else}}
+    All user submissions are up to date!
+    {{/if}}
+</section>
+<script src="/javascript/admin.js"></script>
