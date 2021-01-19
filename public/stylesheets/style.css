@@ -450,32 +450,22 @@ text-align: center;
 
 .table-grid-container > div {
   background-color: rgba(255, 255, 255, 0.8);
-
   text-align: center;
   font-size: 1em;
-  padding: 5px;
+  padding: 10px;
 }
 
 .admin-table-header {
   font-weight: bold;
 
 }
-
-
-/* #table {
-  display: Table;
+.leader-left {
+text-align:left;
 }
 
-div#tableHead,
-.line-break,
-.row {
-  display: table-row;
+.leader-right {
+text-align:right;
 }
-
-.col {
-  display: table-cell;
-} */
-
 
 /* * ==========================================
 * PRETTIFY

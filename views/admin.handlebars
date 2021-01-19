@@ -1,5 +1,6 @@
 <section>
     <h3 class="completed">Admin Approvals</h3>
+    <br>
     {{#if userRoutes.userRoutes.length}}
     <form class="approve-form">
         {{!-- Data Table Grid --}}
@@ -11,10 +12,10 @@
             <div class="admin-table-header">Strava Link</div>
             <div class="admin-table-header">Approved</div>
             {{#each userRoutes.userRoutes as |userRoutes|}}
-            <div>{{userRoutes.user.name}}</div>
-            <div>{{userRoutes.route.name}}</div>
+            <div class="leader-left">{{userRoutes.user.name}}</div>
+            <div class="leader-left">{{userRoutes.route.name}}</div>
             <div>{{userRoutes.date_completed}}</div>
-            <div>{{userRoutes.ride_time}}</div>
+            <div class="leader-right">{{userRoutes.ride_time}}</div>
             <div><a href="{{userRoutes.ride_link}}" target="_blank">Activity</a></div>
             <div>
                 <div class="checkbox">
