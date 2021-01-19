@@ -20,15 +20,15 @@
     <!--Header-->
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark" id="subnav">
-            <div class="container-fluid" id="subnav-cont">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
+            {{!-- <div class="container-fluid" id="subnav-cont"> --}}
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <a class="navbar-brand" href="#"><img class="race-icon" src="/images/bicycle-race-1.png" /></a>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav-links">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" id="nav-links">
                         {{!-- <li><img class="race-icon" src="/images/bicycle-race-1.png" /></li> --}}
 
                         <li class="nav-item"><a href="/" class="nav-link">homepage</a></li>
@@ -49,7 +49,7 @@
                         {{/if}}
                     </ul>
                 </div>
-            </div>
+            {{!-- </div> --}}
         </nav>
     </header>
     <!--End Header-->
