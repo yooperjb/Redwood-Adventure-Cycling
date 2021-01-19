@@ -23,36 +23,10 @@ User.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-        // This info is not needed for passport-strava. Keeping it here in case we jump ship. 
-        // username: {
-        //     type: DataTypes.STRING,
-        //     allowNull: false
-        // },
-        // f_name: {
-        //     type: DataTypes.STRING,
-        //     allowNull: false,
-        // },
-        // l_name: {
-        //     type: DataTypes.STRING,
-        //     allowNull: false,
-        // },
-        // gender: {
-        //     type: DataTypes.STRING,
-        // },
-        // email: {
-        //     type: DataTypes.STRING,
-        //     allowNull: false,
-        //     validate: {
-        //         isEmail: true
-        //     }
-        // },
-        // password: {
-        //     type: DataTypes.STRING,
-        //     allowNull: false,
-        //     validate: {
-        //         len: [6]
-        //     }
-        // },
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         admin: {
             type: DataTypes.BOOLEAN,
             allowNull: false,

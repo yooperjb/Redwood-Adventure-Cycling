@@ -7,7 +7,7 @@ async function routeSubmitFormHandler(event) {
     const date_completed = document.querySelector('#route-date').value;
     const ride_time = document.querySelector('#ride-time').value;
     const ride_link = document.querySelector('#ride-link').value.trim();
-    const photo = document.querySelector('#upload').value;
+    // const photo = document.querySelector('#upload').value;
 
     // for testing querySelectors
     //console.log("Input Values: ",route_id,date_completed,ride_time,ride_link,photo);
@@ -21,11 +21,11 @@ async function routeSubmitFormHandler(event) {
                 date_completed,
                 ride_time,
                 ride_link,
-                photo,
+                // photo,
             }),
-            headers: {'Content-Type': 'application/json'}
+            headers: { 'Content-Type': 'application/json' }
         });
-        if (response.ok){
+        if (response.ok) {
             console.log("Ride submitted");
             document.location.reload();
         } else {

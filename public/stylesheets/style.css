@@ -53,29 +53,26 @@ nav {
   text-align: center;
 }
 
-
 #subnav {
     width: 100%;
     overflow: auto;
     font-size: 1.1rem;
     text-align: center;
   }
+
   #subnav #subnav-cont {
     display: flex;
     margin: 0 auto;
     /* padding: 0 1.5%; */
     max-width:1200px;
     flex: 1;
-    
     padding: 10px 0px;
     color: var(--primary-color);
     font-size: 1.0em;
     letter-spacing: .1em;
-
     height: 50px;
     line-height: 50px;
     white-space: nowrap;
-
   }
 
   #subnav #subnav-cont >  ul li {
@@ -84,6 +81,7 @@ nav {
     line-height: 50px;
     white-space: nowrap;
   }
+  
   #subnav #subnav-cont #nav-links {
     display:flex;
     flex: 2;
@@ -162,7 +160,6 @@ nav {
     text-shadow: 0 0 10px rgba(0, 0, 0, 1.0);
     color: var(--primary-color);
     letter-spacing: .1em;
-
   }
 
 
@@ -191,6 +188,7 @@ h2 {
     font-size: 3em; 
     line-height: 1.1em;
     margin-bottom: .25em;
+    text-align:center;
 }
 
 h3 {
@@ -198,15 +196,24 @@ h3 {
   font-size: 2em; 
   line-height: 1.1em;
   margin-bottom: .25em;
+  text-align:center;
+}
+
+h3.home {
+  text-align:left;
 }
 
 h3.completed {
   margin-top: 1em;
 }
 
+h4 {
+  font-weight: 600;
+}
+
 p {
         font-size: 1.0em; 
-        line-height:1.5em; 
+        line-height:1.7em; 
         color: var(--quad-color);
         margin-bottom: .75em;
     }
@@ -224,7 +231,7 @@ a:hover {
 
 .form-container {
   margin: auto;
-  width: 300px;
+  width: 400px;
   /* border: 3px solid green;*/
 }
 
@@ -242,7 +249,7 @@ textarea, input, select {
   border-radius: 5px;
   border: 1px solid #ccc;
   height: 30px;
-  width: 90%;
+  width:100%;
   margin-bottom: 10px;
 }
 
@@ -317,7 +324,6 @@ div.checkbox input {
   top: -1px;
 }
 
-
 /*
 *
 * ==========================================
@@ -372,8 +378,6 @@ div.image-area.mt-4 {
 * ==========================================
 *
 */
-
-
 .routes-container {
   margin: auto;
   width: 80%;
@@ -430,12 +434,45 @@ text-align: center;
 
 }
 
+/* * ==========================================
+* PRETTIFY
+* ========================================== */
+
 .routes-image {
-  height: 200px;
-  width: 200px;
+  height: 10em;
+  width: 10em;
   border-radius: 10px;
   box-shadow: 0px 3px 8px 3px rgba(0,0,0,0.25);
 }
+
+.pretty-images {
+  height: 250px;
+  padding: 5px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  float: right;
+  border-radius: 10px;
+  box-shadow: 0px 3px 8px 3px rgba(0,0,0,0.25);
+}
+
+.reg-image {
+  width: 400px;
+  padding: 5px;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0px 3px 8px 3px rgba(0,0,0,0.25);
+}
+
+ul.normal {
+  padding-left: 60px;
+}
+
+ul.no-dot {
+  list-style-type: none;
+}
+
+
 
 
 
