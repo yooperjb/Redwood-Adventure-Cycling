@@ -32,30 +32,57 @@ router.post('/', (req, res) => {
         });
 });
 
-router.put('/:id', (req, res) => {
-    if (req.user.isAdmin) {
+// PUT /api/user-routes/:id - update a user-route
+// router.put('/:id', (req, res) => {
+//     if (req.user.isAdmin) {
+//         User_Routes.update(
+//             {
+//                 photo: req.body.photo,
+//                 ride_time: req.body.ride_time,
+//                 ride_link: req.body.ride_link,
+//                 date_completed: req.body.date_completed,
+//                 route_id: req.body.route_id,
+//                 user_id: req.session.user_id
+//             }
+//         )
+//             .then(dbRouteData => {
+//                 if (!dbRouteData) {
+//                     res.status(404).json({ message: 'No route found with this id' });
+//                     return;
+//                 }
+//                 res.json(dbRouteData);
+//             })
+//             .catch(err => {
+//                 console.log(err);
+//                 res.status(500).json(err);
+//             });
+//     }
+// });
+
+// PUT /api/user-routes/ - update a user-route bulk
+router.put('/', (req, res) => {
         User_Routes.update(
             {
-                photo: req.body.photo,
-                ride_time: req.body.ride_time,
-                ride_link: req.body.ride_link,
-                date_completed: req.body.date_completed,
-                route_id: req.body.route_id,
-                user_id: req.session.user_id
-            }
+                approved: true,
+            },
+            {
+            where:{
+                id:req.body
+            }}
         )
-            .then(dbRouteData => {
-                if (!dbRouteData) {
-                    res.status(404).json({ message: 'No route found with this id' });
+            .then(dbUserRouteData => {
+                //console.log("dbUserRouteData",dbUserRouteData);
+                if (!dbUserRouteData) {
+                    res.status(404).json({ message: 'No routes were approved' });
                     return;
                 }
-                res.json(dbRouteData);
+                res.json(dbUserRouteData);
             })
             .catch(err => {
                 console.log(err);
                 res.status(500).json(err);
             });
-    }
+            
 });
 
 module.exports = router;

@@ -3,7 +3,7 @@
         <H2>Dashboard</H2>
         <div class="grid-container">
             <div class="item1">
-                <h3>Submit a Route</h3>
+                <h3>Submit Your Ride</h3>
             </div>
             <div class="item4">
                 <form class="route-form">
@@ -27,7 +27,7 @@
                     </div>
 
                     <div>
-                        <label for="ride-link">Strava link:</label>
+                        <label for="ride-link">Link to Strava activity:</label>
                         <input type="text" id="ride-link" />
                     </div>
                     <div>
@@ -101,13 +101,11 @@
                         </td>
                         <td>&nbsp;&nbsp;&nbsp;</td>
                         <td>
-                            {{!-- <p>
-                                {{#each userRoutes.approved }}
-                                Yes
-                                {{else}}
-                                No
-                                {{/each}}
-                            </p> --}}
+                            {{#if userRoutes.approved }}
+                            Yes
+                            {{else}}
+                            No
+                            {{/if}}
                         </td>
                     </tr>
                 </table>
@@ -123,6 +121,6 @@
 <script>
     $('.bs-timepicker').timepicker({ defaultTime: 'value' });
 </script>
-<script src="/javascript/admin.js"></script>
+
 <script src="/javascript/dashboard.js"></script>
 <script src="/javascript/routesubmit.js"></script>

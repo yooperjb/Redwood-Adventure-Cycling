@@ -1,12 +1,14 @@
 const router = require('express').Router();
+const { Routes, User_Routes} = require('../models');
 const { ensureLoggedIn } = require('connect-ensure-login');
 const passport = require('../config/passport');
+const { Router } = require('express');
 
 // route to home page
 router.get('/', (req, res) => {
   res.render('homepage', {
     user: req.user,
-    loggedIn: req.session.loggedIn
+    //loggedIn: req.session.loggedIn
   });
 });
 
@@ -36,19 +38,60 @@ router.get('/guidelines',
     res.render('guidelines', { user: req.user });
   });
 
-//delete or post request and move to api route
-router.delete('/logout',
-  function (req, res) {
-    req.session.destroy(() => {
-      res.sendStatus(204) //successful, but not sending info back
-    })
-  }
-)
-
 // route to leaderboard page
 router.get('/leaderboard',
   function (req, res) {
     res.render('leaderboard');
   });
+
+// route to admin page /admin
+router.get('/admin',ensureLoggedIn('/'), 
+  function (req, res) {
+    User_Routes.findAll({
+      where: {
+          // use the ID from the session - need to compound with approved
+          approved: 0
+      },
+      attributes: [
+          'id',
+          'route_id',
+          'photo',
+          'ride_time',
+          'date_completed',
+          'ride_link',
+          'user_id',
+          'approved'
+      ],
+      include: [
+        // include Route information
+        {
+          model: Routes,
+          attributes: ['name']
+        }
+      ]
+  })
+      .then(dbUserRoutesData => {
+          // serialize data before passing to template
+          const userRoutes = dbUserRoutesData.map(route => route.get({ plain: true }));
+          res.render('admin', {
+            user: req.user,
+            userRoutes: {userRoutes},
+          });
+          console.log(userRoutes);
+          console.log(req.user);
+      })
+      .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+      })
+  });
+
+  //delete or post request and move to api route
+router.delete('/logout',
+  function (req, res) {
+    req.session.destroy(() => {
+      res.sendStatus(204) //successful, but not sending info back
+    })
+});
 
 module.exports = router;
