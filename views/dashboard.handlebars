@@ -7,7 +7,6 @@
             </div>
             <div class="item4">
                 <form class="route-form">
-
                     <div>
                         <label for="route-name">Choose a route: </label>
                         <select name="route-name" id="route-name">
@@ -30,7 +29,7 @@
                         <label for="ride-link">Link to Strava activity:</label>
                         <input type="text" id="ride-link" />
                     </div>
-                    <div>
+                    {{!-- <div>
                         <label for="route-photo">Photo:</label>
                     </div>
                     <div class="input-group  px-2 py-2  bg-white ">
@@ -43,7 +42,7 @@
                         </div>
                     </div>
                     <div class="image-area mt-4"><img id="imageResult" src="#" alt=""
-                            class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+                            class="img-fluid rounded shadow-sm mx-auto d-block"></div> --}}
                     <div style="text-align:center; padding-top: 15px">
                         <button type="submit">submit your ride</button>
                     </div>
@@ -62,53 +61,18 @@
         {{#each userRoutes.userRoutes as |userRoutes|}}
         <div class="grid-container">
             <div class="item2">
-                <table>
-                    <tr>
-                        <td colspan="3">
-                            <h4>{{userRoutes.route.name}}</h4><br>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p><b>Date Completed:</b> </p>
-                        </td>
-                        <td>&nbsp;&nbsp;&nbsp;</td>
-                        <td>
-                            <p>{{userRoutes.date_completed}}</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p><b>Ride time:</b>
-                        </td>
-                        <td>&nbsp;&nbsp;&nbsp;</td>
-                        <td>
-                            <p> {{userRoutes.ride_time}}</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p><b>Points:</b> </p>
-                        </td>
-                        <td>&nbsp;&nbsp;&nbsp;</td>
-                        <td>
-                            <p> {{userRoutes.route.points}}</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p><b>Approved:</b>
-                        </td>
-                        <td>&nbsp;&nbsp;&nbsp;</td>
-                        <td>
-                            {{#if userRoutes.approved }}
-                            Yes
-                            {{else}}
-                            No
-                            {{/if}}
-                        </td>
-                    </tr>
-                </table>
+                <h4>{{userRoutes.route.name}}</h4>
+                <ul class=" no-dot">
+                    <li><b>Date Completed:</b> {{userRoutes.date_completed}}</li>
+                    <li><b>Ride time:</b> {{userRoutes.ride_time}}</li>
+                    <li><b>Difficulty:</b>{{userRoutes.route.points}}</li>
+                    <li><b>Points:</b> {{userRoutes.route.points}}</li>
+                    <li><b>Approved:</b>{{#if userRoutes.approved }}
+                        Yes
+                        {{else}}
+                        No
+                        {{/if}}</li>
+                </ul>
             </div>
             <div class="item3">
                 <img class="routes-image" src="/images/{{userRoutes.route.map}}" alt="{{userRoutes.route.name}}" />
