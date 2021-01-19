@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Routes, User_Routes} = require('../models');
+const { Routes, User_Routes, User} = require('../models');
 const { ensureLoggedIn } = require('connect-ensure-login');
 const passport = require('../config/passport');
 const { Router } = require('express');
@@ -53,13 +53,11 @@ router.get('/admin',ensureLoggedIn('/'),
           approved: 0
       },
       attributes: [
-          'id',
+          'id', // need for update
           'route_id',
-          'photo',
           'ride_time',
           'date_completed',
           'ride_link',
-          'user_id',
           'approved'
       ],
       include: [
@@ -67,8 +65,13 @@ router.get('/admin',ensureLoggedIn('/'),
         {
           model: Routes,
           attributes: ['name']
+        },
+        // include User information
+        {
+          model: User,
+          attributes: ['name']
         }
-      ]
+      ],      
   })
       .then(dbUserRoutesData => {
           // serialize data before passing to template
