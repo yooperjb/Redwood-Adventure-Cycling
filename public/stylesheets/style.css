@@ -530,9 +530,9 @@ ul.no-dot {
   main {
     padding: 2em 3em 1em 3em;
   }
-  article h2 {
+  /* article h2 {
 
-  }
+  } */
   article #welcome-paragraph {
     padding-bottom: .7em;
   }
@@ -561,16 +561,19 @@ ul.no-dot {
   }
   article #welcome-paragraph {
     text-align: center;
-    font-size: 1em;
+    font-size: 1.33em;
     line-height: 1.3em;
     padding-bottom: 1em;
   }
   img.pretty-images {
-    height: 133px;
+    height: 150px;
     padding: 5px;
   }
+  article h4 {
+    font-size: 1.5em;
+  }
   article p {
-    font-size: .88em;
+    font-size: 1.2em;
     line-height: 1.2em;
   }
 }
@@ -594,16 +597,17 @@ ul.no-dot {
   }
   article #welcome-paragraph {
     text-align: center;
+    font-size: .95em;
   }
   article p {
-    font-size: .8em;
+    font-size: .9em;
     line-height: 1.2em;
   }
   main {
     padding: 1em 2.2em 1em 1.2em;
   }
   img.pretty-images {
-    height: 66px;
+    height: 77px;
     padding: 3px;
   }
 }
