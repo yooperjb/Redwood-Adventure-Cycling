@@ -521,7 +521,28 @@ ul.no-dot {
 
 /* MEDIA QUERY FOR SMALL DESKTOP SCREENS AND SMALLER */
 @media screen and (max-width: 980px) {
+  div.hero {
+    min-height: 205px;
+  }
+  div#site-logo h1 {
+    font-size: 3em;
+  }
+  main {
+    padding: 2em 3em 1em 3em;
+  }
+  article h2 {
 
+  }
+  article #welcome-paragraph {
+    padding-bottom: .7em;
+  }
+  img.pretty-images {
+    height: 222px;
+    padding: 7px;
+  }
+  article p {
+    margin-bottom: .33em;
+  }
 }
 
 /* MEDIA QUERY FOR TABLETS AND SMALLER */
