@@ -629,6 +629,15 @@ ul.no-dot {
   div.bike-data {
     padding: 3px 0;
   }
+
+  /* login page */
+  div.form-container {
+    width: 100%;
+  }
+
+  div.form-container img {
+    width: 200px;
+  }
 }
 
 /* END MOBILE RESPONSIVE MEDIA QUERIES */
