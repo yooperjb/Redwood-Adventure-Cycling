@@ -4,3 +4,22 @@
     </h2><br>
     <h4 align="center">We're working on it!</h4>
 </article>
+
+<article>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Elevation</th>
+            <th>Miles</th>
+            <th>Points</th>
+        </tr>
+        {{#each userPoints.userPoints as |userPoints|}}
+        <tr>
+            <td>{{userPoints.user.name}}</td>
+            <td>{{userPoints.total_elevation}}</td>
+            <td>{{userPoints.total_miles}}</td>
+            <td>{{userPoints.total_points}}</td>  
+        </tr>
+        {{/each}}
+    </table>
+</article>
