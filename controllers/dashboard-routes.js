@@ -41,6 +41,7 @@ router.get('/', ensureLoggedIn('/login'), (req, res) => {
                 'id',
                 'name'
             ],
+            order:[['name', 'ASC']]
         })
     ])
         .then(([dbUserRoutesData, dbRoutesData]) => {
