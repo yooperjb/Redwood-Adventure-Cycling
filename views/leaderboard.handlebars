@@ -2,24 +2,20 @@
     <h2>Leaderboard<br>
         <img class="reg-image" src="/images/big_hill.jpg" alt="Biking up a long hill." />
     </h2><br>
-    <h4 align="center">We're working on it!</h4>
 </article>
 
 <article>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Elevation</th>
-            <th>Miles</th>
-            <th>Points</th>
-        </tr>
+
+    <div class="leader-grid-container">
+        <div class="leader-table-header">Rider Name</div>
+        <div class="leader-table-header">Elevation</div>
+        <div class="leader-table-header">Miles</div>
+        <div class="leader-table-header">Points</div>
         {{#each userPoints.userPoints as |userPoints|}}
-        <tr>
-            <td>{{userPoints.user.name}}</td>
-            <td>{{userPoints.total_elevation}}</td>
-            <td>{{userPoints.total_miles}}</td>
-            <td>{{userPoints.total_points}}</td>  
-        </tr>
+        <div class="leader-left">{{userPoints.user.name}}</div>
+        <div class="leader-left">{{userPoints.total_elevation}}</div>
+        <div class="leader-left">{{userPoints.total_miles}}</div>
+        <div class="leader-right">{{userPoints.total_points}}</div>
         {{/each}}
-    </table>
+    </div>
 </article>
