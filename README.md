@@ -19,10 +19,13 @@ Navigate to the project link here: https://damp-anchorage-73357.herokuapp.com/
   - strava api client id
   - strava api client secret
   
-  ## Contributors
+## Contributors
   - Anthony Kieu 
   - Calista Mayer
   - Danielle Branton
   - Jason Barnes
 
-![Screenshot](public/images/race-icon.jpg)
+## Credit
+<div>Icon created by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
+
