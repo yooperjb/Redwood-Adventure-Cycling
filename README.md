@@ -3,7 +3,7 @@
 The Adventure Series is a website that enables bikers in Humboldt county to login with their Strava account, find new bike routes in their area, and log which routes they have completed!
 
 ## Usage
-Navigate to the project link here: 
+Navigate to the project link here: https://damp-anchorage-73357.herokuapp.com/
 
 ## API Documentation
 - To access bike routes api data, navigate to /api/bikeroutes
