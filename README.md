@@ -1,5 +1,4 @@
 # the-adventure-series
-![Screenshot](public/images/race-icon.jpg)
 ## Description
 The Adventure Series is a website that enables bikers in Humboldt county to login with their Strava account, find new bike routes in their area, and log which routes they have completed!
 
@@ -23,3 +22,5 @@ Navigate to the project link here:
   - Calista Mayer
   - Danielle Branton
   - Jason Barnes
+
+![Screenshot](public/images/race-icon.jpg)
