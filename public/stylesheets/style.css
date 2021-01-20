@@ -589,6 +589,9 @@ ul.no-dot {
   article h2 {
     font-size: 2em;
   }
+  section h2 {
+    font-size: 2.2em;
+  }
   article h4 {
     font-size: 1em;
     font-weight: 900;
@@ -609,6 +612,19 @@ ul.no-dot {
   img.pretty-images {
     height: 77px;
     padding: 3px;
+  }
+  img.routes-image {
+    height: 6em;
+    width: 6em;
+  }
+  div.routes-container h4 {
+    line-height: 1.2em;
+  }
+  div.routes-container p {
+    line-height: 1.3em;
+  }
+  div.bike-data {
+    padding: 3px 0;
   }
 }
 
