@@ -8,7 +8,7 @@ const exphbs = require('express-handlebars');
 const helpers = require('./utils/helpers');
 const passport = require('./config/passport');
 // create handlebars
-const hbs = exphbs.create({ helpers });
+const hbs = exphbs.create({});
 
 // Create a new Express application
 const app = express();

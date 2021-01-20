@@ -8,13 +8,17 @@
                 <h4>{{this.name}}</h4>
                 <br>
                 <!--Data-->
-                <ul class="normal no-dot">
-                    <li><b>Mileage:</b> {{this.mileage}}</li>
-                    <li><b>Points:</b> {{this.points}}</li>
-                    <li><b>First bonus:</b> {{this.first_bonus}}</li>
-                    <li><b>Difficulty:</b> {{this.difficulty}}</li>
-                </ul>
-
+                <div class="grid-container-completed">
+                    <div class="bike-data">Mileage:</div>
+                    <div class="bike-data"> {{this.mileage}}</div>
+                    <div class="bike-data">Points:</div>
+                    <div class="bike-data"> {{this.points}}</div>
+                    <div class="bike-data">First bonus:</div>
+                    <div class="bike-data"> {{this.first_bonus}}</div>
+                    <div class="bike-data">Difficulty:</div>
+                    <div class="bike-data">{{this.difficulty}}
+                    </div>
+                </div>
             </div>
             <div class="item3">
                 <img class="routes-image" src="/images/{{this.map}}" alt="{{this.name}}" />
