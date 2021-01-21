@@ -5,7 +5,7 @@
 </article>
 
 <article>
-    <div class="leader-grid-container">
+    {{!-- <div class="leader-grid-container">
         <div class="leader-table-header">Rider Name</div>
         <div class="leader-table-header">Elevation</div>
         <div class="leader-table-header">Miles</div>
@@ -16,5 +16,22 @@
         <div class="leader-left">{{userPoints.total_miles}}</div>
         <div class="leader-right">{{userPoints.total_points}}</div>
         {{/each}}
-    </div>
+    </div> --}}
+
+    <table>
+        <tr>
+            <th>Rider Name</th>
+            <th>Elevation</th>
+            <th>Miles</th>
+            <th>Points</th>
+        </tr>
+        {{#each userPoints.userPoints as |userPoints|}}
+        <tr>
+            <td>{{userPoints.user.name}}</td>
+            <td>{{userPoints.total_elevation}}</td>
+            <td>{{userPoints.total_miles}}</td>
+            <td>{{userPoints.total_points}}</td>
+        </tr>
+        {{/each}}
+    </table>
 </article>
