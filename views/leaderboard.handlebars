@@ -18,7 +18,7 @@
         {{/each}}
     </div> --}}
 
-    <table>
+    <table class="leaderboard">
         <tr>
             <th>Rider Name</th>
             <th>Elevation</th>
@@ -30,7 +30,7 @@
             <td>{{userPoints.user.name}}</td>
             <td>{{userPoints.total_elevation}}</td>
             <td>{{userPoints.total_miles}}</td>
-            <td>{{userPoints.total_points}}</td>
+            <td class="points">{{userPoints.total_points}}</td>
         </tr>
         {{/each}}
     </table>

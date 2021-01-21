@@ -52,7 +52,7 @@ router.get('/leaderboard',
       [sequelize.fn('sum', sequelize.col('points')), 'total_points'],
       [sequelize.fn('sum', sequelize.col('elevation')), 'total_elevation'],
       [sequelize.fn('sum', sequelize.col('mileage')), 'total_miles']],
-      // indlucde user model to get user name
+      // include user model to get user name
       include: [
         {
           model: User,
