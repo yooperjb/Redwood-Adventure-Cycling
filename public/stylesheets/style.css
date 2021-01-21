@@ -444,17 +444,16 @@ div.image-area.mt-4 {
     'footer footer footer footer footer footer';
   grid-gap: 0px;
   background-color: #abdbe3;
-  /* padding: 1px; */
   border-radius: 10px;
   box-shadow: 0px 3px 8px 3px rgba(0,0,0,0.25);
-  /* width:70%; */
   padding: 15px 10px;
+  /* display: flex;
+  justify-content: center; */
 }
 
 .grid-container > div {
-  /* background-color: rgba(255, 255, 255, 0.8); */
   text-align: left;
-  padding: 5px 0px;
+  /* padding: 5px 0px; */
 
 }
 
@@ -485,6 +484,10 @@ text-align: center;
   text-align: left;
   padding: 10px 0;
   /* font-size: 12px; */
+}
+
+.completed-data {
+  padding: 3px 0;
 }
 
 /* * ==========================================
@@ -699,12 +702,7 @@ ul.no-dot {
   article h2 {
     font-size: 2em;
   }
-  /* article #welcome-paragraph {
-    text-align: left;
-    font-size: 1.33em;
-    line-height: 1.3em;
-    padding-bottom: 1em;
-  } */
+
   img.pretty-images {
     height: 150px;
     padding: 5px;
@@ -730,9 +728,18 @@ ul.no-dot {
   }
 
   div.completed-data, div.bike-data {
-    font-size: .8em; 
-    line-height:1em;
+    font-size: .75em; 
+    line-height: 1.3em;
   }
+
+  .grid-container-completed > div {
+    padding-top: 2px;
+  }
+
+.grid-container h4 {
+  margin-bottom: 4px;
+}
+
   
   div.hero {
     min-height: 100px;
@@ -779,11 +786,26 @@ ul.no-dot {
     height: 6em;
     width: 6em;
   }
+
+  div.grid-container {
+    margin-left: auto;
+    margin-right: auto;
+    /* margin: auto;
+    width: 80%; */
+    /* border: 3px solid green;*/
+  }
+
+  div.routes-container {
+      margin: auto;
+      width: 300px; /*Removes extra spacing at smaller widths */
+      /* border: 3px solid green;*/
+    }
+
   div.routes-container h4 {
     line-height: 1.2em;
   }
   div.routes-container p {
-    line-height: 1.3em;
+    /* line-height: 1.5em; */
   }
   div.bike-data {
     padding: 3px 0;
@@ -812,7 +834,9 @@ ul.no-dot {
 
 div.grid-container {
     width: 300px;
-    margin: auto;
+    margin: none;
+
+    
 }  
 
 ul.normal li {
