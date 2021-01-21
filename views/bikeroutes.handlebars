@@ -6,15 +6,17 @@
         <div class="grid-container">
             <div class="item2">
                 <h4>{{this.name}}</h4>
-                <br>
+                
                 <!--Data-->
                 <div class="grid-container-completed">
                     <div class="bike-data">Mileage:</div>
                     <div class="bike-data"> {{this.mileage}}</div>
                     <div class="bike-data">Points:</div>
                     <div class="bike-data"> {{this.points}}</div>
-                    <div class="bike-data">First bonus:</div>
-                    <div class="bike-data"> {{this.first_bonus}}</div>
+                    <div class="bike-data">Total Elevation:</div>
+                    <div class="bike-data"> {{format_thousands this.elevation}} ft.</div>
+                    {{!-- <div class="bike-data">First bonus:</div>
+                    <div class="bike-data"> {{this.first_bonus}}</div> --}}
                     <div class="bike-data">Difficulty:</div>
                     <div class="bike-data">{{this.difficulty}}</div>
                     <div class="bike-data">Route Link:</div>
