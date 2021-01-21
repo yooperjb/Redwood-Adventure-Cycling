@@ -28,8 +28,8 @@
         {{#each userPoints.userPoints as |userPoints|}}
         <tr>
             <td>{{userPoints.user.name}}</td>
-            <td>{{userPoints.total_elevation}}</td>
-            <td>{{userPoints.total_miles}}</td>
+            <td>{{format_thousands userPoints.total_elevation}}</td>
+            <td>{{format_miles userPoints.total_miles}}</td>
             <td class="points">{{userPoints.total_points}}</td>
         </tr>
         {{/each}}

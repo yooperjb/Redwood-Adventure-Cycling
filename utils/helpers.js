@@ -1,9 +1,9 @@
 module.exports = {
-    format_plural: (word, amount) => {
-        if (amount !== 1) {
-            return `${word}s`;
-        }
+    format_miles: miles => {
+        return Math.round(miles*10)/10;
+    },
 
-        return word;
-    }
+    format_thousands: num => {
+        return Number(num).toLocaleString();
+    },
 }
