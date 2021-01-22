@@ -41,10 +41,10 @@
                     </ul>
                 </li>
                 <li class="item"><a href="/leaderboard">leaderboard</a></li>
-                <li class="item"> {{#if user.isAdmin}}
+                {{#if user.isAdmin}}<li class="item">
                     <a href="/admin" class="subnav-link">admin</a>
-                    {{/if}}
-                </li>
+
+                </li> {{/if}}
                 <li class="item button">{{#if user}}<button id="logout" class="btn-no-style">logout</button>
                     {{else}}
                     <a href="/login">log in</a>
