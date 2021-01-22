@@ -3,7 +3,7 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 // create the User Model - inherits from Model
-class Routes extends Model {};
+class Routes extends Model { };
 
 // define Routes table columns and configuration
 Routes.init(
@@ -18,19 +18,16 @@ Routes.init(
         },
         name: {
             type: DataTypes.STRING,
-            allowNull: false,        
+            allowNull: false,
         },
-        // url: {
-        //     type: DataTypes.STRING,
-        //     allowNull: false,  
-        // },
+
         mileage: {
             type: DataTypes.FLOAT,
             allowNull: false
         },
         elevation: {
             type: DataTypes.FLOAT,
-            allowNull:false
+            allowNull: false
         },
         points: {
             type: DataTypes.INTEGER,
@@ -54,18 +51,18 @@ Routes.init(
         }
     },
     {
-    // TABLE CONFIGURATION OPTIONS
-        
-    // pass in our imported sequelize connection (the direct connection to our database)
-    sequelize,
-    // don't automatically create createdAt/updatedAt timestamp fields
-    timestamps: false,
-    // don't pluralize name of database table
-    freezeTableName: true,
-    // use underscores instead of camel-casing (i.e. `comment_text` and not `commentText`)
-    underscored: true,
-    // make it so our model name stays lowercase in the database
-    modelName: 'routes'
+        // TABLE CONFIGURATION OPTIONS
+
+        // pass in our imported sequelize connection (the direct connection to our database)
+        sequelize,
+        // don't automatically create createdAt/updatedAt timestamp fields
+        timestamps: false,
+        // don't pluralize name of database table
+        freezeTableName: true,
+        // use underscores instead of camel-casing (i.e. `comment_text` and not `commentText`)
+        underscored: true,
+        // make it so our model name stays lowercase in the database
+        modelName: 'routes'
     }
 );
 

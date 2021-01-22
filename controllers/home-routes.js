@@ -2,7 +2,6 @@ const router = require('express').Router();
 const { Routes, User_Routes, User } = require('../models');
 const { ensureLoggedIn } = require('connect-ensure-login');
 const passport = require('../config/passport');
-//const { Router } = require('express');
 const sequelize = require('../config/connection');
 
 // route to home page
@@ -48,19 +47,19 @@ router.get('/leaderboard',
         approved: 1,
       },
       // get user_route info and sum points, elevation, and mileage fields
-      attributes:['user_id',
-      [sequelize.fn('sum', sequelize.col('points')), 'total_points'],
-      [sequelize.fn('sum', sequelize.col('elevation')), 'total_elevation'],
-      [sequelize.fn('sum', sequelize.col('mileage')), 'total_miles']],
+      attributes: ['user_id',
+        [sequelize.fn('sum', sequelize.col('points')), 'total_points'],
+        [sequelize.fn('sum', sequelize.col('elevation')), 'total_elevation'],
+        [sequelize.fn('sum', sequelize.col('mileage')), 'total_miles']],
       // include user model to get user name
       include: [
         {
           model: User,
-          attributes:['name'],
-        }, 
+          attributes: ['name'],
+        },
         {
           model: Routes,
-          attributes: [],   
+          attributes: [],
         },
       ],
       // group the summed output by the user id and order by total_points column
@@ -74,7 +73,6 @@ router.get('/leaderboard',
           user: req.user,
           userPoints: { userPoints },
         });
-        //console.log("userPoints", userPoints[0].user_id);
       })
       .catch(err => {
         console.log(err);

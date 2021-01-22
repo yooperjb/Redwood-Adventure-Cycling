@@ -13,16 +13,12 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
 
     console.log(req.user);
-    //console.log("ID:" ,req.user.id);
 
     User_Routes.create({
-        // photo: req.body.photo,
         ride_time: req.body.ride_time,
         ride_link: req.body.ride_link,
         date_completed: req.body.date_completed,
-        // get from session user
         user_id: req.user.id,
-        // route_id from dropdown
         route_id: req.body.route_id,
     })
         .then(dbRoutesData => res.json(dbRoutesData))
@@ -31,33 +27,6 @@ router.post('/', (req, res) => {
             res.status(500).json(err);
         });
 });
-
-// PUT /api/user-routes/:id - update a user-route
-// router.put('/:id', (req, res) => {
-//     if (req.user.isAdmin) {
-//         User_Routes.update(
-//             {
-//                 photo: req.body.photo,
-//                 ride_time: req.body.ride_time,
-//                 ride_link: req.body.ride_link,
-//                 date_completed: req.body.date_completed,
-//                 route_id: req.body.route_id,
-//                 user_id: req.session.user_id
-//             }
-//         )
-//             .then(dbRouteData => {
-//                 if (!dbRouteData) {
-//                     res.status(404).json({ message: 'No route found with this id' });
-//                     return;
-//                 }
-//                 res.json(dbRouteData);
-//             })
-//             .catch(err => {
-//                 console.log(err);
-//                 res.status(500).json(err);
-//             });
-//     }
-// });
 
 // PUT /api/user-routes/ - update a user-route bulk
 router.put('/', (req, res) => {
@@ -83,7 +52,6 @@ router.put('/', (req, res) => {
             console.log(err);
             res.status(500).json(err);
         });
-
 });
 
 module.exports = router;
