@@ -36,8 +36,6 @@ const PORT = process.env.PORT || 3001;
 // };
 // app.use(session(sess));
 
-
-
 //Configure view engine to render handlebars templates
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');

@@ -797,9 +797,7 @@ ul.no-dot {
   div.routes-container h4 {
     line-height: 1.2em;
   }
-  div.routes-container p {
-    /* line-height: 1.5em; */
-  }
+
   div.bike-data {
     padding: 3px 0;
   }
