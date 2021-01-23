@@ -46,11 +46,12 @@ router.get('/leaderboard',
       where: {
         approved: 1,
       },
-      // get user_route info and sum points, elevation, and mileage fields
+      // get user_route info and sum points, elevation, mileage fields. Count ridden routes.
       attributes: ['user_id',
         [sequelize.fn('sum', sequelize.col('points')), 'total_points'],
         [sequelize.fn('sum', sequelize.col('elevation')), 'total_elevation'],
-        [sequelize.fn('sum', sequelize.col('mileage')), 'total_miles']],
+        [sequelize.fn('sum', sequelize.col('mileage')), 'total_miles'],
+        [sequelize.fn('count', sequelize.col('user_id')), 'total_routes']],
       // include user model to get user name
       include: [
         {
@@ -69,6 +70,7 @@ router.get('/leaderboard',
       .then(dbUserPointData => {
         // serialize data before passing to template
         const userPoints = dbUserPointData.map(route => route.get({ plain: true }));
+        //console.log("userPoints: ", userPoints);
         res.render('leaderboard', {
           user: req.user,
           userPoints: { userPoints },
