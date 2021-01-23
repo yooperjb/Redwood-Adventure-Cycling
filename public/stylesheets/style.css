@@ -553,7 +553,7 @@ table.leaderboard {
   border: 1px solid gray;
   border-radius: 4px;
   width: 100%;
-  background-color: #abdbe3;
+  background-color: rgb(235, 235, 235);
   border-collapse: collapse;
 }
 
@@ -561,7 +561,7 @@ table.leaderboard th {
   font-size: 1.1em;
   padding: 10px;
   text-align: center;
-  background-color: rgb(194, 194, 194);
+  background-color: rgb(220, 220, 220);
   border-bottom: 1px solid rgb(117, 117, 117);
 }
 
@@ -576,11 +576,11 @@ table.leaderboard td.points {
 }
 
 table.leaderboard tr:nth-child(even) {
-  background-color:  #d3d3d3;
+  background-color:  #f9f9f9;
 }
 
 table.leaderboard tr:hover {
-  background-color: #e7e7e7;
+  background-color:#C4E3F3;
 }
 
 /* * ==========================================
