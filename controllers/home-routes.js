@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const { Routes, User_Routes, User} = require('../models');
+const { Routes, User_Routes, User } = require('../models');
 const { ensureLoggedIn } = require('connect-ensure-login');
 const passport = require('../config/passport');
-const { Router } = require('express');
+const sequelize = require('../config/connection');
 
 // route to home page
 router.get('/', (req, res) => {
@@ -41,32 +41,62 @@ router.get('/guidelines',
 // route to leaderboard page /leaderboard
 router.get('/leaderboard',
   function (req, res) {
+    // get all ridden routes that have been approved
     User_Routes.findAll({
       where: {
-        approved: 1
+        approved: 1,
       },
-      attributes: [
-        
-      ]
+      // get user_route info and sum points, elevation, mileage fields. Count ridden routes.
+      attributes: ['user_id',
+        [sequelize.fn('sum', sequelize.col('points')), 'total_points'],
+        [sequelize.fn('sum', sequelize.col('elevation')), 'total_elevation'],
+        [sequelize.fn('sum', sequelize.col('mileage')), 'total_miles'],
+        [sequelize.fn('count', sequelize.col('user_id')), 'total_routes']],
+      // include user model to get user name
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+        {
+          model: Routes,
+          attributes: [],
+        },
+      ],
+      // group the summed output by the user id and order by total_points column
+      group: ['user.id'],
+      order: sequelize.literal('total_points DESC')
     })
-    res.render('leaderboard');
+      .then(dbUserPointData => {
+        // serialize data before passing to template
+        const userPoints = dbUserPointData.map(route => route.get({ plain: true }));
+        //console.log("userPoints: ", userPoints);
+        res.render('leaderboard', {
+          user: req.user,
+          userPoints: { userPoints },
+        });
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      })
   });
 
 // route to admin page /admin
-router.get('/admin',ensureLoggedIn('/'), 
+router.get('/admin', ensureLoggedIn('/'),
   function (req, res) {
     User_Routes.findAll({
       where: {
-          // use the ID from the session - need to compound with approved
-          approved: 0
+        // use the ID from the session - need to compound with approved
+        approved: 0
       },
       attributes: [
-          'id', // need for update
-          'route_id',
-          'ride_time',
-          'date_completed',
-          'ride_link',
-          'approved'
+        'id', // need for update
+        'route_id',
+        'ride_time',
+        'date_completed',
+        'ride_link',
+        'approved'
       ],
       include: [
         // include Route information
@@ -79,30 +109,30 @@ router.get('/admin',ensureLoggedIn('/'),
           model: User,
           attributes: ['name']
         }
-      ],      
-  })
+      ],
+    })
       .then(dbUserRoutesData => {
-          // serialize data before passing to template
-          const userRoutes = dbUserRoutesData.map(route => route.get({ plain: true }));
-          res.render('admin', {
-            user: req.user,
-            userRoutes: {userRoutes},
-          });
-          console.log(userRoutes);
-          console.log(req.user);
+        // serialize data before passing to template
+        const userRoutes = dbUserRoutesData.map(route => route.get({ plain: true }));
+        res.render('admin', {
+          user: req.user,
+          userRoutes: { userRoutes },
+        });
+        console.log(userRoutes);
+        console.log(req.user);
       })
       .catch(err => {
-          console.log(err);
-          res.status(500).json(err);
+        console.log(err);
+        res.status(500).json(err);
       })
   });
 
-  //delete or post request and move to api route
+//delete or post request and move to api route
 router.delete('/logout',
   function (req, res) {
     req.session.destroy(() => {
       res.sendStatus(204) //successful, but not sending info back
     })
-});
+  });
 
 module.exports = router;

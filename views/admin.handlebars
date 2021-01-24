@@ -1,31 +1,31 @@
 <section>
     <h3 class="completed">Admin Approvals</h3>
+    <br>
     {{#if userRoutes.userRoutes.length}}
     <form class="approve-form">
-        {{#each userRoutes.userRoutes as |userRoutes|}}
-        <div class="grid-container">
-            <div class="item1">
-                <h4>{{userRoutes.route.name}}</h4>
-            </div>
-
-            <div class="item2">
-                <ul class="no-dot">
-                    <li><span class="bold">Rider Name</span>: {{userRoutes.user.name}}</li>
-                    <li><span class="bold">Date Completed</span>: {{userRoutes.date_completed}}</li>
-                    <li><span class="bold">Ride time</span>: {{userRoutes.ride_time}}</li>
-                    <li><span class="bold">Strava Link</span>: <a href="{{userRoutes.ride_link}}"
-                            target="_blank">Activity</a> </li>
-                </ul>
-
+        {{!-- Data Table Grid --}}
+        <div class="table-grid-container">
+            <div class="admin-table-header">Rider Name</div>
+            <div class="admin-table-header">Bike Route</div>
+            <div class="admin-table-header">Date Completed</div>
+            <div class="admin-table-header">Ride Time</div>
+            <div class="admin-table-header">Strava Link</div>
+            <div class="admin-table-header">Approved</div>
+            {{#each userRoutes.userRoutes as |userRoutes|}}
+            <div class="leader-left">{{userRoutes.user.name}}</div>
+            <div class="leader-left">{{userRoutes.route.name}}</div>
+            <div>{{userRoutes.date_completed}}</div>
+            <div class="leader-right">{{userRoutes.ride_time}}</div>
+            <div><a href="{{userRoutes.ride_link}}" target="_blank">Activity</a></div>
+            <div>
                 <div class="checkbox">
-                    <label for="user_routes-approved-{{userRoutes.id}}">Approve&nbsp;&nbsp;
-                        <input type="checkbox" id="user_routes-approved-{{userRoutes.id}}" name="user_routes-approved"
-                            value="{{userRoutes.id}}">
+                    <input type="checkbox" id="user_routes-approved-{{userRoutes.id}}" name="user_routes-approved"
+                        value="{{userRoutes.id}}">
                     </label>
                 </div>
             </div>
+            {{/each}}
         </div>
-        {{/each}}
         <br>
         <button type="submit">Approve!</button>
     </form>

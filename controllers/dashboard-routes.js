@@ -41,6 +41,7 @@ router.get('/', ensureLoggedIn('/login'), (req, res) => {
                 'id',
                 'name'
             ],
+            order: [['name', 'ASC']]
         })
     ])
         .then(([dbUserRoutesData, dbRoutesData]) => {
@@ -54,8 +55,6 @@ router.get('/', ensureLoggedIn('/login'), (req, res) => {
                 routes: { routes },
                 user: req.user
             })
-            //console.log("userRoutes:", {userRoutes});
-            //console.log("routes:", {routes});
         })
 
         .catch(err => {
