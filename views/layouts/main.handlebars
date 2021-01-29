@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>The Adventure Series</title>
+    <title>raCycling</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
@@ -14,8 +14,6 @@
     <link rel="stylesheet" href="/stylesheets/timepicker.css">
     <script src="/javascript/timepicker.js"></script>
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
-
-
 </head>
 
 <body>
@@ -27,8 +25,7 @@
                         <img class=" race-icon" src="/images/bicycle-race-1.png" />
                     </a>
                 </li>
-                {{#if user}}<li class="item"><a href="/dashboard">dashboard</a></li>
-                {{/if}}
+               
                 <li class="item has-submenu">
                     <a tabindex="0" class="no-outline">about</a>
                     <ul class="submenu regular">
@@ -38,9 +35,13 @@
                         <li class="subitem">
                             <a href="/bikeroutes">bike routes</a>
                         </li>
+                        <li class="subitem">
+                            <a href="/leaderboard">leaderboard</a>
+                        </li>
                     </ul>
                 </li>
-                <li class="item"><a href="/leaderboard">leaderboard</a></li>
+                {{#if user}}<li class="item"><a href="/dashboard">dashboard</a></li>
+                {{/if}}
                 {{#if user.isAdmin}}<li class="item">
                     <a href="/admin" class="subnav-link">admin</a>
 
@@ -55,49 +56,16 @@
         </nav>
 
     </header>
-
-
-
-
-    <!--Header-->
-    {{!-- <header class="list-unstyled">
-        <nav id="subnav" class="list-unstyled">
-            <div id="subnav-cont" class="list-unstyled">
-                <ul id="nav-links" class="list-unstyled">
-                    <li class="list-unstyled"><a href="/"><img class=" race-icon"
-                                src="/images/bicycle-race-1.png" /></a>
-                    </li> --}}
-
-                    {{!-- <li class="list-unstyled"><a href="/" class="subnav-link">homepage</a></li> --}}
-
-                    {{!-- Check if user is loggedin --}}
-                    {{!-- {{#if user}}
-                    <li class="list-unstyled"><a href="/dashboard">dashboard</a></li>
-                    {{/if}}
-
-                    <li class="list-unstyled"><a href="/bikeroutes" class="subnav-link">bike routes</a></li>
-                    <li class="list-unstyled"><a href="/guidelines" class="subnav-link">guidelines</a></li>
-                    <li class="list-unstyled"><a href="/leaderboard" class="subnav-link">leaderboard</a></li>
-                    {{#if user.isAdmin}}
-                    <li class="list-unstyled"><a href="/admin" class="subnav-link">admin</a></li>
-                    {{/if}}
-                    {{#if user}}
-                    <li class="list-unstyled"><button id="logout" class="btn-no-style">logout</button></li>
-                    {{else}}
-                    <li class="list-unstyled"><a href="/login">login</a></li>
-                    {{/if}}
-                </ul>
-            </div>
-        </nav>
-    </header> --}}
     <!--End Header-->
+
     <!--Hero-->
     <div class="hero">
         <div id="site-logo">
-            <h1>The Adventure Series</h1>
+            <h1>Redwood Adventure Cycling</h1>
         </div>
     </div>
     <!--End Hero-->
+
     <!--Main Section-->
     <main>
         <section>
