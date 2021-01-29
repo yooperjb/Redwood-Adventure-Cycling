@@ -4,7 +4,11 @@ const sequelize = require('../config/connection');
 
 router.get('/', async (req, res) => {
     try {
-        const routes = (await Routes.findAll()).map(route => route.toJSON()) //converts to plain object
+        const routes = (await Routes.findAll(
+            {
+            order: [['name', 'ASC']]
+            }
+        )).map(route => route.toJSON()) //converts to plain object
         // console.log({ routes }) //flag value
         res.render('bikeroutes', { routes, user: req.user });
     } catch (err) {
