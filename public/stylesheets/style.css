@@ -188,10 +188,10 @@ background-color: var(--quad-color);
 
 /* --------- MAIN styles --------- */
 p {
-  font-size: 1.0em; 
-  line-height:1.7em; 
+  font-size: 1.0em;
+  line-height:1.5em; 
   color: var(--quad-color);
-  margin-bottom: .75em;
+  margin: 5px;
 }
 
 h1 {
@@ -229,7 +229,7 @@ h4 {
   font-size: 1.3em;
   font-weight: 600;
   line-height: 1.7em;
-  margin: 0 0 5px 0;
+  margin: 0 0 5px 5px;
 }
 
 a {
@@ -402,17 +402,57 @@ div.image-area.mt-4 {
 /*
 *
 * ==========================================
-* GRID LAYOUT FOR BIKE ROUTES 
+*  LAYOUT FOR BIKE ROUTES 
 * ==========================================
 *
 */
+.bike-route {
+  display: flex;
+  width: 90%;
+  margin: 20px auto;
+  background-color: #abdbe3;
+  border-radius: 8px;
+  box-shadow: 0px 3px 8px 3px rgba(0,0,0,0.25);
+  padding: 10px 10px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.bike-route-title {
+  flex-basis: 100%;
+}
+
+.bike-route-table {
+  flex-basis: 50%;
+  margin: 0px 5px 10px;
+}
+
+.bike-route-table table, td {
+  width: 100%;
+  border: 1px solid gray;
+  border-collapse: collapse;
+}
+
+.bike-route-table td {
+  vertical-align: middle;
+  padding: 7px 6px;
+}
+
+.bike-route-table tr:hover {
+  background-color: rgb(200, 200, 200);
+}
+
+.bike-route-image {
+  margin: 0px 5px 10px;
+}
+
 .routes-container {
   margin: auto;
   width: 80%;
   /* border: 3px solid green;*/
 }
 
-.item1 {
+/* .item1 {
    grid-area: header; 
 
   }
@@ -427,9 +467,9 @@ div.image-area.mt-4 {
 }
 .item4 { 
   grid-area: footer; 
-}
+} */
 
-.grid-container {
+/* .grid-container {
   display: grid;
   grid-template-areas:
     'header header header header header header'
@@ -441,10 +481,10 @@ div.image-area.mt-4 {
   box-shadow: 0px 3px 8px 3px rgba(0,0,0,0.25);
   padding: 15px 10px;
   /* display: flex;
-  justify-content: center; */
-}
+  justify-content: center;
+} */
 
-.grid-container > div {
+/* .grid-container > div {
   text-align: left;
 }
 
@@ -452,7 +492,7 @@ div.image-area.mt-4 {
   font-size: 24px;
   font-weight: bold;
   line-height: 35px; 
-}
+}  */
 
 /* * ==========================================
 * GRID TABLE COMPLETED
@@ -858,6 +898,7 @@ ul.normal li {
   border-color: darkblue;
 }
 }
+
 /* Desktop menu */
 @media all and (min-width: 980px) {
 .menu {
@@ -899,6 +940,5 @@ ul.normal li {
   border-radius: 0;
 }
 }
-
 
 /* END MOBILE RESPONSIVE MEDIA QUERIES */
