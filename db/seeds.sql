@@ -13,3 +13,17 @@ VALUES ('2784001562258115506','Bald Mountain Loop',26.2,3490,20,5,'Moderate','ba
 ('2784162068290964036','Ship Mountain - French Hill Loop',44.8,7400,40,5,'Hard','ship_mountain.jpg','Incredible loop ride in the Smith River Recreation area with the option to visit two fire lookouts in one ride! There is a tough ten mile climb with some steep grades up to Ship Mountain Lookout, but the views are worth it!
 '),
 ('2783602419957350566','Showers Pass Loop',75.26,12320,50,5,'Epic','showers_pass.jpg','A quintessential Humboldt County bike ride, this ride is epic. With over 12 thousand feet of climbing on mostly gravel roads, be prepared for a long day. Take plenty of food and water, and a camera for all the amazing views.');
+
+INSERT INTO User (id, access_token, refresh_token, name, sex)
+VALUES (76136910, '3dfce762d6166ab8405d94659328f432899bcb74', 'f69003d0b936888a2aa79c3b352c16d4d954074f', 'Danielle Branton', 'F'),
+(76196481, '3346a36870464f11b2243ec5221b980bd2ac8c18', '19295ceb7e0e758df30a94e84940af05a69a1e0a', 'Calista Mayer', 'F'),
+(76136989, '6033733a654c6f879f141419767eb0aa0d809981', '5fef0ab0df34e2d3c8d891aae0882f1ab770a03a', 'Ant Kieu', 'M');
+
+INSERT INTO User_Routes (ride_time, ride_link, date_completed, user_id, route_id)
+VALUES
+('06:00', 'Google.com', '2021-01-20', '76136989', '2784001562258115506'
+),
+('01:16', 'https://www.strava.com/athletes/76136910', '2021-01-22', '76136910', '2784162068290964036'
+),
+('01:17', 'https://www.strava.com/athletes/76136910', '2021-01-22', '76136910', '2784188125345719112'
+);

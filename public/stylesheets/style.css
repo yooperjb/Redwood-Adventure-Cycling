@@ -427,14 +427,15 @@ article.bike-route {
   margin: 0px 5px 10px;
 }
 
-.bike-route-table table, td {
+.bike-route-table table {
   width: 100%;
   border: 1px solid gray;
   border-collapse: collapse;
+  vertical-align: middle;
 }
 
 .bike-route-table td {
-  vertical-align: middle;
+  border: 1px solid gray;
   padding: 7px 6px;
 }
 

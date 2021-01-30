@@ -17,11 +17,12 @@ passport.use(new StravaStrategy({
             user = await User.create({
                 id: profile.id,
                 name: profile.displayName,
+                sex: profile._json.sex,
                 accessToken: accessToken,
-                refreshToken: refreshToken,
+                refreshToken: refreshToken
             })
         }
-    
+    console.log("sex:", profile._json.sex);
     // profile is req.user that is passed from passport-strava strategy
     return cb(null, {...profile, isAdmin: user.admin});
   }));
