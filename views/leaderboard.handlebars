@@ -1,12 +1,11 @@
-{{!-- <article>
-    <h2>Leaderboard<br>
-        <img class="reg-image" src="/images/big_hill.jpg" alt="Biking up a long hill." />
-    </h2><br>
-</article> --}}
 
 <article>
-    <h2>2021 Leaderboards</h2>
-    <h4>Overall</h4>
+    <h2>2021 Leaderboard</h2>
+    <div class="buttons">
+        <button id="overall">Overall</button>
+        <button id="female">Female</button>
+        <button id="male">Male</button>
+    </div>
     <table class="leaderboard">
         <tr>
             <th>Rider Name</th>
@@ -16,7 +15,7 @@
             <th>Points</th>
         </tr>
         {{#each userPoints.userPoints as |userPoints|}}
-        <tr>
+        <tr data-gender="{{userPoints.user.sex}}">
             <td>{{userPoints.user.name}}</td>
             <td>{{format_thousands userPoints.total_elevation}}</td>
             <td>{{format_miles userPoints.total_miles}}</td>
@@ -27,48 +26,4 @@
     </table>
 </article>
 
-{{!-- FeMale Overall Leaderboard --}}
-<article>
-    <h4>Female</h4>
-    <table class="leaderboard">
-        <tr>
-            <th>Rider Name</th>
-            <th>Elevation</th>
-            <th>Miles</th>
-            <th>Routes</th>
-            <th>Points</th>
-        </tr>
-        {{#each userPoints.userPoints as |userPoints|}}
-        <tr>
-            <td>{{userPoints.user.name}}</td>
-            <td>{{format_thousands userPoints.total_elevation}}</td>
-            <td>{{format_miles userPoints.total_miles}}</td>
-            <td>{{userPoints.total_routes}}</td>
-            <td class="points">{{userPoints.total_points}}</td>
-        </tr>
-        {{/each}}
-    </table>
-</article>
-
-{{!-- Male Overall Leaderboard --}}
-<article>
-    <h4>Male</h4>
-    <table class="leaderboard">
-        <tr>
-            <th>Rider Name</th>
-            <th>Elevation</th>
-            <th>Miles</th>
-            <th>Routes</th>
-            <th>Points</th>
-        </tr>
-        {{#each userPoints.userPoints as |userPoints|}}
-        <tr>
-            <td>{{userPoints.user.name}}</td>
-            <td>{{format_thousands userPoints.total_elevation}}</td>
-            <td>{{format_miles userPoints.total_miles}}</td>
-            <td>{{userPoints.total_routes}}</td>
-            <td class="points">{{userPoints.total_points}}</td>
-        </tr>
-        {{/each}}
-    </table>
-</article>
+<script src="/javascript/leaderboard.js"></script>
