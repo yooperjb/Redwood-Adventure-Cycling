@@ -406,9 +406,9 @@ div.image-area.mt-4 {
 * ==========================================
 *
 */
-.bike-route {
+article.bike-route {
   display: flex;
-  width: 90%;
+  width: 80%;
   margin: 20px auto;
   background-color: #abdbe3;
   border-radius: 8px;
@@ -443,14 +443,18 @@ div.image-area.mt-4 {
 }
 
 .bike-route-image {
+  height: 171px;
   margin: 0px 5px 10px;
 }
 
-.routes-container {
+.bike-route-image img {
+  height: 100%;
+}
+
+/* .routes-container {
   margin: auto;
   width: 80%;
-  /* border: 3px solid green;*/
-}
+}  */
 
 /* .item1 {
    grid-area: header; 
