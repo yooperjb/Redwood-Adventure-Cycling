@@ -1,21 +1,15 @@
-const buttonDiv = document.querySelector('.buttons');
+const buttonDiv = document.querySelector('.leader-buttons');
 const tableRow = document.querySelectorAll('[data-gender]');
 
 const leaderBoardFilter= function(event) {
     event.preventDefault();
-    console.log("Event:",event.target.id);
-    console.log(tableRow);
-    //const maleRow = document.querySelectorAll('[data-gender=M]');
-    //console.log(maleRow);
-    //console.log(typeof(tableRow));
+    // get id of clicked button
     const sex = event.target.id;
-    //console.log("this",this);
+
     if (sex === "overall") {
-        //console.log("Sex:", sex);
         tableRow.forEach(row => {
             row.style.display = "";
         })
-
     } else if (sex === "male") {
         tableRow.forEach(row => {
             if (row.dataset.gender === "M") {
@@ -24,20 +18,16 @@ const leaderBoardFilter= function(event) {
                 row.style.display = "none"
             }
         })
-    } else {
+    } else if (sex === "female") {
         tableRow.forEach(row => {
             if (row.dataset.gender === "F") {
                 row.style.display = ""
             } else {
                 row.style.display = "none"
             }
-        //console.log("Sex",sex);
-    })
+        })
     }
 };
 
-
-
-
-// event listener for filter buttons
+// event listener for filter buttons div
 buttonDiv.addEventListener('click', leaderBoardFilter);
