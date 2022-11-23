@@ -12,6 +12,24 @@ router.get('/', (req, res) => {
   });
 });
 
+// route to guidelines page /guidelines
+router.get('/guidelines',
+  function (req, res) {
+    res.render('guidelines', { user: req.user });
+});
+
+// route to about page /about
+router.get('/about',
+  function (req, res) {
+    res.render('about', { user: req.user });
+});
+
+// route to sponsors page /sponsors
+router.get('/sponsors',
+  function (req, res) {
+    res.render('sponsors', { user: req.user });
+});
+
 // route to login page
 router.get('/login',
   function (req, res) {
@@ -30,12 +48,6 @@ router.get('/return',
   // if user authenticated go to homepage
   function (req, res) {
     res.redirect('/');
-  });
-
-// route to guidelines page /guidelines
-router.get('/guidelines',
-  function (req, res) {
-    res.render('guidelines', { user: req.user });
   });
 
 // route to leaderboard page /leaderboard

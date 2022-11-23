@@ -1,3 +1,4 @@
+// This file creates a connection to the MySQL Database
 // import the Sequelize class constructor from the library
 const Sequelize = require('sequelize');
 require('dotenv').config();

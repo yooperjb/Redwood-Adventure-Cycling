@@ -50,10 +50,10 @@ app.use(session({ secret: [process.env.SESSION_SECRET], resave: true, saveUninit
 app.use(passport.initialize());
 app.use(passport.session());
 
-// turn on routes
+// turn on express routes
 app.use(routes);
 
 //turn on connection to db and server
-sequelize.sync({ force: false }).then(() => {
-    app.listen(PORT, () => console.log('Now listening'));
+sequelize.sync({ force: true }).then(() => {
+    app.listen(PORT, () => console.log(`Now listening on port ${PORT}`));
 });
