@@ -23,6 +23,7 @@ body {
   background-color: var(--quad-color);
   color: black;
   font-family: 'Montserrat','Roboto', Arial, Helvetica, sans-serif;
+  height: 100%;
 }
 
 /********** HEADER STYLES **********/
@@ -30,9 +31,6 @@ header {
   height:80px;
   background-color: hsla(219, 97%, 13%, 0.7);
   width: 100%;
-  /* not sure about this - there is no background */
-  /* background-attachment: fixed; */
-  /* box-shadow: 0px 3px 15px 10px rgba(0, 0, 0, 0.5); */
   top: 0; /*need this for sticky */
   position: sticky;
   position: -webkit-sticky;
@@ -203,21 +201,24 @@ a:hover {
   color: var(--seventh-color);
 }
 
-article ul {
-  padding: 10px;
+ul.no-dot {
+  list-style-type: none;
 }
 
-li {
-  list-style-position: inside;
-  margin: 5px;
+article ul {
+  color: var(--quad-color);
+  padding: 5px 10px 10px 30px;
+  color: var(--quad-color);
+  list-style-position: outside;
+  line-height:1.5rem;
 }
 
 main {
   background-color: var(--sixth-color);
   max-width: 1050px;
-  height: 100%;
+  min-height: 100%;
   margin: 0 auto;
-  padding: 2rem 3rem 1rem 3rem;
+  padding: 2rem 3rem 1.5rem 3rem;
   z-index: 9993;
 }
 
@@ -629,20 +630,6 @@ table.leaderboard tr:hover {
   border-radius: 10px;
   margin-top: 20px;
   box-shadow: 0px 3px 8px 3px rgba(0,0,0,0.25);
-}
-
-ul.normal {
-  padding-left: 60px;
-  padding-bottom: 10px;
-  color: var(--quad-color);
-  line-height:1.5em;
-}
-li.normal {
-  color: var(--quad-color);
-}
-
-ul.no-dot {
-  list-style-type: none;
 }
 
 /* MOBILE RESPONSIVE MEDIA QUERIES */
