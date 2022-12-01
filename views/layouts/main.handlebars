@@ -20,7 +20,11 @@
     <header>
 
         <nav>
-            <span><a href="/"> <img class="logo" src="/images/bicycle-race-1.png" /></a></span>
+            {{!-- <span><a href="/"> <img class="logo" src="/images/bicycle-race-1.png" /></a></span> --}}
+            <div class="logo-div">
+                <a href="/"> <img class="logo" src="/images/bicycle-race-1.png" /></a>
+            </div>
+            
             <ul class="menu">
                 {{!-- should not be part of menu --}}
                 {{!-- <li class="logo" class="push-top"><a href="/">
@@ -60,8 +64,9 @@
                     <a href="/login">LOG IN</a>
                     {{/if}}
                 </li>
-                <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
+                {{!-- <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li> --}}
             </ul>
+            <span class="toggle"><a href="#"><i class="fas fa-bars"></i></a></span>
         </nav>
 
     </header>
