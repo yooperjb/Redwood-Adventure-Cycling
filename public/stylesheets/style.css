@@ -56,7 +56,6 @@ color: white;
   max-width: 70px;
   height: 75%;
   text-align: center;
-  /* border: 1px solid yellow; */
 }
 
 img.logo {
@@ -74,14 +73,15 @@ img.logo {
 
 .menu li a, .menu button {
   margin: 10px;
+  padding: 0;
   color: white;
   font-weight:normal;
 }
 
   .menu button {
-    padding: 0;
     font-size: 1rem;
-    background: none;
+    /* background: none; */
+    font-family: 'Montserrat','Roboto', Arial, Helvetica, sans-serif;
   }
 
   .menu li a:hover, .menu button:hover {
@@ -760,7 +760,6 @@ table.leaderboard tr:hover {
 
   .menu li, .menu button {
     margin: 3px 3px;
-    /* border: 1px solid pink; */
   }
   .menu li a {
     margin: 0;
@@ -770,7 +769,6 @@ table.leaderboard tr:hover {
     position: static;
     padding: 2px 0 0 0;
     box-shadow: none;
-    /* border: 1px solid green; */
   }
   
   .toggle {
