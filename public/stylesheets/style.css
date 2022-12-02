@@ -339,19 +339,39 @@ div.checkbox input {
 
 .sponsor {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-flow: row wrap;
+  justify-content: space-around;
   align-items: center;
   margin: 15px;
   padding: 10px;
   border:solid 2px #41403E;
   border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
   box-shadow: 6px 6px 5px rgba(0, 0, 0, 0.5);
+  /* max-height: 175px; */
+  width: auto;
+}
+
+.sponsor-logo {
+  /* width: 25%; */
+  flex: 1 1 25%;
+  min-width: 150px;
+  margin: 5px;
+  /* order: 1; */
+  /* border: 1px solid red; */
+  max-width: 200px;
+}
+
+.sponsor-text {
+  /* width: 70%; */
+  /* order: 2; */
+  /* text-align: center; */
+  flex: 2 2 60%;
+  /* flex-basis: 1; */
+  /* border: 1px solid green; */
 }
 
 .sponsor img {
-  width: 250px;
-  padding: 10px;
+  width: 100%;
 }
 
 /* ============================================
@@ -880,6 +900,16 @@ table.leaderboard tr:hover {
 
   ul.normal li {
     font-size: .8rem; 
+  }
+
+  .sponsor-logo {
+    order: 1;
+    flex: 1 1 25%;
+  }
+  
+  .sponsor-text {
+    order: 2;
+    flex: 2 2 70%;
   }
 
 }
