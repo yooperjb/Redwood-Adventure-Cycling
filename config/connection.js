@@ -7,8 +7,12 @@ require('dotenv').config();
 let sequelize;
 
 // Sets up sequelize for JAWSDB (Heroku) or Localhost
-if (process.env.JAWSDB_URL) {
-    sequelize = new Sequelize(process.env.JAWSDB_URL);
+// if (process.env.JAWSDB_URL) {
+//     sequelize = new Sequelize(process.env.JAWSDB_URL);
+
+// Sets up sequelize for Railway or Localhost
+if (process.env.RAILWAY_ENVIRONMENT) {
+    sequelize = new Sequelize(process.env.MYSQL_URL);
 } else if (process.env.STATUS === 'development' ){
     // If using local db - use .env variables to keep private
     sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PW, {
