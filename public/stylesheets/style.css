@@ -703,19 +703,18 @@ table.leaderboard tr:hover {
   }
 
   img.pretty-images {
-    height: 222px;
+    height: 225px;
     padding: 7px;
   }
-
-  /* img.reg-image {
-    width: 300px;
-  } */
 }
 
 /* MEDIA QUERY FOR TABLETS AND SMALLER 780-575*/
 @media screen and (max-width: 780px) {
 
-  .menu {
+  nav {
+    width: 80%;
+  }
+  .menu, .menu button {
     font-size: .85rem;
   }
   
@@ -794,10 +793,10 @@ table.leaderboard tr:hover {
     border-radius: 3%;
   }
 
-  .menu li, .menu button {
+  .menu li {
     margin: 3px 3px;
   }
-  .menu li a {
+  .menu li a, .menu button {
     margin: 0;
   }
 
@@ -861,7 +860,7 @@ table.leaderboard tr:hover {
   }
 
   img.pretty-images {
-    height: 77px;
+    height: 100px;
     padding: 3px;
   }
 
