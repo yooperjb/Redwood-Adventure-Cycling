@@ -54,6 +54,7 @@ app.use(passport.session());
 app.use(routes);
 
 //turn on connection to db and server
-sequelize.sync({ force: true }).then(() => {
+// force:false if set to true would drop and re-create database on startup
+sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log(`Now listening on port ${PORT}`));
 });

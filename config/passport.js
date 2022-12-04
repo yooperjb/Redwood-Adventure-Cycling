@@ -11,15 +11,19 @@ passport.use(new StravaStrategy({
   },
   async function(accessToken, refreshToken, profile, cb) {
     
+    console.log("profile", profile);
+    console.log("gender", profile._json.sex);
     // check for user by primary key in database. if none, add to db
     let user = await User.findByPk(profile.id)
         if (!user) {
             user = await User.create({
                 id: profile.id,
                 name: profile.displayName,
+                gender: profile._json.sex,
                 accessToken: accessToken,
                 refreshToken: refreshToken,
             })
+            console.log("user", user);
         }
     
     // profile is req.user that is passed from passport-strava strategy

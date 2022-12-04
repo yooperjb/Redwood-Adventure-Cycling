@@ -15,6 +15,14 @@ User.init(
             primaryKey: true,
             autoIncrement: false
         },
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        gender: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         accessToken: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -23,10 +31,7 @@ User.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
+       
         admin: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
