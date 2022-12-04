@@ -215,6 +215,7 @@ a:hover {
 
 main {
   background-color: var(--sixth-color);
+  /* background-color: #CCBBAB; */
   max-width: 1050px;
   min-height: 100%;
   margin: 0 auto;
