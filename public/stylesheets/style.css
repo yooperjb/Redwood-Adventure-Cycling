@@ -51,8 +51,6 @@ color: white;
 }
 
 .logo-div {
-  display: flex;
-  justify-content: center;
   max-width: 70px;
   height: 75%;
   text-align: center;
@@ -906,10 +904,6 @@ table.leaderboard tr:hover {
 
   .form-container div {
     max-width: 300px;
-  }
-
-  .form-container img {
-    /* max-width: 300px; */
   }
 
   div.grid-container {
