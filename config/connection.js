@@ -6,10 +6,6 @@ require('dotenv').config();
 // create connection to our db
 let sequelize;
 
-// Sets up sequelize for JAWSDB (Heroku) or Localhost
-// if (process.env.JAWSDB_URL) {
-//     sequelize = new Sequelize(process.env.JAWSDB_URL);
-
 // Sets up sequelize for Railway or Localhost
 if (process.env.RAILWAY_ENVIRONMENT) {
     sequelize = new Sequelize(process.env.MYSQL_URL);

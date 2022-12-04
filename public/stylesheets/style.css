@@ -78,11 +78,10 @@ img.logo {
   font-weight:normal;
 }
 
-  .menu button {
-    font-size: 1rem;
-    /* background: none; */
-    font-family: 'Montserrat','Roboto', Arial, Helvetica, sans-serif;
-  }
+.menu button {
+  font-size: 1rem;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
 
   .menu li a:hover, .menu button:hover {
     color: var(--secondary-color);
@@ -174,7 +173,7 @@ p {
   font-size: 1.0rem;
   line-height:1.5rem;
   color: var(--quad-color);
-  margin: .2rem .0 .3rem 0;
+  margin: .2rem 0 .6rem 0;
 }
 
 h1 {
@@ -187,7 +186,7 @@ h1 {
 
 h2 {
   color: var(--quad-color);
-  font-size: 3rem;
+  font-size: 2.6rem;
   margin-bottom: .5rem;
   text-align:center;
   font-weight: normal;
@@ -197,9 +196,8 @@ h3 {
   color: var(--quad-color);
   font-size: 2rem; 
   line-height: 1.1rem;
-  margin-bottom: .25rem;
+  margin-bottom: 1rem;
   text-align:center;
-  border: 1px solid red;
 }
 
 h4 {
@@ -217,18 +215,6 @@ a:hover {
   color: var(--seventh-color);
 }
 
-ul.no-dot {
-  list-style-type: none;
-}
-
-article ul {
-  color: var(--quad-color);
-  padding: 5px 10px 10px 30px;
-  color: var(--quad-color);
-  list-style-position: outside;
-  line-height:1.5rem;
-}
-
 main {
   background-color: var(--sixth-color);
   max-width: 1050px;
@@ -239,12 +225,34 @@ main {
 }
 
 article {
-  overflow: auto;
+  margin: 1.5rem 0;
+}
+
+article ul {
+  color: var(--quad-color);
+  padding: 5px 10px 10px 30px;
+  color: var(--quad-color);
+  list-style-position: outside;
+  line-height:1.5rem;
+}
+
+ul.no-dot {
+  list-style-type: none;
 }
 
 .form-container {
   margin: auto;
-  width: 400px;
+  width: 50%;
+}
+
+.form-container div {
+  margin: auto;
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-container img {
+  width: 100%;
 }
 
 form {
@@ -690,7 +698,7 @@ table.leaderboard tr:hover {
     font-size: 2.5rem;
   }
 
-  article h2 {
+  h2 {
     font-size: 2.2em;
   }
 
@@ -720,7 +728,7 @@ table.leaderboard tr:hover {
   main {
     padding: 1rem 1.2rem 1rem 1.2rem;
   }
-  article h2 {
+  h2 {
     font-size: 2rem;
   }
 
@@ -746,6 +754,14 @@ table.leaderboard tr:hover {
   ul.normal li {
     font-size: .85rem; 
     line-height:1.4rem;
+  }
+  .form-container {
+    margin: auto;
+    width: 60%;
+  }
+  
+  .form-container div {
+    max-width: 300px;
   }
 }
 
@@ -809,7 +825,7 @@ table.leaderboard tr:hover {
   p {
     font-size: .8rem; 
     line-height:1.4rem;
-    margin: 0 .1rem .3rem .1rem;
+    margin: .1rem 0 .6rem .0;
   }
 
   div.completed-data, div.bike-data {
@@ -825,11 +841,11 @@ table.leaderboard tr:hover {
   margin-bottom: 4px;
   }
 
-  article h2 {
+  h2 {
     font-size: 1.5rem;
   }
 
-  article h4 {
+  h4 {
     font-size: 1.0rem;
     font-weight: 900;
     line-height: 1.2rem;
@@ -885,12 +901,16 @@ table.leaderboard tr:hover {
   }
 
   /* login page */
-  div.form-container {
-    width: 100%;
+  .form-container {
+    width: 80%;
   }
 
-  div.form-container img {
-    width: 200px;
+  .form-container div {
+    max-width: 300px;
+  }
+
+  .form-container img {
+    /* max-width: 300px; */
   }
 
   div.grid-container {
@@ -911,5 +931,4 @@ table.leaderboard tr:hover {
     order: 2;
     flex: 2 2 70%;
   }
-
 }
