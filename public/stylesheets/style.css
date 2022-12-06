@@ -79,6 +79,7 @@ img.logo {
 .menu button {
   font-size: 1rem;
   font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  background: none;
 }
 
   .menu li a:hover, .menu button:hover {
@@ -224,7 +225,7 @@ main {
 }
 
 article {
-  margin: 1.5rem 0;
+  margin: 1.6rem 0;
 }
 
 article ul {

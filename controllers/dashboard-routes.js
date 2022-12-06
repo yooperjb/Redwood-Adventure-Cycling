@@ -13,7 +13,7 @@ router.get('/', ensureLoggedIn('/login'), (req, res) => {
         // find all routes user has completed
         User_Routes.findAll({
             where: {
-                // use the ID from the session - need to compound with approved eventually
+                // use the ID from the session - need to compound with approved and series year (2023) eventually
                 user_id: req.user.id
             },
             attributes: [
