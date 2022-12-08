@@ -13,7 +13,7 @@ passport.use(new StravaStrategy({
     
     console.log("profile", profile);
     console.log("gender", profile._json.sex);
-    // check for user by primary key in database. if none, add to db
+    // check for user by primary key in database. if none, add user to db
     let user = await User.findByPk(profile.id)
         if (!user) {
             user = await User.create({

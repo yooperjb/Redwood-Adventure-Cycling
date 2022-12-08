@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 // POST /api/user-routes - create new user-route
 router.post('/', (req, res) => {
 
-    console.log(req.user);
+    // console.log(req.user);
 
     User_Routes.create({
         ride_time: req.body.ride_time,

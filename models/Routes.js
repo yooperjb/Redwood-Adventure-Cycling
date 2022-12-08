@@ -9,7 +9,7 @@ class Routes extends Model { };
 Routes.init(
     {
         // ROUTES TABLE column definitions
-        // id will come from the route id on strava or ridewithgps (not auto incremented)
+        // id will come from the route id on ridewithgps (not auto incremented)
         id: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -24,7 +24,6 @@ Routes.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-
         mileage: {
             type: DataTypes.FLOAT,
             allowNull: false
@@ -37,23 +36,11 @@ Routes.init(
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        // first_bonus: {
-        //     type: DataTypes.INTEGER,
-        //     allowNull: false,
-        // },
-        diff_score: {
-            type: DataTypes.FLOAT,
-            allowNull: false
-        },
         difficulty: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        map: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        note: {
+        description: {
             type: DataTypes.TEXT,
             allowNull: true
         }

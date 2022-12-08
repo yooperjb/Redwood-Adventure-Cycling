@@ -1,5 +1,4 @@
 
-
 async function approvalFormHandler(event) {
     event.preventDefault();
     
@@ -16,7 +15,6 @@ async function approvalFormHandler(event) {
 
     console.log("ids",JSON.stringify(ids));
     
-
     const response = await fetch('/api/user-routes/', {
         method: 'PUT',
         body: JSON.stringify(ids),

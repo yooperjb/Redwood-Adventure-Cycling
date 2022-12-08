@@ -12,32 +12,43 @@
                 </div>
                     <!--Data-->
                 <div class="bike-route-table">
-                    <table>
-                        <tr>
-                            <td>Mileage</td><td>{{this.mileage}}</td>
-                        </tr>
-                        <tr>
-                            <td>Points</td><td>{{this.points}}</td>
-                        </tr>
-                        <tr>
-                            <td>Total Elevation</td><td>{{format_thousands this.elevation}}'</td>
-                        </tr>
-                        <tr>
-                            <td>Difficulty</td><td>{{this.difficulty}}</td>
-                        </tr>
-                        <tr>
-                            <td>Route Link</td><td><a href="https://www.strava.com/routes/{{this.id}}" target="_blank">Route</a></td>
-                        </tr>
-                    </table>
+                    {{!-- <div class="bike-route-table"> --}}
+                    <div>
+                        <table>
+                            <tr>
+                                <td>Mileage</td><td>{{this.mileage}}</td>
+                            </tr>
+                            <tr>
+                                <td>Points</td><td>{{this.points}}</td>
+                            </tr>
+                            <tr>
+                                <td>Total Elevation</td><td>{{format_thousands this.elevation}}'</td>
+                            </tr>
+                            <tr>
+                                <td>Difficulty</td><td>{{this.difficulty}}</td>
+                            </tr>
+                            <tr>
+                                <td>Route Link</td><td><a href="https://ridewithgps.com/routes/{{this.id}}" target="_blank">Route</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="route-description">
+                        <p>{{this.description}}</p>  
+                    </div>
+
                 </div>
-                     <!-- END Data -->
 
                 <div class="bike-route-image">
-                    <img class="routes-image" src="/images/{{this.map}}" alt="{{this.name}}" />
+                    <img class="routes-image" src="https://ridewithgps.com/routes/full/{{this.id}}.png" alt="Map of {{this.name}} Route" />
+                    
+                    {{!-- If I decide to use embeded interactive maps this is an example. --}}
+                    {{!-- <iframe src="https://ridewithgps.com/embeds?type=route&id=41552569" style="width: 1px; min-width: 100%; height: 100%; border: none;" scrolling="no"></iframe> --}}
                 </div>
                 
-                <p>{{this.note}}</p>
-            
+                {{!-- Possibly put profile image here at some point --}}
+
+
         </article>
         {{/each}}
         {{/if}}

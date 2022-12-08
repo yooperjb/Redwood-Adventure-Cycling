@@ -30,7 +30,7 @@ router.get('/sponsors',
     res.render('sponsors', { user: req.user });
 });
 
-// route to login page
+// route to login page /login
 router.get('/login',
   function (req, res) {
     res.render('login');
@@ -137,6 +137,12 @@ router.get('/admin', ensureLoggedIn('/'),
         console.log(err);
         res.status(500).json(err);
       })
+  });
+
+// route to create-route page /create-route
+router.get('/create-route', 
+  function(req,res) {
+    res.render('create-route', { user: req.user });
   });
 
 //delete or post request and move to api route
