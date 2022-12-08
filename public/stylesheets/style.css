@@ -56,13 +56,17 @@ color: white;
   text-align: center;
 }
 
-img.logo {
+.logo {
   height: 100%;
   transition: transform .7s ease-in-out;
 }
 
-img.logo:hover {
+.logo:hover {
   transform: rotate(360deg);
+}
+
+.logo:focus{
+  outline: none;
 }
 
 .menu {
