@@ -9,15 +9,19 @@ async function createRouteFormHandler(event) {
     console.log(ridewithgps_id, year);
 
     // can't get request to work. Need to work on it. I think it's a CORS issue
-    const response = await fetch(`https://ridewithgps.com/routes/${ridewithgps_id}.json?`, {
+    // const response = await fetch(`https://ridewithgps.com/routes/${ridewithgps_id}.json?`, {
+        // 
+        const response = await fetch(`https://ridewithgps.com/users/current.json?apikey=c7a174c5&version=2&auth_token=1a96414e63564f19ec0e19a2a678565f`, {
         method: 'GET',
         mode: 'cors',
+        credentials: 'include',
         headers: {
             'Content-Type': 'application/json',
-            "apikey": 'c7a174c5',
-            "version": "2",
-            "auth_token": '1a96414e63564f19ec0e19a2a678565f'
-        }
+            // "apikey": 'c7a174c5',
+            // "version": "2",
+            // "auth_token": '1a96414e63564f19ec0e19a2a678565f'
+        },
+        referrerPolicy: 'no-referrer'
     });
 
     if (response.ok) {
