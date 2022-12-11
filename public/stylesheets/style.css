@@ -146,11 +146,11 @@ color: white;
 
 /* --------- HERO styles --------- */
 .hero {
-  background-image: url("../images/big_hill.jpg");
+  background-image: url("../images/showers_pass_color_hero.jpg");
   min-height: 300px;
   width: 95%;
   margin: 0 auto;
-  background-position: center;
+  background-position: center bottom;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -163,7 +163,7 @@ color: white;
 }
 
 #site-logo {
-  width: 30%;
+  width: 250px;
   text-align: center;
   position: relative;
   right: 40px;
@@ -224,7 +224,6 @@ a:hover {
 
 main {
   background-color: var(--sixth-color);
-  /* background-color: #CCBBAB; */
   max-width: 1050px;
   min-height: 100%;
   margin: 0 auto;
