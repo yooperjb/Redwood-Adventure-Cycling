@@ -11,9 +11,8 @@
                     <h4>{{this.name}}</h4>
                 </div>
                     <!--Data-->
-                <div class="bike-route-table">
-                    {{!-- <div class="bike-route-table"> --}}
-                    <div>
+                <div class="bike-route-col1">
+                    <div class="bike-route-table">
                         <table>
                             <tr>
                                 <td>Mileage</td><td>{{this.mileage}}</td>
@@ -33,21 +32,28 @@
                         </table>
                     </div>
                     
-                    <div class="route-description">
+                    <div class="bike-route-profile">
+                          <img src="https://ridewithgps.com/routes/{{this.id}}/elevation_profile.jpg" alt="Elevation Profile of {{this.name}} Route" />
+                        {{!-- <p>{{this.description}}</p>   --}}
+                    </div>
+                     
+                     <div class="bike-route-description">
                         <p>{{this.description}}</p>  
                     </div>
 
                 </div>
 
-                <div class="bike-route-image">
-                    <img class="routes-image" src="https://ridewithgps.com/routes/full/{{this.id}}.png" alt="Map of {{this.name}} Route" />
+                <div class="bike-route-map">
+                    <img class="route-map" src="https://ridewithgps.com/routes/full/{{this.id}}.png" alt="Map of {{this.name}} Route" />
                     
                     {{!-- If I decide to use embeded interactive maps this is an example. --}}
                     {{!-- <iframe src="https://ridewithgps.com/embeds?type=route&id=41552569" style="width: 1px; min-width: 100%; height: 100%; border: none;" scrolling="no"></iframe> --}}
                 </div>
                 
                 {{!-- Possibly put profile image here at some point --}}
-
+                {{!-- <img src="https://ridewithgps.com/routes/{{this.id}}/elevation_profile.jpg" alt="Eleveation Profile of {{this.name}} Route" /> --}}
+               
+                
 
         </article>
         {{/each}}

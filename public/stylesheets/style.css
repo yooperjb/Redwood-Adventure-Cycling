@@ -471,7 +471,7 @@ div.image-area.mt-4 {
 }
 
 /*==========================================
-*  LAYOUT FOR BIKE ROUTES 
+*  BIKE ROUTES LAYOUT 
 * =========================================*/
 
 article.bike-route {
@@ -480,52 +480,78 @@ article.bike-route {
   justify-content: space-around;
   align-content: flex-start;
   margin: 20px auto;
-  border-radius: 6px;
   box-shadow: 0px 3px 8px 3px rgba(0,0,0,0.25);
   padding: 10px 10px;
+  background-color: #343A3E;
 }
 
 .bike-route-title {
   flex-basis: 100%;
+  color: white;
 }
 
-.bike-route-table {
+.bike-route-col1 {
   flex: 0 1 50%;
   margin: 0px 5px 10px;
   height: 100%;
 }
 
-.bike-route-table table, td {
+.bike-route-col1 table, td {
   width: 100%;
   border: 1px solid gray;
   border-collapse: collapse;
+}
+
+.bike-route-table {
+  margin: 5px 0;
+  background: rgb(240, 240, 240);
 }
 
 .bike-route-table td {
   padding: 7px 6px;
 }
 
-.bike-route-table tr:hover {
-  background-color: rgb(200, 200, 200);
+.bike-route-table tr:nth-child(odd) {
+  background: rgb(220, 220, 220);
 }
 
-.bike-route-image {
+.bike-route-table table tr:hover {
+  background-color: rgb(180, 180, 180);
+}
+
+.bike-route-profile {
+  margin: 5px 0;
+  padding: 0;
+}
+
+.bike-route-profile img {
+  width: 100%;
+  display: block;
+  border: 1px solid gray;
+}
+
+.bike-route-map {
   margin: 0px 5px 10px;
   flex: 1 1 45%;
   aspect-ratio: 1/1;
 }
 
-.routes-image {
+.route-map {
   width: 100%;
   border: 1px solid gray;
   border-radius: 10px;
   box-shadow: 0px 3px 8px 3px rgba(0,0,0,0.25);
 }
 
-.route-description {
-  margin: 10px 0px;
+.bike-route-description {
+  margin: 5px 0px;
   padding: 5px;
-  border: 1px solid gray;
+}
+
+.bike-route-description p {
+  color: white;
+  margin: 0;
+  padding: 0;
 }
 
 /*===========================================
@@ -731,6 +757,9 @@ table.leaderboard tr:hover {
   h2 {
     font-size: 2rem;
   }
+  h4 {
+    font-size: 1.2rem;
+  }
 
   img.pretty-images {
     height: 150px;
@@ -763,11 +792,18 @@ table.leaderboard tr:hover {
   .form-container div {
     max-width: 300px;
   }
+  .bike-route-table {
+    font-size: .85rem;
+  }
 }
 
 /* MEDIA QUERY FOR MOBILE PHONES AND SMALLER <575 */
 @media screen and (max-width: 575px) {
 
+  main {
+    padding: 1rem 1.2rem 1rem 1.2rem;
+  }
+  
   /* Turn on hamburger menu */
   header {
     height: 50px;
@@ -844,6 +880,9 @@ table.leaderboard tr:hover {
   h2 {
     font-size: 1.5rem;
   }
+  h3 {
+    font-size: 1.3rem;
+  }
 
   h4 {
     font-size: 1.0rem;
@@ -852,22 +891,18 @@ table.leaderboard tr:hover {
     margin: .6rem .2rem .1rem .2rem;
   }
 
-  img.routes-image {
-  margin-left: 10px;
-  }
-
-  main {
-    padding: 1rem 1.2rem 1rem 1.2rem;
-  }
-
   img.pretty-images {
     height: 100px;
     padding: 3px;
   }
 
-  img.routes-image {
-    height: 6em;
-    width: 6em;
+  /* Bike Routes */
+  .bike-route-col1 {
+    flex: 1 1 95%;
+  }
+
+  .bike-route-table {
+    font-size: .8rem;
   }
 
   div.grid-container {
