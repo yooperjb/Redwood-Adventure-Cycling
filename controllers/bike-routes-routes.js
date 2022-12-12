@@ -6,12 +6,16 @@ const sequelize = require('../config/connection');
 router.get('/', async (req, res) => {
     try {
         // eventually need to filter for current year (2023)
-        const routes = (await Routes.findAll(
-            {
-            order: [['name', 'ASC']]
-            }
+        const routes = (await Routes.findAll({
+            where: {
+                year: 2023
+            },
+            order:[['name', 'ASC']]
+        },
+
         )).map(route => route.toJSON()) //converts to plain object
         // console.log({ routes }) //flag value
+        
         // render bikeroutes page with all bike routes
         res.render('bikeroutes', { routes, user: req.user });
     } catch (err) {

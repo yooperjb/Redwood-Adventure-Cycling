@@ -1,7 +1,3 @@
-//Set calendar date in dashboard submit route form to today.
-let today = new Date().toISOString().substr(0, 10);
-document.querySelector("#route-date").value = today;
-
 //WILL USER FOR SPRINT 2 - DO NOT DELETE!!!
 // https://bootstrapious.com/p/bootstrap-image-upload
 /*  ==========================================

@@ -11,8 +11,7 @@ passport.use(new StravaStrategy({
   },
   async function(accessToken, refreshToken, profile, cb) {
     
-    console.log("profile", profile);
-    console.log("gender", profile._json.sex);
+    // console.log("profile", profile);
     // check for user by primary key in database. if none, add user to db
     let user = await User.findByPk(profile.id)
         if (!user) {
@@ -26,11 +25,11 @@ passport.use(new StravaStrategy({
             console.log("user", user);
         }
     
-    // profile is req.user that is passed from passport-strava strategy
+    // profile is req.user that is passed from passport-StravaStrategy. I believe this is where I would add tokens if wanting to save them to the session. 
     return cb(null, {...profile, isAdmin: user.admin});
   }));
 
-//serialize users into and deserialize users out of the session.
+//serialize users into and deserialize users out of the session. serializeUser determines which data of the user object should be stored in the session.
 passport.serializeUser(function(user, cb) {
 cb(null, user);
 

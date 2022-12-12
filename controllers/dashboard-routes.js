@@ -20,16 +20,16 @@ router.get('/', ensureLoggedIn('/login'), (req, res) => {
                 'route_id',
                 'photo',
                 'ride_time',
-                'date_completed',
                 'ride_link',
+                'date_completed',
+                "approved",
                 "user_id",
-                "approved"
             ],
             include: [
                 // include Route data
                 {
                     model: Routes,
-                    attributes: ['name', 'points', 'map']
+                    attributes: ['id', 'name', 'points']
                 }
             ]
         })
@@ -48,7 +48,10 @@ router.get('/', ensureLoggedIn('/login'), (req, res) => {
             // serialize the promise returns from both of the db findAll()
             const userRoutes = dbUserRoutesData.map(route => route.get({ plain: true }))
             const routes = dbRoutesData.map(route => route.get({ plain: true }))
-
+            
+            console.log('userRoutes:', userRoutes);
+            console.log('routes:', routes);
+            
             // render dashboard page and pass userRoutes, routes, and loggedIn user 
             res.render('dashboard', {
                 userRoutes: { userRoutes },
