@@ -1,6 +1,8 @@
 <section>
+    <h2>Dashboard</h2>
+    
     <div class="form-container">
-        <h2>Dashboard</h2>
+       
         <div class="grid-container">
             <div class="item1">
                 <h3>Submit Your Ride</h3>
@@ -19,11 +21,11 @@
                     <div>
                         <label for="route-date">Date Completed:</label>
                         {{!-- Set the min and max for Series Dates --}}
-                        <input type="date" min="2023-02-01" max="2023-11-30" id="route-date">
+                        <input type="date" min="today" max="2023-11-30" id="route-date">
                     </div>
                     <div>
                         <label for="ride-time">Ride Time: HH:MM</label>
-                        <input type="text" class="bs-timepicker" id="ride-time" value="00:00">
+                        <input type="text" class="html-duration-picker" id="ride-time" value="00:00">
                     </div>
 
                     <div>
@@ -45,7 +47,7 @@
                     <div class="image-area mt-4"><img id="imageResult" src="#" alt=""
                             class="img-fluid rounded shadow-sm mx-auto d-block"> </div> --}}
                     <div style="text-align:center; padding-top: 15px">
-                        <button type="submit">submit your ride</button>
+                        <button type="submit">Submit Ride</button>
                     </div>
                 </form>
             </div>
@@ -87,9 +89,9 @@
         {{/if}}
 </section>
 
-<script>
+{{!-- <script>
     $('.bs-timepicker').timepicker({ defaultTime: 'value' });
-</script>
+</script> --}}
 {{!-- Don't seem to need the date script --}}
 {{!-- <script src="/javascript/date.js"></script> --}}
 <script src="/javascript/routesubmit.js"></script>

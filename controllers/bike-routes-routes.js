@@ -3,9 +3,10 @@ const { Routes } = require('../models');
 const sequelize = require('../config/connection');
 
 
+// /bikeroutes
 router.get('/', async (req, res) => {
     try {
-        // eventually need to filter for current year (2023)
+        // filter for current year (2023) - Look into creating a config file
         const routes = (await Routes.findAll({
             where: {
                 year: 2023

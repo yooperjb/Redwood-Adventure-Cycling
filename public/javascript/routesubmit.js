@@ -9,6 +9,8 @@ async function routeSubmitFormHandler(event) {
     const ride_link = document.querySelector('#ride-link').value.trim();
     // const photo = document.querySelector('#upload').value;
 
+    console.log(route_id, date_completed, ride_time, ride_link);
+    
     if (date_completed && ride_time && ride_link) {
         // POST user ridden route to server
         const response = await fetch('/api/user-routes', {
@@ -26,7 +28,7 @@ async function routeSubmitFormHandler(event) {
             console.log("Ride submitted");
             document.location.reload();
         } else {
-            console.log("Rid NOT submitted");
+            console.log("Ride NOT submitted");
             alert(response.statusText);
         }
     }

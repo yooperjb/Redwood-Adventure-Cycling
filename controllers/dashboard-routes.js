@@ -3,6 +3,8 @@ const { ensureLoggedIn } = require('connect-ensure-login');
 const sequelize = require('../config/connection');
 const { User_Routes, User, Routes } = require('../models');
 const passport = require('../config/passport');
+// This module doesn't seem to work
+// const htmlDurationPicker = require("html-duration-picker");
 
 
 // GET route /dashboard
@@ -13,7 +15,7 @@ router.get('/', ensureLoggedIn('/login'), (req, res) => {
         // find all routes user has completed
         User_Routes.findAll({
             where: {
-                // use the ID from the session - need to compound with approved and series year (2023) eventually
+                // use the ID from the session - need to compound with series year (2023) eventually
                 user_id: req.user.id
             },
             attributes: [
@@ -27,6 +29,7 @@ router.get('/', ensureLoggedIn('/login'), (req, res) => {
             ],
             include: [
                 // include Route data
+                // this is probably where the 2023 where filter will go?
                 {
                     model: Routes,
                     attributes: ['id', 'name', 'points']
@@ -47,10 +50,13 @@ router.get('/', ensureLoggedIn('/login'), (req, res) => {
         .then(([dbUserRoutesData, dbRoutesData]) => {
             // serialize the promise returns from both of the db findAll()
             const userRoutes = dbUserRoutesData.map(route => route.get({ plain: true }))
-            const routes = dbRoutesData.map(route => route.get({ plain: true }))
+            let routes = dbRoutesData.map(route => route.get({ plain: true }))
             
-            console.log('userRoutes:', userRoutes);
-            console.log('routes:', routes);
+            // Remove user ridden routes for the submit dropdown list
+            routes = routes.filter(ar => !userRoutes.find(rm => (rm.route_id === ar.id)))
+            
+            // console.log("UserRoutes", userRoutes)
+            // console.log('routes:', routes);
             
             // render dashboard page and pass userRoutes, routes, and loggedIn user 
             res.render('dashboard', {
