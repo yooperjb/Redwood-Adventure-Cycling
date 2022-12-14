@@ -14,8 +14,6 @@ const hbs = exphbs.create({ helpers });
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-
-
 // const sess = {
 //     secret: process.env.SESSION_SECRET,
 //     //process.env.SESSION_SECRET

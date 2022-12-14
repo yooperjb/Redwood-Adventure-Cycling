@@ -41,7 +41,8 @@ User_Routes.init(
     },
     bonus_points: {
         type: DataTypes.INTEGER,
-        allowNull: true
+        allowNull: false, 
+        defaultValue: 0
     },
     approved: {
         type: DataTypes.BOOLEAN,

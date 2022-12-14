@@ -1,36 +1,36 @@
-<section>
     <h2>Dashboard</h2>
     
+    <section>
     <div class="form-container">
        
         <div class="grid-container">
             <div class="item1">
-                <h3>Submit Your Ride</h3>
+                <h4>Submit Your Ride</h4>
             </div>
             <div class="item4">
                 <form class="route-form">
                     <div>
-                        <label for="route-name">Choose a route: </label>
-                        <select name="route-name" id="route-name">
-                            <option value=""></option>
+                        <label for="route-name">CHOOSE A ROUTE </label>
+                        <select required name="route-name" id="route-name">
+                            <option value="" disabled selected>Routes...</option>
                             {{#each routes.routes as |routes|}}
                             <option value="{{routes.id}}">{{routes.name}}</option>
                             {{/each}}
                         </select>
                     </div>
                     <div>
-                        <label for="route-date">Date Completed:</label>
+                        <label for="route-date">DATE COMPLETED</label>
                         {{!-- Set the min and max for Series Dates --}}
-                        <input type="date" min="today" max="2023-11-30" id="route-date">
+                        <input type="date" min="today" max="2023-11-30" id="route-date" placeholder="mm / dd / yyyy">
                     </div>
                     <div>
-                        <label for="ride-time">Ride Time: HH:MM</label>
-                        <input type="text" class="html-duration-picker" id="ride-time" value="00:00">
+                        <label for="ride-time">RIDE TIME: HH:MM</label>
+                        <input type="text" class="html-duration-picker" id="ride-time"  placeholder="00:00">
                     </div>
 
                     <div>
-                        <label for="ride-link">Link to Strava activity:</label>
-                        <input type="text" id="ride-link" />
+                        <label for="ride-link">STRAVA ACTIVITY LINK</label>
+                        <input type="text" id="ride-link" placeholder="https://www.strava.com/activities/#" />
                     </div>
                     {{!-- <div>
                         <label for="route-photo">Photo:</label>
@@ -46,8 +46,8 @@
                     </div>
                     <div class="image-area mt-4"><img id="imageResult" src="#" alt=""
                             class="img-fluid rounded shadow-sm mx-auto d-block"> </div> --}}
-                    <div style="text-align:center; padding-top: 15px">
-                        <button type="submit">Submit Ride</button>
+                    <div>
+                        <button type="submit">SUBMIT RIDE</button>
                     </div>
                 </form>
             </div>
@@ -55,7 +55,7 @@
     </div>
     <br><br>
     <hr>
-</section>
+    </section>
 {{!-- User Completed Routes Section --}}
 <section>
     {{#if userRoutes.userRoutes }}
