@@ -26,9 +26,15 @@ async function routeSubmitFormHandler(event) {
         });
         if (response.ok) {
             console.log("Ride submitted");
+            // reload page and reset form values
             document.location.reload();
+            route_id.value = "";
+            date_completed.value = "";
+            ride_time.value = "";
+            ride_link.value = "";
+        
         } else {
-            console.log("Ride NOT submitted");
+            console.log("Ride NOT Submitted");
             alert(response.statusText);
         }
     }

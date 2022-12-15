@@ -203,7 +203,6 @@ h2 {
 h3 {
   color: var(--quad-color);
   font-size: 2rem; 
-  line-height: 1.1rem;
   margin-bottom: 1rem;
   text-align:center;
 }
@@ -270,25 +269,41 @@ ul.no-dot {
 
 .form-container img {
   width: 100%;
-  border: 2px solid pink;
+  /* border: 2px solid pink; */
 }
 
 .route-form div {
   margin: 15px;
 }
 
-textarea, input, select {
+input, select {
   padding: .4rem .5rem;
   border-radius: 20px;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   width:100%;
-  margin-top: 2px;
+  margin-top: 2px; 
 }
 
-textarea:focus, input:focus, select:focus{
+/* input:focus {
+  border: none;
+} */
+
+input:focus-visible {
+  border: none;
   outline: none;
-  border: 1px solid var(--quad-color);
 }
+
+input:focus:invalid {
+  border: 2px solid red;
+}
+
+input:focus:valid {
+  border: 2px solid var(--quad-color)
+}
+
+/* input:not(:focus):not(:placeholder-shown):valid {
+  border: 2px solid var(--quad-color);
+} */
 
 label {
   margin-left:5px;
@@ -555,7 +570,7 @@ article.bike-route {
 * GRID TABLE COMPLETED
 * ========================================== */
 
-.grid-container-completed {
+/* .grid-container-completed {
   display: grid;
   grid-template-columns: auto auto;
   grid-gap: 0;
@@ -569,7 +584,7 @@ article.bike-route {
 
 .completed-data {
   padding: 3px 0;
-}
+} */
 
 /*============================================
 * ADMIN TABLE
