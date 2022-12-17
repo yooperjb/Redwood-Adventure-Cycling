@@ -110,6 +110,7 @@ router.get('/leaderboard',
 
 // route to admin page /admin THIS NEEDS TO CHANGE TO ONLY ADMIN ACCESS 
 router.get('/admin', ensureLoggedIn('/'),
+// router.get('/admin', isAdmin,
   function (req, res) {
     User_Routes.findAll({
       where: {
