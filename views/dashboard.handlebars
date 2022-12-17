@@ -25,13 +25,14 @@
                     </div>
                     <div>
                         <label for="ride-time">RIDE TIME: HH:MM</label>
-                        <input type="text" class="html-duration-picker" id="ride-time"  placeholder="00:00" required>
+                        <input type="text" class="html-duration-picker" id="ride-time" placeholder="00:00" pattern="^\d{1,2}:\d{2}$" required>
                     </div>
 
                     <div>
                         <label for="ride-link">STRAVA ACTIVITY LINK</label>
-                        <input type="text" id="ride-link" placeholder="https://www.strava.com/activities/#" required>
+                        <input type="text" id="ride-link" placeholder="https://www.strava.com/activities/#" pattern="(www.|http://www.|https://www.)(strava.com/activities/)\d{10}" required>
                     </div>
+
                     {{!-- <div>
                         <label for="route-photo">Photo:</label>
                     </div>

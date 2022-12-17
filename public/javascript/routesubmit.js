@@ -28,10 +28,17 @@ async function routeSubmitFormHandler(event) {
             console.log("Ride submitted");
             // reload page and reset form values
             document.location.reload();
-            route_id.value = "";
-            date_completed.value = "";
-            ride_time.value = "";
-            ride_link.value = "";
+            
+            const inputs = document.querySelectorAll("#route-name", "#route-date", "#ride-time", "#ride-link");
+
+            inputs.forEach(input => {
+                input.value = "";
+            });
+            
+            // document.querySelector('#route-name').value = "";
+            // document.querySelector('#route-date').value = "";
+            // document.querySelector('#ride-time').value = "";
+            // document.querySelector('#ride-link').value = "";
         
         } else {
             console.log("Ride NOT Submitted");

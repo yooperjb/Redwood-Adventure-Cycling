@@ -247,6 +247,10 @@ ul.no-dot {
   list-style-type: none;
 }
 
+hr {
+  margin: 20px 0;
+}
+
 /*
 * ==========================================
 * DASHBOARD STYLES
@@ -284,10 +288,6 @@ input, select {
   margin-top: 2px; 
 }
 
-/* input:focus {
-  border: none;
-} */
-
 input:focus-visible {
   border: none;
   outline: none;
@@ -300,10 +300,6 @@ input:focus:invalid {
 input:focus:valid {
   border: 2px solid var(--quad-color)
 }
-
-/* input:not(:focus):not(:placeholder-shown):valid {
-  border: 2px solid var(--quad-color);
-} */
 
 label {
   margin-left:5px;
