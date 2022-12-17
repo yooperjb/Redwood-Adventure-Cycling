@@ -61,6 +61,8 @@ router.get('/leaderboard',
       // get user_route info and sum points, elevation, mileage fields. Count ridden routes.
       attributes: ['user_id',
         [sequelize.fn('sum', sequelize.col('points')), 'total_points'],
+        [sequelize.fn('sum', sequelize.col('bonus_points')), 'total_bonus_points'],
+        [sequelize.fn('sum', sequelize.where(sequelize.col('points'), '+', sequelize.col('bonus_points'))), 'total_total_points'],
         [sequelize.fn('sum', sequelize.col('elevation')), 'total_elevation'],
         [sequelize.fn('sum', sequelize.col('mileage')), 'total_miles'],
         [sequelize.fn('count', sequelize.col('user_id')), 'total_routes']],
@@ -68,21 +70,33 @@ router.get('/leaderboard',
       include: [
         {
           model: User,
-          attributes: ['name'],
+          attributes: ['name','gender'],
         },
         {
           model: Routes,
           attributes: [],
         },
       ],
-      // group the summed output by the user id and order by total_points column
-      group: ['user.id'],
-      order: sequelize.literal('total_points DESC')
+      // group the summed output by the user id and order by total_total_points column
+      // group: ['user.id'],
+      group: ['user_id'],
+      order: sequelize.literal('total_total_points DESC')
     })
       .then(dbUserPointData => {
         // serialize data before passing to template
-        const userPoints = dbUserPointData.map(route => route.get({ plain: true }));
-        //console.log("userPoints: ", userPoints);
+        // const userPoints = dbUserPointData.map(route => route.get({ plain: true }));
+        let place = 1;
+        const userPoints = dbUserPointData.map(route => {
+          
+          let user_route = route.get({ plain: true });
+          // create a position value
+          user_route.position = place;
+          place +=1;
+          return user_route;
+          
+        });
+      
+          // console.log("userPoints: ", userPoints);
         res.render('leaderboard', {
           user: req.user,
           userPoints: { userPoints },
@@ -94,7 +108,7 @@ router.get('/leaderboard',
       })
   });
 
-// route to admin page /admin
+// route to admin page /admin THIS NEEDS TO CHANGE TO ONLY ADMIN ACCESS 
 router.get('/admin', ensureLoggedIn('/'),
   function (req, res) {
     User_Routes.findAll({

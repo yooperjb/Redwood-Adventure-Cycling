@@ -1,8 +1,5 @@
 
-    <h2>2023 Leaderboard<br>
-        {{!-- <img class="reg-image" src="/images/big_hill.jpg" alt="Biking up a long hill." /> --}}
-    </h2>
-
+    <h2>2023 Leaderboard</h2>
 
 {{!-- if points exist display leader table --}}
 {{#if userPoints.userPoints}}
@@ -21,7 +18,7 @@
             <td>{{format_thousands userPoints.total_elevation}}</td>
             <td>{{format_miles userPoints.total_miles}}</td>
             <td>{{userPoints.total_routes}}</td>
-            <td class="points">{{userPoints.total_points}}</td>
+            <td class="points">{{userPoints.total_total_points}}</td>
         </tr>
         {{/each}}
     </table>
