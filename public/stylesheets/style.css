@@ -27,6 +27,10 @@ body {
   height: 100%;
 }
 
+select {
+  font-family: 'Montserrat','Roboto', Arial, Helvetica, sans-serif;
+}
+
 /********** HEADER STYLES **********/
 header {
   height:80px;
@@ -249,6 +253,10 @@ ul.no-dot {
 
 hr {
   margin: 20px 0;
+}
+
+.center {
+  text-align: center;
 }
 
 /*
@@ -544,8 +552,16 @@ article.bike-route {
   aspect-ratio: 1/1;
 }
 
+.bike-route-map-completed {
+  margin: 5px 5px 10px;
+  /* flex: 1 1 45%; */
+  width: 171px;
+  aspect-ratio: 1/1;
+}
+
 .route-map {
   width: 100%;
+  display: inline-block;
   border: 1px solid gray;
   border-radius: 10px;
   box-shadow: 0px 3px 8px 3px rgba(0,0,0,0.25);
@@ -561,26 +577,6 @@ article.bike-route {
   margin: 0;
   padding: 0;
 }
-
-/*===========================================
-* GRID TABLE COMPLETED
-* ========================================== */
-
-/* .grid-container-completed {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 0;
-  padding: 0;
-}
-
-.grid-container-completed > div {
-  text-align: left;
-  padding: 5px 0;
-}
-
-.completed-data {
-  padding: 3px 0;
-} */
 
 /*============================================
 * ADMIN TABLE
@@ -763,7 +759,7 @@ table.leaderboard tr:hover {
     padding: 1rem 1.2rem 1rem 1.2rem;
   }
   h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   h4 {
     font-size: 1.2rem;
@@ -783,6 +779,10 @@ table.leaderboard tr:hover {
     font-size: .85rem;
   }
 
+  .route-form {
+    font-size: .85rem;
+  }
+
   article ul {
     font-size: .85rem;
     line-height: 1.4rem;
@@ -794,14 +794,18 @@ table.leaderboard tr:hover {
   }
   .form-container {
     margin: auto;
-    width: 60%;
+    width: 70%;
+    max-width: 100%;
   }
   
-  .form-container div {
-    max-width: 300px;
-  }
   .bike-route-table {
     font-size: .85rem;
+  }
+
+  .bike-route-map-completed {
+    margin: 5px 5px 10px;
+    width: 156px;
+    aspect-ratio: 1/1;
   }
 }
 
@@ -872,11 +876,6 @@ table.leaderboard tr:hover {
     margin: .1rem 0 .6rem .0;
   }
 
-  div.completed-data, div.bike-data {
-    font-size: .75em;
-    line-height: 1.3em;
-  }
-
   .grid-container-completed > div {
     padding-top: 2px;
   }
@@ -913,6 +912,10 @@ table.leaderboard tr:hover {
     font-size: .8rem;
   }
 
+  .bike-route-map-completed {
+    display: none;
+  }
+
   div.grid-container {
     margin-left: auto;
     margin-right: auto;
@@ -943,19 +946,9 @@ table.leaderboard tr:hover {
     padding: 5px;
   }
 
-  /* login page */
   .form-container {
-    width: 80%;
+    width: 90%;
   }
-
-  .form-container div {
-    max-width: 300px;
-  }
-
-  div.grid-container {
-    width: 300px;
-    margin: none;
-  }  
 
   ul.normal li {
     font-size: .8rem; 

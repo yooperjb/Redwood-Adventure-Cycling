@@ -4,10 +4,10 @@
     <div class="form-container">
     
         <div class="grid-container">
-            <div class="item1">
+            <div>
                 <h4>Submit Your Ride</h4>
             </div>
-            <div class="item4">
+            <div>
                 <form class="route-form">
                     <div>
                         <label for="route-name">CHOOSE A ROUTE </label>
@@ -47,7 +47,7 @@
                     </div>
                     <div class="image-area mt-4"><img id="imageResult" src="#" alt=""
                             class="img-fluid rounded shadow-sm mx-auto d-block"> </div> --}}
-                    <div>
+                    <div class="center">
                         <button type="submit">SUBMIT RIDE</button>
                     </div>
                 </form>
@@ -96,9 +96,9 @@
                 </table>
             </div>
         </div>    
-            <div class="bike-route-map">
+            <div class="bike-route-map-completed">
                 <img class="route-map" src="https://ridewithgps.com/routes/full/{{userRoutes.route.id}}.png" alt="Map of {{userRoutes.route.name}}" />
-            </div>    
+            </div>
     </article>    
     {{/each}}
     {{/if}}
