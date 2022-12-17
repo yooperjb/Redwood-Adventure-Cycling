@@ -1,4 +1,11 @@
 
+    <h2>2023 Leaderboard<br>
+        {{!-- <img class="reg-image" src="/images/big_hill.jpg" alt="Biking up a long hill." /> --}}
+    </h2>
+
+
+{{!-- if points exist display leader table --}}
+{{#if userPoints.userPoints}}
 <article>
     <h2>2021 Leaderboard</h2>
     <div class="leader-buttons">
@@ -25,5 +32,4 @@
         {{/each}}
     </table>
 </article>
-
-<script src="/javascript/leaderboard.js"></script>
+{{/if}}

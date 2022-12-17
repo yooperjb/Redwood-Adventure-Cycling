@@ -1,3 +1,6 @@
-DROP DATABASE IF EXISTS adventure_series_db;
+/* This file needs to be executed in mysql CLI: */
+/* > source db/schema.sql */
 
-CREATE DATABASE adventure_series_db;
+DROP DATABASE IF EXISTS redwood_adventure_cycling;
+
+CREATE DATABASE redwood_adventure_cycling;

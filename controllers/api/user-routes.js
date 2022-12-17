@@ -1,26 +1,63 @@
 const router = require('express').Router();
-const { User_Routes } = require('../../models');
+const { User_Routes, User } = require('../../models');
 const sequelize = require('../../config/connection');
 
 
-// GET /api/user-routes for testing
+// GET /api/user-routes for req testing
 router.get('/', (req, res) => {
     console.log("User:", req.user);
     console.log("id:", req.user.id);
 });
 
-// POST /api/user-routes - create new user-route
+// create new user route /api/user-routes
 router.post('/', (req, res) => {
 
-    console.log(req.user);
+        User_Routes.count({
+            where: {
+                route_id: req.body.route_id
+            },
+            include: [
+                // include user data for gender query
+                {
+                    model: User,
+                    attributes:['id', 'gender'],
+                    where: {
+                    gender: req.user._json.sex
+                    }
+                }
+            ],     
+        })
+            .then((dbUserRouteCount) => {
+                let routeCount = dbUserRouteCount;
+                // Assign bonus points based on previous submission count
+                console.log("routeCount",routeCount);
+                if (routeCount === 0) {
+                    bonus_points = 5;
+                } else if (routeCount === 1 ) {
+                    bonus_points = 3;
+                } else if ( routeCount === 2) {
+                    bonus_points = 1;
+                } else {
+                    bonus_points = 0;
+                }
+                // Must return in order to pass to next then!
+                return bonus_points;
+            })
+    
+            .then((bonus_points) => {
+                // console.log("bonus_points", bonus_points);
+                User_Routes.create({
+                ride_time: req.body.ride_time,
+                ride_link: req.body.ride_link,
+                date_completed: req.body.date_completed,
+                bonus_points: bonus_points,
+                user_id: req.user.id,
+                // Use this when testing with Insomnia
+                // user_id: req.body.user_id,
+                route_id: req.body.route_id,
+            })
+        })
 
-    User_Routes.create({
-        ride_time: req.body.ride_time,
-        ride_link: req.body.ride_link,
-        date_completed: req.body.date_completed,
-        user_id: req.user.id,
-        route_id: req.body.route_id,
-    })
         .then(dbRoutesData => res.json(dbRoutesData))
         .catch(err => {
             console.log(err);
@@ -41,7 +78,7 @@ router.put('/', (req, res) => {
         }
     )
         .then(dbUserRouteData => {
-            //console.log("dbUserRouteData",dbUserRouteData);
+            
             if (!dbUserRouteData) {
                 res.status(404).json({ message: 'No routes were approved' });
                 return;

@@ -22,7 +22,8 @@ User_Routes.init(
         allowNull: true
     },
     ride_time: {
-        type: DataTypes.STRING,
+        // HH:MM:SS
+        type: DataTypes.TIME,
         allowNull: false,
     },
     ride_link: {
@@ -30,8 +31,18 @@ User_Routes.init(
         allowNull: false
     },
     date_completed: {
-        type: DataTypes.STRING,
+        // YYYY-MM-DD
+        type: DataTypes.DATEONLY,
         allowNull: false,
+    },
+    date_submitted: {
+        type:DataTypes.DATE,
+        defaultValue: DataTypes.NOW
+    },
+    bonus_points: {
+        type: DataTypes.INTEGER,
+        allowNull: false, 
+        defaultValue: 0
     },
     approved: {
         type: DataTypes.BOOLEAN,
@@ -42,7 +53,7 @@ User_Routes.init(
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    // route id from strava routes - 2784001562258115506
+    // route id from RideWithGPS routes (41552966)
     route_id: {
         type: DataTypes.STRING,
         allowNull: false

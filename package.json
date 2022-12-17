@@ -1,12 +1,12 @@
 {
-  "name": "the-adventure-series",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "name": "Redwood-Adventure-Cycling",
+  "version": "1.0.2",
+  "description": "Redwood Adventure Cycling website",
+  "main": "app.js",
   "scripts": {
     "test": "jest",
-    "watch": "nodemon server.js",
-    "start": "node server.js"
+    "start": "node app.js",
+    "dev": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -28,10 +28,14 @@
     "express-negotiate": "0.0.6",
     "express-session": "^1.17.1",
     "handlebars": "^4.7.6",
+    "html-duration-picker": "^2.3.5",
     "jest": "^26.6.3",
     "mysql2": "^2.2.5",
     "passport": "^0.4.1",
     "passport-strava": "^0.2.0",
     "sequelize": "^6.3.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }
