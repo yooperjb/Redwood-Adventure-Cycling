@@ -646,23 +646,20 @@ text-align:right;
 }
 
 table.leaderboard {
-  border: 1px solid gray;
-  border-radius: 4px;
   width: 100%;
   background-color: rgb(235, 235, 235);
   border-collapse: collapse;
 }
 
 table.leaderboard th {
-  font-size: 1.1em;
-  padding: 10px;
+  padding: 8px;
   text-align: center;
   background-color: rgb(220, 220, 220);
-  border-bottom: 1px solid rgb(117, 117, 117);
+  border: 1px solid rgb(117, 117, 117);
 }
 
 table.leaderboard td {
-  padding: 8px 5px;
+  padding: 7px 5px;
   text-align: center;
   border-bottom: 1px solid rgb(117, 117, 117);
 }
@@ -775,11 +772,7 @@ table.leaderboard tr:hover {
     line-height:1.3rem;
   }
 
-  #route-points {
-    font-size: .85rem;
-  }
-
-  .route-form {
+  #route-points, .route-form, .leaderboard {
     font-size: .85rem;
   }
 
@@ -908,7 +901,7 @@ table.leaderboard tr:hover {
     flex: 1 1 95%;
   }
 
-  .bike-route-table {
+  .bike-route-table, .leaderboard {
     font-size: .8rem;
   }
 
