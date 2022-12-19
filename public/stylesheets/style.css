@@ -20,15 +20,14 @@ html{
   height: 70%;
 }
 
+body, select, button, table {
+  font-family: 'Montserrat','Roboto', Arial, Helvetica, sans-serif;
+}
+
 body {
   background-color: var(--quad-color);
   color: black;
-  font-family: 'Montserrat','Roboto', Arial, Helvetica, sans-serif;
   height: 100%;
-}
-
-select {
-  font-family: 'Montserrat','Roboto', Arial, Helvetica, sans-serif;
 }
 
 /********** HEADER STYLES **********/
@@ -92,7 +91,6 @@ color: white;
 
 .menu button {
   font-size: 1rem;
-  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   background: none;
 }
 
@@ -259,18 +257,14 @@ hr {
   text-align: center;
 }
 
-/*
-* ==========================================
+/*==========================================
 * DASHBOARD STYLES
-* ==========================================
-*/
+* ========================================*/
 
 .form-container {
-  /* background-color: var(--dark-gray); */
   margin: auto;
   width: 50%;
   max-width: 375px;
-  /* border: 1px solid red; */
 }
 
 .grid-container {
@@ -280,7 +274,6 @@ hr {
 
 .form-container img {
   width: 100%;
-  /* border: 2px solid pink; */
 }
 
 .route-form div {
@@ -301,7 +294,7 @@ input:focus-visible {
 }
 
 input:focus:invalid {
-  border: 2px solid red;
+  border: 2px solid hsl(0, 100%, 40%);
 }
 
 input:focus:valid {
@@ -326,21 +319,6 @@ button {
 button:hover {
   background-color:#86e2ef;
   color: #043e9e;
-}
-
-/* The container  what is the container? */
-.container {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  border: 2px solid greenyellow;
 }
 
 /*
@@ -425,7 +403,6 @@ div.checkbox input {
 #route-points th {
   height: 1.8rem;
   font-weight: 600;
-  /* margin: 5px; */
   padding: 5px 10px;
   border: 1px solid gray;
   background-color: #41403E;
@@ -618,7 +595,7 @@ table.leaderboard tr:hover {
 }
 
 /*===========================================
-        PRETTIFY
+    PRETTIFY
 * ========================================== */
 
 .pretty-images {
@@ -639,7 +616,7 @@ table.leaderboard tr:hover {
 }
 
 /*===========================================
-        MOBILE RESPONSIVE MEDIA QUERIES
+    MOBILE RESPONSIVE MEDIA QUERIES
 * ========================================== */
 
 /* MEDIA QUERY FOR SMALL DESKTOP SCREENS AND SMALLER 980-780*/
@@ -810,10 +787,6 @@ table.leaderboard tr:hover {
     margin: .1rem 0 .6rem .0;
   }
 
-  .grid-container-completed > div {
-    padding-top: 2px;
-  }
-
   h2 {
     font-size: 1.5rem;
   }
@@ -844,23 +817,6 @@ table.leaderboard tr:hover {
 
   .bike-route-map-completed {
     display: none;
-  }
-
-  div.grid-container {
-    margin: 0 auto;
-  }
-
-  div.routes-container {
-      margin: auto;
-      width: 300px; /*Removes extra spacing at smaller widths */
-    }
-
-  div.routes-container h4 {
-    line-height: 1.2em;
-  }
-
-  div.bike-data {
-    padding: 3px 0;
   }
 
   .form-container {
