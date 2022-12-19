@@ -276,7 +276,6 @@ hr {
 .grid-container {
   margin: auto;
   width: 100%;
-  /* border: 1px solid blue; */
 }
 
 .form-container img {
@@ -582,73 +581,15 @@ article.bike-route {
 * ADMIN TABLE
 * ========================================== */
 
-.table-grid-container {
-  display: grid;
-  grid-template-columns: auto auto auto auto auto auto;
-  grid-gap: 0px;
-  background-color: #abdbe3;
-  border-radius: 10px;
-  box-shadow: 0px 3px 8px 3px rgba(0,0,0,0.25);
-  padding: 0px;
-  border: 1px solid #011740;
-}
-
-.table-grid-container > div {
-  text-align: center;
-  font-size: 1em;
-  padding: 10px;
-}
-
-.admin-table-header {
-  font-weight: bold;
-
-}
-.leader-left {
-text-align:left;
-}
-
-.leader-right {
-text-align:right;
-}
-
-
 /*===========================================
          LEADER TABLE
 * ========================================== */
-
-.leader-grid-container {
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  grid-gap: 0px;
-  background-color: #abdbe3;
-  border-radius: 10px;
-  box-shadow: 0px 3px 8px 3px rgba(0,0,0,0.25);
-  padding: 0px;
-  border: 1px solid #011740;
-}
-
-.leader-grid-container > div {
-  text-align: center;
-  font-size: 1em;
-  padding: 10px;
-}
-
-.leader-table-header {
-  font-weight: bold;
-
-}
-.leader-left {
-  text-align:left;
-}
-
-.leader-right {
-  text-align:right;
-}
 
 table.leaderboard {
   width: 100%;
   background-color: rgb(235, 235, 235);
   border-collapse: collapse;
+  margin: 10px 0;
 }
 
 table.leaderboard th {
@@ -873,10 +814,6 @@ table.leaderboard tr:hover {
     padding-top: 2px;
   }
 
-  .grid-container h4 {
-  margin-bottom: 4px;
-  }
-
   h2 {
     font-size: 1.5rem;
   }
@@ -910,8 +847,7 @@ table.leaderboard tr:hover {
   }
 
   div.grid-container {
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
   }
 
   div.routes-container {
@@ -925,18 +861,6 @@ table.leaderboard tr:hover {
 
   div.bike-data {
     padding: 3px 0;
-  }
-
-  .table-grid-container > div {
-    font-size: .75em !important; 
-    line-height:1.5em !important;
-    padding: 5px;
-  }
-
-  .leader-grid-container > div {
-    font-size: .75em !important; 
-    line-height:1.5em !important;
-    padding: 5px;
   }
 
   .form-container {

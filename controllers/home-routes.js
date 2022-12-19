@@ -6,6 +6,7 @@ const sequelize = require('../config/connection');
 
 // route to home page
 router.get('/', (req, res) => {
+  console.log("session", req.session);
   res.render('homepage', {
     user: req.user,
     //loggedIn: req.session.loggedIn
@@ -108,10 +109,14 @@ router.get('/leaderboard',
       })
   });
 
-// route to admin page /admin THIS NEEDS TO CHANGE TO ONLY ADMIN ACCESS 
+// route to admin page /admin *Redirect non-ADMIN to home page
 router.get('/admin', ensureLoggedIn('/'),
-// router.get('/admin', isAdmin,
   function (req, res) {
+    // redirect non-Admin to home page
+    if (!req.user.isAdmin) {
+      res.redirect('/')
+    };
+
     User_Routes.findAll({
       where: {
         // use the ID from the session - need to compound with approved
@@ -122,31 +127,31 @@ router.get('/admin', ensureLoggedIn('/'),
         'route_id',
         'ride_time',
         'date_completed',
+        'date_submitted',
         'ride_link',
         'approved'
       ],
       include: [
-        // include Route information
         {
           model: Routes,
           attributes: ['name']
         },
-        // include User information
         {
           model: User,
           attributes: ['name']
         }
       ],
+      order: sequelize.literal('date_submitted ASC')
     })
       .then(dbUserRoutesData => {
         // serialize data before passing to template
         const userRoutes = dbUserRoutesData.map(route => route.get({ plain: true }));
+      
         res.render('admin', {
           user: req.user,
           userRoutes: { userRoutes },
         });
-        console.log(userRoutes);
-        console.log(req.user);
+        
       })
       .catch(err => {
         console.log(err);
@@ -155,7 +160,7 @@ router.get('/admin', ensureLoggedIn('/'),
   });
 
 // route to create-route page /create-route
-router.get('/create-route', 
+router.get('/create-route',
   function(req,res) {
     res.render('create-route', { user: req.user });
   });
