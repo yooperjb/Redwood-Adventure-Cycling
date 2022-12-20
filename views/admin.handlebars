@@ -9,7 +9,7 @@
                 <tr>
                     <th>Rider Name</th>
                     <th>Bike Route</th>
-                    <th>Date Completed</th>
+                    <th>Date Completed/ Submitted</th>
                     <th>Time</th>
                     <th>Strava</th>
                     <th>Approved</th>
@@ -18,7 +18,8 @@
                 <tr>
                     <td>{{userRoutes.user.name}}</td>
                     <td>{{userRoutes.route.name}}</td>
-                    <td>{{userRoutes.date_completed}}</td>
+                    <td>{{format_month_day userRoutes.date_completed}}<br>
+                        {{format_month_day_time userRoutes.date_submitted}}</td>
                     <td>{{format_time userRoutes.ride_time}}</td>
                     <td><a href="{{userRoutes.ride_link}}" target="_blank">Activity</a></td>
                     <td>

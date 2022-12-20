@@ -94,23 +94,23 @@ color: white;
   background: none;
 }
 
-  .menu li a:hover, .menu button:hover {
-    color: var(--secondary-color);
-  }
+.menu li a:hover, .menu button:hover {
+  color: var(--secondary-color);
+}
 
-  .menu button:hover {
-    background: none;
-  }
+.menu button:hover {
+  background: none;
+}
 
-  .has-submenu > a::after {
-    font-family: "Font Awesome 5 Free";
-    font-size: 12px;
-    line-height: 16px;
-    font-weight: 900;
-    content: "\f078";
-    color: white;
-    padding-left: 5px;
-  }
+.has-submenu > a::after {
+  font-family: "Font Awesome 5 Free";
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 900;
+  content: "\f078";
+  color: white;
+  padding-left: 5px;
+}
 
 /* disable .submenu before click */
 .has-submenu .submenu {
@@ -151,7 +151,7 @@ color: white;
 .hero {
   background-image: url("../images/showers_pass_color_hero.jpg");
   min-height: 300px;
-  width: 95%;
+  width: 100%;
   margin: 0 auto;
   background-position: center bottom;
   background-repeat: no-repeat;
