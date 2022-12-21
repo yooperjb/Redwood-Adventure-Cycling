@@ -12,7 +12,7 @@ const hbs = exphbs.create({ helpers });
 
 // Create a new Express application
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 443;
 
 // const sess = {
 //     secret: process.env.SESSION_SECRET,
