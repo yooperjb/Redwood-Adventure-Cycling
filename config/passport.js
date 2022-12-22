@@ -11,7 +11,6 @@ passport.use(new StravaStrategy({
   },
   async function(accessToken, refreshToken, profile, cb) {
     
-    // console.log("profile", profile);
     // check for user by primary key in database. if none, add user to db
     let user = await User.findByPk(profile.id)
         if (!user) {
@@ -22,7 +21,6 @@ passport.use(new StravaStrategy({
                 accessToken: accessToken,
                 refreshToken: refreshToken,
             })
-            console.log("user", user);
         }
     
     // profile is req.user that is passed from passport-StravaStrategy. I believe this is where I would add tokens if wanting to save them to the session. And send user instead of ...profile to only pass user data across session instead of the whole strava profile. 

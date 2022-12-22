@@ -11,8 +11,8 @@ if (process.env.RAILWAY_ENVIRONMENT) {
     sequelize = new Sequelize(process.env.MYSQL_URL);
 }
 else if ( process.env.STATUS === 'production') {
-    // For production site on Dreamhost process.env.STATUS === 'production'
-    sequelize = new Sequelize(process.env.DH_DB_NAME, process.env.DH_DB_USER, process.env.DH_DB_PW, {
+    // For 'production' site on Dreamhost -make sure .env file matches
+    sequelize = new Sequelize(process.env.DB_NAME, process.env.DH_DB_USER, process.env.DH_DB_PW, {
         host: 'mysql.redwoodadventurecycling.com',
         dialect: 'mysql',
         port: 3306

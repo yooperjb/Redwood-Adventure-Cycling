@@ -52,30 +52,32 @@
                     <a href="/admin" class="subnav-link">ADMIN</a>
                 </li> 
                 {{/if}}
+                
                 {{!-- <li class="item">{{#if user}}<button id="logout" class="btn-no-style">LOG OUT</button>
                     {{else}}
                     <a href="/login">LOG IN</a>
                     {{/if}}
                 </li> --}}
+                
             </ul>
             <span class="toggle"><a href="#"><i class="fas fa-bars"></i></a></span>
         </nav>
     </header>
-    <!--End Header-->
+    <!-- End Header -->
 
-    <!--Hero-->
+    <!-- Hero -->
     <div class="hero">
         <div id="site-logo">
             <img src="/images/RAClogo_circletext.svg" />
         </div>
     </div>
-    <!--End Hero-->
+    <!-- End Hero -->
 
-    <!--Main Section-->
+    <!-- Main Section -->
     <main>
             {{{ body }}}
     </main>
-    <!--End Main-->
+    <!-- End Main -->
 
     <script src="/javascript/nav.js"></script>
     {{#if user}}

@@ -13,7 +13,7 @@ async function approvalFormHandler(event) {
         }
     });
 
-    console.log("ids",JSON.stringify(ids));
+    // console.log("ids",JSON.stringify(ids));
     
     const response = await fetch('/api/user-routes/', {
         method: 'PUT',
