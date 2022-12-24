@@ -14,9 +14,7 @@ router.get('/', (req, res) => {
 
 // create new user route /api/user-routes
 router.post('/', upload.single('photo'), (req, res) => {
-        // console.log("req.body", req.body);
-        // console.log('req.file', req.file);
-        // console.log('req.user', req.user);
+        
         User_Routes.count({
             where: {
                 route_id: req.body.route_id
@@ -49,7 +47,7 @@ router.post('/', upload.single('photo'), (req, res) => {
             })
     
             .then((bonus_points) => {
-                console.log("req.file?", req.file)
+                // if file submitted resize and save to file
                 if (req.file) {
                     photo = `${req.user.id}-${req.body.route_id}.jpg`
                     const imagePath = 'public/photos/2023';
