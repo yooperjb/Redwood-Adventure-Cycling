@@ -281,11 +281,13 @@ hr {
 }
 
 input, select {
+  background-color: white;
   padding: .4rem .5rem;
   border-radius: 20px;
   border: 2px solid #ccc;
   width:100%;
-  margin-top: 2px; 
+  margin-top: 2px;
+  font-size: .85rem;
 }
 
 input:focus-visible {
@@ -531,12 +533,14 @@ article.bike-route {
 .bike-route-map-completed {
   margin: 5px 5px 10px;
   /* flex: 1 1 45%; */
-  width: 171px;
-  aspect-ratio: 1/1;
+  /* width: 171px; */
+  /* aspect-ratio: 1/1; */
+  height: 171px;
 }
 
 .route-map {
   width: 100%;
+  height: 100%;
   display: inline-block;
   border: 1px solid gray;
   border-radius: 10px;
@@ -715,8 +719,7 @@ table.leaderboard tr:hover {
 
   .bike-route-map-completed {
     margin: 5px 5px 10px;
-    width: 156px;
-    aspect-ratio: 1/1;
+    height: 156px;
   }
 }
 

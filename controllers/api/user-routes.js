@@ -1,17 +1,22 @@
 const router = require('express').Router();
 const { User_Routes, User } = require('../../models');
 const sequelize = require('../../config/connection');
+const upload = require('../../utils/upload');
+const Resize = require('../../utils/Resize');
+const path = require('path');
 
 
 // GET /api/user-routes for req testing
 router.get('/', (req, res) => {
-    console.log("User:", req.user);
-    console.log("id:", req.user.id);
+    // console.log("User:", req.user);
+    // console.log("id:", req.user.id);
 });
 
 // create new user route /api/user-routes
-router.post('/', (req, res) => {
-
+router.post('/', upload.single('photo'), (req, res) => {
+        // console.log("req.body", req.body);
+        // console.log('req.file', req.file);
+        // console.log('req.user', req.user);
         User_Routes.count({
             where: {
                 route_id: req.body.route_id
@@ -30,7 +35,6 @@ router.post('/', (req, res) => {
             .then((dbUserRouteCount) => {
                 let routeCount = dbUserRouteCount;
                 // Assign bonus points based on previous submission count
-                console.log("routeCount",routeCount);
                 if (routeCount === 0) {
                     bonus_points = 5;
                 } else if (routeCount === 1 ) {
@@ -45,8 +49,20 @@ router.post('/', (req, res) => {
             })
     
             .then((bonus_points) => {
-                // console.log("bonus_points", bonus_points);
+                console.log("req.file?", req.file)
+                if (req.file) {
+                    photo = `${req.user.id}-${req.body.route_id}.jpg`
+                    const imagePath = 'public/photos/2023';
+                    const fileUpload = new Resize(imagePath,photo);
+                    console.log(photo, imagePath)
+                    const filename = fileUpload.save(req.file.buffer)
+                } 
+                else {
+                    photo = ''
+                }
+                
                 User_Routes.create({
+                photo: photo,
                 ride_time: req.body.ride_time,
                 ride_link: req.body.ride_link,
                 date_completed: req.body.date_completed,
@@ -55,14 +71,14 @@ router.post('/', (req, res) => {
                 // Use this when testing with Insomnia
                 // user_id: req.body.user_id,
                 route_id: req.body.route_id,
-            })
-        })
-
-        .then(dbRoutesData => res.json(dbRoutesData))
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+                })
+            }) 
+            
+            .then(dbRoutesData => res.json(dbRoutesData))
+            .catch(err => {
+                console.log(err);
+                res.status(500).json(err);
+            });
 });
 
 // PUT /api/user-routes/ - update a user-route bulk

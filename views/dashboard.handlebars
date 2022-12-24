@@ -8,7 +8,7 @@
                 <h4>Submit Your Ride</h4>
             </div>
             <div>
-                <form class="route-form">
+                <form class="route-form" enctype="multipart/form-data">
                     <div>
                         <label for="route-name">CHOOSE A ROUTE </label>
                         <select required name="route-name" id="route-name">
@@ -33,20 +33,11 @@
                         <input type="text" id="ride-link" placeholder="www.strava.com/activities/# or strava.app.link/#" pattern="(www.|http://www.|https://www.)(strava.com/activities/)\d{10}|(https://strava.app.link/)\w{5,15}" required>
                     </div>
 
-                    {{!-- <div>
-                        <label for="route-photo">Photo:</label>
+                    <div>
+                        <label for="route-photo">PHOTO</label>
+                        <input type="file" id="route-photo" name="route-photo" placeholder="Submit Ride Photo">
                     </div>
-                    <div class="input-group  px-2 py-2  bg-white ">
-                        <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0">
-                        <label id="upload-label" for="upload" class="font-weight-light text-muted">Choose file</label>
-                        <div class="input-group-append">
-                            <label for="upload" class="btn btn-light m-0 pill px-4"> <i
-                                    class="fa fa-cloud-upload mr-2 text-muted"></i><small
-                                    class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
-                        </div>
-                    </div>
-                    <div class="image-area mt-4"><img id="imageResult" src="#" alt=""
-                            class="img-fluid rounded shadow-sm mx-auto d-block"> </div> --}}
+                        
                     <div class="center">
                         <button type="submit">SUBMIT RIDE</button>
                     </div>
@@ -72,10 +63,10 @@
             <div class="bike-route-table">
                 <table>
                     <tr>
-                        <td>Date Completed</td><td>{{userRoutes.date_completed}}</td>
+                        <td>Date Completed</td><td>{{format_month_day userRoutes.date_completed}}</td>
                     </tr>
                     <tr>
-                        <td>Ride Time</td><td> {{userRoutes.ride_time}}</td>
+                        <td>Ride Time</td><td> {{format_time userRoutes.ride_time}}</td>
                     </tr>
                     <tr>
                         <td>Points</td><td>{{userRoutes.route.points}}</td>
@@ -95,9 +86,13 @@
                     </tr>
                 </table>
             </div>
-        </div>    
+        </div> 
             <div class="bike-route-map-completed">
+                {{#if userRoutes.photo}}
+                <img class="route-map" src="/photos/2023/{{userRoutes.photo}}" alt="Photo from {{userRoutes.route.name}}" />
+                {{else}}
                 <img class="route-map" src="https://ridewithgps.com/routes/full/{{userRoutes.route.id}}.png" alt="Map of {{userRoutes.route.name}}" />
+                {{/if}}
             </div>
     </article>    
     {{/each}}

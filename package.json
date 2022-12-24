@@ -1,5 +1,5 @@
 {
-  "name": "Redwood-Adventure-Cycling",
+  "name": "redwood-adventure-cycling",
   "version": "1.0.2",
   "description": "Redwood Adventure Cycling website",
   "main": "app.js",
@@ -30,10 +30,12 @@
     "handlebars": "^4.7.6",
     "html-duration-picker": "^2.3.5",
     "jest": "^26.6.3",
+    "multer": "^1.4.5-lts.1",
     "mysql2": "^2.2.5",
     "passport": "^0.4.1",
     "passport-strava": "^0.2.0",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "sharp": "^0.31.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
