@@ -9,7 +9,7 @@ class Resize {
 
     async save(buffer) {
         const filename = this.filename;
-        const filepath = this.filepath();
+        const filepath = this.filepath(filename);
 
         await sharp(buffer)
             .resize(800, 800, {
@@ -20,9 +20,9 @@ class Resize {
 
         return filename;
     }
-    filepath() {
-
-        return path.resolve(`${this.folder}/${this.filename}`);
+    
+    filepath(filename) {
+        return path.resolve(`${this.folder}/${filename}`);
     }
 }
 

@@ -7,6 +7,7 @@
   --seventh-color: #1d75ce;
   --eight-color: #043e9e;
   --dark-gray: hsl(204, 9%, 22%);
+  --error: hsl(0, 100%, 40%);
 }
 
 * {
@@ -276,7 +277,7 @@ hr {
   width: 100%;
 }
 
-.route-form div {
+.route-form > div {
   margin: 15px;
 }
 
@@ -296,15 +297,33 @@ input:focus-visible {
 }
 
 input:focus:invalid {
-  border: 2px solid hsl(0, 100%, 40%);
+  border: 2px solid var(--error);
 }
 
 input:focus:valid {
-  border: 2px solid var(--quad-color)
+  border: 2px solid var(--quad-color);
 }
 
 label {
   margin-left:5px;
+}
+
+.error {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.size-error.inactive, .type-error.inactive {
+  display: none;
+}
+
+.size-error.active, .type-error.active {
+  display: block;
+  color: var(--error);
+  font-style: italic;
+  text-align: right;
+  font-size: .8rem;
 }
 
 button {
