@@ -58,10 +58,6 @@ router.post('/', upload.single('photo'), (req, res) => {
                     console.log('filename', filename)
                     console.log(typeof(filename));
 
-                    if (err instanceof multer.MulterError) {
-                        // A multer Error Occurred
-                        console.log("Multer err", err)
-                    }
                 } 
                 else {
                     photo_name= ''
