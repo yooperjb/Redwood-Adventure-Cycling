@@ -16,6 +16,7 @@ class Resize {
                 fit: sharp.fit.inside,
                 withoutEnlargement: true
             })
+            .withMetadata()
             .toFile(filepath);
 
         return filename;

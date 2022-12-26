@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { ensureLoggedIn } = require('connect-ensure-login');
 const sequelize = require('../config/connection');
 const { User_Routes, Routes } = require('../models');
-const passport = require('../config/passport');
+// const passport = require('../config/passport');
 
 
 // GET route /dashboard
