@@ -1,60 +1,66 @@
+<h2>Bike Routes 2023</h2>
 
-    <h2>Bike Routes 2023</h2>
-        
-            <h3>COMING IN JANUARY!</h3>
-        
-        {{#if routes}}
-        {{#each routes}}
-        <article class="bike-route">
-                
-                <div class="bike-route-title">
-                    <h4>{{this.name}}</h4>
-                </div>
-                    <!--Data-->
-                <div class="bike-route-col1">
-                    <div class="bike-route-table">
-                        <table>
-                            <tr>
-                                <td>Mileage</td><td>{{this.mileage}}</td>
-                            </tr>
-                            <tr>
-                                <td>Points</td><td>{{this.points}}</td>
-                            </tr>
-                            <tr>
-                                <td>Total Elevation</td><td>{{format_thousands this.elevation}}'</td>
-                            </tr>
-                            <tr>
-                                <td>Difficulty</td><td>{{this.difficulty}}</td>
-                            </tr>
-                            <tr>
-                                <td>Route Link</td><td><a href="https://ridewithgps.com/routes/{{this.id}}" target="_blank">Route</a></td>
-                            </tr>
-                        </table>
-                    </div>
-                    
-                    <div class="bike-route-profile">
-                        <img src="https://ridewithgps.com/routes/{{this.id}}/elevation_profile.jpg" alt="Elevation Profile of {{this.name}} Route" />
-                        {{!-- <p>{{this.description}}</p>   --}}
-                    </div>
-                     
-                     <div class="bike-route-description">
-                        <p>{{this.description}}</p>  
-                    </div>
+<h3>COMING IN JANUARY!</h3>
 
-                </div>
+{{#if routes}}
+{{#each routes}}
+<article class="bike-route">
 
-                <div class="bike-route-map">
-                    <a href="https://ridewithgps.com/routes/{{this.id}}" target="_blank"><img class="route-map" src="https://ridewithgps.com/routes/full/{{this.id}}.png" alt="Map of {{this.name}} Route" /></a>
-                    
-                    {{!-- If I decide to use embeded interactive maps this is an example. --}}
-                    {{!-- <iframe src="https://ridewithgps.com/embeds?type=route&id=41552569" style="width: 1px; min-width: 100%; height: 100%; border: none;" scrolling="no"></iframe> --}}
-                </div>
-                
-                {{!-- Possibly put profile image here at some point --}}
-                {{!-- <img src="https://ridewithgps.com/routes/{{this.id}}/elevation_profile.jpg" alt="Eleveation Profile of {{this.name}} Route" /> --}}
-               
-                
+    <div class="bike-route-title">
+        <h4>{{this.name}}</h4>
+    </div>
+    <!--Data-->
+    <div class="bike-route-col1">
+        <div class="bike-route-table">
+            <table>
+                <tr>
+                    <td>Mileage</td>
+                    <td>{{this.mileage}}</td>
+                </tr>
+                <tr>
+                    <td>Points</td>
+                    <td>{{this.points}}</td>
+                </tr>
+                <tr>
+                    <td>Total Elevation</td>
+                    <td>{{format_thousands this.elevation}}'</td>
+                </tr>
+                <tr>
+                    <td>Difficulty</td>
+                    <td>{{this.difficulty}}</td>
+                </tr>
+                <tr>
+                    <td>Route Link</td>
+                    <td><a href="https://ridewithgps.com/routes/{{this.id}}" target="_blank">Route</a></td>
+                </tr>
+            </table>
+        </div>
 
-        </article>
-        {{/each}}
-        {{/if}}
+        <div class="bike-route-profile">
+            <img src="https://ridewithgps.com/routes/{{this.id}}/elevation_profile.jpg"
+                alt="Elevation Profile of {{this.name}} Route" />
+            {{!-- <p>{{this.description}}</p> --}}
+        </div>
+
+        <div class="bike-route-description">
+            <p>{{this.description}}</p>
+        </div>
+
+    </div>
+
+    <div class="bike-route-map">
+        <a href="https://ridewithgps.com/routes/{{this.id}}" target="_blank"><img class="route-map"
+                src="https://ridewithgps.com/routes/full/{{this.id}}.png" alt="Map of {{this.name}} Route" /></a>
+
+        {{!-- If I decide to use embeded interactive maps this is an example. --}}
+        {{!-- <iframe src="https://ridewithgps.com/embeds?type=route&id=41552569"
+            style="width: 1px; min-width: 100%; height: 100%; border: none;" scrolling="no"></iframe> --}}
+    </div>
+
+    {{!-- Possibly put profile image here at some point --}}
+    {{!-- <img src="https://ridewithgps.com/routes/{{this.id}}/elevation_profile.jpg"
+        alt="Elevation Profile of {{this.name}} Route" /> --}}
+
+</article>
+{{/each}}
+{{/if}}

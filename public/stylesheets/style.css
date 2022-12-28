@@ -1,6 +1,6 @@
 :root {
   --primary-color: #ffeb68;
-  --secondary-color:#86e2ef;
+  --secondary-color: #86e2ef;
   --tertiary-color: rgb(255, 255, 255);
   --quad-color: #011740;
   --sixth-color: #e3e3e3;
@@ -12,17 +12,21 @@
 
 * {
   box-sizing: border-box;
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
 }
+
 /* Basic styling */
-html{
+html {
   /* Controls nav scroll points */
   height: 70%;
 }
 
-body, select, button, table {
-  font-family: 'Montserrat','Roboto', Arial, Helvetica, sans-serif;
+body,
+select,
+button,
+table {
+  font-family: 'Montserrat', 'Roboto', Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -33,10 +37,11 @@ body {
 
 /********** HEADER STYLES **********/
 header {
-  height:80px;
+  height: 80px;
   background-color: hsla(219, 97%, 13%, 0.7);
   width: 100%;
-  top: 0; /*need this for sticky */
+  top: 0;
+  /*need this for sticky */
   position: sticky;
   position: -webkit-sticky;
   z-index: 9995;
@@ -46,13 +51,13 @@ header {
 
 /************ NAV MENU **************/
 nav {
-width: 70%;
-z-index: 9996;
-display: flex;
-justify-content: space-between;
-align-items: center;
-font-size: 1rem;
-color: white;
+  width: 70%;
+  z-index: 9996;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  color: white;
 }
 
 .logo-div {
@@ -70,7 +75,7 @@ color: white;
   transform: rotate(360deg);
 }
 
-.logo:focus{
+.logo:focus {
   outline: none;
 }
 
@@ -83,11 +88,12 @@ color: white;
   list-style-type: none;
 }
 
-.menu li a, .menu button {
+.menu li a,
+.menu button {
   margin: 10px;
   padding: 0;
   color: white;
-  font-weight:normal;
+  font-weight: normal;
 }
 
 .menu button {
@@ -95,7 +101,8 @@ color: white;
   background: none;
 }
 
-.menu li a:hover, .menu button:hover {
+.menu li a:hover,
+.menu button:hover {
   color: var(--secondary-color);
 }
 
@@ -103,7 +110,7 @@ color: white;
   background: none;
 }
 
-.has-submenu > a::after {
+.has-submenu>a::after {
   font-family: "Font Awesome 5 Free";
   font-size: 12px;
   line-height: 16px;
@@ -127,7 +134,7 @@ color: white;
   top: 65px;
   border-radius: 3%;
   background-color: var(--quad-color);
-  box-shadow: 0px 3px 15px 5px rgba(0,0,0,0.49);
+  box-shadow: 0px 3px 15px 5px rgba(0, 0, 0, 0.49);
   padding: 10px 0px;
 }
 
@@ -145,11 +152,12 @@ color: white;
 }
 
 .toggle a {
-  color: white ;
+  color: white;
 }
 
 /* --------- HERO styles --------- */
 .hero {
+  background-color: #86e2ef;
   background-image: url("../images/showers_pass_color_hero.jpg");
   min-height: 300px;
   width: 100%;
@@ -159,7 +167,7 @@ color: white;
   background-size: cover;
   position: relative;
   z-index: 9994;
-  box-shadow: 0px 3px 15px 10px rgba(0,0,0,0.5);
+  box-shadow: 0px 3px 15px 10px rgba(0, 0, 0, 0.5);
   border-bottom: 1px solid #011740;
   display: flex;
   justify-content: flex-end;
@@ -177,12 +185,13 @@ color: white;
   max-height: 200px;
   filter: drop-shadow(0px 0px 2px rgb(255 255 255 /.8));
 }
+
 /* --------- End HERO styles --------- */
 
 /* --------- MAIN styles --------- */
 p {
   font-size: 1.0rem;
-  line-height:1.5rem;
+  line-height: 1.5rem;
   color: var(--quad-color);
   margin: .2rem 0 .6rem 0;
 }
@@ -199,15 +208,15 @@ h2 {
   color: var(--quad-color);
   font-size: 2.5rem;
   margin-bottom: .5rem;
-  text-align:center;
+  text-align: center;
   font-weight: normal;
 }
 
 h3 {
   color: var(--quad-color);
-  font-size: 2rem; 
+  font-size: 2rem;
   margin-bottom: 1rem;
-  text-align:center;
+  text-align: center;
 }
 
 h4 {
@@ -243,7 +252,7 @@ article ul {
   padding: 5px 10px 10px 30px;
   color: var(--quad-color);
   list-style-position: outside;
-  line-height:1.5rem;
+  line-height: 1.5rem;
 }
 
 ul.no-dot {
@@ -273,20 +282,27 @@ hr {
   width: 100%;
 }
 
-.form-container img {
+/* .form-container img {
   width: 100%;
-}
+  border: 1px solid pink;
+} */
 
-.route-form > div {
+.route-form>div {
   margin: 15px;
 }
 
-input, select {
+.form-label {
+  display: flex;
+  justify-content: space-between;
+}
+
+input,
+select {
   background-color: white;
   padding: .4rem .5rem;
   border-radius: 20px;
   border: 2px solid #ccc;
-  width:100%;
+  width: 100%;
   margin-top: 2px;
   font-size: .85rem;
 }
@@ -305,7 +321,13 @@ input:focus:valid {
 }
 
 label {
-  margin-left:5px;
+  margin-left: 5px;
+}
+
+.question-mark {
+  width: 18px;
+  height: auto;
+  margin-right: 10px;
 }
 
 .error {
@@ -314,11 +336,13 @@ label {
   align-items: center;
 }
 
-.size-error.inactive, .type-error.inactive {
+.size-error.inactive,
+.type-error.inactive {
   display: none;
 }
 
-.size-error.active, .type-error.active {
+.size-error.active,
+.type-error.active {
   display: block;
   color: var(--error);
   font-style: italic;
@@ -338,7 +362,7 @@ button {
 }
 
 button:hover {
-  background-color:#86e2ef;
+  background-color: #86e2ef;
   color: #043e9e;
 }
 
@@ -374,7 +398,7 @@ div.checkbox input {
   align-items: center;
   margin: 15px;
   padding: 10px;
-  border:solid 2px #41403E;
+  border: solid 2px #41403E;
   border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
   box-shadow: 6px 6px 5px rgba(0, 0, 0, 0.5);
   width: auto;
@@ -493,7 +517,7 @@ article.bike-route {
   justify-content: space-around;
   align-content: flex-start;
   margin: 20px auto;
-  box-shadow: 0px 3px 8px 3px rgba(0,0,0,0.25);
+  box-shadow: 0px 3px 8px 3px rgba(0, 0, 0, 0.25);
   padding: 10px 10px;
   background-color: #343A3E;
 }
@@ -509,7 +533,8 @@ article.bike-route {
   height: 100%;
 }
 
-.bike-route-col1 table, td {
+.bike-route-col1 table,
+td {
   width: 100%;
   border: 1px solid gray;
   border-collapse: collapse;
@@ -563,7 +588,7 @@ article.bike-route {
   display: inline-block;
   border: 1px solid gray;
   border-radius: 10px;
-  box-shadow: 0px 3px 8px 3px rgba(0,0,0,0.25);
+  box-shadow: 0px 3px 8px 3px rgba(0, 0, 0, 0.25);
 }
 
 .bike-route-description {
@@ -615,11 +640,11 @@ table.leaderboard td.points {
 }
 
 table.leaderboard tr:nth-child(even) {
-  background-color:  #f9f9f9;
+  background-color: #f9f9f9;
 }
 
 table.leaderboard tr:hover {
-  background-color:#C4E3F3;
+  background-color: #C4E3F3;
 }
 
 /*===========================================
@@ -628,11 +653,11 @@ table.leaderboard tr:hover {
 
 .pretty-images {
   height: 250px;
-  padding:10px;
+  padding: 10px;
   margin: 10px;
   float: right;
   border-radius: 10px;
-  box-shadow: 0px 3px 8px 3px rgba(0,0,0,0.25);
+  box-shadow: 0px 3px 8px 3px rgba(0, 0, 0, 0.25);
 }
 
 .reg-image {
@@ -640,7 +665,7 @@ table.leaderboard tr:hover {
   padding: 5px;
   border-radius: 10px;
   margin-top: 20px;
-  box-shadow: 0px 3px 8px 3px rgba(0,0,0,0.25);
+  box-shadow: 0px 3px 8px 3px rgba(0, 0, 0, 0.25);
 }
 
 /*===========================================
@@ -656,7 +681,7 @@ table.leaderboard tr:hover {
   .submenu-active .submenu {
     top: 50px;
   }
-  
+
   .hero {
     min-height: 205px;
   }
@@ -688,22 +713,28 @@ table.leaderboard tr:hover {
   nav {
     width: 80%;
   }
-  .menu, .menu button {
+
+  .menu,
+  .menu button {
     font-size: .85rem;
   }
-  
+
   .hero {
     min-height: 170px;
   }
+
   #site-logo img {
     max-height: 125px;
   }
+
   main {
     padding: 1rem 1.2rem 1rem 1.2rem;
   }
+
   h2 {
     font-size: 1.8rem;
   }
+
   h4 {
     font-size: 1.2rem;
   }
@@ -714,11 +745,13 @@ table.leaderboard tr:hover {
   }
 
   p {
-    font-size: .85rem; 
-    line-height:1.3rem;
+    font-size: .85rem;
+    line-height: 1.3rem;
   }
 
-  #route-points, .route-form, .leaderboard {
+  #route-points,
+  .route-form,
+  .leaderboard {
     font-size: .85rem;
   }
 
@@ -726,17 +759,18 @@ table.leaderboard tr:hover {
     font-size: .85rem;
     line-height: 1.4rem;
   }
-  
+
   ul.normal li {
-    font-size: .85rem; 
-    line-height:1.4rem;
+    font-size: .85rem;
+    line-height: 1.4rem;
   }
+
   .form-container {
     margin: auto;
     width: 70%;
     max-width: 100%;
   }
-  
+
   .bike-route-table {
     font-size: .85rem;
   }
@@ -753,12 +787,12 @@ table.leaderboard tr:hover {
   main {
     padding: 1rem;
   }
-  
+
   /* Turn on hamburger menu */
   header {
     height: 50px;
   }
-  
+
   nav {
     width: 80%;
   }
@@ -783,7 +817,9 @@ table.leaderboard tr:hover {
   .menu li {
     margin: 3px 3px;
   }
-  .menu li a, .menu button {
+
+  .menu li a,
+  .menu button {
     margin: 0;
   }
 
@@ -792,7 +828,7 @@ table.leaderboard tr:hover {
     padding: 2px 0 0 0;
     box-shadow: none;
   }
-  
+
   .toggle {
     display: block;
   }
@@ -804,19 +840,21 @@ table.leaderboard tr:hover {
   #site-logo {
     right: 15px;
   }
+
   #site-logo img {
     max-height: 75px;
   }
-  
+
   p {
-    font-size: .8rem; 
-    line-height:1.4rem;
+    font-size: .8rem;
+    line-height: 1.4rem;
     margin: .1rem 0 .6rem .0;
   }
 
   h2 {
     font-size: 1.5rem;
   }
+
   h3 {
     font-size: 1.3rem;
   }
@@ -838,7 +876,8 @@ table.leaderboard tr:hover {
     flex: 1 1 95%;
   }
 
-  .bike-route-table, .leaderboard {
+  .bike-route-table,
+  .leaderboard {
     font-size: .8rem;
   }
 
@@ -851,14 +890,14 @@ table.leaderboard tr:hover {
   }
 
   ul.normal li {
-    font-size: .8rem; 
+    font-size: .8rem;
   }
 
   .spons-logo {
     order: 1;
     flex: 1 1 25%;
   }
-  
+
   .spons-text {
     order: 2;
     flex: 2 2 70%;

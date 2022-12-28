@@ -6,13 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Redwood Adv. Cycling</title>
 
-    {{!-- <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> --}}
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;600;800&display=swap" rel="stylesheet">
+    {{!--
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> --}}
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;600;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" defer crossorigin="anonymous"></script>
-    {{!-- <link rel="stylesheet" href="/stylesheets/timepicker.css"> --}}
+    {{!--
+    <link rel="stylesheet" href="/stylesheets/timepicker.css"> --}}
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
     <link rel="icon" type="image/png" href="favicon.png">
 </head>
@@ -21,11 +24,11 @@
     <header>
         <nav>
             <div class="logo-div">
-               <a href="/"> <img class="logo" src="/images/RAClogo_white.svg" /></a>
+                <a href="/"> <img class="logo" src="/images/RAClogo_white.svg" /></a>
             </div>
             <ul class="menu">
                 <li class="item has-submenu">
-                    <a  tabindex="0">2023 SERIES</a>
+                    <a tabindex="0">2023 SERIES</a>
                     <ul class="submenu">
                         <li class="subitem first-item">
                             <a href=" /about">ABOUT</a>
@@ -50,15 +53,15 @@
                 {{#if user.isAdmin}}
                 <li class="item">
                     <a href="/admin" class="subnav-link">ADMIN</a>
-                </li> 
+                </li>
                 {{/if}}
-                
-                {{!-- <li class="item">{{#if user}}<button id="logout" class="btn-no-style">LOG OUT</button>
+
+                <li class="item">{{#if user}}<button id="logout" class="btn-no-style">LOG OUT</button>
                     {{else}}
                     <a href="/login">LOG IN</a>
                     {{/if}}
-                </li> --}}
-                
+                </li>
+
             </ul>
             <span class="toggle"><a href="#"><i class="fas fa-bars"></i></a></span>
         </nav>
@@ -75,7 +78,7 @@
 
     <!-- Main Section -->
     <main>
-            {{{ body }}}
+        {{{ body }}}
     </main>
     <!-- End Main -->
 

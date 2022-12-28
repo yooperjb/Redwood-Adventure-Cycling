@@ -1,6 +1,6 @@
 <h2>Admin Approvals</h2>
 <section>
-    
+
     {{#if userRoutes.userRoutes.length}}
     <form class="approve-form">
         {{!-- Route Approval Table --}}
@@ -23,11 +23,11 @@
                     <td>{{format_time userRoutes.ride_time}}</td>
                     <td><a href="{{userRoutes.ride_link}}" target="_blank">Activity</a></td>
                     <td>
-                       <div class="checkbox">
-                            <input type="checkbox" id="user_routes-approved-{{userRoutes.id}}" name="user_routes-approved"
-                        value="{{userRoutes.id}}">
-                        </label>
-                        </div> 
+                        <div class="checkbox">
+                            <input type="checkbox" id="user_routes-approved-{{userRoutes.id}}"
+                                name="user_routes-approved" value="{{userRoutes.id}}">
+                            </label>
+                        </div>
                     </td>
                 </tr>
 

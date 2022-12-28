@@ -1,8 +1,8 @@
 <h2>Dashboard</h2>
-    
+
 <section>
     <div class="form-container">
-    
+
         <div class="grid-container">
             <div>
                 <h4>Submit Your Ride</h4>
@@ -10,7 +10,11 @@
             <div>
                 <form class="route-form" enctype="multipart/form-data">
                     <div>
-                        <label for="route-name">CHOOSE A ROUTE </label>
+                        <div class="form-label">
+                            <label for="route-name">CHOOSE A ROUTE </label>
+                            <img class="question-mark" src="images/question-mark.svg" alt="Question Mark"
+                                title="Please select the route your rode.">
+                        </div>
                         <select required name="route-name" id="route_id">
                             <option value="" disabled selected>Routes...</option>
                             {{#each routes.routes as |routes|}}
@@ -19,27 +23,46 @@
                         </select>
                     </div>
                     <div>
-                        <label for="date_completed">DATE COMPLETED</label>
+                        <div class="form-label">
+                            <label for="date_completed">DATE COMPLETED</label>
+                            <img class="question-mark" src="images/question-mark.svg" alt="Question Mark"
+                                title="Please select the date the route was completed.">
+                        </div>
                         {{!-- Set the min and max for Series Dates --}}
                         <input type="date" min="today" max="2023-11-30" id="date_completed" required>
                     </div>
                     <div>
-                        <label for="ride_time">RIDE TIME: HH:MM</label>
-                        <input type="text" class="html-duration-picker" id="ride_time" placeholder="00:00" pattern="^\d{1,2}:\d{2}$" required>
+                        <div class="form-label">
+                            <label for="ride_time">RIDE TIME: HH:MM</label>
+                            <img class="question-mark" src="images/question-mark.svg" alt="Question Mark"
+                                title="Please provide a ride time in hours : minutes format (HH:MM).">
+                        </div>
+                        <input type="text" class="html-duration-picker" id="ride_time" placeholder="00:00"
+                            pattern="^\d{1,2}:\d{2}$" required>
                     </div>
 
                     <div>
-                        <label for="ride_link">STRAVA ACTIVITY LINK</label>
-                        <input type="text" id="ride_link" placeholder="www.strava.com/activities/# or strava.app.link/#" pattern="(www.|http://www.|https://www.)(strava.com/activities/)\d{10}|(https://strava.app.link/)\w{5,15}" required>
+                        <div class="form-label">
+                            <label for="ride_link">STRAVA ACTIVITY LINK</label>
+                            <img class="question-mark" src="images/question-mark.svg" alt="Question Mark"
+                                title="Please copy the ride link from strava website or app. Be sure not to include anything other than the ride information.">
+                        </div>
+                        <input type="text" id="ride_link" placeholder="www.strava.com/activities/# or strava.app.link/#"
+                            pattern="(www.|http://www.|https://www.)(strava.com/activities/)\d{10}|(https://strava.app.link/)\w{5,15}"
+                            required>
                     </div>
 
                     <div>
                         <div class="error">
-                        <label for="photo">PHOTO</label><span class="size-error inactive">Image must be &#60 10mb</span><span class="type-error inactive">Must be .jpg .png .webp</span>
+                            <label for="photo">PHOTO</label><span class="size-error inactive">Image must be &#60
+                                10mb</span><span class="type-error inactive">Must be .jpg .png .webp</span>
+                            <img class="question-mark" src="images/question-mark.svg" alt="Question Mark"
+                                title="Submit a photo from your ride for a chance to win the photo contest!">
                         </div>
-                        <input type="file" id="photo" name="photo" placeholder="Submit Ride Photo" accept=".jpg, .jpeg, .png, .webp">
+                        <input type="file" id="photo" name="photo" placeholder="Submit Ride Photo"
+                            accept=".jpg, .jpeg, .png, .webp">
                     </div>
-                        
+
                     <div class="center">
                         <button type="submit">SUBMIT RIDE</button>
                     </div>
@@ -53,28 +76,32 @@
 <section>
     {{#if userRoutes.userRoutes }}
     <h2>Completed Routes</h2>
-    
+
     {{#each userRoutes.userRoutes as |userRoutes|}}
     <article class="bike-route">
-    
+
         <div class="bike-route-title">
-            <h4 class="bike-route-title">{{userRoutes.route.name}}</h4>    
+            <h4 class="bike-route-title">{{userRoutes.route.name}}</h4>
         </div>
-    
+
         <div class="bike-route-col1">
             <div class="bike-route-table">
                 <table>
                     <tr>
-                        <td>Date Completed</td><td>{{format_month_day userRoutes.date_completed}}</td>
+                        <td>Date Completed</td>
+                        <td>{{format_month_day userRoutes.date_completed}}</td>
                     </tr>
                     <tr>
-                        <td>Ride Time</td><td> {{format_time userRoutes.ride_time}}</td>
+                        <td>Ride Time</td>
+                        <td> {{format_time userRoutes.ride_time}}</td>
                     </tr>
                     <tr>
-                        <td>Points</td><td>{{userRoutes.route.points}}</td>
+                        <td>Points</td>
+                        <td>{{userRoutes.route.points}}</td>
                     </tr>
                     <tr>
-                        <td>Bonus Points</td><td>{{userRoutes.bonus_points}}</td>
+                        <td>Bonus Points</td>
+                        <td>{{userRoutes.bonus_points}}</td>
                     </tr>
                     <tr>
                         <td>Approved</td>
@@ -88,18 +115,19 @@
                     </tr>
                 </table>
             </div>
-        </div> 
-            <div class="bike-route-map-completed">
-                {{#if userRoutes.photo}}
-                <img class="route-map" src="/photos/2023/{{userRoutes.photo}}" alt="Photo from {{userRoutes.route.name}}" />
-                {{else}}
-                <img class="route-map" src="https://ridewithgps.com/routes/full/{{userRoutes.route.id}}.png" alt="Map of {{userRoutes.route.name}}" />
-                {{/if}}
-            </div>
-    </article>    
+        </div>
+        <div class="bike-route-map-completed">
+            {{#if userRoutes.photo}}
+            <img class="route-map" src="/photos/2023/{{userRoutes.photo}}" alt="Photo from {{userRoutes.route.name}}" />
+            {{else}}
+            <img class="route-map" src="https://ridewithgps.com/routes/full/{{userRoutes.route.id}}.png"
+                alt="Map of {{userRoutes.route.name}}" />
+            {{/if}}
+        </div>
+    </article>
     {{/each}}
     {{/if}}
-    
+
 </section>
 
 <script src="/javascript/routesubmit.js"></script>
