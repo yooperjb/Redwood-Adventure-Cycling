@@ -12,16 +12,30 @@
                     <div>
                         <div class="form-label">
                             <label for="route-name">CHOOSE A ROUTE </label>
-                            <img class="question-mark" src="images/question-mark.svg" alt="Question Mark"
-                                title="Please select the route your rode.">
+                            <img id="qMark" class="question-mark" src="images/question-mark.svg" alt="Question Mark"
+                                title="Please select the route you rode.">
+                            
+                            <div id="qModal" class="modal">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4>Choose a Route</h4><span class="close">&times;</span>
+                                    </div>
+                                    <div class="modal-body">
+                                         <p>Please select a route for submission from the dropdown. All rides that have not been previously submitted will be shown.</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        
                         <select required name="route-name" id="route_id">
                             <option value="" disabled selected>Routes...</option>
                             {{#each routes.routes as |routes|}}
                             <option value="{{routes.id}}">{{routes.name}}</option>
                             {{/each}}
                         </select>
+                    
                     </div>
+                    
                     <div>
                         <div class="form-label">
                             <label for="date_completed">DATE COMPLETED</label>
@@ -31,6 +45,7 @@
                         {{!-- Set the min and max for Series Dates --}}
                         <input type="date" min="today" max="2023-11-30" id="date_completed" required>
                     </div>
+                    
                     <div>
                         <div class="form-label">
                             <label for="ride_time">RIDE TIME: HH:MM</label>
@@ -130,4 +145,5 @@
 
 </section>
 
+<script src="/javascript/modal.js"></script>
 <script src="/javascript/routesubmit.js"></script>

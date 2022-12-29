@@ -166,7 +166,8 @@ nav {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  z-index: 9994;
+  /* z-index: 9994; */
+  z-index: 50;
   box-shadow: 0px 3px 15px 10px rgba(0, 0, 0, 0.5);
   border-bottom: 1px solid #011740;
   display: flex;
@@ -366,11 +367,75 @@ button:hover {
   color: #043e9e;
 }
 
-/*
-* ==========================================
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 100; /* Sit on top */
+  padding-top: 40vh;
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  background-color: #011740;
+  color: white;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  padding: 0 5px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: var(--secondary-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 10px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto; /* 15% from the top and centered */
+  border: 1px solid #888;
+  width: 40%; /* Could be more or less, depending on screen size */
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0px; opacity: 1}
+  }
+
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0px; opacity:1}
+}
+
+/*==========================================
 * CUSTOM CHECK BOX
-* ==========================================
-*/
+* =========================================*/
 
 div.checkbox label {
   display: flex;
