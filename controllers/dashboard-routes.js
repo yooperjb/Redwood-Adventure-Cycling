@@ -36,7 +36,6 @@ router.get('/', ensureLoggedIn('/login'), (req, res) => {
                     where: {
                         year: 2023
                     },
-                    
                 }
             ],
             order: [[Routes, 'name', 'ASC']]
