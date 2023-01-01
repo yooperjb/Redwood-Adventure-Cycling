@@ -2,8 +2,9 @@ const router = require('express').Router();
 const { ensureLoggedIn } = require('connect-ensure-login');
 const sequelize = require('../config/connection');
 const { User_Routes, Routes } = require('../models');
-// const passport = require('../config/passport');
+const modals = require('../public/data/modal.json');
 
+// const passport = require('../config/passport');
 
 // GET route /dashboard
 router.get('/', ensureLoggedIn('/login'), (req, res) => {
@@ -55,15 +56,15 @@ router.get('/', ensureLoggedIn('/login'), (req, res) => {
             // serialize the promise returns from both of the db findAll()
             const userRoutes = dbUserRoutesData.map(route => route.get({ plain: true }))
             let routes = dbRoutesData.map(route => route.get({ plain: true }))
-
+            
             // Remove user ridden routes for the submit dropdown list
             routes = routes.filter(ar => !userRoutes.find(rm => (rm.route_id === ar.id)))
-            
             // render dashboard page and pass userRoutes, routes, and loggedIn user 
             res.render('dashboard', {
                 userRoutes: { userRoutes },
                 routes: { routes },
-                user: req.user
+                user: req.user,
+                modals: modals
             })
         })
 

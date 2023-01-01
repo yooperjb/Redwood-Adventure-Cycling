@@ -77,69 +77,8 @@
     </div>
 </section>
 <hr>
-{{!-- MODALS --}}
-{{!-- Route selection modal --}}
-<div class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h4>Choose a Route</h4><span class="close">&times;</span>
-        </div>
-        <div class="modal-body">
-            <p>Please select a route for submission from the dropdown. All rides that have not been previously submitted
-                will be shown.</p>
-        </div>
-    </div>
-</div>
-
-{{!-- Date completed modal --}}
-<div class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h4>Date Completed</h4><span class="close">&times;</span>
-        </div>
-        <div class="modal-body">
-            <p>Please provide the date you completed the route.</p>
-        </div>
-    </div>
-</div>
-
-{{!-- Ride Time modal --}}
-<div class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h4>Ride Time</h4><span class="close">&times;</span>
-        </div>
-        <div class="modal-body">
-            <p>Please provide your time to complete the route. If your ride included more than the designated route, please provide your best estimate of the route portion.</p>
-        </div>
-    </div>
-</div>
-
-{{!-- STRAVA Link modal --}}
-<div class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h4>Strava Link</h4><span class="close">&times;</span>
-        </div>
-        <div class="modal-body">
-            <p>Please copy and paste your Strava Route link, from either the PC or APP. If copying from the APP there will be added information that should be removed prior to submitting. The route link should look like either of the following (can include the https:// prefix):</p>
-            <p>www.strava.com/activities/##########</p>
-            <p>strava.app.link/##########</p>
-        </div>
-    </div>
-</div>
-
-{{!-- Photo modal --}}
-<div class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h4>Photo</h4><span class="close">&times;</span>
-        </div>
-        <div class="modal-body">
-            <p>Please provide one photo from your ride. This photo will be shared on the site with others, and used in the photo contest for a great prize!</p>
-        </div>
-    </div>
-</div>
+{{!-- MODALS  Partial --}}
+{{> dashboard-modal modals}}
 
 {{!-- User Completed Routes Section --}}
 <section>
