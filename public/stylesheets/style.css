@@ -8,7 +8,6 @@
   --eight-color: #043e9e;
   --dark-gray: hsl(204, 9%, 22%);
   --error: hsl(0, 100%, 40%);
- 
 }
 
 * {
@@ -240,6 +239,18 @@ main {
   margin: 0 auto;
   padding: 2rem 3rem 1.5rem 3rem;
   /* z-index: 9993; */
+}
+
+#goToTop {
+  display:none;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  width: 40px;
+}
+
+#goToTop:hover {
+  cursor: pointer;
 }
 
 article {
