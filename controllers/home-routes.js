@@ -102,8 +102,13 @@ router.get('/admin', ensureLoggedIn('/'),
   });
 
 // route to create-route page /create-route
-router.get('/create-route',
-  function(req,res) {
+router.get('/create-route', ensureLoggedIn('/'),
+  function (req, res) {
+    // redirect non-Admin to home page
+    if (!req.user.isAdmin) {
+      res.redirect('/')
+    };
+
     res.render('create-route', { user: req.user });
   });
 

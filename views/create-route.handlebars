@@ -1,12 +1,12 @@
 <form class="create-route">
     <div>
         <label for="ridewithgps-id">RideWithGPS Route Id:</label>
-        <input type="text" id="ridewithgps-id">
+        <input type="text" id="ridewithgps-id" pattern="\d{8}" required>
     </div>
 
     <div>
         <label for="year">Route Year:</label>
-        <input type="text" id="year">
+        <input type="text" id="year" pattern="\d{4}" required>
     </div>
     {{!-- <div>
         <label for="points">Route Points:</label>
@@ -20,7 +20,6 @@
     <div>
         <button type="submit">Create Route</button>
     </div>
-    <img src="https://ridewithgps.com/routes/full/41552966.png" />
 </form>
 
 <script src="/javascript/create-route.js"></script>

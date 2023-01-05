@@ -72,10 +72,6 @@ nav {
   transform: rotate(360deg);
 }
 
-.logo:focus {
-  /* outline: none; */
-}
-
 .menu {
   display: flex;
   flex-direction: row;

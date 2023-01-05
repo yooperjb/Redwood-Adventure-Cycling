@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const { Routes } = require('../../models');
 const sequelize = require('../../config/connection');
+const https = require('https');
+const {getPoints, getDifficulty} = require('../../utils/routeCalc');
 
 // api/bikeroutes
 router.get('/', (req, res) => {
@@ -32,65 +34,52 @@ router.get('/:id', (req, res) => {
 });
 
 // create new bike route api/bikeroutes
-// router.post('/', (req, res) => {
-//     Routes.create({
-//         name: req.body.name,
-//         url: req.body.url,
-//         mileage: req.body.mileage,
-//         elevation: req.body.elevation,
-//         points: req.body.points,
-//         first_bonus: req.body.first_bonus,
-//         difficulty: req.body.difficulty,
-//         map: req.body.map
-//     })
-//         .then(dbRoutesData => res.json(dbRoutesData))
-//         .catch(err => {
-//             console.log(err);
-//             res.status(500).json(err);
-//         });
-// });
-
-// attempt at creating new bike route
 router.post('/', (req, res) => {
-    
-    const { ridewithgps_id, year} = req.body;
-    console.log(ridewithgps_id, year);
-    console.log(process.env.RWGPS_APIKEY);
-    
-    // get route information from RideWithGps
-    const response = fetch(`https://ridewithgps.com/routes/${ridewithgps_id}.json`, {
-        method: 'GET', 
-        body: JSON.stringify({
-            "apikey": process.env.RWGPS_APIKEY,
-            "version": "2",
-            "auth_token": process.env.RWGPS_AUTH
-        }),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
 
-    if (response.ok) {
-        console.log("ridewithgps response", response);
-    } else {
-        console.log("Route NOT Created");
-        alert(response.statusText);
-    }
-    // Routes.create({
-    //     name: req.body.name,
-    //     url: req.body.url,
-    //     mileage: req.body.mileage,
-    //     elevation: req.body.elevation,
-    //     points: req.body.points,
-    //     first_bonus: req.body.first_bonus,
-    //     difficulty: req.body.difficulty,
-    //     map: req.body.map
-    // })
-    //     .then(dbRoutesData => res.json(dbRoutesData))
-    //     .catch(err => {
-    //         console.log(err);
-    //         res.status(500).json(err);
-    //     });
+    // redirect non-Admin to home page
+    if (!req.user.isAdmin) {
+        res.redirect('/')
+    };
+
+    const { ridewithgps_id, year } = req.body;
+
+    // get route information from RideWithGps
+    https.get(`https://ridewithgps.com/routes/${ridewithgps_id}.json?apikey=${process.env.RWGPS_APIKEY}&auth_token=${process.env.RWGPS_AUTH}`, (resp) => {
+        let data = '';
+
+        resp.on('data', (chunk) => {
+            data += chunk;
+        });
+
+        resp.on('end', () => {
+            route = JSON.parse(data).route
+
+            route_name = route.name;
+            mileage = route.distance * .0006213712;
+            elevation = route.elevation_gain * 3.281;
+            points = getPoints(mileage, elevation);
+            difficulty = getDifficulty(points);
+            description = route.description;
+
+            Routes.create({
+                id: ridewithgps_id,
+                year: year,
+                name: route_name,
+                mileage: mileage,
+                elevation: elevation,
+                points: points,
+                difficulty: difficulty,
+                description: description
+            })
+                .then(dbRoutesData => res.json(dbRoutesData))
+                .catch(err => {
+                    console.log(err);
+                    res.status(500).json(err);
+                });
+        });
+    }).on('error', (err) => {
+        console.log("Error: ", err.message)
+    })
 });
 
 router.put('/:id', (req, res) => {
