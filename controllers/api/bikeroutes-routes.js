@@ -36,10 +36,7 @@ router.get('/:id', (req, res) => {
 // create new bike route api/bikeroutes
 router.post('/', (req, res) => {
 
-    // redirect non-Admin to home page
-    if (!req.user.isAdmin) {
-        res.redirect('/')
-    };
+
 
     const { ridewithgps_id, year } = req.body;
 
