@@ -11,7 +11,8 @@ module.exports = {
     },
     format_month_day: full_date => {
         date_split = full_date.split("-");
-        return date_split[1] +"-"+ date_split[2];
+        // return date_split[1] +"-"+ date_split[2];
+        return `${date_split[1]}-${date_split[2]}-${date_split[0]}`
     },
     format_month_day_time: full_date => {
         get_month = full_date.getMonth();

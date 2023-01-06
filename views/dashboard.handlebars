@@ -15,16 +15,15 @@
                             <img class="question-mark" src="images/question-mark.svg" alt="Question Mark"
                                 title="Please select the route you rode.">
                         </div>
-                        
+
                         <select required name="route-name" id="route_id">
                             <option value="" disabled selected>Routes...</option>
                             {{#each routes.routes as |routes|}}
                             <option value="{{routes.id}}">{{routes.name}}</option>
                             {{/each}}
                         </select>
-                    
                     </div>
-                    
+
                     <div>
                         <div class="form-label">
                             <label for="date_completed">DATE COMPLETED</label>
@@ -35,7 +34,7 @@
                         {{!-- Set the min and max for Series Dates --}}
                         <input type="date" min="today" max="2023-11-30" id="date_completed" required>
                     </div>
-                    
+
                     <div>
                         <div class="form-label">
                             <label for="ride_time">RIDE TIME: HH:MM</label>
@@ -77,7 +76,7 @@
     </div>
 </section>
 <hr>
-{{!-- MODALS  Partial --}}
+{{!-- MODALS Partial --}}
 {{> dashboard-modal modals}}
 
 {{!-- User Completed Routes Section --}}
@@ -101,10 +100,10 @@
                     </tr>
                     <tr>
                         <td>Ride Time</td>
-                        <td> {{format_time userRoutes.ride_time}}</td>
+                        <td>{{format_time userRoutes.ride_time}}</td>
                     </tr>
                     <tr>
-                        <td>Points</td>
+                        <td>Points Earned</td>
                         <td>{{userRoutes.route.points}}</td>
                     </tr>
                     <tr>

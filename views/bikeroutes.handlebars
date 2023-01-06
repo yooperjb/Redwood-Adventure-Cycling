@@ -15,7 +15,7 @@
             <table>
                 <tr>
                     <td>Mileage</td>
-                    <td>{{this.mileage}}</td>
+                    <td>{{format_miles this.mileage}}</td>
                 </tr>
                 <tr>
                     <td>Points</td>
@@ -56,10 +56,6 @@
         {{!-- <iframe src="https://ridewithgps.com/embeds?type=route&id=41552569"
             style="width: 1px; min-width: 100%; height: 100%; border: none;" scrolling="no"></iframe> --}}
     </div>
-
-    {{!-- Possibly put profile image here at some point --}}
-    {{!-- <img src="https://ridewithgps.com/routes/{{this.id}}/elevation_profile.jpg"
-        alt="Elevation Profile of {{this.name}} Route" /> --}}
 
 </article>
 {{/each}}
