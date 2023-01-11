@@ -36,8 +36,6 @@ router.get('/:id', (req, res) => {
 // create new bike route api/bikeroutes
 router.post('/', (req, res) => {
 
-
-
     const { ridewithgps_id, year } = req.body;
 
     // get route information from RideWithGps
@@ -57,6 +55,8 @@ router.post('/', (req, res) => {
             points = getPoints(mileage, elevation);
             difficulty = getDifficulty(points);
             description = route.description;
+
+            console.log(route_name, mileage, elevation, points, difficulty)
 
             Routes.create({
                 id: ridewithgps_id,

@@ -6,8 +6,9 @@ async function createRouteFormHandler(event) {
     const ridewithgps_id = document.querySelector('#ridewithgps-id').value;
     const year = document.querySelector('#year').value;
     
+    console.log(ridewithgps_id, year);
     // send create-route form variables to api
-    response = await fetch("api/bikeroutes/", {
+    response = await fetch("/api/bikeroutes/", {
         method: 'POST', 
         body: JSON.stringify({
             ridewithgps_id,
@@ -19,9 +20,13 @@ async function createRouteFormHandler(event) {
     });
 
     if (response.ok) {
-        console.log(response);
+        console.log("Response OK");
+        document.querySelector('#ridewithgps-id').value = "";
+        document.querySelector('#year').value = "";
+        // console.log(response);
     } else {
         console.log("Route NOT Created");
+        console.log(response)
         alert(response.statusText);
     }
 };

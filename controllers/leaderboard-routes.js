@@ -1,9 +1,7 @@
 const router = require('express').Router();
 const { Routes, User_Routes, User } = require('../models');
-// const { ensureLoggedIn } = require('connect-ensure-login');
 const passport = require('../config/passport');
 const sequelize = require('../config/connection');
-const { isNull } = require('lodash');
 
 
 // route to leaderboard page /leaderboard
@@ -87,6 +85,5 @@ router.get('/', (req, res) => {
         res.status(500).json(err);
       })
   });
-
 
 module.exports = router;

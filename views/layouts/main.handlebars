@@ -17,7 +17,7 @@
     {{!--
     <link rel="stylesheet" href="/stylesheets/timepicker.css"> --}}
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="/favicon.png">
 </head>
 
 <body>
@@ -51,8 +51,16 @@
                 <li class="item"><a href="/dashboard">DASHBOARD</a></li>
                 {{/if}}
                 {{#if user.isAdmin}}
-                <li class="item">
-                    <a href="/admin" class="subnav-link">ADMIN</a>
+                <li class="item has-submenu">
+                    <a tabindex="0">ADMIN</a>
+                    <ul class="submenu">
+                        <li class="subitem first-item">
+                            <a href="/admin/approvals">APPROVALS</a>
+                        </li>
+                        <li class="subitem">
+                            <a href="/admin/create-route">CREATE ROUTE</a>
+                        </li>
+                    </ul>
                 </li>
                 {{/if}}
 
@@ -79,7 +87,7 @@
     <!-- Main Section -->
     <main>
         {{{ body }}}
-        <img src="images/arrow-up-icon.svg" alt="Arrow Up Icon" id="goToTop" onclick="topFunction()">
+        <img src="/images/arrow-up-icon.svg" alt="Arrow Up Icon" id="goToTop" onclick="topFunction()">
     </main>
     <!-- End Main -->
 
