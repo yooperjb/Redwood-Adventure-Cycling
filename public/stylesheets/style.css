@@ -600,7 +600,7 @@ article.bike-route {
 }
 
 .bike-route-map {
-  margin: 0px 5px 10px;
+  margin: 5px;
   flex: 1 1 45%;
   aspect-ratio: 1/1;
 }
