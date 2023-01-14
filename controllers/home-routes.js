@@ -6,7 +6,6 @@ const sequelize = require('../config/connection');
 
 // route to home page
 router.get('/', (req, res) => {
-  // console.log("session", req.session);
   res.render('homepage', {
     user: req.user,
     //loggedIn: req.session.loggedIn
