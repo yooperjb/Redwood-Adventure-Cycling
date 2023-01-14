@@ -26,7 +26,7 @@ router.post('/', upload.single('photo'), (req, res) => {
                     model: User,
                     attributes:['id', 'gender'],
                     where: {
-                    gender: req.user._json.sex
+                    gender: req.user.sex
                     }
                 }
             ],     
