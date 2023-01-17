@@ -10,7 +10,8 @@ const multer = require('multer');
 // GET /api/user-routes for req testing
 router.get('/', (req, res) => {
     // console.log("User:", req.user);
-    // console.log("id:", req.user.id);
+    res.send("Hey")
+    console.log("id:", req.user.id);
 });
 
 // create new user route /api/user-routes
