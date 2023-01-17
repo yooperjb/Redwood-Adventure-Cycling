@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/webprinc3ss/the-adventure-series.git"
+    "url": "https://github.com/yooperjb/Redwood-Adventure-Cycling.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/webprinc3ss/the-adventure-series/issues"
+    "url": "https://github.com/yooperjb/Redwood-Adventure-Cycling/issues"
   },
-  "homepage": "https://github.com/webprinc3ss/the-adventure-series#readme",
+  "homepage": "https://github.com/yooperjb/Redwood-Adventure-Cycling",
   "dependencies": {
     "connect-ensure-login": "^0.1.1",
     "connect-session-sequelize": "^7.1.5",
