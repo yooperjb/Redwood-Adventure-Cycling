@@ -6,10 +6,8 @@ const Resize = require('../../utils/Resize');
 const path = require('path');
 const multer = require('multer');
 
-
 // GET /api/user-routes for req testing
 router.get('/', (req, res) => {
-    // console.log("User:", req.user);
     res.send("Hey")
     console.log("id:", req.user.id);
 });
