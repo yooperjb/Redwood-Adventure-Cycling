@@ -1,4 +1,3 @@
-console.log("does it make it to here?")
 require('dotenv').config();
 const path = require('path');
 const express = require('express');
@@ -11,7 +10,7 @@ const passport = require('./config/passport');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 // create handlebars - pass in helper functions document
 const hbs = exphbs.create({ helpers });
-console.log("how about to here?");
+
 // Create a new Express application
 const app = express();
 const PORT = process.env.PORT || 443;
