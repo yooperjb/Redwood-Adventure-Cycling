@@ -1,5 +1,5 @@
 const sharp = require('sharp');
-const path = require('node:path');
+const path = require('path');
 
 class Resize {
     constructor(folder,filename) {
