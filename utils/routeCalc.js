@@ -2,17 +2,17 @@
 const getPoints = (miles,elevation) => {
     
     diff = elevation/miles;
-    let diff_points = 0;
-    if (diff < 50) {
-        diff_points = 10;
-    } else if (diff < 100) {
-        diff_points = 20;
-    } else if (diff < 125) {
-        diff_points = 30;
-    } else if (diff < 150) {
-        diff_points = 40;
+    let ratio_points = 0;
+    if (diff <= 40) {
+        ratio_points = 10;
+    } else if (diff <= 80) {
+        ratio_points = 20;
+    } else if (diff <= 120) {
+        ratio_points = 30;
+    } else if (diff <= 160) {
+        ratio_points = 40;
     } else {
-        diff_points = 50
+        ratio_points = 50
     }
     
     let mile_points = 0;
@@ -41,18 +41,18 @@ const getPoints = (miles,elevation) => {
         elev_points = 25;
     }
 
-    return diff_points + mile_points + elev_points;
+    return ratio_points + mile_points + elev_points;
 }
 
 const getDifficulty = (points) => {
     console.log("points", points)
-    if (points >=80) {
+    if (points >80) {
         return "Epic";
-    } else if (points >= 65) {
+    } else if (points >= 66) {
         return "Very Difficult";
-    } else if (points >= 50) {
+    } else if (points >= 51) {
         return "Difficult";
-    } else if (points >= 35) {
+    } else if (points >= 36) {
         return "Moderate";
     } else {
         return "Easy"

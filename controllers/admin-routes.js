@@ -3,7 +3,6 @@ const { Routes, User_Routes, User } = require('../models');
 const { ensureLoggedIn } = require('connect-ensure-login');
 const passport = require('../config/passport');
 const sequelize = require('../config/connection');
-// const { route } = require('./leaderboard-routes');
 
 // route to approvals page /admin/approvals *Redirect non-ADMIN to home page
 router.get('/approvals', ensureLoggedIn('/'),
@@ -44,6 +43,7 @@ router.get('/approvals', ensureLoggedIn('/'),
         const userRoutes = dbUserRoutesData.map(route => route.get({ plain: true }));
       
         res.render('approvals', {
+          title: 'Admin Approvals',
           user: req.user,
           userRoutes: { userRoutes },
         });
@@ -63,7 +63,9 @@ router.get('/approvals', ensureLoggedIn('/'),
       res.redirect('/')
     };
 
-    res.render('create-route', { user: req.user });
+    res.render('create-route', { 
+      title: 'Admin Create Route',
+      user: req.user });
   });
 
 module.exports = router;

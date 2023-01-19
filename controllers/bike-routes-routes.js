@@ -18,7 +18,10 @@ router.get('/', async (req, res) => {
         // console.log({ routes }) //flag value
         
         // render bikeroutes page with all bike routes
-        res.render('bikeroutes', { routes, user: req.user });
+        res.render('bikeroutes', { 
+            title: 'Bike Routes',
+            routes, 
+            user: req.user });
     } catch (err) {
         console.log(err);
         res.status(500).json(err.message);

@@ -2,6 +2,7 @@
 
 {{!-- if points exist display leader table --}}
 
+{{#if userPoints.userPoints}}
 <article>
     {{!-- leaderboard gender filter --}}
     Add Filter
@@ -13,7 +14,7 @@
     </select>
     <span id="filter">{{gender}}</span>
 
-    {{#if userPoints.userPoints}}
+   
     <table class="leaderboard">
         <tr>
             <th>Rider Name</th>
@@ -33,6 +34,6 @@
         {{/each}}
     </table>
 </article>
+<script src="/javascript/genderfilter.js"></script>
 {{/if}}
 
-<script src="/javascript/genderfilter.js"></script>
