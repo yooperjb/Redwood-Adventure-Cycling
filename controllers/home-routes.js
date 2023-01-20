@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 router.get('/guidelines',
   function (req, res) {
     res.render('guidelines', { 
-      title: 'Guidelines',
+      title: 'RAC-Guidelines',
       user: req.user });
 });
 
@@ -22,7 +22,7 @@ router.get('/guidelines',
 router.get('/about',
   function (req, res) {
     res.render('about', { 
-      title: 'About',
+      title: 'RAC-About',
       user: req.user });
 });
 
@@ -30,7 +30,7 @@ router.get('/about',
 router.get('/sponsors',
   function (req, res) {
     res.render('sponsors', { 
-      title: 'Sponsors',
+      title: 'RAC-Sponsors',
       user: req.user });
 });
 
@@ -38,7 +38,7 @@ router.get('/sponsors',
 router.get('/login',
   function (req, res) {
     res.render('login', {
-      title: 'Login'
+      title: 'RAC-Login'
     });
   });
 //change to post and move to api route

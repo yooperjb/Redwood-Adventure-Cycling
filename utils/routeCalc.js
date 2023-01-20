@@ -1,4 +1,3 @@
-
 const getPoints = (miles,elevation) => {
     
     diff = elevation/miles;
