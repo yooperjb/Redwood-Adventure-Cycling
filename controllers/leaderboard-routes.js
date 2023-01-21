@@ -74,7 +74,7 @@ router.get('/', (req, res) => {
         });
       
         res.render('leaderboard', {
-            title: 'Leaderboard',
+            title: '2023 Leaderboard',
             gender: gender,
             user: req.user,
             userPoints: { userPoints },

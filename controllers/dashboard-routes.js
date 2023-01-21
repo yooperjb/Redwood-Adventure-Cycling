@@ -60,7 +60,7 @@ router.get('/', ensureLoggedIn('/login'), (req, res) => {
             routes = routes.filter(ar => !userRoutes.find(rm => (rm.route_id === ar.id)))
             // render dashboard page and pass userRoutes, routes, and loggedIn user 
             res.render('dashboard', {
-                title: 'Dashboard',
+                title: 'User Dashboard',
                 userRoutes: { userRoutes },
                 routes: { routes },
                 user: req.user,

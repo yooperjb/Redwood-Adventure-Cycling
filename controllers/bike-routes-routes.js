@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
         
         // render bikeroutes page with all bike routes
         res.render('bikeroutes', { 
-            title: 'Bike Routes',
+            title: '2023 Bike Routes',
             routes, 
             user: req.user });
     } catch (err) {
