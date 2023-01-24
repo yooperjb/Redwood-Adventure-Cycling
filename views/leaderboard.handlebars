@@ -1,9 +1,7 @@
 <h2>2023 Leaderboard</h2>
 
-{{!-- if points exist display leader table --}}
-
-{{#if userPoints.userPoints}}
 <article>
+    <h4>Overall Points</h4>
     {{!-- leaderboard gender filter --}}
     Add Filter
     <select id="gender-filter" name="gender-filter">
@@ -13,7 +11,9 @@
         <option value="M">Male</option>
     </select>
     <span id="filter">{{gender}}</span>
-
+    
+    {{!-- if points exist display leader table --}}
+    {{#if userPoints.userPoints}}
    
     <table class="leaderboard">
         <tr>
@@ -34,6 +34,7 @@
         {{/each}}
     </table>
 </article>
-<script src="/javascript/genderfilter.js"></script>
 {{/if}}
+<script src="/javascript/genderfilter.js"></script>
+
 
