@@ -3,7 +3,7 @@
 <article>
     <h4>Overall Points</h4>
     {{!-- leaderboard gender filter --}}
-    Add Filter
+    Gender Filter
     <select id="gender-filter" name="gender-filter">
         <option value="" disabled selected>Filter</option>
         <option value="">Overall</option>
@@ -11,12 +11,13 @@
         <option value="M">Male</option>
     </select>
     <span id="filter">{{gender}}</span>
-    
+
     {{!-- if points exist display leader table --}}
     {{#if userPoints.userPoints}}
-   
+
     <table class="leaderboard">
         <tr>
+            <th>Pos</th>
             <th>Rider Name</th>
             <th>Elevation</th>
             <th>Miles</th>
@@ -25,6 +26,7 @@
         </tr>
         {{#each userPoints.userPoints as |userPoints|}}
         <tr>
+            <td>{{userPoints.position}}</td>
             <td>{{userPoints.user.name}}</td>
             <td>{{format_thousands userPoints.total_elevation}}</td>
             <td>{{format_miles userPoints.total_miles}}</td>
@@ -35,6 +37,39 @@
     </table>
 </article>
 {{/if}}
-<script src="/javascript/genderfilter.js"></script>
+<hr>
+<article>
+    <h4>Submitted Routes</h4>
+    Route Filter
+    <select id="route-filter" name="route-filter">
+        <option value="" disabled selected>Filter</option>
+        <option value="">All</option>
+        {{#each routes.routes as |routes|}}
+        <option value="{{routes.route_id}}">{{routes.name}}</option>
+        {{/each}}
+    </select>
+    {{!-- <span id="filter">{{gender}}</span> --}}
 
-
+    {{#if routes.routes}}
+    <table class="leaderboard">
+        <tr>
+            <th>Rider Name</th>
+            <th>Route</th>
+            <th>Completed/Submitted</th>
+            <th>Points</th>
+            <th>Bonus</th>
+        </tr>
+        {{#each userRoutes.userRoutes as | userRoutes| }}
+        <tr>
+            <td>{{userRoutes.user.name}}</td>
+            <td>{{userRoutes.route.name}}</td>
+            <td>{{format_month_day userRoutes.date_completed}}<br>
+                {{format_month_day_time userRoutes.date_submitted}}</td>
+            <td>{{userRoutes.route.points}}</td>
+            <td>{{userRoutes.bonus_points}}</td>
+        </tr>
+        {{/each}}
+    </table>
+    {{/if}}
+</article>
+<script src="/javascript/leaderboardFilter.js"></script>

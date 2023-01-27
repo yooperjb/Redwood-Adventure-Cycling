@@ -638,9 +638,10 @@ article.bike-route {
          LEADER TABLE
 * ========================================== */
 
-#gender-filter {
+#gender-filter, #route-filter {
   width: auto;
   min-width: 150px;
+  margin: .1rem .5rem;
 }
 
 table.leaderboard {
