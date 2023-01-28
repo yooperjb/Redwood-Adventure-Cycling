@@ -23,5 +23,9 @@ module.exports = {
         get_hours = full_date.getHours();
         get_minutes = full_date.getMinutes();
         return get_month + "-" + get_day + " " + get_hours + ":" + get_minutes;
+    },
+
+    add1: num => {
+        return num+1;
     }
 }
