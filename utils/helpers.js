@@ -13,16 +13,16 @@ module.exports = {
     
     format_month_day: full_date => {
         date_split = full_date.split("-");
-        // return date_split[1] +"-"+ date_split[2];
         return `${date_split[1]}-${date_split[2]}-${date_split[0]}`
     },
     
     format_month_day_time: full_date => {
         get_month = full_date.getMonth();
         get_day = full_date.getDate();
+        get_year = full_date.getFullYear();
         get_hours = full_date.getHours();
         get_minutes = full_date.getMinutes();
-        return get_month + "-" + get_day + " " + get_hours + ":" + get_minutes;
+        return `${get_month+1}-${get_day}-${get_year} ${get_hours}:${get_minutes}`;
     },
 
     add1: num => {

@@ -88,38 +88,51 @@ router.get('/', (req, res) => {
         {
           model: User,
             attributes: ['name','gender'],
-            where: genderOptions.where
         },
         {
           model: Routes,
             attributes: ['name', 'points'],
-            where: routeOptions.where
         },
       ],
       order: [['date_submitted', 'ASC']]
+    }).then(dbUserRouteData => dbUserRouteData),
+
+    Routes.findAll({
+      attributes:[
+        'id', 'name'
+      ], 
+      include:[
+        {
+          model: User_Routes,
+          attributes: ['date_completed', 'date_submitted', 'bonus_points', 'user_id', 'route_id'],
+          where: {approved: 1},
+          include:[
+            {
+            model: User,
+            attributes: ['name', 'gender'],
+            where: genderOptions.where
+          }
+          ],
+          order: [['bonus_points', 'DSC']]
+        }
+      ],
+      order: [['name', 'ASC']]
     })
     
   ])
-      .then(([dbUserPointData, dbUserRouteData]) => {
-      
-        // serialize data before passing to template
-        let place = 1;
-        let routes = [];
-        const userPoints = dbUserPointData.map(route => {
-          let user_route = route.get({ plain: true });
-          // create a position value
-          user_route.position = place;
-          place +=1;
-          return user_route;
-        });
-        const userRoutes = dbUserRouteData.map(route => {
-          let user_route = route.get({ plain:true });
-          let isRoutePresent = routes.some((id) => id.route_id === user_route.route_id);
-          if (!isRoutePresent){
-            routes.push({route_id: user_route.route_id, name:user_route.route.name});
-          }
-          return user_route;
-        })
+      .then(([dbUserPointData, dbUserRouteData, dbRoutesAttackersData]) => {
+        
+        // serialize user point data before passing to template
+        // used for Overall Points Table
+        const userPoints = dbUserPointData.map(user => user.get({ plain:true }));
+        
+        // serialize user route data before passing to template
+        // used for Submitted Routes Table
+        const userRoutes = dbUserRouteData.map(route => route.get({ plain:true }))
+
+        // serialize user attack point data before passing to template
+        // used for Bonus Points Attacker Table
+        const attackerPoints = dbRoutesAttackersData.map(route => route.get({ plain:true }));
 
         res.render('leaderboard', {
             title: '2023 Leaderboard',
@@ -127,13 +140,14 @@ router.get('/', (req, res) => {
             user: req.user,
             userPoints: { userPoints },
             userRoutes: { userRoutes },
-            routes: { routes }
+            attackerPoints: { attackerPoints },
         });
       })
       .catch(err => {
         console.log(err);
         res.status(500).json(err);
       })
+      
   });
 
 module.exports = router;

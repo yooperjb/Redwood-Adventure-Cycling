@@ -635,12 +635,11 @@ article.bike-route {
 * ========================================== */
 
 /*===========================================
-         LEADER TABLE
+         LEADERBOARD TABLE
 * ========================================== */
 
 #gender-filter, #route-filter {
-  width: auto;
-  min-width: 150px;
+  width: 150px;
   margin: .1rem .5rem;
 }
 
@@ -674,6 +673,12 @@ table.leaderboard tr:nth-child(even) {
 
 table.leaderboard tr:hover {
   background-color: #C4E3F3;
+}
+
+table.leaderboard td.route-title {
+  text-align: left;
+  font-style: italic;
+  padding-left: 15px;
 }
 
 /*===========================================

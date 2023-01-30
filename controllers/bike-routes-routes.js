@@ -15,7 +15,10 @@ router.get('/', async (req, res) => {
         },
 
         )).map(route => route.toJSON()) //converts to plain object
+        
         // console.log({ routes }) //flag value
+        // console.log('routes', routes)
+        // console.log('typeof routes', typeof( routes))
         
         // render bikeroutes page with all bike routes
         res.render('bikeroutes', { 
