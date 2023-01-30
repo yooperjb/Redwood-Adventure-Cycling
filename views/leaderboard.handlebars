@@ -26,7 +26,6 @@
         </tr>
         {{#each userPoints.userPoints as |userPoints|}}
         <tr>
-            {{!-- <td>{{userPoints.position}}</td> --}}
             <td>{{add1 @index}}</td>
             <td>{{userPoints.user.name}}</td>
             <td>{{format_thousands userPoints.total_elevation}}</td>
@@ -41,15 +40,6 @@
 <hr>
 <article>
     <h4>Submitted Routes</h4>
-    {{!-- Route Filter --}}
-    {{!-- <select id="route-filter" name="route-filter">
-        <option value="" disabled selected>Route Filter</option>
-        <option value="">All</option>
-        {{#each routes.routes as |routes|}}
-        <option value="{{routes.route_id}}">{{routes.name}}</option>
-        {{/each}}
-    </select> --}}
-    {{!-- <span id="filter">{{gender}}</span> --}}
 
     {{#if userRoutes}}
     <table class="leaderboard">
@@ -57,10 +47,7 @@
             <th>#</th>
             <th>Rider Name</th>
             <th>Route</th>
-            {{!-- <th>Completed / Submitted</th> --}}
             <th>Submitted</th>
-            {{!-- <th>Points</th> --}}
-            {{!-- <th>Bonus</th> --}}
         </tr>
         {{#each userRoutes.userRoutes as | userRoutes| }}
         <tr>
@@ -68,8 +55,6 @@
             <td>{{userRoutes.user.name}}</td>
             <td>{{userRoutes.route.name}}</td>
             <td>{{format_month_day_time userRoutes.date_submitted}}</td>
-            {{!-- <td>{{userRoutes.route.points}}</td> --}}
-            {{!-- <td>{{userRoutes.bonus_points}}</td> --}}
         </tr>
         {{/each}}
     </table>
