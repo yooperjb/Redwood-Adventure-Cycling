@@ -105,7 +105,10 @@ router.get('/', (req, res) => {
         {
           model: User_Routes,
           attributes: ['date_completed', 'date_submitted', 'bonus_points', 'user_id', 'route_id'],
-          where: {approved: 1},
+          where: {
+            approved: 1,
+            bonus_points: [5,3,1]
+          },
           include:[
             {
             model: User,
