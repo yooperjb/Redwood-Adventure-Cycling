@@ -63,10 +63,11 @@
 <hr>
 <article>
     <h4>Route Bonus (Attacker) Points</h4>
+    If route not shown all bonus points available.
     <table class="leaderboard">
         <tr>
             <th>#</th>
-            <th>Name</th>
+            <th>Rider Name</th>
             <th>CAT</th>
             <th>Bonus</th>
         </tr>
@@ -79,7 +80,7 @@
             <td>{{add1 @index}}</td>
             <td>{{attackerRoutes.user.name}}</td>
             <td>{{attackerRoutes.user.gender}}</td>
-            <td>{{attackerRoutes.bonus_points}}</td>
+            <td class="points">{{attackerRoutes.bonus_points}}</td>
         </tr>
         {{/each}}
         {{/each}}

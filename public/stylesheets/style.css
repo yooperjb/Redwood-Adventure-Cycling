@@ -275,6 +275,35 @@ hr {
 }
 
 /*==========================================
+* FOOTER STYLES
+* ========================================*/
+
+footer {
+  max-width: 1050px;
+  margin: 0 auto;
+  background-color: #011740;
+}
+
+footer div{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center; 
+}
+
+footer div a {
+  outline: none;
+}
+
+footer div img {
+  width: 45px;
+  margin: .5rem;
+  outline: none;
+  display: block;
+}
+
+
+/*==========================================
 * DASHBOARD STYLES
 * ========================================*/
 
