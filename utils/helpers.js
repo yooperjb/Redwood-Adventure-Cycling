@@ -20,9 +20,8 @@ module.exports = {
         get_month = full_date.getMonth();
         get_day = full_date.getDate();
         get_year = full_date.getFullYear();
-        get_hours = full_date.getHours();
-        get_minutes = full_date.getMinutes();
-        return `${get_month+1}-${get_day}-${get_year} ${get_hours}:${get_minutes}`;
+        get_time = full_date.toLocaleTimeString('en-US',{hour: '2-digit', minute: '2-digit' })
+        return `${get_month+1}-${get_day}-${get_year} ${get_time}`;
     },
 
     add1: num => {

@@ -57,6 +57,10 @@ nav {
   color: white;
 }
 
+nav a:focus-visible {
+  outline: none;
+}
+
 .logo-div {
   max-width: 70px;
   height: 75%;
@@ -87,6 +91,7 @@ nav {
   padding: 0;
   color: white;
   font-weight: normal;
+  outline: none;
 }
 
 .menu button {
@@ -886,7 +891,7 @@ table.leaderboard td.route-title {
   }
 
   .menu li {
-    margin: 3px 3px;
+    margin: 5px 3px;
   }
 
   .menu li a,
@@ -898,6 +903,7 @@ table.leaderboard td.route-title {
     position: static;
     padding: 2px 0 0 0;
     box-shadow: none;
+    margin-left: 5px;
   }
 
   .toggle {

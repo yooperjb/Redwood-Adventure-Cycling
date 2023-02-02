@@ -6,7 +6,6 @@ const sequelize = require('../config/connection');
 // route to leaderboard page /leaderboard
 router.get('/', (req, res) => {
     
-    console.log("query", req.query)
     // check if query was sent, pass to where object for filtering
     if (req.query.gender) {
         genderOptions = {
@@ -44,7 +43,7 @@ router.get('/', (req, res) => {
 
     return Promise.all([
 
-    // get all ridden routes that have been approved
+    // get all ridden routes that have been approved for Overall Points
     User_Routes.findAll({
       where: {
         approved: 1,
@@ -75,6 +74,7 @@ router.get('/', (req, res) => {
     })
       .then(dbUserPointData => dbUserPointData),
 
+    // get all ridden routes that have been approved for Submitted Routes
     User_Routes.findAll({
       where: {
         approved: 1,
@@ -97,6 +97,7 @@ router.get('/', (req, res) => {
       order: [['date_submitted', 'ASC']]
     }).then(dbUserRouteData => dbUserRouteData),
 
+    // get all Routes that have been ridden for Route Bonus Points
     Routes.findAll({
       attributes:[
         'id', 'name'
@@ -136,7 +137,7 @@ router.get('/', (req, res) => {
         // serialize user attack point data before passing to template
         // used for Bonus Points Attacker Table
         const attackerPoints = dbRoutesAttackersData.map(route => route.get({ plain:true }));
-
+       
         res.render('leaderboard', {
             title: '2023 Leaderboard',
             gender: gender,

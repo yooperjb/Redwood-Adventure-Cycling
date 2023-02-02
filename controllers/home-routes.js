@@ -53,7 +53,8 @@ router.get('/return',
   passport.authenticate('strava', { failureRedirect: '/login' }),
   // if user authenticated go to homepage
   function (req, res) {
-    res.redirect('/');
+    // res.redirect('/');
+    res.redirect('back');
   });
 
 //delete or post request and move to api route

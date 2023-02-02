@@ -48,6 +48,7 @@ router.post('/', upload.single('photo'), (req, res) => {
     
             .then((bonus_points) => {
                 // if file submitted resize and save to file
+                // create two size files!!!
                 if (req.file) {
                     photo_name = `${req.user.id}-${req.body.route_id}.jpg`
                     const photo_dir = 'public/photos/2023';
@@ -56,14 +57,11 @@ router.post('/', upload.single('photo'), (req, res) => {
                     const filename = fileUpload.save(req.file.buffer)
                     console.log('filename', filename)
                     console.log(typeof(filename));
-
                 } 
                 else {
                     photo_name= ''
                 }
-
                 return photo_name;
-                
 
             })
             .then(photo_name => {
@@ -76,7 +74,6 @@ router.post('/', upload.single('photo'), (req, res) => {
                     bonus_points: bonus_points,
                     user_id: req.user.id,
                     // Use this when testing with Insomnia
-                    // user_id: req.body.user_id,
                     route_id: req.body.route_id,
                     })
             })
