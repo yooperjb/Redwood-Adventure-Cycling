@@ -979,4 +979,7 @@ table.leaderboard td.route-title {
     order: 2;
     flex: 2 2 70%;
   }
+  footer div img {
+    width: 30px;
+  }
 }
