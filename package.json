@@ -32,7 +32,6 @@
     "mysql2": "^2.3.3",
     "passport": "^0.4.1",
     "passport-strava": "^0.2.0",
-    "photoviewer": "^3.6.6",
     "sequelize": "^6.3.5",
     "sharp": "^0.27.2"
   },

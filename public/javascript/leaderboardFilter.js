@@ -32,4 +32,4 @@ async function routeFilterHandler(event) {
 }
 
 document.querySelector('#gender-filter').addEventListener('change', genderFilterHandler);
-document.querySelector('#route-filter').addEventListener('change', routeFilterHandler);
+// document.querySelector('#route-filter').addEventListener('change', routeFilterHandler);

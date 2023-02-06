@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const { Routes, User_Routes, User } = require('../models');
 const sequelize = require('../config/connection');
-// const Photoviewer = require('photoviewer');
 
 
 // route to leaderboard page /leaderboard
@@ -82,7 +81,7 @@ router.get('/', (req, res) => {
       },
 
       attributes: [
-        'user_id','date_completed', 'date_submitted', 'bonus_points', 'route_id'
+        'user_id','date_completed', 'date_submitted', 'bonus_points', 'route_id', 'photo'
       ], 
 
       include: [
