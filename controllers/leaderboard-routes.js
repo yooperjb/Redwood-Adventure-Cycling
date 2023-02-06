@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Routes, User_Routes, User } = require('../models');
 const sequelize = require('../config/connection');
+// const Photoviewer = require('photoviewer');
 
 
 // route to leaderboard page /leaderboard
