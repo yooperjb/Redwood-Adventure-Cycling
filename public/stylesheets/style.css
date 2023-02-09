@@ -585,8 +585,21 @@ article.bike-route {
 }
 
 .bike-route-title {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
   flex-basis: 100%;
   color: white;
+}
+
+.bike-route-title .ridden {
+  width: 30px;
+  margin: 5px 10px 0px 10px;
+  display: block;
+}
+
+.bike-route-title .unridden {
+  display: none;
 }
 
 .bike-route-col1 {

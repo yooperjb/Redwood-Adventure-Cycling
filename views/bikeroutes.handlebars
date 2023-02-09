@@ -6,6 +6,9 @@
 
     <div class="bike-route-title">
         <h4>{{this.name}}</h4>
+        {{#if this.ridden}}
+        <span class="{{this.ridden}}"><img src="/images/checkmark.svg"></span>
+        {{/if}}
     </div>
     <!--Data-->
     <div class="bike-route-col1">
