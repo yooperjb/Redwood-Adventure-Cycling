@@ -19,6 +19,9 @@ router.get('/', async (req, res) => {
         // If user signed in get routes they've ridden for route checkmark
         if (req.user) {
             const user_routes = (await User_Routes.findAll({
+                where: {
+                    user_id: req.user.id
+                },
                 attributes: [
                     'route_id'
                 ]
