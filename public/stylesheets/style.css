@@ -975,6 +975,12 @@ table.leaderboard td.route-title {
     display: none;
   }
 
+  .bike-route-title .ridden {
+    width: 25px;
+    margin: 5px 10px 0px 10px;
+    display: block;
+  }
+
   .form-container {
     width: 90%;
   }
