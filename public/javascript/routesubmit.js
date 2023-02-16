@@ -24,8 +24,8 @@ async function routeSubmitFormHandler(event) {
             // turn on hidden span here
             typeError.setAttribute('class', 'type-error active');
             return
-        } else if (photoFile.size > 10000000) {
-            console.log("File size must be < 10mb")
+        } else if (photoFile.size > 12500000) {
+            console.log("File size must be < 12mb")
             // turn on hidden span here
             sizeError.setAttribute('class', 'size-error active');
             return
