@@ -58,8 +58,9 @@
 
                     <div>
                         <div class="error">
-                            <label for="photo">PHOTO</label><span class="size-error inactive">Image must be &#60
-                                10mb</span><span class="type-error inactive">Must be .jpg .png .webp</span>
+                            <label for="photo">PHOTO</label>
+                            <span class="size-error inactive">Image must be &#60 12mb</span>
+                            <span class="type-error inactive">Must be .jpg .png .webp</span>
                             <img class="question-mark" src="images/question-mark.svg" alt="Question Mark"
                                 title="Submit a photo from your ride for a chance to win the photo contest!">
                         </div>
@@ -120,7 +121,11 @@
                             {{/if}}
                         </td>
                     </tr>
-                    <tr><td>Photo</td><td><a href="https://redwoodadventurecycling.com/photos/2023/{{userRoutes.photo}}">View Photo</a></td></tr>
+                    <tr>
+                        <td>Photo</td>
+                        <td><a href="https://redwoodadventurecycling.com/photos/2023/{{userRoutes.photo}}">View
+                                Photo</a></td>
+                    </tr>
                 </table>
             </div>
         </div>
