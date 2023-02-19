@@ -110,18 +110,19 @@ router.get('/', (req, res) => {
             approved: 1,
             bonus_points: [5,3,1]
           },
-          order: [['bonus_points', 'DSC']],
+          // order: [['bonus_points', 'DSC']],
           include:[
             {
             model: User,
             attributes: ['name', 'gender'],
-            where: genderOptions.where
+            where: genderOptions.where,
+            order: [['bonus_points', 'DESC']]
           }
           ],
           // order: [['bonus_points', 'DSC']]
         }
       ],
-      order: [['name', 'ASC']]
+      order: [['name', 'ASC']] 
     })
     
   ])
