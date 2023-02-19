@@ -74,7 +74,7 @@ router.get('/', (req, res) => {
     })
       .then(dbUserPointData => dbUserPointData),
 
-    // get all ridden routes that have been approved for Submitted Routes
+    // get all ridden routes that have been approved for Submitted Routes Table
     User_Routes.findAll({
       where: {
         approved: 1,
@@ -97,7 +97,7 @@ router.get('/', (req, res) => {
       order: [['date_submitted', 'ASC']]
     }).then(dbUserRouteData => dbUserRouteData),
 
-    // get all Routes that have been ridden for Route Bonus Points
+    // get all Routes that have been ridden for Route Bonus Points Table
     Routes.findAll({
       attributes:[
         'id', 'name'
@@ -110,6 +110,7 @@ router.get('/', (req, res) => {
             approved: 1,
             bonus_points: [5,3,1]
           },
+          order: [['bonus_points', 'DSC']],
           include:[
             {
             model: User,
@@ -117,7 +118,7 @@ router.get('/', (req, res) => {
             where: genderOptions.where
           }
           ],
-          order: [['bonus_points', 'DSC']]
+          // order: [['bonus_points', 'DSC']]
         }
       ],
       order: [['name', 'ASC']]
