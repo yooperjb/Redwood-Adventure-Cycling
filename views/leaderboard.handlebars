@@ -12,9 +12,6 @@
     </select>
     <span id="filter">{{gender}}</span>
 
-    {{!-- if points exist display leader table --}}
-    {{#if userPoints.userPoints}}
-
     <table class="leaderboard">
         <tr>
             <th>#</th>
@@ -24,6 +21,7 @@
             <th>Routes</th>
             <th>Points</th>
         </tr>
+        
         {{#each userPoints.userPoints as |userPoints|}}
         <tr>
             <td>{{add1 @index}}</td>
@@ -36,8 +34,37 @@
         {{/each}}
     </table>
 </article>
-{{/if}}
+
 <hr>
+
+<article>
+    <h4>Route Bonus (Attacker) Points</h4>
+    If route not shown all bonus points available.
+    <table class="leaderboard">
+        <tr>
+            <th>#</th>
+            <th>Rider Name</th>
+            <th>CAT</th>
+            <th>Bonus</th>
+        </tr>
+        {{#each attackerPoints.attackerPoints as | attackerPoints |}}
+        <tr>
+            <td class="route-title" colspan="4">{{attackerPoints.name}}</td>
+        </tr>
+        {{#each attackerPoints.user_routes as | attackerRoutes |}}
+        <tr>
+            <td>{{add1 @index}}</td>
+            <td>{{attackerRoutes.user.name}}</td>
+            <td>{{attackerRoutes.user.gender}}</td>
+            <td class="points">{{attackerRoutes.bonus_points}}</td>
+        </tr>
+        {{/each}}
+        {{/each}}
+    </table>
+</article>
+
+<hr>
+
 <article>
     <h4>Submitted Routes</h4>
 
@@ -68,30 +95,5 @@
     </table>
     {{/if}}
 </article>
-<hr>
-<article>
-    <h4>Route Bonus (Attacker) Points</h4>
-    If route not shown all bonus points available.
-    <table class="leaderboard">
-        <tr>
-            <th>#</th>
-            <th>Rider Name</th>
-            <th>CAT</th>
-            <th>Bonus</th>
-        </tr>
-        {{#each attackerPoints.attackerPoints as | attackerPoints |}}
-        <tr>
-            <td class="route-title" colspan="4">{{attackerPoints.name}}</td>
-        </tr>
-        {{#each attackerPoints.user_routes as | attackerRoutes |}}
-        <tr>
-            <td>{{add1 @index}}</td>
-            <td>{{attackerRoutes.user.name}}</td>
-            <td>{{attackerRoutes.user.gender}}</td>
-            <td class="points">{{attackerRoutes.bonus_points}}</td>
-        </tr>
-        {{/each}}
-        {{/each}}
-    </table>
-</article>
+
 <script src="/javascript/leaderboardFilter.js"></script>
