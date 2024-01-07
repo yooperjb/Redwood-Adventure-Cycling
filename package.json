@@ -1,8 +1,15 @@
 {
   "name": "redwood-adventure-cycling",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Redwood Adventure Cycling website",
   "main": "app.js",
+  "keywords": [
+    "RAC",
+    "cycling",
+    "Humboldt",
+    "adventure",
+    "series"
+  ],
   "scripts": {
     "test": "jest",
     "start": "node app.js",
