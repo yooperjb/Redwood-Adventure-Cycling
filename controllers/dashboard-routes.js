@@ -18,9 +18,10 @@ router.get('/', ensureLoggedIn('/login'), (req, res) => {
             where: {
                 // use the ID from the session
                 user_id: req.user.id,
-                date_completed:  {
-                    [Op.between]: [`${process.env.YEAR}/1/31`, `${process.env.YEAR}/12/1`],
-                },
+                // pretty sure i don't need to filter date here. Remove after testing.
+                // date_completed:  {
+                //     [Op.between]: [`${process.env.YEAR}/1/31`, `${process.env.YEAR}/12/1`],
+                // },
             },
             attributes: [
                 'route_id',
@@ -34,12 +35,12 @@ router.get('/', ensureLoggedIn('/login'), (req, res) => {
             ],
             include: [
                 // include Route data
-                // Filter for Series Year (needs to be in config file)
+                // Filter for Series Year in ENV file
                 {
                     model: Routes,
                     attributes: ['id', 'name', 'points', 'year'],
                     where: {
-                        year: 2023
+                        year: process.env.YEAR
                     },
                 }
             ],
