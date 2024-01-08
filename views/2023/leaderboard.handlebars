@@ -1,9 +1,9 @@
-<h2>2024 Leaderboard</h2>
+<h2>2023 Leaderboard</h2>
 
 <article>
     <h4>Overall Points</h4>
-    
     {{!-- leaderboard gender filter --}}
+    
     <select id="gender-filter" name="gender-filter">
         <option value="" disabled selected>Gender Filter</option>
         <option value="">Overall</option>
@@ -29,7 +29,7 @@
             <td>{{format_thousands userPoints.total_elevation}}</td>
             <td>{{format_miles userPoints.total_miles}}</td>
             <td>{{userPoints.total_routes}}</td>
-            <td class="points">{{userPoints.total_points}}</td>
+            <td class="points">{{userPoints.total_total_points}}</td>
         </tr>
         {{/each}}
     </table>

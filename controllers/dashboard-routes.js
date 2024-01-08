@@ -3,6 +3,8 @@ const { ensureLoggedIn } = require('connect-ensure-login');
 const sequelize = require('../config/connection');
 const { User_Routes, Routes } = require('../models');
 const modals = require('../public/data/modal.json');
+const { Op } = require('sequelize');
+require('dotenv').config();
 
 // const passport = require('../config/passport');
 
@@ -15,7 +17,10 @@ router.get('/', ensureLoggedIn('/login'), (req, res) => {
         User_Routes.findAll({
             where: {
                 // use the ID from the session
-                user_id: req.user.id
+                user_id: req.user.id,
+                date_completed:  {
+                    [Op.between]: [`${process.env.YEAR}/1/31`, `${process.env.YEAR}/12/1`],
+                },
             },
             attributes: [
                 'route_id',

@@ -32,15 +32,15 @@
                         </div>
 
                         {{!-- Set the min and max for Series Dates --}}
-                        <input type="date" min="2023-02-01" max="2023-11-30" id="date_completed" required>
+                        <input type="date" min="2024-02-01" max="2024-11-30" id="date_completed" required>
                     </div>
 
                     <div>
-                        <div class="form-label">
+                        {{!-- <div class="form-label">
                             <label for="ride_time">RIDE TIME: HH:MM</label>
                             <img class="question-mark" src="images/question-mark.svg" alt="Question Mark"
                                 title="Please provide a ride time in hours : minutes format (HH:MM).">
-                        </div>
+                        </div> --}}
                         <input type="text" class="html-duration-picker" id="ride_time" placeholder="00:00"
                             pattern="^\d{1,2}:\d{2}$" required>
                     </div>

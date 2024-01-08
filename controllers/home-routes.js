@@ -41,6 +41,7 @@ router.get('/login',
       title: 'RAC-Login'
     });
   });
+
 //change to post and move to api route
 // route to login/strava authentication
 router.get('/login/strava',
