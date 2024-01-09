@@ -4,10 +4,15 @@ const sequelize = require('../config/connection');
 const { Op } = require('sequelize');
 require('dotenv').config();
 
+// change this to async via chatgpt example.
 // route to leaderboard page /leaderboard
 router.get('/', (req, res) => {
+
+    let genderOptions = {};
+    let gender = "Overall";
+    let routeOptions = {};
     
-    // check if query was sent, pass to where object for filtering
+    // check if gender query was sent, pass to where object for filtering
     if (req.query.gender) {
         genderOptions = {
             where: {
@@ -22,30 +27,18 @@ router.get('/', (req, res) => {
                 gender = "W/T/F";
                 break;
         }
+      }
 
-    } else {
-        genderOptions = {
-            where: {}
-        }
-        gender = "Overall";
-    }
-
-    // not sure why this is here?
+    // not sure why this is here? Possibly to filter by route at some point?
     if (req.query.route) {
       routeOptions = {
-        where: {
-            id: req.query.route
+        where: { id: req.query.route
         }
-      }
-    } else {
-      routeOptions = {
-        where:{}
       }
     }
 
     return Promise.all([
-
-    // get all ridden routes that have been approved for Overall Points Section
+    // get all ridden routes that have been approved for "Overall Points" Section
     // and is current year
     User_Routes.findAll({
       where: {
@@ -69,7 +62,9 @@ router.get('/', (req, res) => {
         {
           model: User,
             attributes: ['name','gender'],
-            where: genderOptions.where
+            where: {
+              ...genderOptions.where,
+            }
         },
         {
           model: Routes,
@@ -82,10 +77,14 @@ router.get('/', (req, res) => {
     })
       .then(dbUserPointData => dbUserPointData),
     
-    // get all ridden routes that have been approved for Submitted Routes Table
+    // get all ridden routes that have been approved and current year for "Submitted Routes" Table
+    // does not filter in gender query
     User_Routes.findAll({
       where: {
         approved: 1,
+        date_completed:  {
+          [Op.between]: [`${process.env.YEAR}/1/31`, `${process.env.YEAR}/12/1`],
+        },
       },
 
       attributes: [
@@ -105,7 +104,7 @@ router.get('/', (req, res) => {
       order: [['date_submitted', 'ASC']]
     }).then(dbUserRouteData => dbUserRouteData),
 
-    // get all approved Routes for Route Bonus Points Table
+    // get all approved and current year submitted routes for "Route Bonus Points" Table
     Routes.findAll({
       attributes:[
         'id', 'name'
@@ -113,18 +112,23 @@ router.get('/', (req, res) => {
       include:[
         {
           model: User_Routes,
-          // attributes: ['date_completed', 'date_submitted', 'bonus_points', 'user_id', 'route_id'],
+          
           attributes: ['bonus_points', 'user_id', 'route_id'],
           where: {
             approved: 1,
-            bonus_points: [5,3,1]
+            bonus_points: [5,3,1],
+            date_completed:  {
+              [Op.between]: [`${process.env.YEAR}/1/31`, `${process.env.YEAR}/12/1`],
+            },
           },
           
           include:[
             {
             model: User,
             attributes: ['name', 'gender'],
-            where: genderOptions.where,
+            where: {
+            ...genderOptions.where,
+            }
           }
           ],
         }
@@ -145,8 +149,9 @@ router.get('/', (req, res) => {
         // used for Bonus Points Attacker Table
         const attackerPoints = dbRoutesAttackersData.map(route => route.get({ plain:true }));
        
-        console.log('userRoutes', userRoutes)
-        console.log('attackerPoints', attackerPoints)
+        // console.log('userRoutes', userRoutes)
+        // console.log('attackerPoints', attackerPoints)
+        // console.log('userPoints', userPoints)
 
         res.render('leaderboard', {
             title: '2024 Leaderboard',

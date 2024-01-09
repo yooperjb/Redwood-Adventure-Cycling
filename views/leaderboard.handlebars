@@ -1,5 +1,7 @@
 <h2>2024 Leaderboard</h2>
 
+{{!-- Do not show any tables if no routes have been submitted --}}
+{{#if userRoutes.userRoutes}}
 <article>
     <h4>Overall Points</h4>
     
@@ -68,7 +70,6 @@
 <article>
     <h4>Submitted Routes</h4>
 
-    {{#if userRoutes}}
     <table class="leaderboard">
         <tr>
             <th>#</th>
@@ -93,7 +94,7 @@
         </tr>
         {{/each}}
     </table>
-    {{/if}}
 </article>
-
+{{/if}}
+{{!-- end if statement to clear all data if no submitted routes exist --}}
 <script src="/javascript/leaderboardFilter.js"></script>
