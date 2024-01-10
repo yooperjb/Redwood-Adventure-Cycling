@@ -1,22 +1,14 @@
 [
     {
     "header": "Choose a Route",
-    "body": "Please select a route for submission from the dropdown. All rides that have not been previously submitted will be shown."
+    "body": "Please select the adventure route for submission from the dropdown. Any remaining routes you haven't ridden will be shown."
     },
     {
-    "header": "Date Completed",
-    "body": "Please provide the date you completed the route from the dropdown calendar."
-    },
-    {
-    "header": "Ride Time",
-    "body": "Please provide your time to complete the route. If your ride included more than the designated route, please provide your best estimate of the series route portion in HH:MM format."
-    },
-    {
-    "header": "Strava Link",
-    "body": "Please copy and paste your Strava Route link, from either the PC or APP. If copying from the APP there will be added information that should be removed prior to submitting. The route link should look like either of the following (can include the https:// prefix):</p><p> www.strava.com/activities/##########</p><p> strava.app.link/##########"
+    "header": "Strava Ride Name",
+    "body": "Please select your Strava Ride that corresponds with the route you are submitting. This list will show your last 5 Strava Activities."
     },
     {
     "header": "Photo (optional)",
-    "body": "Please provide one photo from your ride. This photo will be shared on the site with others, and used in the photo contest for a chance to win great prizes! *Some newer iPhones use a HEIF format which must be converted before uploading."
+    "body": "Please provide one photo from your ride. This photo will be shared on the site with others, and used in the photo contest for a chance to win a prize! *Some newer iPhones use a HEIF format which must be converted before uploading."
     }
 ]

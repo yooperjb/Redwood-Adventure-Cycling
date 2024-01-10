@@ -5,6 +5,7 @@ const upload = require('../../utils/upload');
 const Resize = require('../../utils/Resize');
 const path = require('path');
 const multer = require('multer');
+require('dotenv').config();
 
 // GET /api/user-routes for req testing
 router.get('/', (req, res) => {
@@ -14,7 +15,9 @@ router.get('/', (req, res) => {
 
 // create new user route /api/user-routes
 router.post('/', upload.single('photo'), (req, res) => {
-        
+        activity = req.user.activities;
+    
+        // First need to count number of routes submitted for bonus points
         User_Routes.count({
             where: {
                 route_id: req.body.route_id
@@ -47,11 +50,11 @@ router.post('/', upload.single('photo'), (req, res) => {
             })
     
             .then((bonus_points) => {
-                // if file submitted resize and save to file
+                // if photo submitted resize and save to file
                 // create two size files!!!
                 if (req.file) {
                     photo_name = `${req.user.id}-${req.body.route_id}.jpg`
-                    const photo_dir = 'public/photos/2023';
+                    const photo_dir = `public/photos/${process.env.YEAR}`;
                     const fileUpload = new Resize(photo_dir,photo_name); // creates new Resize Class
                     
                     const filename = fileUpload.save(req.file.buffer)
@@ -69,7 +72,7 @@ router.post('/', upload.single('photo'), (req, res) => {
                 User_Routes.create({
                     photo: photo_name,
                     ride_time: req.body.ride_time,
-                    ride_link: req.body.ride_link,
+                    ride_link: `https://www.strava.com/activities/${req.body.ride_link}`,
                     date_completed: req.body.date_completed,
                     bonus_points: bonus_points,
                     user_id: req.user.id,

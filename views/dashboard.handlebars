@@ -9,9 +9,10 @@
             </div>
             <div>
                 <form class="route-form" enctype="multipart/form-data">
-                    <div>
+                    
+                    <div>  {{!-- Route Selector Dropdown --}}
                         <div class="form-label">
-                            <label for="route-name">CHOOSE A ROUTE </label>
+                            <label for="route-name">CHOOSE THE ROUTE </label>
                             <img class="question-mark" src="images/question-mark.svg" alt="Question Mark"
                                 title="Please select the route you rode.">
                         </div>
@@ -24,45 +25,32 @@
                         </select>
                     </div>
 
-                    <div>
+                    <div>  {{!-- Strava Ride Selector Dropdown --}}
                         <div class="form-label">
-                            <label for="date_completed">DATE COMPLETED</label>
+                            <label for="strava-ride-name">CHOOSE YOUR STRAVA RIDE </label>
                             <img class="question-mark" src="images/question-mark.svg" alt="Question Mark"
-                                title="Please select the date the route was completed.">
+                                title="Please select your Strava ride.">
                         </div>
 
-                        {{!-- Set the min and max for Series Dates --}}
-                        <input type="date" min="2024-02-01" max="2024-11-30" id="date_completed" required>
+                        <select required name="strava-ride-name" id="ride_link">
+                            <option value="" disabled selected>Strava Rides...</option>
+                            {{#each user.activities as |activities|}}
+                            <option data-ride-time="{{activities.elapsed_time}}" 
+                            data-ride-date="{{activities.start_date_local}}" 
+                            value="{{activities.id}}" >
+
+                            {{activities.name}}</option>
+                            {{/each}}
+                        </select>
                     </div>
 
-                    {{!-- <div>
-                        <div class="form-label">
-                            <label for="ride_time">RIDE TIME: HH:MM</label>
-                            <img class="question-mark" src="images/question-mark.svg" alt="Question Mark"
-                                title="Please provide a ride time in hours : minutes format (HH:MM).">
-                        </div>
-                        <input type="text" class="html-duration-picker" id="ride_time" placeholder="00:00"
-                            pattern="^\d{1,2}:\d{2}$" required>
-                    </div> --}}
-
-                    <div>
-                        <div class="form-label">
-                            <label for="ride_link">STRAVA ACTIVITY LINK</label>
-                            <img class="question-mark" src="images/question-mark.svg" alt="Question Mark"
-                                title="Please copy the ride link from strava website or app. Be sure not to include anything other than the ride information.">
-                        </div>
-                        <input type="text" id="ride_link" placeholder="www.strava.com/activities/# or strava.app.link/#"
-                            pattern="(www.|http://www.|https://www.)(strava.com/activities/)\d{10}|(https://strava.app.link/)\w{5,15}"
-                            required>
-                    </div>
-
-                    <div>
+                    <div> {{!-- Upload Photo Section  --}}
                         <div class="error">
-                            <label for="photo">PHOTO</label>
+                            <label for="photo">UPLOAD PHOTO</label>
                             <span class="size-error inactive">Image must be &#60 12mb</span>
                             <span class="type-error inactive">Must be .jpg .png .webp</span>
                             <img class="question-mark" src="images/question-mark.svg" alt="Question Mark"
-                                title="Submit a photo from your ride for a chance to win the photo contest!">
+                                title="Submit a photo for a chance to win the photo contest!">
                         </div>
                         <input type="file" id="photo" name="photo" placeholder="Submit Ride Photo"
                             accept=".jpg, .jpeg, .png, .webp">
@@ -71,6 +59,7 @@
                     <div class="center">
                         <button type="submit">SUBMIT RIDE</button>
                     </div>
+
                 </form>
             </div>
         </div>
