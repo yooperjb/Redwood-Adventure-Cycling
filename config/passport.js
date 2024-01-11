@@ -38,10 +38,6 @@ passport.use(new StravaStrategy({
           try {
             const raw_activities = JSON.parse(data);
 
-            console.log('raw_activities', raw_activities);
-            // console.log('accessToken', accessToken);
-            // console.log('refreshToken', refreshToken);
-
             // check for user by primary key in database. if none, add user to db
             // probably want to find user and update user name in case they have changed it since first logging in
             let user = await User.findByPk(profile.id)

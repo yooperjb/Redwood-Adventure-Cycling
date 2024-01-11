@@ -52,7 +52,7 @@
                             <img class="question-mark" src="images/question-mark.svg" alt="Question Mark"
                                 title="Submit a photo for a chance to win the photo contest!">
                         </div>
-                        <input type="file" id="photo" name="photo" placeholder="Submit Ride Photo"
+                        <input type="file" id="photo" name="photo"
                             accept=".jpg, .jpeg, .png, .webp">
                     </div>
 
@@ -70,15 +70,16 @@
 {{> dashboard-modal modals}}
 
 {{!-- User Completed Routes Section --}}
+{{!-- Possibly put this into a partial --}}
 <section>
     {{#if userRoutes.userRoutes }}
     <h2>Completed Routes</h2>
 
-    {{#each userRoutes.userRoutes as |userRoutes|}}
+    {{#each userRoutes.userRoutes as |userRoute|}}
     <article class="bike-route">
 
         <div class="bike-route-title">
-            <h4 class="bike-route-title">{{userRoutes.route.name}}</h4>
+            <h4 class="bike-route-title">{{userRoute.route.name}}</h4>
         </div>
 
         <div class="bike-route-col1">
@@ -86,24 +87,24 @@
                 <table>
                     <tr>
                         <td>Date Completed</td>
-                        <td>{{format_month_day userRoutes.date_completed}}</td>
+                        <td>{{format_month_day userRoute.date_completed}}</td>
                     </tr>
                     <tr>
                         <td>Ride Time</td>
-                        <td>{{format_time userRoutes.ride_time}}</td>
+                        <td>{{format_time userRoute.ride_time}}</td>
                     </tr>
                     <tr>
                         <td>Points Earned</td>
-                        <td>{{userRoutes.route.points}}</td>
+                        <td>{{userRoute.route.points}}</td>
                     </tr>
                     <tr>
                         <td>Bonus Points</td>
-                        <td>{{userRoutes.bonus_points}}</td>
+                        <td>{{userRoute.bonus_points}}</td>
                     </tr>
                     <tr>
                         <td>Approved</td>
                         <td>
-                            {{#if userRoutes.approved }}
+                            {{#if userRoute.approved }}
                             Yes
                             {{else}}
                             No
@@ -112,18 +113,22 @@
                     </tr>
                     <tr>
                         <td>Photo</td>
-                        <td><a href="https://redwoodadventurecycling.com/photos/2023/{{userRoutes.photo}}">View
+                        {{#if userRoute.photo}}
+                        <td><a href="https://redwoodadventurecycling.com/photos/2023/{{userRoute.photo}}">View
                                 Photo</a></td>
+                        {{else}}
+                        <td>No Photo</td>
+                        {{/if}}
                     </tr>
                 </table>
             </div>
         </div>
         <div class="bike-route-map-completed">
-            {{#if userRoutes.photo}}
-            <img class="route-map" src="/photos/2023/{{userRoutes.photo}}" alt="Photo from {{userRoutes.route.name}}" />
+            {{#if userRoute.photo}}
+            <img class="route-map" src="/photos/2023/{{userRoute.photo}}" alt="Photo from {{userRoute.route.name}}" />
             {{else}}
-            <img class="route-map" src="https://ridewithgps.com/routes/full/{{userRoutes.route.id}}.png"
-                alt="Map of {{userRoutes.route.name}}" />
+            <img class="route-map" src="https://ridewithgps.com/routes/full/{{userRoute.route.id}}.png"
+                alt="Map of {{userRoute.route.name}}" />
             {{/if}}
         </div>
     </article>
