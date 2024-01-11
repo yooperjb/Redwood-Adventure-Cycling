@@ -10,8 +10,7 @@ passport.use(new StravaStrategy({
     clientID: process.env['STRAVA_CLIENT_ID'],
     clientSecret: process.env['STRAVA_CLIENT_SECRET'],
     callbackURL: '/return',
-    // This is it!!! I can now get activities!
-    // This sets the authentication scope of the App for users.
+    // This sets the authentication scope of the App for users!
     scope: 'activity:read_all',
   },
   async function(accessToken, refreshToken, profile, cb) {

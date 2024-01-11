@@ -6,6 +6,7 @@ const Resize = require('../../utils/Resize');
 const path = require('path');
 const fs = require('fs').promises;
 const multer = require('multer');
+const moment = require('moment');
 require('dotenv').config();
 
 // GET /api/user-routes
@@ -34,6 +35,24 @@ router.get('/', async (req, res) => {
 // create new user route /api/user-routes
 router.post('/', upload.single('photo'), async (req, res) => {
     try {
+        
+        // Check if the current date is within the allowed time period.
+        const currentDate = moment();
+        const submissionStartDate = moment(`${process.env.YEAR}-02-01`);
+        const submissionEndDate = moment(`${process.env.YEAR}-11-30`);
+
+        console.log(submissionStartDate);
+        console.log(submissionEndDate);
+
+        if (!currentDate.isBetween(submissionStartDate, submissionEndDate, 'day', '[]')) {
+            return res.status(403).json({ 
+                error: true,
+                message: 'Route submission is not allowed at this time.',
+                allowedStartDate: submissionStartDate.format('YYYY-MM-DD'),
+                allowedEndDate: submissionEndDate.format('YYYY-MM-DD'),
+            });
+        }
+        
         activity = req.user.activities;
 
         // Count the number of routes submitted for bonus points

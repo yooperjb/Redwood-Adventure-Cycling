@@ -21,7 +21,7 @@ async function routeSubmitFormHandler(event) {
     // if photo file submitted check file type and size
     if (photoFile) {
         if (!file_types.includes(photoFile.type) ) {
-            console.log("image type not supported!");
+            console.log("Image type not supported!");
             // turn on hidden span here
             typeError.setAttribute('class', 'type-error active');
             return;
@@ -39,7 +39,10 @@ async function routeSubmitFormHandler(event) {
     const response = await fetch('/api/user-routes', {
         method: 'POST',
         body: formData
-    })
+    });
+
+    const responseData = await response.json();
+
     if (response.ok) {
         console.log("Ride Submitted!");
         // reload page and reset form values
@@ -53,7 +56,14 @@ async function routeSubmitFormHandler(event) {
     
     } else {
         console.log("Ride NOT Submitted");
-        alert(response.statusText);
+        // Check if the response includes an 'error field'
+        if (responseData.error) {
+            // Display the error message to the user (Customize in user-routes.js)
+            alert(`${responseData.message} Adventure Series starts on ${responseData.allowedStartDate} and ends ${responseData.allowedEndDate}.`);
+        } else {
+            // If no specific error message, alert with the status text.
+            alert(response.statusText);
+        }
     }
 };
 
