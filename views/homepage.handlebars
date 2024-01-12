@@ -1,6 +1,11 @@
-<h2>Welcome {{user.displayName}}</h2>
-{{!-- <img src={{user.profile_medium}} /> --}}
-{{!-- {{user.profile_medium}} --}}
+<div class="welcome-container">
+    <h2>Welcome {{user.displayName}}</h2>
+    {{!-- not sure if users without an avatar will have a profile address. if not may want to change this to user.profile_medium --}}
+    {{#if user}}
+    <img class="avatar" src={{user.profile_medium}} alt="Avatar"/>
+    {{/if}}
+</div>
+
 <section class="opener">
     <p>Two roads diverged in a yellow wood,
     And sorry I could not travel both
@@ -26,7 +31,7 @@
     I took the one less traveled by,
     And that has made all the difference.
     -Robert Frost
-</p>
+    </p>
     <p>Welcome to Redwood Adventure Cycling, your source for North-coast adventure cycling.</p>
 </section>
 

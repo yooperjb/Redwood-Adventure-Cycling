@@ -273,6 +273,22 @@ hr {
   text-align: center;
 }
 
+.welcome-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar {
+  border-radius: 50%;
+  height: 49px;
+  margin-left: 10px;
+  margin-bottom: 8px;
+  filter: drop-shadow(5px 5px 5px gray);
+}
+
+
+
 /*==========================================
 * FOOTER STYLES
 * ========================================*/
@@ -300,7 +316,6 @@ footer div img {
   outline: none;
   display: block;
 }
-
 
 /*==========================================
 * DASHBOARD STYLES
@@ -424,7 +439,7 @@ button:hover {
   color: white;
 }
 
-/* The Close Button */
+/* Modal Close Button */
 .close {
   color: #aaa;
   padding: 0 5px;
