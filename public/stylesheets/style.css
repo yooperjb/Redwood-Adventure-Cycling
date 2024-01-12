@@ -1,12 +1,12 @@
 :root {
   --primary-color: #ffeb68;
   --secondary-color: #86e2ef;
-  --tertiary-color: rgb(255, 255, 255);
+  --tertiary-color: rgb(255, 255, 255); /*this isn't being used */
   --quad-color: hsl(218, 97%, 13%);
   --sixth-color: #e3e3e3;
   --seventh-color: #1d75ce;
   --eight-color: #043e9e;
-  --dark-gray: hsl(204, 9%, 22%);
+  --dark-gray: hsl(204, 9%, 22%); /*this isn't being used */
   --error: hsl(0, 100%, 40%);
 }
 
@@ -92,9 +92,6 @@ nav a:focus-visible {
   color: white;
   font-weight: normal;
   outline: none;
-}
-
-.menu button {
   font-size: 1rem;
   background: none;
 }
@@ -102,9 +99,6 @@ nav a:focus-visible {
 .menu li a:hover,
 .menu button:hover {
   color: var(--secondary-color);
-}
-
-.menu button:hover {
   background: none;
 }
 

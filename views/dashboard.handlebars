@@ -5,7 +5,7 @@
 
         <div class="grid-container">
             <div>
-                <h4>Submit Your Ride</h4>
+                <h4>Submit Your Ride{{year}}</h4>
             </div>
             <div>
                 <form class="route-form" enctype="multipart/form-data">
@@ -114,7 +114,7 @@
                     <tr>
                         <td>Photo</td>
                         {{#if userRoute.photo}}
-                        <td><a href="https://redwoodadventurecycling.com/photos/2023/{{userRoute.photo}}">View
+                        <td><a href="https://redwoodadventurecycling.com/photos/{{userRoute.route.year}}/{{userRoute.photo}}">View
                                 Photo</a></td>
                         {{else}}
                         <td>No Photo</td>

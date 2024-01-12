@@ -1,29 +1,48 @@
 const router = require('express').Router();
 const { ensureLoggedIn } = require('connect-ensure-login');
-const sequelize = require('../config/connection');
+// const sequelize = require('../config/connection');
 const { User_Routes, Routes } = require('../models');
 const modals = require('../public/data/modal.json');
-const { Op } = require('sequelize');
+// const { Op } = require('sequelize'); don't think I need this anymore for filtering
 require('dotenv').config();
 
-// const passport = require('../config/passport');
-
 // GET route /dashboard
-router.get('/', ensureLoggedIn('/login'), (req, res) => {
+router.get('/', ensureLoggedIn('/login'), async (req, res) => {
+    try{
+        const [userRoutesData, routesData] = await Promise.all([
+            findUserRoutes(req.user.id),
+            findAllRoutes(),
+        ]);
 
-    return Promise.all([
+        // Serialize data to pass to template
+        const userRoutes = userRoutesData.map(route => route.get({ plain: true }));
+        let routes = routesData.map(route => route.get({ plain: true }));
 
-        // find all routes user has completed
-        User_Routes.findAll({
-            where: {
-                // use the ID from the session
-                user_id: req.user.id,
-                // pretty sure i don't need to filter date here. Remove after testing.
-                // date_completed:  {
-                //     [Op.between]: [`${process.env.YEAR}/1/31`, `${process.env.YEAR}/12/1`],
-                // },
-            },
-            attributes: [
+        // Remove user ridden routes for the submit dropdown list
+        routes =routes.filter(ar => !userRoutes.find(rm => (rm.route_id === ar.id)));
+
+        // Render dashboard page and pass userRoutes, routes, and loggedIn user
+        res.render('dashboard', {
+            title: 'User Dashboard',
+            userRoutes: { userRoutes },
+            routes: { routes },
+            user: req.user,
+            modals: modals,
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+    }
+});
+    
+// Function to find all routes user has completed
+const findUserRoutes = (userId) => {
+    return User_Routes.findAll({
+        where: {
+            // use the Id from function call
+            user_id: userId,
+        },
+        attributes: [
                 'route_id',
                 'photo',
                 'ride_time',
@@ -32,53 +51,32 @@ router.get('/', ensureLoggedIn('/login'), (req, res) => {
                 'bonus_points',
                 "approved",
                 "user_id",
-            ],
-            include: [
+        ],
+        include: [
                 // include Route data
-                // Filter for Series Year in ENV file
                 {
                     model: Routes,
                     attributes: ['id', 'name', 'points', 'year'],
+                    // Filter for Series Year in ENV file
                     where: {
                         year: process.env.YEAR
                     },
                 }
-            ],
-            order: [[Routes, 'name', 'ASC']]
-        })
-            .then(dbUserRoutesData => dbUserRoutesData),
+        ],
+        order: [[Routes, 'name', 'ASC']]
+    });
+};  
 
-        // find all routes in routes table for dropdown selection
-        Routes.findAll({
-            attributes: [
-                'id',
-                'name'
-            ],
-            order: [['name', 'ASC']]
-        })
-    ])
-        .then(([dbUserRoutesData, dbRoutesData]) => {
-            // serialize the promise returns from both of the db findAll()
-            const userRoutes = dbUserRoutesData.map(route => route.get({ plain: true }))
-            let routes = dbRoutesData.map(route => route.get({ plain: true }))
-            
-            // Remove user ridden routes for the submit dropdown list
-            routes = routes.filter(ar => !userRoutes.find(rm => (rm.route_id === ar.id)))
-            // render dashboard page and pass userRoutes, routes, and loggedIn user 
-            res.render('dashboard', {
-                title: 'User Dashboard',
-                userRoutes: { userRoutes },
-                routes: { routes },
-                user: req.user,
-                modals: modals
-            })
-        })
-
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
-}
-);
+// Function to find all routes in routes table for dropdown selection
+const findAllRoutes = () => {
+    return Routes.findAll({
+        where: {
+            // Filter for Series Year in ENV file
+            year: process.env.YEAR
+        },
+        attributes: ['id','name'],
+        order: [['name', 'ASC']]
+    });
+};
 
 module.exports = router;

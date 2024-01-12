@@ -9,13 +9,13 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-90ZJ0G588M"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-90ZJ0G588M');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-90ZJ0G588M');
     </script>
 
-    {{!-- <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> --}}
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;600;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
@@ -67,12 +67,13 @@
                 </li>
                 {{/if}}
 
-                <li class="item">{{#if user}}<button id="logout" class="btn-no-style">LOG OUT</button>
+                <li class="item">
+                    {{#if user}}
+                        <button id="logout" class="btn-no-style">LOG OUT</button>
                     {{else}}
-                    <a href="/login">LOG IN</a>
+                        <a href="/login">LOG IN</a>
                     {{/if}}
                 </li>
-
             </ul>
             <span class="toggle"><a href="#"><i class="fas fa-bars"></i></a></span>
         </nav>
@@ -93,6 +94,7 @@
         <img src="/images/arrow-up-icon.svg" alt="Arrow Up Icon" id="goToTop" onclick="topFunction()">
     </main>
     <!-- End Main -->
+    
     <footer>
         <div>
             <a href="https://ridewithgps.com/users/5525439" target="_blank"><img src="/images/ridewithgps_black.svg" alt="Instagram Logo"></a>
