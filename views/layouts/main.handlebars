@@ -51,8 +51,28 @@
                     </ul>
                 </li>
                 {{#if user}}
-                <li class="item"><a href="/dashboard">DASHBOARD</a></li>
+                <li class="item has-submenu">
+                    <a class="menu-avatar-div" tabindex="0">
+                        <div class="avatar-container">
+                            <img class="menu-avatar" src={{user.profile_medium}} alt="Avatar"/>
+                            {{!-- <svg xmlns="images/RACLogo.svg"></svg> --}}
+                            <img class="menu-avatar-svg" src="images/RACLogo_white.svg" />
+                        </div>
+                        {{!-- User helper to convert to all caps similar to other menu items --}}
+                        {{!-- <span class="item">{{uppercase user.firstname}}</span> --}}
+                        {{uppercase user.firstname}}
+                    </a>
+                    <ul class="submenu">
+                        <li class="item"><a href="/dashboard">DASHBOARD</a></li>
+                        {{!-- <button id="logout" class="btn-no-style">LOG OUT</button> --}}
+                        {{!-- Need id logout to run logout script --}}
+                        <li class="item" id="logout"><a href="/logout">LOG OUT</a></li>
+                    </ul>
+                </li>
+                {{else}}
+                <li class="item"><a href="/login">LOG IN</a></li>
                 {{/if}}
+
                 {{#if user.isAdmin}}
                 <li class="item has-submenu">
                     <a tabindex="0">ADMIN</a>
@@ -66,14 +86,6 @@
                     </ul>
                 </li>
                 {{/if}}
-
-                <li class="item">
-                    {{#if user}}
-                        <button id="logout" class="btn-no-style">LOG OUT</button>
-                    {{else}}
-                        <a href="/login">LOG IN</a>
-                    {{/if}}
-                </li>
             </ul>
             <span class="toggle"><a href="#"><i class="fas fa-bars"></i></a></span>
         </nav>

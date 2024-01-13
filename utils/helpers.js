@@ -26,5 +26,9 @@ module.exports = {
 
     add1: num => {
         return num+1;
+    },
+
+    uppercase: lowercase => {
+        return lowercase.toUpperCase();
     }
 }
