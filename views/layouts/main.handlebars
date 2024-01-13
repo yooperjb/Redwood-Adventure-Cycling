@@ -55,16 +55,12 @@
                     <a class="menu-avatar-div" tabindex="0">
                         <div class="avatar-container">
                             <img class="menu-avatar" src={{user.profile_medium}} alt="Avatar"/>
-                            {{!-- <svg xmlns="images/RACLogo.svg"></svg> --}}
                             <img class="menu-avatar-svg" src="images/RACLogo_white.svg" />
                         </div>
-                        {{!-- User helper to convert to all caps similar to other menu items --}}
-                        {{!-- <span class="item">{{uppercase user.firstname}}</span> --}}
                         {{uppercase user.firstname}}
                     </a>
                     <ul class="submenu">
                         <li class="item"><a href="/dashboard">DASHBOARD</a></li>
-                        {{!-- <button id="logout" class="btn-no-style">LOG OUT</button> --}}
                         {{!-- Need id logout to run logout script --}}
                         <li class="item" id="logout"><a href="/logout">LOG OUT</a></li>
                     </ul>
