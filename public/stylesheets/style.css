@@ -23,7 +23,7 @@ html {
 }
 
 body,select,button,table {
-  font-family: 'Montserrat', 'Roboto', Arial, Helvetica, sans-serif;
+  font-family: 'Montserrat', 'Roboto', 'Arial', 'Helvetica', sans-serif;
 }
 
 body {
@@ -352,15 +352,29 @@ footer div img {
 * DASHBOARD STYLES
 * ========================================*/
 
-.form-container {
-  margin: auto;
-  width: 50%;
-  max-width: 375px;
-}
-
-.grid-container {
+.dashboard-container {
   margin: auto;
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.form-container {
+  min-width: 350px;
+}
+
+/* .chart-container {
+ 
+} */
+
+#completionChart {
+  /* background-image: url(../images/RAClogo.svg);
+  background-size: 88%;
+  background-position-x: 18px;
+  background-position-y: 47px;
+  background-repeat: no-repeat; */
 }
 
 .strava {

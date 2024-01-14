@@ -1,12 +1,15 @@
 <h2>{{user.firstname}}'s Dashboard</h2>
-
+{{!-- {{log "userRoutes Length:" userRoutes.userRoutes.length}} --}}
 <section>
-    <div class="form-container">
+    {{!-- <div class="form-container"> --}}
+    <div class="dashboard-container">
 
-        <div class="grid-container">
+        {{!-- <div class="grid-container"> --}}
+        <div class="form-container">
             <div>
                 <h4>Submit Your Ride{{year}}</h4>
             </div>
+            {{!-- Form division --}}
             <div>
                 <form class="route-form" enctype="multipart/form-data">
                     
@@ -61,9 +64,16 @@
                     </div>
 
                 </form>
-            </div>
+            </div> 
+        </div>{{!-- End Form-Container Division --}}
+        {{!-- Chart section --}}
+        <div class="chart-container">
+            {{!-- <canvas id="completionChart" width="324" height="324"></canvas> --}}
+            <canvas id="completionChart"></canvas>
         </div>
-    </div>
+    </div>{{!-- End Dashboard-Container Division --}}
+
+
 </section>
 <hr>
 {{!-- MODALS Partial --}}
@@ -139,3 +149,41 @@
 
 <script src="/javascript/modal.js"></script>
 <script src="/javascript/routesubmit.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    Chart.defaults.font.family = "'Montserrat', 'Roboto', 'Arial', 'Helvetica', sans-serif";
+    let completedRoutes = {{userRoutes.userRoutes.length}};
+    let remainingRoutes = {{routes.routes.length}};
+    console.log("CompletedRoutes", completedRoutes);
+    console.log("RemainingRoutes", remainingRoutes);
+    let ctx = document.getElementById('completionChart').getContext('2d');
+    let completionChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Completed Routes', 'Remaining Routes'],
+                
+            datasets: [{
+                data: [5, 10],
+                backgroundColor: ['#043e9e', 'lightgray'],
+            }],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            title: {
+                display: true,
+                text: 'Route Completion Overview',
+            },
+            plugins:{
+            legend: {
+                labels: {
+                    font: {
+                        size: 16
+                    }
+                }
+            }
+        }
+        },
+    });
+</script>
