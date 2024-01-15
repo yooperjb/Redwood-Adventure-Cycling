@@ -164,26 +164,28 @@
             labels: ['Completed Routes', 'Remaining Routes'],
                 
             datasets: [{
-                data: [5, 10],
+                data: [completedRoutes, remainingRoutes],
                 backgroundColor: ['#043e9e', 'lightgray'],
             }],
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            title: {
-                display: true,
-                text: 'Route Completion Overview',
-            },
+            
             plugins:{
-            legend: {
-                labels: {
-                    font: {
-                        size: 16
-                    }
+                title: {
+                    display: true,
+                    text: 'Route Completion Overview',
+                    },
+                legend: {
+                    labels: {
+                        font: {
+                            size: 15
+                        },
+                    },
+                    position: 'bottom'
                 }
             }
-        }
         },
     });
 </script>
