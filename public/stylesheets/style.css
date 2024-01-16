@@ -117,16 +117,20 @@ nav a:focus-visible {
   align-items: center;
 }
 
+/* Set this height for media queries */
+/* Set to height of .logo-div */
 .avatar-container {
-  height: 100%;
+  height: 60px;
   margin-right: 5px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .menu-avatar {
-  height: 52px;
+  height: 86%;
+  width: auto;
   border-radius: 50%;
   position: absolute;
   z-index: 2;
@@ -134,8 +138,8 @@ nav a:focus-visible {
 
 .menu-avatar-svg {
   z-index: 1;
-  height: 60px;
-  width: 60px;
+  height: 100%;
+  width:auto;
   transition: transform .7s ease-in-out;
 }
 .menu-avatar-svg:hover {
@@ -363,20 +367,6 @@ footer div img {
 
 .form-container {
   min-width: 350px;
-}
-
-/* Not sure if I need this  */
-/* .chart-container {
- 
-} */
-
-/* Dont think I need this.  */
-#completionChart {
-  /* background-image: url(../images/RAClogo.svg);
-  background-size: 88%;
-  background-position-x: 18px;
-  background-position-y: 47px;
-  background-repeat: no-repeat; */
 }
 
 .strava {
@@ -828,6 +818,10 @@ table.leaderboard td.route-title {
     top: 50px;
   }
 
+  .avatar-container {
+    height: 45px;
+  }
+
   .hero {
     min-height: 205px;
   }
@@ -845,6 +839,10 @@ table.leaderboard td.route-title {
 
   h2 {
     font-size: 2.2em;
+  }
+
+  .avatar {
+    height: 43px;
   }
 
   img.pretty-images {
@@ -984,6 +982,10 @@ table.leaderboard td.route-title {
     margin-left: 5px;
   }
 
+  .avatar-container {
+    height: 37px;
+  }
+
   .toggle {
     display: block;
   }
@@ -1008,6 +1010,10 @@ table.leaderboard td.route-title {
 
   h2 {
     font-size: 1.5rem;
+  }
+
+  .avatar {
+    height: 35px;
   }
 
   h3 {
