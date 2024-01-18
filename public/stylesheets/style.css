@@ -732,8 +732,13 @@ article.bike-route {
 }
 
 /*============================================
-* ADMIN TABLE
+* ADMIN STYLES
 * ========================================== */
+
+.create-route-container {
+  max-width: 400px;
+  margin: auto;
+}
 
 /*===========================================
          LEADERBOARD TABLE

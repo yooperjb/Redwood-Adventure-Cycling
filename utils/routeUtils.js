@@ -1,4 +1,25 @@
-const getPoints = (miles,elevation) => {
+const https = require('https');
+
+const fetchRouteData = (routeId) => {
+    return new Promise((resolve, reject) => {
+      https.get(`https://ridewithgps.com/routes/${routeId}.json?apikey=${process.env.RWGPS_APIKEY}&auth_token=${process.env.RWGPS_AUTH}`, (resp) => {
+        let data = '';
+  
+        resp.on('data', (chunk) => {
+          data += chunk;
+        });
+  
+        resp.on('end', () => {
+          resolve(JSON.parse(data));
+        });
+      }).on('error', (err) => {
+        console.error("Error: ", err.message);
+        reject(err);
+      });
+    });
+  };
+
+  const getPoints = (miles,elevation) => {
     
     diff = elevation/miles;
     let ratio_points = 0;
@@ -57,5 +78,7 @@ const getDifficulty = (points) => {
         return "Easy"
     }
 }
-
-module.exports = {getPoints, getDifficulty};
+  
+  module.exports = {
+    fetchRouteData, getPoints, getDifficulty
+  };

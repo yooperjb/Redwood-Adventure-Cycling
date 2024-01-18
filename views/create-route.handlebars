@@ -1,6 +1,6 @@
 <h2>Create Route</h2>
 <section>
-    <div class="form-container">
+    <div class="create-route-container">
         <form class="create-route">
             <div>
                 <label for="ridewithgps-id">RideWithGPS Route ID</label>
@@ -18,4 +18,25 @@
         </form>
     </div>
 </section>
+    
+<h2>Update Route</h2>
+<section>
+    <div class="route-update-container">
+        <form class="update-route">
+            <div>
+                <label for="route-name">Route Name</label>
+                <select required name="route-name" id="route_id">
+                    <option value="" disabled selected>Routes...</option>
+                    {{#each routes as |routes|}}
+                    <option value="{{routes.id}}">{{routes.name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="center">
+                <button type="submit">UPDATE ROUTE</button>
+            </div>
+        </form>
+    </div>
+</section>
 <script src="/javascript/create-route.js"></script>
+<script src="/javascript/update-route.js"></script>
