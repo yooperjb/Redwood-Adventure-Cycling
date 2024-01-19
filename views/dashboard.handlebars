@@ -1,10 +1,7 @@
 <h2>{{user.firstname}}'s Dashboard</h2>
-{{!-- {{log "userRoutes Length:" userRoutes.userRoutes.length}} --}}
-<section>
-    {{!-- <div class="form-container"> --}}
-    <div class="dashboard-container">
 
-        {{!-- <div class="grid-container"> --}}
+<section>
+    <div class="dashboard-container">
         <div class="form-container">
             <div>
                 <h4>Submit Your Ride{{year}}</h4>
@@ -12,8 +9,8 @@
             {{!-- Form division --}}
             <div>
                 <form class="route-form" enctype="multipart/form-data">
-                    
-                    <div>  {{!-- Route Selector Dropdown --}}
+
+                    <div> {{!-- Route Selector Dropdown --}}
                         <div class="form-label">
                             <label for="route-name">CHOOSE THE ROUTE </label>
                             <img class="question-mark" src="images/question-mark.svg" alt="Question Mark"
@@ -28,7 +25,7 @@
                         </select>
                     </div>
 
-                    <div>  {{!-- Strava Ride Selector Dropdown --}}
+                    <div> {{!-- Strava Ride Selector Dropdown --}}
                         <div class="form-label">
                             <label for="strava-ride-name">CHOOSE YOUR STRAVA RIDE </label>
                             <img class="question-mark" src="images/question-mark.svg" alt="Question Mark"
@@ -38,16 +35,15 @@
                         <select required name="strava-ride-name" id="ride_link">
                             <option value="" disabled selected>Strava Rides...</option>
                             {{#each user.activities as |activities|}}
-                            <option data-ride-time="{{activities.elapsed_time}}" 
-                            data-ride-date="{{activities.start_date_local}}" 
-                            value="{{activities.id}}" >
+                            <option data-ride-time="{{activities.elapsed_time}}"
+                                data-ride-date="{{activities.start_date_local}}" value="{{activities.id}}">
 
-                            {{activities.name}}</option>
+                                {{activities.name}}</option>
                             {{/each}}
                         </select>
                     </div>
 
-                    <div> {{!-- Upload Photo Section  --}}
+                    <div> {{!-- Upload Photo Section --}}
                         <div class="error">
                             <label for="photo">UPLOAD PHOTO</label>
                             <span class="size-error inactive">Image must be &#60 12mb</span>
@@ -55,8 +51,7 @@
                             <img class="question-mark" src="images/question-mark.svg" alt="Question Mark"
                                 title="Submit a photo for a chance to win the photo contest!">
                         </div>
-                        <input type="file" id="photo" name="photo"
-                            accept=".jpg, .jpeg, .png, .webp">
+                        <input type="file" id="photo" name="photo" accept=".jpg, .jpeg, .png, .webp">
                     </div>
 
                     <div class="center">
@@ -64,7 +59,7 @@
                     </div>
 
                 </form>
-            </div> 
+            </div>
         </div>{{!-- End Form-Container Division --}}
         {{!-- Chart section --}}
         <div class="chart-container">
@@ -72,8 +67,6 @@
             <canvas id="completionChart"></canvas>
         </div>
     </div>{{!-- End Dashboard-Container Division --}}
-
-
 </section>
 <hr>
 {{!-- MODALS Partial --}}

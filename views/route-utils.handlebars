@@ -1,0 +1,46 @@
+<h2>Admin Route Utilities</h2>
+
+<section>
+    <div id="admin-container">
+        <div class="create-route-container">
+            <h4>Create Route</h4>
+            <form class="create-route">
+                <div>
+                    <label for="ridewithgps-id">RideWithGPS Route ID</label>
+                    <input type="text" id="ridewithgps-id" pattern="\d{8}" required>
+                </div>
+
+                <div>
+                    <label for="year">Route Year</label>
+                    <input type="text" id="year" pattern="\d{4}" required>
+                </div>
+
+                <div class="center">
+                    <button type="submit">CREATE ROUTE</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="route-update-container">
+            <h4>Update Route</h4>
+            <form class="update-route">
+                <div>
+                    <label for="route-name">Route Name</label>
+                    <select required name="route-name" id="route_id">
+                        <option value="" disabled selected>Routes...</option>
+                        {{#each routes as |routes|}}
+                        <option value="{{routes.id}}">{{routes.name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="center">
+                    <button type="submit">UPDATE ROUTE</button>
+                </div>
+            </form>
+        </div>
+    </div>{{!-- End admin-container --}}
+
+</section>
+
+<script src="/javascript/create-route.js"></script>
+<script src="/javascript/update-route.js"></script>

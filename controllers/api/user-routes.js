@@ -7,7 +7,7 @@ const path = require('path');
 const fs = require('fs').promises;
 const multer = require('multer');
 const moment = require('moment');
-require('dotenv').config();
+// require('dotenv').config();
 
 // GET /api/user-routes
 router.get('/', async (req, res) => {

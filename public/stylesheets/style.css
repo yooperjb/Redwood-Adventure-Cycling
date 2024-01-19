@@ -22,7 +22,7 @@ html {
   height: 70%;
 }
 
-body,select,button,table {
+body,select,button,table, input {
   font-family: 'Montserrat', 'Roboto', 'Arial', 'Helvetica', sans-serif;
 }
 
@@ -395,7 +395,7 @@ select {
   border: 2px solid #ccc;
   width: 100%;
   margin-top: 2px;
-  font-size: .85rem;
+  font-size: .95rem;
 }
 
 input:focus-visible {
@@ -735,9 +735,11 @@ article.bike-route {
 * ADMIN STYLES
 * ========================================== */
 
-.create-route-container {
-  max-width: 400px;
-  margin: auto;
+#admin-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 10px;
 }
 
 /*===========================================

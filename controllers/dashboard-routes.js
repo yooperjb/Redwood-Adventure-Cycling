@@ -3,7 +3,7 @@ const { ensureLoggedIn } = require('connect-ensure-login');
 const { User_Routes, Routes } = require('../models');
 const modals = require('../public/data/modal.json');
 
-require('dotenv').config();
+// require('dotenv').config();
 
 // GET route /dashboard
 router.get('/', ensureLoggedIn('/login'), async (req, res) => {
@@ -22,7 +22,7 @@ router.get('/', ensureLoggedIn('/login'), async (req, res) => {
 
         // Render dashboard page and pass userRoutes, routes, and loggedIn user
         res.render('dashboard', {
-            title: 'User Dashboard',
+            title: 'Dashboard',
             userRoutes: { userRoutes },
             routes: { routes },
             user: req.user,

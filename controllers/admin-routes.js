@@ -1,21 +1,22 @@
 const router = require('express').Router();
 const { Routes, User_Routes, User } = require('../models');
 const { ensureLoggedIn } = require('connect-ensure-login');
-const passport = require('../config/passport');
+// const passport = require('../config/passport');
 const sequelize = require('../config/connection');
 require('dotenv').config();
 
 // route to approvals page /admin/approvals *Redirect non-ADMIN to home page
-router.get('/approvals', ensureLoggedIn('/'),
-  function (req, res) {
+router.get('/approvals', ensureLoggedIn('/'), async (req, res) => {
+  try {
     // redirect non-Admin to home page
     if (!req.user.isAdmin) {
       res.redirect('/')
-    };
+    }
 
-    User_Routes.findAll({
+    // Fetch all routes not approved, including associated data
+    const dbUserRoutesData = await User_Routes.findAll({
       where: {
-        // use the ID from the session - need to compound with approved
+        // Fetch all routes not approved
         approved: 0
       },
       attributes: [
@@ -37,27 +38,27 @@ router.get('/approvals', ensureLoggedIn('/'),
           attributes: ['name']
         }
       ],
-      order: sequelize.literal('date_submitted ASC')
-    })
-      .then(dbUserRoutesData => {
-        // serialize data before passing to template
-        const userRoutes = dbUserRoutesData.map(route => route.get({ plain: true }));
-      
-        res.render('approvals', {
-          title: 'Admin Approvals',
-          user: req.user,
-          userRoutes: { userRoutes },
-        });
-        
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      })
-  });
+      // order: sequelize.literal('date_submitted ASC')
+      order: [['date_submitted', 'ASC']]
+    });
+
+    // serialize data before passing to template
+    const userRoutes = dbUserRoutesData.map(route => route.get({ plain: true }));
+
+    res.render('approvals', {
+      title: 'Admin Approvals',
+      user: req.user,
+      userRoutes: { userRoutes },
+    });
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 // create-route page /admin/create-route *Redirect non-ADMIN to home page
-  router.get('/create-route', ensureLoggedIn('/'), async function (req, res) {
+  router.get('/route-utils', ensureLoggedIn('/'), async function (req, res) {
     // redirect non-Admin to home page
     if (!req.user.isAdmin) {
       return res.redirect('/');
@@ -79,9 +80,8 @@ router.get('/approvals', ensureLoggedIn('/'),
 
       const serializedRoutes = allRoutes.map(route => route.get({ plain: true }));
 
-      // console.log('allRoutes', serializedRoutes);
       res.render('create-route', { 
-        title: 'Admin Routes',
+        title: 'Routes Utils',
         user: req.user,
         routes: serializedRoutes, // Pass routes to template
       });

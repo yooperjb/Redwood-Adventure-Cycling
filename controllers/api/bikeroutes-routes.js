@@ -18,22 +18,23 @@ router.get('/', async (req, res) => {
 });
 
 // api/bikeroutes/:id
-router.get('/:id', (req, res) => {
-    Routes.findOne({
-        where: {
-            id: req.params.id
-        }
-    }).then(dbRoutesData => {
+router.get('/:id', async (req, res) => {
+    try {
+        const dbRoutesData = await Routes.findOne({
+            where: {
+                id: req.params.id
+            }
+        });
+
         if (!dbRoutesData) {
             res.status(404).json({ message: 'No bike route found with this id' });
             return;
         }
         res.json(dbRoutesData);
-    })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+    };
 });
 
 // create new bike route api/bikeroutes
@@ -80,7 +81,7 @@ router.post('/', async (req, res) => {
 router.put('/', async (req, res) => {
     try {
         const { route_id } = req.body;
-       
+
         const routeData = await fetchRouteData(route_id);
 
         if (!routeData) {
@@ -91,7 +92,7 @@ router.put('/', async (req, res) => {
         const { name, distance, elevation_gain, description } = routeData.route;
         const mileage = distance * .0006213712;
         const elevation = elevation_gain * 3.281;
-        
+
         // Update route in the database
         const updatedRoute = await Routes.update(
             {
@@ -111,6 +112,7 @@ router.put('/', async (req, res) => {
     }
 });
 
+// this route is not currently being used
 router.delete('/:id', (req, res) => {
     Routes.destroy({
         where: {

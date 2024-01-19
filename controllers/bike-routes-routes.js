@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Routes, User_Routes } = require('../models');
 const sequelize = require('../config/connection');
-require('dotenv').config();
+// require('dotenv').config();
 
 // /bikeroutes
 router.get('/', async (req, res) => {
@@ -17,8 +17,6 @@ router.get('/', async (req, res) => {
 
         )).map(route => route.toJSON()) //converts to plain object
         
-        // console.log("routes",routes);
-        console.log("user",req.user);
         // If user signed in get routes they've ridden for route checkmark
         if (req.user) {
             const user_routes = (await User_Routes.findAll({
