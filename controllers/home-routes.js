@@ -34,6 +34,22 @@ router.get('/sponsors',
       user: req.user });
 });
 
+// route to northcoast bike rides page /ncbr
+router.get('/ncbr',
+  function (req, res) {
+    res.render('ncbr', { 
+      title: 'NCBR',
+      user: req.user });
+});
+
+// route to soldiers on singletrack page /sost
+router.get('/sost',
+  function (req, res) {
+    res.render('sost', { 
+      title: 'SOST',
+      user: req.user });
+});
+
 // route to login page /login
 router.get('/login',
   function (req, res) {

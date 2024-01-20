@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{title}}</title>
-    
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-90ZJ0G588M"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-90ZJ0G588M');
     </script>
@@ -30,6 +30,8 @@
                 <a href="/"> <img class="logo" src="/images/RAClogo_white.svg" /></a>
             </div>
             <ul class="menu">
+
+                {{!-- Adventure Series menu  --}}
                 <li class="item has-submenu">
                     <a tabindex="0">2024 SERIES</a>
                     <ul class="submenu">
@@ -50,11 +52,22 @@
                         </li>
                     </ul>
                 </li>
+
+                {{!-- Community menu --}}
+                <li class="item has-submenu">
+                    <a tabindex="3">COMMUNITY</a>
+                    <ul class="submenu">
+                        <li class="item"> <a href="/ncbr">NCBR</a></li>
+                        <li class="item"><a href="/sost">SOLDIERS ON ST</a></li>
+                    </ul>
+                </li>
+
+                {{!-- Authenticated user menu  --}}
                 {{#if user}}
                 <li class="item has-submenu">
-                    <a class="menu-avatar-div" tabindex="0">
+                    <a class="menu-avatar-div" tabindex="1">
                         <div class="avatar-container">
-                            <img class="menu-avatar" src={{user.profile_medium}} alt="Avatar"/>
+                            <img class="menu-avatar" src={{user.profile_medium}} alt="Avatar" />
                             <img class="menu-avatar-svg" src="/images/RACLogo_white.svg" />
                         </div>
                         {{uppercase user.firstname}}
@@ -63,25 +76,18 @@
                         <li class="item"><a href="/dashboard">DASHBOARD</a></li>
                         {{!-- Need id logout to run logout script --}}
                         <li class="item" id="logout"><a href="/logout">LOG OUT</a></li>
+                        {{#if user.isAdmin}}
+                        <li class="item"> <a href="/admin/approvals">APPROVALS</a></li>
+                        <li class="item"> <a href="/admin/route-utils">ROUTE UTILS</a></li>
+                        {{/if}}
                     </ul>
                 </li>
+
+                {{!-- Login menu  --}}
                 {{else}}
                 <li class="item"><a href="/login">LOG IN</a></li>
                 {{/if}}
-
-                {{#if user.isAdmin}}
-                <li class="item has-submenu">
-                    <a tabindex="0">ADMIN</a>
-                    <ul class="submenu">
-                        <li class="subitem first-item">
-                            <a href="/admin/approvals">APPROVALS</a>
-                        </li>
-                        <li class="subitem">
-                            <a href="/admin/route-utils">ROUTE UTILS</a>
-                        </li>
-                    </ul>
-                </li>
-                {{/if}}
+        
             </ul>
             <span class="toggle"><a href="#"><i class="fas fa-bars"></i></a></span>
         </nav>
@@ -102,12 +108,15 @@
         <img src="/images/arrow-up-icon.svg" alt="Arrow Up Icon" id="goToTop" onclick="topFunction()">
     </main>
     <!-- End Main -->
-    
+
     <footer>
         <div>
-            <a href="https://ridewithgps.com/users/5525439" target="_blank"><img src="/images/ridewithgps_black.svg" alt="Instagram Logo"></a>
-            <a href="https://www.strava.com/clubs/redwoodadventurecycling" target="_blank"><img src="/images/strava_black_logo.svg" alt="Strava Logo"></a>
-            <a href="https://www.instagram.com/redwoodadventurecycling/" target="_blank"><img src="/images/insta_logo_black.svg" alt="Instagram Logo"></a>
+            <a href="https://ridewithgps.com/users/5525439" target="_blank"><img src="/images/ridewithgps_black.svg"
+                    alt="Instagram Logo"></a>
+            <a href="https://www.strava.com/clubs/redwoodadventurecycling" target="_blank"><img
+                    src="/images/strava_black_logo.svg" alt="Strava Logo"></a>
+            <a href="https://www.instagram.com/redwoodadventurecycling/" target="_blank"><img
+                    src="/images/insta_logo_black.svg" alt="Instagram Logo"></a>
         </div>
     </footer>
 

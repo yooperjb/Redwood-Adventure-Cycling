@@ -46,7 +46,7 @@ router.get('/approvals', ensureLoggedIn('/'), async (req, res) => {
     const userRoutes = dbUserRoutesData.map(route => route.get({ plain: true }));
 
     res.render('approvals', {
-      title: 'Admin Approvals',
+      title: 'Route Approvals',
       user: req.user,
       userRoutes: { userRoutes },
     });
@@ -58,38 +58,38 @@ router.get('/approvals', ensureLoggedIn('/'), async (req, res) => {
 });
 
 // create-route page /admin/create-route *Redirect non-ADMIN to home page
-  router.get('/route-utils', ensureLoggedIn('/'), async function (req, res) {
-    // redirect non-Admin to home page
-    if (!req.user.isAdmin) {
-      return res.redirect('/');
-    }
+router.get('/route-utils', ensureLoggedIn('/'), async function (req, res) {
+  // redirect non-Admin to home page
+  if (!req.user.isAdmin) {
+    return res.redirect('/');
+  }
 
-    try {
-      // Fetch all routes for given year
-      const allRoutes = await Routes.findAll({
-        where: {
-          year: process.env.YEAR,
-        },
-        order: [['name', 'ASC']],
-        attributes:[
-          'id',
-          'name',
-        ],
-        
-      });
+  try {
+    // Fetch all routes for given year
+    const allRoutes = await Routes.findAll({
+      where: {
+        year: process.env.YEAR,
+      },
+      order: [['name', 'ASC']],
+      attributes:[
+        'id',
+        'name',
+      ],
+      
+    });
 
-      const serializedRoutes = allRoutes.map(route => route.get({ plain: true }));
+    const serializedRoutes = allRoutes.map(route => route.get({ plain: true }));
 
-      res.render('create-route', { 
-        title: 'Routes Utils',
-        user: req.user,
-        routes: serializedRoutes, // Pass routes to template
-      });
+    res.render('route-utils', { 
+      title: 'Routes Utils',
+      user: req.user,
+      routes: serializedRoutes, // Pass routes to template
+    });
 
-    } catch (error) {
-      console.err('Error fetching routes:', error);
-      res.status(500).send('Internal Server Error');
-    }
-  });
+  } catch (error) {
+    console.err('Error fetching routes:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
 
 module.exports = router;
