@@ -1,6 +1,7 @@
 // import Model Class and Datatypes from sequelize
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes, Sequelize } = require('sequelize');
 const sequelize = require('../config/connection');
+const moment = require('moment');
 
 // create the User Model - inherits from Model
 class User_Routes extends Model {};
@@ -36,8 +37,14 @@ User_Routes.init(
         allowNull: false,
     },
     date_submitted: {
-        type:DataTypes.DATE,
-        defaultValue: DataTypes.NOW
+        type: DataTypes.DATE,
+        // defaultValue: DataTypes.NOW
+        defaultValue: Sequelize.fn('NOW'),
+        get() {
+            // This getter function will convert the stored timestamp to the local time
+            const rawValue = this.getDataValue('date_submitted');
+            return moment(rawValue).format(); // This can be adjusted if needed. Doesn't seem to convert time. Need to do this using moment.
+        }
     },
     bonus_points: {
         type: DataTypes.INTEGER,

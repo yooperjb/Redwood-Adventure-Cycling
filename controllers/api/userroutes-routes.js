@@ -6,8 +6,8 @@ const Resize = require('../../utils/Resize');
 const path = require('path');
 const fs = require('fs').promises;
 const multer = require('multer');
-const moment = require('moment');
-// require('dotenv').config();
+const { checkSubmissionDate } = require('../../utils/date');
+const { getBonusPoints } = require('../../utils/routeUtils');
 
 // GET /api/user-routes
 router.get('/', async (req, res) => {
@@ -36,27 +36,13 @@ router.get('/', async (req, res) => {
 router.post('/', upload.single('photo'), async (req, res) => {
     try {
         
-        // Check if the current date is within the allowed time period.
-        const currentDate = moment();
-        const submissionStartDate = moment(`${process.env.YEAR}-02-01`);
-        const submissionEndDate = moment(`${process.env.YEAR}-11-30`);
-
-        console.log(submissionStartDate);
-        console.log(submissionEndDate);
-
-        if (!currentDate.isBetween(submissionStartDate, submissionEndDate, 'day', '[]')) {
-            return res.status(403).json({ 
-                error: true,
-                message: 'Route submission is not allowed at this time.',
-                allowedStartDate: submissionStartDate.format('YYYY-MM-DD'),
-                allowedEndDate: submissionEndDate.format('YYYY-MM-DD'),
-            });
-        }
+        // Check if submission is currently allowed
+        checkSubmissionDate();
         
-        activity = req.user.activities;
-
+        const activity = req.user.activities;
         // Count the number of routes submitted for bonus points
-        const routeCount = User_Routes.count({
+        // this could be moved to a separate function
+        const routeCount = await User_Routes.count({
             where: {
                 route_id: req.body.route_id
             },
@@ -72,18 +58,8 @@ router.post('/', upload.single('photo'), async (req, res) => {
             ],     
         });
            
-        // Assign bonus points based on submission counts
-        let bonus_points;
-
-        if (routeCount === 0) {
-            bonus_points = 5;
-        } else if (routeCount === 1 ) {
-            bonus_points = 3;
-        } else if ( routeCount === 2) {
-            bonus_points = 1;
-        } else {
-            bonus_points = 0;
-        }
+        // Assign bonus points based on route submission counts
+        const bonus_points = getBonusPoints(routeCount);
     
         // if photo submitted resize and save to file
         // create two size files!!!
@@ -96,8 +72,7 @@ router.post('/', upload.single('photo'), async (req, res) => {
             await fs.mkdir(photo_dir, {recursive: true });
 
             const fileUpload = new Resize(photo_dir,photo_name); // creates new Resize Class
-            const filename = fileUpload.save(req.file.buffer)
-            console.log('filename', filename)
+            const filename = await fileUpload.save(req.file.buffer)
         }
 
         // Create user route    
@@ -115,7 +90,7 @@ router.post('/', upload.single('photo'), async (req, res) => {
         res.json(dbRoutesData);
     } catch (err) {
         console.error(err);
-        res.status(500).json(err);
+        res.status(403).json({ error: true, message: err.message });
     }
 });
 

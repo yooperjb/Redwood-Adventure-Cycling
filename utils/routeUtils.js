@@ -78,7 +78,22 @@ const getDifficulty = (points) => {
         return "Easy"
     }
 }
+
+const getBonusPoints = (routeCount) => {
+    let bonus_points;
+
+    if (routeCount === 0) {
+        bonus_points = 5;
+    } else if (routeCount === 1 ) {
+        bonus_points = 3;
+    } else if ( routeCount === 2) {
+        bonus_points = 1;
+    } else {
+        bonus_points = 0;
+    }
+    return bonus_points;
+}
   
   module.exports = {
-    fetchRouteData, getPoints, getDifficulty
+    fetchRouteData, getPoints, getDifficulty, getBonusPoints
   };

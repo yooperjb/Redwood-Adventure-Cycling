@@ -49,7 +49,6 @@ async function routeSubmitFormHandler(event) {
         document.location.reload();
         
         // clear form values - don't need to select them again.
-        // const inputs = document.querySelectorAll("#route_id, #ride_link #photo");
         inputs.forEach(input => {
             input.value = "";
         });
@@ -58,8 +57,8 @@ async function routeSubmitFormHandler(event) {
         console.log("Ride NOT Submitted");
         // Check if the response includes an 'error field'
         if (responseData.error) {
-            // Display the error message to the user (Customize in user-routes.js)
-            alert(`${responseData.message} Adventure Series starts on ${responseData.allowedStartDate} and ends ${responseData.allowedEndDate}.`);
+            // Display the error message to the user (Customize in utils/date.js)
+            alert(responseData.message);
         } else {
             // If no specific error message, alert with the status text.
             alert(response.statusText);

@@ -17,8 +17,8 @@ router.get('/', async (req, res) => {
     }
 });
 
-// api/bikeroutes/:id
-router.get('/:id', async (req, res) => {
+// api/bikeroutes/id/:id
+router.get('/id/:id', async (req, res) => {
     try {
         const dbRoutesData = await Routes.findOne({
             where: {
@@ -28,6 +28,27 @@ router.get('/:id', async (req, res) => {
 
         if (!dbRoutesData) {
             res.status(404).json({ message: 'No bike route found with this id' });
+            return;
+        }
+        res.json(dbRoutesData);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+    };
+});
+
+// api/bikeroutes/year/:year
+router.get('/year/:year', async (req, res) => {
+    try {
+        const dbRoutesData = await Routes.findAll({
+            where: {
+                year: req.params.year
+            },
+            order: [[ 'name', 'ASC']],
+        });
+
+        if (!dbRoutesData) {
+            res.status(404).json({ message: 'No bike routes found with this year' });
             return;
         }
         res.json(dbRoutesData);
