@@ -1,14 +1,16 @@
-# The Adventure Series
-![Tech Blog](https://img.shields.io/github/languages/top/webprinc3ss/the-adventure-series)
+# Redwood Adventure Cycling
+![Languages](https://img.shields.io/github/languages/top/yooperjb/Redwood-Adventure-Cycling)
 
-![Screenshot](public/images/adventure_series.jpg)
+![Screenshot](public/images/RAC.jpg)
 ## Description
-The Adventure Series is a project for a website promoting adventure cycling in and around Humboldt County, California. Participants can ride each of the routes at their leisure, then submit their ride through the website using their Strava activity. Once the ride is verified it counts for a completion toward the series and is shown in the full participant leaderboard. Participants who finish the series first, and those with the most points at the end of the series win great prizes.
+Redwood Adventure Cycling is a project for a website promoting adventure cycling in and around Humboldt County, California. Participants can ride each of the routes at their leisure, then submit their ride through the website using their Strava account activity. Once the ride is verified it counts for a completion toward the series and is shown in the full participant leaderboard. Participants who finish the series first, and those with the most points at the end of the series win great prizes.
 
-This site requires an account at [Strava.com](https://www.strava.com) in order to login, record, and verify your rides. Strava has a premium option, however a standard free subscription is enough.
+This site requires an account at [Strava.com](https://www.strava.com) in order to login, record, and verify the rides. Strava has a premium option, however a standard free subscription is enough for user participation. This site utilizes Strava OAuth2 authentication to access the V3 API to user's data such as their profile and activity data.
+
+The site also uses [Ridewithgps.com](https://ridewithgps.com) to create the adventure series routes and uses their API to pull in route information into the route database including route name, mileage, elevation, and description. It creates points and difficulty based on the route information pulled in from the API used for the adventure series point system. 
 
 ## Usage
-Navigate to the project link here: https://damp-anchorage-73357.herokuapp.com/
+Navigate to the project link here: https://redwoodadventurecycling.com/
 
 ## API Documentation
 - To access bike routes api data, navigate to /api/bikeroutes
@@ -23,6 +25,8 @@ This website application requires a Strava account and the creation of a Strava 
   - mysql environment variables
   - strava api client id
   - strava api client secret
+  - Ridewithgps auth key
+  - Ridewithgps api key
 
 ## NPM Packages
 * [connect-ensure-login](https://www.npmjs.com/package/connect-ensure-login)
@@ -39,10 +43,10 @@ This website application requires a Strava account and the creation of a Strava 
 * [sequelize](https://www.npmjs.com/package/sequelize) - promise-based Node.js ORM
   
 ## Contributors
+  - [Jason Barnes](https://github.com/yooperjb)
   - [Anthony Kieu](https://github.com/anthonykieu) 
   - [Calista Mayer](https://github.com/calistamayer)
   - [Danielle Branton](https://github.com/webprinc3ss)
-  - [Jason Barnes](https://github.com/yooperjb)
 
 ## Credit
 <div>Icon created by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
