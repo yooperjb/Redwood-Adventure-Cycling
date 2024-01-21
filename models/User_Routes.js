@@ -38,13 +38,7 @@ User_Routes.init(
     },
     date_submitted: {
         type: DataTypes.DATE,
-        // defaultValue: DataTypes.NOW
-        defaultValue: Sequelize.fn('NOW'),
-        get() {
-            // This getter function will convert the stored timestamp to the local time
-            const rawValue = this.getDataValue('date_submitted');
-            return moment(rawValue).format(); // This can be adjusted if needed. Doesn't seem to convert time. Need to do this using moment.
-        }
+        defaultValue: DataTypes.NOW
     },
     bonus_points: {
         type: DataTypes.INTEGER,

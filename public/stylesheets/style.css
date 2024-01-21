@@ -458,7 +458,7 @@ button:hover {
   color: var(--quad-color);
 }
 
-.modal {
+.modal, .success-modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 100; /* Sit on top */
@@ -482,7 +482,7 @@ button:hover {
 }
 
 /* Modal Close Button */
-.close {
+.close, .modal-close {
   color: #aaa;
   padding: 0 5px;
   font-size: 28px;
@@ -490,7 +490,9 @@ button:hover {
 }
 
 .close:hover,
-.close:focus {
+.close:focus,
+.modal-close:hover,
+.modal-close:focus {
   color: var(--secondary-color);
   text-decoration: none;
   cursor: pointer;

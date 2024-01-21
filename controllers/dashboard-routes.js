@@ -3,8 +3,6 @@ const { ensureLoggedIn } = require('connect-ensure-login');
 const { User_Routes, Routes } = require('../models');
 const modals = require('../public/data/modal.json');
 
-// require('dotenv').config();
-
 // GET route /dashboard
 router.get('/', ensureLoggedIn('/login'), async (req, res) => {
     try{
@@ -17,7 +15,7 @@ router.get('/', ensureLoggedIn('/login'), async (req, res) => {
         const userRoutes = userRoutesData.map(route => route.get({ plain: true }));
         let routes = routesData.map(route => route.get({ plain: true }));
 
-        // Remove user ridden routes for the submit dropdown list
+        // Remove user ridden routes for the CHOOSE THE ROUTE dropdown list
         routes = routes.filter(ar => !userRoutes.find(rm => (rm.route_id === ar.id)));
 
         // Render dashboard page and pass userRoutes, routes, and loggedIn user

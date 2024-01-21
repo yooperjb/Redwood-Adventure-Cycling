@@ -61,9 +61,22 @@
                 </form>
             </div>
         </div>{{!-- End Form-Container Division --}}
+        
+        {{!-- Route submission success modal  --}}
+        <div id="successModal" class="success-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Route Submitted</h4><span class="modal-close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p>Congrats, your ride was successfully submitted! You will now see it in your dashboard and will appear in the leaderboard once approved. 
+                    </p>
+                </div>
+            </div>
+        </div>
+
         {{!-- Chart section --}}
         <div class="chart-container">
-            {{!-- <canvas id="completionChart" width="324" height="324"></canvas> --}}
             <canvas id="completionChart"></canvas>
         </div>
     </div>{{!-- End Dashboard-Container Division --}}
@@ -117,8 +130,7 @@
                     <tr>
                         <td>Photo</td>
                         {{#if userRoute.photo}}
-                        <td><a href="https://redwoodadventurecycling.com/photos/{{userRoute.route.year}}/{{userRoute.photo}}">View
-                                Photo</a></td>
+                        <td><a href="/photos/{{userRoute.route.year}}/{{userRoute.photo}}">View Photo</a></td>
                         {{else}}
                         <td>No Photo</td>
                         {{/if}}
@@ -128,7 +140,7 @@
         </div>
         <div class="bike-route-map-completed">
             {{#if userRoute.photo}}
-            <img class="route-map" src="/photos/2023/{{userRoute.photo}}" alt="Photo from {{userRoute.route.name}}" />
+            <img class="route-map" src="/photos/{{userRoute.route.year}}/{{userRoute.photo}}" alt="Photo from {{userRoute.route.name}}" />
             {{else}}
             <img class="route-map" src="https://ridewithgps.com/routes/full/{{userRoute.route.id}}.png"
                 alt="Map of {{userRoute.route.name}}" />
@@ -148,8 +160,6 @@
     Chart.defaults.font.family = "'Montserrat', 'Roboto', 'Arial', 'Helvetica', sans-serif";
     let completedRoutes = {{userRoutes.userRoutes.length}};
     let remainingRoutes = {{routes.routes.length}};
-    console.log("CompletedRoutes", completedRoutes);
-    console.log("RemainingRoutes", remainingRoutes);
     let ctx = document.getElementById('completionChart').getContext('2d');
     let completionChart = new Chart(ctx, {
         type: 'pie',

@@ -1,4 +1,3 @@
-
 async function routeSubmitFormHandler(event) {
     event.preventDefault();
 
@@ -45,13 +44,8 @@ async function routeSubmitFormHandler(event) {
 
     if (response.ok) {
         console.log("Ride Submitted!");
-        // reload page and reset form values
-        document.location.reload();
-        
-        // clear form values - don't need to select them again.
-        inputs.forEach(input => {
-            input.value = "";
-        });
+        // Open the Ride Sumbit Success Modal
+        openModal();
     
     } else {
         console.log("Ride NOT Submitted");
@@ -66,6 +60,25 @@ async function routeSubmitFormHandler(event) {
     }
 };
 
+function openModal() {
+    const modal = document.getElementById('successModal');
+    modal.style.display = 'block';
+  }
+
+function closeModal() {
+
+    const inputs = document.querySelectorAll("#route_id, #ride_link, #photo");
+
+    const modal = document.getElementById('successModal');
+    modal.style.display = 'none';
+
+    document.location.reload();
+    
+    inputs.forEach(input => {
+        input.value = "";
+    });
+}
+
 async function clearErrorHandler(event) {
     document.querySelector('.type-error').setAttribute('class', 'type-error inactive');
     document.querySelector('.size-error').setAttribute('class', 'size-error inactive');
@@ -74,3 +87,4 @@ async function clearErrorHandler(event) {
 // event listeners
 document.querySelector('.route-form').addEventListener('submit', routeSubmitFormHandler);
 document.querySelector('#photo').addEventListener('click', clearErrorHandler);
+document.querySelector('.modal-close').addEventListener('click', closeModal);
