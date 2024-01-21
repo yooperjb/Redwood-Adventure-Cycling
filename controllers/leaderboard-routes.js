@@ -32,7 +32,7 @@ router.get('/', async (req, res) => {
         where: {
           approved: 1,
           date_completed: {
-            [Op.between]: [`${process.env.YEAR}/1/31`, `${process.env.YEAR}/12/1`],
+            [Op.between]: [`${process.env.YEAR}/1/1`, `${process.env.YEAR}/12/1`],
           },
         },
         // get user_route info and sum points, elevation, mileage fields. Count ridden routes.
