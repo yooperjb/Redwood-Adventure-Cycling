@@ -62,18 +62,7 @@
             </div>
         </div>{{!-- End Form-Container Division --}}
         
-        {{!-- Route submission success modal  --}}
-        <div id="successModal" class="success-modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4>Route Submitted</h4><span class="modal-close">&times;</span>
-                </div>
-                <div class="modal-body">
-                    <p>Congrats, your ride was successfully submitted! You will now see it in your dashboard and will appear in the leaderboard once approved. 
-                    </p>
-                </div>
-            </div>
-        </div>
+
 
         {{!-- Chart section --}}
         <div class="chart-container">
@@ -84,6 +73,20 @@
 <hr>
 {{!-- MODALS Partial --}}
 {{> dashboard-modal modals}}
+
+        {{!-- Route submission success modal --}}
+        <div id="successModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Route Submitted</h4><span class="close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p>Congrats, your ride was successfully submitted! You will now see it in your dashboard and will appear in
+                        the leaderboard once approved.
+                    </p>
+                </div>
+            </div>
+        </div>
 
 {{!-- User Completed Routes Section --}}
 {{!-- Possibly put this into a partial --}}

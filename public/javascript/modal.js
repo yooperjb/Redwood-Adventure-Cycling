@@ -9,19 +9,48 @@ const spans = document.getElementsByClassName("close");
 
 // When the user clicks on the button, open the modal
 [...qMarks].forEach((btn, ind) => {
-    btn.onclick = () => (modals[ind].style.display = 'block')
+  btn.onclick = () => (modals[ind].style.display = 'block')
 });
 
+// function to open the submit route modal
+function openModal() {
+  const modal = document.getElementById('successModal');
+  modal.style.display = 'block';
+}
+
 // When the user clicks on <span> (x), close the modal
-[...spans].forEach(( span, ind) => {
-    span.onclick = () => (modals[ind].style.display = 'none');
+[...spans].forEach((span, ind) => {
+  span.onclick = () => {
+    closeModal(modals[ind].id);
+  }
 });
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  [...modals].forEach(( modal) => {
-        if (event.target === modal) {
-    modal.style.display = "none";
-  }
+window.onclick = function (event) {
+  [...modals].forEach((modal) => {
+    if (event.target === modal) {
+      closeModal(modal.id);
+    }
   })
+};
+
+// function to improve modal closure ability with different modals
+function closeModal(modalId) {
+  const modal = document.getElementById(modalId);
+
+  // Check if modal is the route submission modal
+  if (modalId === 'successModal') {
+    const inputs = document.querySelectorAll("#route_id, #ride_link, #photo");
+
+    // clear the form inputs
+    inputs.forEach(input => {
+      input.value = "";
+    });
+
+    // reload the page
+    document.location.reload();
+  }
+
+  // Close the modal
+  modal.style.display = 'none';
 }

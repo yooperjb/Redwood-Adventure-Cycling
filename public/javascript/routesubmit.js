@@ -44,7 +44,7 @@ async function routeSubmitFormHandler(event) {
 
     if (response.ok) {
         console.log("Ride Submitted!");
-        // Open the Ride Sumbit Success Modal
+        // Open the Ride Submit Success Modal
         openModal();
     
     } else {
@@ -60,25 +60,6 @@ async function routeSubmitFormHandler(event) {
     }
 };
 
-function openModal() {
-    const modal = document.getElementById('successModal');
-    modal.style.display = 'block';
-  }
-
-function closeModal() {
-
-    const inputs = document.querySelectorAll("#route_id, #ride_link, #photo");
-
-    const modal = document.getElementById('successModal');
-    modal.style.display = 'none';
-
-    document.location.reload();
-    
-    inputs.forEach(input => {
-        input.value = "";
-    });
-}
-
 async function clearErrorHandler(event) {
     document.querySelector('.type-error').setAttribute('class', 'type-error inactive');
     document.querySelector('.size-error').setAttribute('class', 'size-error inactive');
@@ -87,4 +68,4 @@ async function clearErrorHandler(event) {
 // event listeners
 document.querySelector('.route-form').addEventListener('submit', routeSubmitFormHandler);
 document.querySelector('#photo').addEventListener('click', clearErrorHandler);
-document.querySelector('.modal-close').addEventListener('click', closeModal);
+// document.querySelector('.modal-close').addEventListener('click', closeModal);
