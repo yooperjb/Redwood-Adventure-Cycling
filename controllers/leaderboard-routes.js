@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Routes, User_Routes, User } = require('../models');
 const sequelize = require('../config/connection');
 const { Op } = require('sequelize');
+require('dotenv').config();
 
 // route to leaderboard page /leaderboard
 router.get('/', async (req, res) => {
@@ -32,7 +33,7 @@ router.get('/', async (req, res) => {
         where: {
           approved: 1,
           date_completed: {
-            [Op.between]: [`${process.env.YEAR}/1/1`, `${process.env.YEAR}/12/1`],
+            [Op.between]: [`${process.env.YEAR}-01-01`, `${process.env.YEAR}-12-01`],
           },
         },
         // get user_route info and sum points, elevation, mileage fields. Count ridden routes.
@@ -70,7 +71,7 @@ router.get('/', async (req, res) => {
         where: {
           approved: 1,
           date_completed: {
-            [Op.between]: [`${process.env.YEAR}/1/31`, `${process.env.YEAR}/12/1`],
+            [Op.between]: [`${process.env.YEAR}-01-01`, `${process.env.YEAR}-12-01`],
           },
         },
         attributes: [
@@ -88,7 +89,7 @@ router.get('/', async (req, res) => {
         ],
         order: [['date_submitted', 'ASC']]
       }),
-      // get all approved and current year submitted routes for "Route Bonus Points" Table
+      // get all approved and current year submitted routes for "Route Bonus (Attacker) Points" Table
       Routes.findAll({
         attributes: [
           'id', 'name'
@@ -102,7 +103,7 @@ router.get('/', async (req, res) => {
               approved: 1,
               bonus_points: [5, 3, 1],
               date_completed: {
-                [Op.between]: [`${process.env.YEAR}/1/31`, `${process.env.YEAR}/12/1`],
+                [Op.between]: [`${process.env.YEAR}-01-01`, `${process.env.YEAR}-12-01`],
               },
             },
 
@@ -141,7 +142,7 @@ router.get('/', async (req, res) => {
       attackerPoints: { attackerPoints: serializedAttackerPoints },
     });
   } catch (err) {
-    console.error(err);
+    console.error('Error in leaderboard route:', err);
     res.status(500).json(err);
   }
 });

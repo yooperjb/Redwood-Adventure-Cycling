@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Routes, User_Routes } = require('../models');
 const sequelize = require('../config/connection');
-// require('dotenv').config();
+require('dotenv').config();
 
 // /bikeroutes
 router.get('/', async (req, res) => {
