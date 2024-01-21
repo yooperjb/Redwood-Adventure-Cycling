@@ -11,7 +11,9 @@ passport.use(new StravaStrategy({
     clientSecret: process.env['STRAVA_CLIENT_SECRET'],
     callbackURL: '/return',
     // This sets the authentication scope of the App for users!
-    scope: 'activity:read_all',
+    // Need read and activity:read_all to prevent login authorization every time!
+    // scope: 'activity:read_all',
+    scope: 'read,activity:read_all',
   },
   async function(accessToken, refreshToken, profile, cb) {
 
