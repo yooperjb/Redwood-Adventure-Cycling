@@ -132,7 +132,7 @@ router.get('/', async (req, res) => {
 
     // used for Bonus Points Attacker Table
     const serializedAttackerPoints = attackerPoints.map(route => route.get({ plain: true }));
-
+    console.log(process.env.YEAR)
     res.render('leaderboard', {
       title: '2024 Leaderboard',
       gender: gender,
@@ -140,6 +140,7 @@ router.get('/', async (req, res) => {
       userPoints: { userPoints: serializedUserPoints },
       userRoutes: { userRoutes: serializedUserRoutes },
       attackerPoints: { attackerPoints: serializedAttackerPoints },
+      year: process.env.YEAR,
     });
   } catch (err) {
     console.error('Error in leaderboard route:', err);

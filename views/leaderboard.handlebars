@@ -78,6 +78,7 @@
             <th>Photo</th>
             <th>Submitted</th>
         </tr>
+
         {{#each userRoutes.userRoutes as | userRoutes | }}
         <tr>
             <td>{{add1 @index}}</td>
@@ -85,9 +86,9 @@
             <td>{{userRoutes.route.name}}</td>
             <td>
                 {{#if userRoutes.photo}}
-                <a href="/photos/2023/{{userRoutes.photo}}">Photo</a>
+                <a href="/photos/{{../year}}/{{userRoutes.photo}}">Photo</a>
                 {{else}}
-                --
+                No Photo
                 {{/if}}
             </td>
             <td>{{format_month_day_time userRoutes.date_submitted}}</td>
