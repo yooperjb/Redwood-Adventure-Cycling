@@ -5,7 +5,13 @@ const { User_Routes, User, Routes } = require('../../models');
 router.get('/', async (req, res) => {
     try {
         // Fetch all users and sort by name
-        const dbUsersData = await User.findAll( { order: [['name', 'ASC']] });
+        const dbUsersData = await User.findAll( { 
+            attributes:[
+                'id',
+                'name',
+                'gender',
+            ],
+            order: [['name', 'ASC']] });
 
         res.json(dbUsersData);
     } catch (err) {

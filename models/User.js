@@ -23,15 +23,14 @@ User.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-        accessToken: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        refreshToken: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-       
+        // accessToken: {
+        //     type: DataTypes.STRING,
+        //     allowNull: true
+        // },
+        // refreshToken: {
+        //     type: DataTypes.STRING,
+        //     allowNull: true
+        // },
         admin: {
             type: DataTypes.BOOLEAN,
             allowNull: false,

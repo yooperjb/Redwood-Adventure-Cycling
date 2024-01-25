@@ -47,8 +47,8 @@ passport.use(new StravaStrategy({
                 id: profile.id,
                 name: profile.displayName,
                 gender: profile._json.sex,
-                accessToken: accessToken,
-                refreshToken: refreshToken,
+                // accessToken: accessToken,
+                // refreshToken: refreshToken,
               });
             }
                 
