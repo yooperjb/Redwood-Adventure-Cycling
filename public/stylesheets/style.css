@@ -184,7 +184,7 @@ nav a:focus-visible {
 
 /* --------- HERO styles --------- */
 .hero {
-  background-color: var(--secondary-color);
+  background-color: var(--quad-color);
   background-image: url("../images/showers_pass_color_hero.jpg");
   min-height: 300px;
   width: 100%;

@@ -5,25 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{title}}</title>
-
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-90ZJ0G588M"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-90ZJ0G588M');
-    </script>
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;600;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    {{!--
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css"> --}}
     <link rel="icon" type="image/png" href="/favicon.png">
 </head>
 
 <body>
+    
     <header>
         <nav>
             <div class="logo-div">
@@ -31,7 +26,7 @@
             </div>
             <ul class="menu">
 
-                {{!-- Adventure Series menu  --}}
+                {{!-- Adventure Series menu --}}
                 <li class="item has-submenu">
                     <a tabindex="0">2024 SERIES</a>
                     <ul class="submenu">
@@ -62,7 +57,7 @@
                     </ul>
                 </li>
 
-                {{!-- Authenticated user menu  --}}
+                {{!-- Authenticated user menu --}}
                 {{#if user}}
                 <li class="item has-submenu">
                     <a class="menu-avatar-div" tabindex="1">
@@ -83,11 +78,11 @@
                     </ul>
                 </li>
 
-                {{!-- Login menu  --}}
+                {{!-- Login menu --}}
                 {{else}}
                 <li class="item"><a href="/login">LOG IN</a></li>
                 {{/if}}
-        
+
             </ul>
             <span class="toggle"><a href="#"><i class="fas fa-bars"></i></a></span>
         </nav>
@@ -125,6 +120,13 @@
     {{#if user}}
     <script src="/javascript/logout.js"></script>
     {{/if}}
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-90ZJ0G588M"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-90ZJ0G588M');
+    </script>
 </body>
 
 </html>
