@@ -37,28 +37,28 @@ const fetchRouteData = (routeId) => {
     
     let mile_points = 0;
     if (miles < 25) {
-        mile_points = 5;
-    } else if (miles < 50) {
         mile_points = 10;
-    } else if (miles < 75) {
-        mile_points = 15;
-    } else if (miles < 100) {
+    } else if (miles < 50) {
         mile_points = 20;
+    } else if (miles < 75) {
+        mile_points = 30;
+    } else if (miles < 100) {
+        mile_points = 40;
     } else {
-        mile_points = 25;
+        mile_points = 50;
     }
 
     let elev_points = 0;
     if (elevation < 2000) {
-        elev_points = 5;
-    } else if (elevation < 4000) {
         elev_points = 10;
-    } else if (elevation < 7000) {
-        elev_points = 15;
-    } else if (elevation < 10000) {
+    } else if (elevation < 4000) {
         elev_points = 20;
+    } else if (elevation < 7000) {
+        elev_points = 30;
+    } else if (elevation < 10000) {
+        elev_points = 40;
     } else {
-        elev_points = 25;
+        elev_points = 50;
     }
 
     return ratio_points + mile_points + elev_points;
@@ -66,13 +66,13 @@ const fetchRouteData = (routeId) => {
 
 const getDifficulty = (points) => {
     console.log("points", points)
-    if (points >80) {
+    if (points >=130) {
         return "Epic";
-    } else if (points >= 66) {
+    } else if (points >= 110) {
         return "Very Difficult";
-    } else if (points >= 51) {
+    } else if (points >= 80) {
         return "Difficult";
-    } else if (points >= 36) {
+    } else if (points >= 50) {
         return "Moderate";
     } else {
         return "Easy"

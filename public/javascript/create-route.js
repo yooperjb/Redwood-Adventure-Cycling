@@ -1,4 +1,3 @@
-
 async function createRouteFormHandler(event) {
     event.preventDefault();
 
@@ -6,10 +5,9 @@ async function createRouteFormHandler(event) {
     const ridewithgps_id = document.querySelector('#ridewithgps-id').value;
     const year = document.querySelector('#year').value;
     
-    // console.log(ridewithgps_id, year);
     // send create-route form variables to api
     response = await fetch("/api/bikeroutes/", {
-        method: 'POST', 
+        method: 'POST',
         body: JSON.stringify({
             ridewithgps_id,
             year
@@ -19,6 +17,7 @@ async function createRouteFormHandler(event) {
         }
     });
 
+    // Create success modal here...
     if (response.ok) {
         console.log("Response OK");
         document.querySelector('#ridewithgps-id').value = "";
