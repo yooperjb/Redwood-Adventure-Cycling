@@ -4,7 +4,6 @@ async function updateRouteFormHandler(event) {
     // grab values from update-route form inputs
     const route_id = document.querySelector('#route_id').value;
 
-    // console.log('route-id', route_id);
     // send route id to api for updating
     response = await fetch("/api/bikeroutes/", {
         method: 'PUT',
@@ -18,7 +17,8 @@ async function updateRouteFormHandler(event) {
 
     if (response.ok) {
         console.log("Response OK");
-        document.querySelector('#route-id').value = "";
+        openModal('updateRouteModal')
+        // document.querySelector('#route-id').value = "";
         // console.log(response);
     } else {
         console.log("Route NOT Created");

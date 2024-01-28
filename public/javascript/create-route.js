@@ -20,9 +20,10 @@ async function createRouteFormHandler(event) {
     // Create success modal here...
     if (response.ok) {
         console.log("Response OK");
-        document.querySelector('#ridewithgps-id').value = "";
-        document.querySelector('#year').value = "";
+        // document.querySelector('#ridewithgps-id').value = "";
+        // document.querySelector('#year').value = "";
         // console.log(response);
+        openModal("createRouteModal")
     } else {
         console.log("Route NOT Created");
         console.log(response)

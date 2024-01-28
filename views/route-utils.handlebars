@@ -42,18 +42,32 @@
 
 </section>
 
-        {{!-- Create Route success modal --}}
-        <div id="successModal" class="modal">
+        {{!-- Create Route Success modal --}}
+        <div id="createRouteModal" class="modal">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4>Route Created</h4><span class="close">&times;</span>
                 </div>
                 <div class="modal-body">
-                    <p>Ride Successfully Created!
+                    <p>Route Successfully Created!
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        {{!-- Update Route Success modal --}}
+        <div id="updateRouteModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Route Updated</h4><span class="close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p>Route Successfully Updated with Ride With GPS data!
                     </p>
                 </div>
             </div>
         </div>
 
+<script src="/javascript/modal.js"></script>
 <script src="/javascript/create-route.js"></script>
 <script src="/javascript/update-route.js"></script>
