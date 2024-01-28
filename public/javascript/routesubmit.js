@@ -45,7 +45,7 @@ async function routeSubmitFormHandler(event) {
     if (response.ok) {
         console.log("Ride Submitted!");
         // Open the Ride Submit Success Modal
-        openModal();
+        openModal('successModal');
     
     } else {
         console.log("Ride NOT Submitted");

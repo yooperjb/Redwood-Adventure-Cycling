@@ -12,13 +12,6 @@ const spans = document.getElementsByClassName("close");
   btn.onclick = () => (modals[ind].style.display = 'block')
 });
 
-// function to open the submit route modal
-// change to input parameter into function for different modals. Then open modal with that id. can be used for other pages/modals
-// function openModal() {
-//   const modal = document.getElementById('successModal');
-//   modal.style.display = 'block';
-// }
-
 function openModal(id) {
   const modal = document.getElementById(id);
   modal.style.display = 'block';
@@ -59,4 +52,7 @@ function closeModal(modalId) {
 
   // Close the modal
   modal.style.display = 'none';
+  
+  // reload the page
+  window.location.reload();
 }
