@@ -43,10 +43,10 @@ router.get('/ncbr',
 });
 
 // route to soldiers on singletrack page /sost
-router.get('/sost',
+router.get('/sos',
   function (req, res) {
-    res.render('sost', { 
-      title: 'SOST',
+    res.render('sos', { 
+      title: 'SOS',
       user: req.user });
 });
 
