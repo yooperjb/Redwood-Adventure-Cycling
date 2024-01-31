@@ -43,9 +43,12 @@
                 alt="Elevation Profile of {{this.name}} Route" />
             {{!-- <p>{{this.description}}</p> --}}
         </div>
-
+        
         <div class="bike-route-description">
-            <p>{{this.description}}</p>
+            <div class="description-content collapsed">
+                <p>{{this.description}}</p>
+            </div>
+            <button class="toggle-description">Read More</button>
         </div>
 
     </div>
@@ -54,7 +57,7 @@
         <a href="https://ridewithgps.com/routes/{{this.id}}" target="_blank"><img class="route-map"
                 src="https://ridewithgps.com/routes/full/{{this.id}}.png" alt="Map of {{this.name}} Route" /></a>
 
-        {{!-- If I decide to use embeded interactive maps this is an example. --}}
+        {{!-- If I decide to use embedded interactive maps this is an example. --}}
         {{!-- <iframe src="https://ridewithgps.com/embeds?type=route&id=41552569"
             style="width: 1px; min-width: 100%; height: 100%; border: none;" scrolling="no"></iframe> --}}
     </div>
@@ -62,3 +65,5 @@
 </article>
 {{/each}}
 {{/if}}
+
+<script src="/javascript/description.js"></script>

@@ -763,6 +763,25 @@ article.bike-route {
 .bike-route-description {
   margin: 5px 0px;
   padding: 5px;
+  overflow: hidden;
+  max-width: 100%;
+  text-overflow: ellipsis;
+}
+
+.description-content {
+  max-height: 600px;
+  overflow: hidden;
+  transition: max-height 0.8s ease-in-out;
+}
+
+.description-content.collapsed {
+  max-height: 100px;
+}
+
+.toggle-description {
+  display: block;
+  margin: 10px auto 0;;
+  cursor: pointer;
 }
 
 .bike-route-description p {
