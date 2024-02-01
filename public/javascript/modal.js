@@ -38,21 +38,25 @@ function closeModal(modalId) {
   const modal = document.getElementById(modalId);
   const inputs = document.getElementsByTagName('input');
   const selects = document.getElementsByTagName('select');
-
-  console.log('inputs', inputs)
-  console.log('selects', selects)
-
-  Object.values(inputs).forEach(input => {
-    input.value = ''
-  })
-
-  Object.values(selects).forEach(select => {
-    select.value = ''
-  })
-
-  // Close the modal
-  modal.style.display = 'none';
   
-  // reload the page
-  window.location.reload();
+  if (modalId == 'modal-0' || modalId == 'modal-1' || modalId == 'modal-2') {
+      // Close the modal
+      modal.style.display = 'none';
+  }
+
+  else {
+    Object.values(inputs).forEach(input => {
+      input.value = ''
+    })
+  
+    Object.values(selects).forEach(select => {
+      select.value = ''
+    })
+  
+    // Close the modal
+    modal.style.display = 'none';
+    
+    // reload the page
+    window.location.reload();
+  }
 }
