@@ -12,7 +12,6 @@ passport.use(new StravaStrategy({
     callbackURL: '/return',
     // This sets the authentication scope of the App for users!
     // Need read and activity:read_all to prevent login authorization every time!
-    // scope: 'activity:read_all',
     scope: 'read,activity:read_all',
   },
   async function(accessToken, refreshToken, profile, cb) {
@@ -81,9 +80,9 @@ passport.use(new StravaStrategy({
       req.end();
     } catch (error) {
       return cb(error);
-    }
-    
-  }));
+    }  
+  }
+  ));
 
 //serialize users into and deserialize users out of the session. serializeUser determines which data of the user object should be stored in the session.
 passport.serializeUser(function(user, cb) {

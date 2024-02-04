@@ -3,11 +3,16 @@ const passport = require('../config/passport');
 const sequelize = require('../config/connection');
 
 // route to home page
-router.get('/', (req, res) => {
-  res.render('homepage', {
-    title: 'Redwood Adventure Cycling',
-    user: req.user,
-  });
+router.get('/', async (req, res) => {
+  try {
+    res.render('homepage', {
+      title: 'Redwood Adventure Cycling',
+      user: req.user
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error")
+  }
 });
 
 // route to guidelines page /guidelines
@@ -42,7 +47,7 @@ router.get('/ncbr',
       user: req.user });
 });
 
-// route to soldiers on singletrack page /sost
+// route to soldiers on singletrack page /sos
 router.get('/sos',
   function (req, res) {
     res.render('sos', { 
@@ -65,20 +70,47 @@ router.get('/login/strava',
 
 //change to post and move to api route
 // route to /return occurs after authentication happens
-router.get('/return',
-  // if authentication fails return to login page
-  passport.authenticate('strava', { failureRedirect: '/login' }),
-  // if user authenticated go to homepage
-  function (req, res) {
-    res.redirect('/');
+// router.get('/return',
+//   // if authentication fails return to login page
+//   passport.authenticate('strava', { failureRedirect: '/login' }),
+//   // if user authenticated go to homepage
+//   function (req, res) {
+//     res.redirect('/');
+//   });
+
+  router.get('/return', async (req, res, next) => {
+    passport.authenticate('strava', async (err, user, info) => {
+      try {
+        if (err) {
+          // Handle error
+          console.error(err);
+          return res.redirect('/login');
+        }
+  
+        if (!user) {
+          // User not authenticated, redirect to login
+          return res.redirect('/login');
+        }
+  
+        // Full authentication occurred, redirect to homepage
+        req.login(user, (loginErr) => {
+          if (loginErr) {
+            console.error(loginErr);
+            return res.redirect('/login');
+          }
+  
+          return res.redirect('/');
+        });
+      } catch (error) {
+        console.error(error);
+        return res.redirect('/login');
+      }
+    })(req, res, next);
   });
 
-//delete or post request and move to api route
-router.delete('/logout',
-  function (req, res) {
-    req.session.destroy(() => {
-      res.sendStatus(204) //successful, but not sending info back
-    })
-  });
+router.delete('/logout', (req, res) => {
+  req.logout(); // This is a function provided by Passport to terminate a login session
+  res.sendStatus(204);
+});
 
 module.exports = router;

@@ -68,4 +68,3 @@ async function clearErrorHandler(event) {
 // event listeners
 document.querySelector('.route-form').addEventListener('submit', routeSubmitFormHandler);
 document.querySelector('#photo').addEventListener('click', clearErrorHandler);
-// document.querySelector('.modal-close').addEventListener('click', closeModal);
