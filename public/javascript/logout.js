@@ -1,7 +1,7 @@
 //IIFE -- immediately invoked function expression - keeps the scope local to the page
 (() => {
     const logoutBtn = document.querySelector('#logout')
-    
+
     if (logoutBtn) {
         logoutBtn.addEventListener('click', async (event) => {
             event.preventDefault()
@@ -11,7 +11,6 @@
             if (res.ok) {
                 window.location.replace('/')
             }
-
         })
     }
 })()

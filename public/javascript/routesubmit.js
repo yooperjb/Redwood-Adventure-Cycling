@@ -1,6 +1,9 @@
 async function routeSubmitFormHandler(event) {
     event.preventDefault();
 
+    // Disable submit button to prevent multiple clicks
+    document.querySelector('.route-form button[type="submit"]').disabled = true;
+
     // acceptable image file types
     const file_types = ['image/png', 'image/jpg', 'image/jpeg', 'image/webp'];
     // grab values from route-submit form inputs
@@ -58,6 +61,9 @@ async function routeSubmitFormHandler(event) {
             alert(response.statusText);
         }
     }
+
+    // Re-enable submit button after form submission
+    document.querySelector('.route-form button[type="submit"]').disabled = false;
 };
 
 async function clearErrorHandler(event) {

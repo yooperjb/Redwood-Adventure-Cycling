@@ -16,44 +16,53 @@ router.get('/', async (req, res) => {
 });
 
 // route to guidelines page /guidelines
-router.get('/guidelines',
-  function (req, res) {
-    res.render('guidelines', { 
+router.get('/guidelines', async (req, res) => {
+  try {
+    res.render('guidelines', {
       title: 'RAC-Guidelines',
-      user: req.user });
+      user: req.user
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error")
+  }
 });
 
 // route to about page /about
 router.get('/about',
   function (req, res) {
-    res.render('about', { 
+    res.render('about', {
       title: 'RAC-About',
-      user: req.user });
-});
+      user: req.user
+    });
+  });
 
 // route to sponsors page /sponsors
 router.get('/sponsors',
   function (req, res) {
-    res.render('sponsors', { 
+    res.render('sponsors', {
       title: 'RAC-Sponsors',
-      user: req.user });
-});
+      user: req.user
+    });
+  });
 
 // route to northcoast bike rides page /ncbr
 router.get('/ncbr',
   function (req, res) {
-    res.render('ncbr', { 
+    res.render('ncbr', {
       title: 'NCBR',
-      user: req.user });
-});
+      user: req.user
+    });
+  });
 
 // route to soldiers on singletrack page /sos
 router.get('/sos',
   function (req, res) {
-    res.render('sos', { 
+    res.render('sos', {
       title: 'SOS',
-      user: req.user });
-});
+      user: req.user
+    });
+  });
 
 // route to login page /login
 router.get('/login',
@@ -78,35 +87,35 @@ router.get('/login/strava',
 //     res.redirect('/');
 //   });
 
-  router.get('/return', async (req, res, next) => {
-    passport.authenticate('strava', async (err, user, info) => {
-      try {
-        if (err) {
-          // Handle error
-          console.error(err);
-          return res.redirect('/login');
-        }
-  
-        if (!user) {
-          // User not authenticated, redirect to login
-          return res.redirect('/login');
-        }
-  
-        // Full authentication occurred, redirect to homepage
-        req.login(user, (loginErr) => {
-          if (loginErr) {
-            console.error(loginErr);
-            return res.redirect('/login');
-          }
-  
-          return res.redirect('/');
-        });
-      } catch (error) {
-        console.error(error);
+router.get('/return', async (req, res, next) => {
+  passport.authenticate('strava', async (err, user, info) => {
+    try {
+      if (err) {
+        // Handle error
+        console.error(err);
         return res.redirect('/login');
       }
-    })(req, res, next);
-  });
+
+      if (!user) {
+        // User not authenticated, redirect to login
+        return res.redirect('/login');
+      }
+
+      // Full authentication occurred, redirect to homepage
+      req.login(user, (loginErr) => {
+        if (loginErr) {
+          console.error(loginErr);
+          return res.redirect('/login');
+        }
+
+        return res.redirect('/');
+      });
+    } catch (error) {
+      console.error(error);
+      return res.redirect('/login');
+    }
+  })(req, res, next);
+});
 
 router.delete('/logout', (req, res) => {
   req.logout(); // This is a function provided by Passport to terminate a login session
