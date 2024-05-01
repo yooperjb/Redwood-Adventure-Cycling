@@ -55,11 +55,11 @@ router.get('/ncbr',
     });
   });
 
-// route to soldiers on singletrack page /sos
-router.get('/sos',
+// route to mountain bike tribal trail alliance page /mbtta
+router.get('/mbtta',
   function (req, res) {
-    res.render('sos', {
-      title: 'SOS',
+    res.render('mbtta', {
+      title: 'MBTTA',
       user: req.user
     });
   });
