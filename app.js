@@ -13,7 +13,7 @@ const hbs = exphbs.create({ helpers });
 
 // Create a new Express application
 const app = express();
-const PORT = process.env.PORT || 443;
+const PORT = process.env.PORT || 9001;
 
 const sess = {
     secret: process.env.SESSION_SECRET,
@@ -22,7 +22,7 @@ const sess = {
     secureProxy: true,
     cookie: {
         httpOnly: true,
-        maxAge: 8 * 60 * 60 * 1000 //8 hours;
+        maxAge: 8 * 60 * 60 * 5000 //40 hours;
     },
     resave: false,
     saveUninitialized: true,
@@ -49,7 +49,7 @@ app.use(passport.session());
 // turn on express routes
 app.use(routes);
 
-//turn on connection to db and server
+// turn on connection to db and server
 // force:false if set to true would drop and re-create database on startup
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log(`Now listening on port ${PORT}`));
