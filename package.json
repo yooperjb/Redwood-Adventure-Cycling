@@ -4,11 +4,7 @@
   "description": "Redwood Adventure Cycling website",
   "main": "app.js",
   "keywords": [
-    "RAC",
-    "cycling",
-    "Humboldt",
-    "adventure",
-    "series"
+    "RAC","cycling","Humboldt","adventure","series","bikepacking", "california", "redwood"
   ],
   "scripts": {
     "test": "jest",
