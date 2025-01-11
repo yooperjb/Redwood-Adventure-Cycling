@@ -11,7 +11,7 @@ passport.use(new StravaStrategy({
   clientSecret: process.env['STRAVA_CLIENT_SECRET'],
   callbackURL: '/return',
   // This sets the authentication scope of the App for users!
-  // Need read and activity:read_all to prevent login authorization every time!
+  // Need "read" and "activity:read_all" to prevent login authorization every time!
   scope: 'read,activity:read_all',
 },
   async function (accessToken, refreshToken, profile, cb) {
@@ -46,8 +46,8 @@ passport.use(new StravaStrategy({
                 id: profile.id,
                 name: profile.displayName,
                 gender: profile._json.sex,
-                // accessToken: accessToken,
-                // refreshToken: refreshToken,
+                // accessToken: accessToken, #stopped storing in DB
+                // refreshToken: refreshToken, #stopped storing in DB
               });
             }
 
@@ -58,11 +58,14 @@ passport.use(new StravaStrategy({
               name: activity.name,
               elapsed_time: formatTime(activity.elapsed_time),
               start_date_local: formatDate(activity.start_date_local),
-              id: activity.id
+              id: activity.id,
+              // ***** These need to be converted *****
+              distance: activity.distance,
+              elevation: activity.total_elevation_gain
             }));
 
             // userprofile is req.user that is passed from passport-StravaStrategy. I believe this is where I would add tokens if wanting to save them to the session. And send userprofile instead of ...profile to only pass user data across session instead of the whole strava profile.
-            const userprofile = { id, displayName: profile.displayName, username, firstname, lastname, sex, city, state, bio, profile_medium, activities };
+            const userprofile = { id, accessToken, displayName: profile.displayName, username, firstname, lastname, sex, city, state, bio, profile_medium, activities };
 
             // console.log('userprofile', userprofile)
 

@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Routes } = require('../../models');
 const sequelize = require('../../config/connection');
 const https = require('https');
-const { fetchRouteData, getPoints, getDifficulty } = require('../../utils/routeUtils');
+const { fetchRouteData, fetchSegmentData, getPoints, getDifficulty } = require('../../utils/routeUtils');
 
 // api/bikeroutes
 router.get('/', async (req, res) => {
@@ -58,7 +58,7 @@ router.get('/year/:year', async (req, res) => {
     };
 });
 
-// create new bike route api/bikeroutes
+// create new bike route (ridewithgps) api/bikeroutes
 router.post('/', async (req, res) => {
     try {
         const { ridewithgps_id, year } = req.body;
@@ -92,6 +92,51 @@ router.post('/', async (req, res) => {
         });
 
         res.json(newRoute);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+    }
+});
+
+// create new route segment (strava) api/bikeroutes/segment
+router.post('/segment', async (req, res) => {
+    try {
+        const { segmentId, year } = req.body;
+        accessToken = req.user.accessToken
+        
+        // Fetch segment information from Strava using the utility function
+        const segmentData = await fetchSegmentData(segmentId, accessToken);
+
+        console.log("segmentData", segmentData)
+        
+        if (!segmentData) {
+            return res.status(400).json({ message: 'No Strava segment found with this id' });
+        }
+
+        // Extract segment properties
+        const { name, distance, elevationGain } = segmentData;
+
+        // Calculate points and difficulty using utility functions
+        const mileage = distance * .0006213712;
+        const elevation = elevationGain * 3.281;
+
+        console.log("mileage", mileage)
+        console.log("elevation", elevation)
+        console.log("name", name)
+        
+        // Create a new route (segment)
+        // const newRoute = await Routes.create({
+        //     id: ridewithgps_id,
+        //     year,
+        //     name,
+        //     mileage,
+        //     elevation,
+        //     points,
+        //     difficulty,
+        //     description
+        // });
+
+        //res.json(newRoute);
     } catch (err) {
         console.error(err);
         res.status(500).json(err);
@@ -133,7 +178,7 @@ router.put('/', async (req, res) => {
     }
 });
 
-// this route is not currently being used
+// delete route -- this route is not currently being used
 router.delete('/:id', (req, res) => {
     Routes.destroy({
         where: {

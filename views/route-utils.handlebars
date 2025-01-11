@@ -22,7 +22,7 @@
         </div>
 
         <div class="route-update-container">
-            <h4>Update Route</h4>
+            <h4>Update RWGPS Route</h4>
             <form class="update-route">
                 <div>
                     <label for="route-name">Route Name</label>
@@ -38,6 +38,26 @@
                 </div>
             </form>
         </div>
+        
+        <div class="create-segment-container">
+            <h4>Create Segment</h4>
+            <form class="create-segment">
+                <div>
+                    <label for="segmentId">Strava Segment ID</label>
+                    <input type="text" id="segmentId" pattern="\d{8}" required>
+                </div>
+
+                <div>
+                    <label for="year">Segment Year</label>
+                    <input type="text" id="segYear" pattern="\d{4}" required>
+                </div>
+
+                <div class="center">
+                    <button type="submit">CREATE SEGMENT</button>
+                </div>
+            </form>
+        </div>
+
     </div>{{!-- End admin-container --}}
 
 </section>
@@ -68,6 +88,20 @@
             </div>
         </div>
 
+        {{!-- Create Segment Success modal --}}
+        <div id="createSegmentModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Strava Segment Added</h4><span class="close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p>Segment Successfully Added!
+                    </p>
+                </div>
+            </div>
+        </div>
+
 <script src="/javascript/modal.js"></script>
 <script src="/javascript/create-route.js"></script>
 <script src="/javascript/update-route.js"></script>
+<script src="/javascript/create-segment.js"></script>

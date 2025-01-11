@@ -19,6 +19,63 @@ const fetchRouteData = (routeId) => {
     });
   };
 
+const fetchSegmentData = (segmentId, accessToken) => {
+    const options = {
+        hostname: "www.strava.com",
+        path: `/api/v3/segments/${segmentId}`,
+        method: "GET",
+        headers: {
+            Authorization: `Bearer ${accessToken}`, // Pass the access token
+        },
+    };
+    return new Promise((resolve, reject) => {
+        const req = https.request(options, (res) => {
+            let data = "";
+
+            // Accumulate data chunks
+            res.on("data", (chunk) => {
+                data += chunk;
+            });
+
+            // Handle end of response
+            res.on("end", () => {
+                if (res.statusCode >= 200 && res.statusCode < 300) {
+                    try {
+                        const segmentData = JSON.parse(data);
+
+                        // Extract relevant fields
+                        const result = {
+                            name: segmentData.name,
+                            distance: segmentData.distance, // Distance in meters
+                            averageGrade: segmentData.average_grade, // Average grade (percentage)
+                            elevationGain: segmentData.total_elevation_gain, // Elevation gain in meters
+                            climbCategory: segmentData.climb_category, // Climb category
+                        };
+
+                        resolve(result);
+                    } catch (error) {
+                        reject(new Error("Error parsing response: " + error.message));
+                    }
+                } else {
+                    reject(
+                        new Error(
+                            `Error fetching segment: ${res.statusCode} - ${res.statusMessage}`
+                        )
+                    );
+                }
+            });
+        });
+
+        // Handle request errors
+        req.on("error", (error) => {
+            reject(new Error("Request error: " + error.message));
+        });
+
+        req.end();
+    });
+}
+    // console.log("made it to fetchSegmentData function")
+
   const getPoints = (miles,elevation) => {
     
     diff = elevation/miles;
@@ -95,5 +152,5 @@ const getBonusPoints = (routeCount) => {
 }
   
   module.exports = {
-    fetchRouteData, getPoints, getDifficulty, getBonusPoints
+    fetchRouteData, fetchSegmentData, getPoints, getDifficulty, getBonusPoints
   };
