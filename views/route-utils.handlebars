@@ -44,12 +44,17 @@
             <form class="create-segment">
                 <div>
                     <label for="segmentId">Strava Segment ID</label>
-                    <input type="text" id="segmentId" pattern="\d{8}" required>
+                    <input type="text" id="segmentId" pattern="\d{7}" required>
                 </div>
 
                 <div>
                     <label for="year">Segment Year</label>
                     <input type="text" id="segYear" pattern="\d{4}" required>
+                </div>
+
+                <div>
+                    <label for="description">Segment Description</label>
+                    <textarea id="segDesc" required></textarea>
                 </div>
 
                 <div class="center">

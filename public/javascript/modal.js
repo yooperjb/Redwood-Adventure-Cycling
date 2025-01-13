@@ -38,6 +38,7 @@ function closeModal(modalId) {
   const modal = document.getElementById(modalId);
   const inputs = document.getElementsByTagName('input');
   const selects = document.getElementsByTagName('select');
+  const textareas = document.getElementsByTagName('textarea')
   
   if (modalId == 'modal-0' || modalId == 'modal-1' || modalId == 'modal-2') {
       // Close the modal
@@ -51,6 +52,10 @@ function closeModal(modalId) {
   
     Object.values(selects).forEach(select => {
       select.value = ''
+    })
+
+    Object.values(textareas).forEach(textarea => {
+      textarea.value = ''
     })
   
     // Close the modal

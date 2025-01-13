@@ -3,6 +3,7 @@ const { Routes } = require('../../models');
 const sequelize = require('../../config/connection');
 const https = require('https');
 const { fetchRouteData, fetchSegmentData, getPoints, getDifficulty } = require('../../utils/routeUtils');
+const { refresh_Token } = require('../../utils/routeUtils');
 
 // api/bikeroutes
 router.get('/', async (req, res) => {
@@ -101,12 +102,25 @@ router.post('/', async (req, res) => {
 // create new route segment (strava) api/bikeroutes/segment
 router.post('/segment', async (req, res) => {
     try {
-        const { segmentId, year } = req.body;
-        accessToken = req.user.accessToken
-        
-        // Fetch segment information from Strava using the utility function
+        const user = req.user;
+        // Get values from form passed in req
+        const { segmentId, year, description } = req.body;
+        // Get user data
+        const {accessToken, refreshToken, tokenExpire} = user
+        currentTime = Math.floor(Date.now() / 1000);
+
+        // First check if Token has expired - if so refresh
+        if (currentTime >= tokenExpire) {
+            console.log("Access Token expired. Refreshing...")
+            // Execute refreshToken function to refresh expired Token
+            await refresh_Token(user)
+        }
+
+        // Fetch segment information from Strava using the fetchSegmentData utility function
+        // ****** If this doesn't work when Token expires, I may need to call user.accessToken to get the updated Token *****
         const segmentData = await fetchSegmentData(segmentId, accessToken);
 
+        // ************* Delete me after testing ************
         console.log("segmentData", segmentData)
         
         if (!segmentData) {
@@ -116,27 +130,25 @@ router.post('/segment', async (req, res) => {
         // Extract segment properties
         const { name, distance, elevationGain } = segmentData;
 
-        // Calculate points and difficulty using utility functions
+        // Convert mileage and elevation data
         const mileage = distance * .0006213712;
         const elevation = elevationGain * 3.281;
-
-        console.log("mileage", mileage)
-        console.log("elevation", elevation)
-        console.log("name", name)
+        const points = getPoints(mileage, elevation);
+        const difficulty = getDifficulty(points);
         
         // Create a new route (segment)
-        // const newRoute = await Routes.create({
-        //     id: ridewithgps_id,
-        //     year,
-        //     name,
-        //     mileage,
-        //     elevation,
-        //     points,
-        //     difficulty,
-        //     description
-        // });
+        const newRoute = await Routes.create({
+            id: segmentId,
+            year,
+            name,
+            mileage,
+            elevation,
+            points,
+            difficulty,
+            description
+        });
 
-        //res.json(newRoute);
+        res.json(newRoute);
     } catch (err) {
         console.error(err);
         res.status(500).json(err);

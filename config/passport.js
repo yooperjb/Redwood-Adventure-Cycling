@@ -14,9 +14,10 @@ passport.use(new StravaStrategy({
   // Need "read" and "activity:read_all" to prevent login authorization every time!
   scope: 'read,activity:read_all',
 },
-  async function (accessToken, refreshToken, profile, cb) {
+  async function (accessToken, refreshToken, expires_at, profile, cb) {
 
     try {
+      // *** This needs to be moved to a separate function similar to getting segment information ***
       // Define request options
       const options = {
         hostname: 'www.strava.com',
@@ -52,6 +53,7 @@ passport.use(new StravaStrategy({
             }
 
             // Pull out only needed data from Strava User Profile
+            tokenExpire = expires_at.expires_at
             const { id, username, firstname, lastname, bio, city, state, sex, profile_medium } = profile._json;
             // Pull out and convert only needed data from last 5 user Strava activities
             const activities = raw_activities.map(activity => ({
@@ -65,9 +67,7 @@ passport.use(new StravaStrategy({
             }));
 
             // userprofile is req.user that is passed from passport-StravaStrategy. I believe this is where I would add tokens if wanting to save them to the session. And send userprofile instead of ...profile to only pass user data across session instead of the whole strava profile.
-            const userprofile = { id, accessToken, displayName: profile.displayName, username, firstname, lastname, sex, city, state, bio, profile_medium, activities };
-
-            // console.log('userprofile', userprofile)
+            const userprofile = { id, accessToken, displayName: profile.displayName, username, firstname, lastname, sex, city, state, bio, profile_medium, activities, accessToken, refreshToken, tokenExpire };
 
             // cb function used to pass authenticated user to serializeUser() function
             return cb(null, { ...userprofile, isAdmin: user.admin });

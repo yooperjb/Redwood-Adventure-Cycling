@@ -74,7 +74,6 @@ const fetchSegmentData = (segmentId, accessToken) => {
         req.end();
     });
 }
-    // console.log("made it to fetchSegmentData function")
 
   const getPoints = (miles,elevation) => {
     
@@ -151,6 +150,6 @@ const getBonusPoints = (routeCount) => {
     return bonus_points;
 }
   
-  module.exports = {
+module.exports = {
     fetchRouteData, fetchSegmentData, getPoints, getDifficulty, getBonusPoints
-  };
+};

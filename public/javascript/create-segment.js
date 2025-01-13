@@ -4,16 +4,15 @@ async function createSegmentFormHandler(event) {
     // grab values from create-segment form inputs
     const segmentId = document.querySelector('#segmentId').value;
     const year = document.querySelector('#segYear').value;
-    
-    console.log("segmentId",segmentId);
-    console.log("year", year)
+    const description = document.querySelector('#segDesc').value;
     
     // send create-segment form variables to api
     response = await fetch("/api/bikeroutes/segment", {
         method: 'POST',
         body: JSON.stringify({
             segmentId,
-            year
+            year,
+            description
         }),
         headers: {
             'Content-Type': 'application/json'
