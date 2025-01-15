@@ -22,7 +22,7 @@ html {
   height: 70%;
 }
 
-body,select,button,table, input {
+body,select,button,table, input, textarea {
   font-family: 'Montserrat', 'Roboto', 'Arial', 'Helvetica', sans-serif;
 }
 
@@ -386,7 +386,7 @@ form > div {
 }
 
 input,
-select {
+select, textarea {
   background-color: white;
   padding: .4rem .5rem;
   border-radius: 20px;
@@ -696,7 +696,7 @@ article.bike-route {
 }
 
 .bike-route-col1 {
-  flex: 0 1 50%;
+  flex: 0 1 45%;
   margin: 0px 5px 10px;
   height: 100%;
 }
@@ -741,7 +741,7 @@ article.bike-route {
 
 .bike-route-map {
   margin: 5px;
-  flex: 1 1 45%;
+  flex: 1 1 50%;
   aspect-ratio: 1/1;
 }
 
@@ -800,19 +800,20 @@ article.bike-route {
   gap: 10px;
 }
 
-.create-route-container {
+/* .create-route-container {
   margin: 10px;
   flex:  1 1 300px;
-}
+} */
 
-.route-update-container {
+.create-route-container,.route-update-container, .create-segment-container {
   margin: 10px;
   flex:  1 1 300px;
+  max-width: 450px;
 }
 
 /*===========================================
          LEADERBOARD TABLE
-* ========================================== */
+============================================ */
 
 #gender-filter, #route-filter {
   width: 150px;

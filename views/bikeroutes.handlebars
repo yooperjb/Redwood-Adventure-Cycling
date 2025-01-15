@@ -1,10 +1,13 @@
-<h2>Bike Routes - 2025</h2>
+<h2>Bike Routes (segments) - 2025</h2>
+{{!-- Since bike route info changes from Ridewithgps routes to Strava segments, create a logical if/else for how to represent the data for different years. --}}
 
+{{!-- If routes exist for given year, process maps. --}}
 {{#if routes}}
 {{#each routes}}
 <article class="bike-route">
 
     <div class="bike-route-title">
+        {{!-- Build the ability to star segment with star after the title --}}
         <h4>{{this.name}}</h4>
         {{#if this.ridden}}
         <span class="{{this.ridden}}"><img src="/images/checkmark.svg"></span>
@@ -27,21 +30,20 @@
                     <td>Difficulty</td>
                     <td>{{this.difficulty}}</td>
                 </tr>
-                <tr>
+                {{!-- <tr>
                     <td>Points</td>
                     <td>{{this.points}}</td>
-                </tr>
+                </tr> --}}
                 <tr>
-                    <td>Route Link</td>
-                    <td><a href="https://ridewithgps.com/routes/{{this.id}}" target="_blank">Route</a></td>
+                    <td>Segment Link</td>
+                    <td><a href="https://www.strava.com/segments/{{this.id}}" target="_blank">Strava Segment</a></td>
                 </tr>
             </table>
         </div>
 
         <div class="bike-route-profile">
-            <img src="https://ridewithgps.com/routes/{{this.id}}/elevation_profile.jpg"
-                alt="Elevation Profile of {{this.name}} Route" />
-            {{!-- <p>{{this.description}}</p> --}}
+            {{!-- <img src="https://ridewithgps.com/routes/{{this.id}}/elevation_profile.jpg"
+                alt="Elevation Profile of {{this.name}} Route" /> --}}
         </div>
         
         <div class="bike-route-description">
@@ -54,12 +56,13 @@
     </div>
 
     <div class="bike-route-map">
-        <a href="https://ridewithgps.com/routes/{{this.id}}" target="_blank"><img class="route-map"
-                src="https://ridewithgps.com/routes/full/{{this.id}}.png" alt="Map of {{this.name}} Route" /></a>
+        {{!-- <a href="https://ridewithgps.com/routes/{{this.id}}" target="_blank"><img class="route-map"
+                src="https://ridewithgps.com/routes/full/{{this.id}}.png" alt="Map of {{this.name}} Route" /></a> --}}
 
-        {{!-- If I decide to use embedded interactive maps this is an example. --}}
+        {{!-- If I decide to use embedded Ridewithgps interactive maps this is an example. --}}
         {{!-- <iframe src="https://ridewithgps.com/embeds?type=route&id=41552569"
             style="width: 1px; min-width: 100%; height: 100%; border: none;" scrolling="no"></iframe> --}}
+        <iframe style="width:100%;height:500px;" src="https://veloviewer.com/segments/{{this.id}}/embed2?units=i" frameborder="0" scrolling="no"></iframe>
     </div>
 
 </article>

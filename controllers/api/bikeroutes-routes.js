@@ -3,7 +3,7 @@ const { Routes } = require('../../models');
 const sequelize = require('../../config/connection');
 const https = require('https');
 const { fetchRouteData, fetchSegmentData, getPoints, getDifficulty } = require('../../utils/routeUtils');
-const { refresh_Token } = require('../../utils/routeUtils');
+const { refresh_Token } = require('../../utils/stravaUtils');
 
 // api/bikeroutes
 router.get('/', async (req, res) => {
@@ -102,14 +102,19 @@ router.post('/', async (req, res) => {
 // create new route segment (strava) api/bikeroutes/segment
 router.post('/segment', async (req, res) => {
     try {
+        // Get user data
         const user = req.user;
         // Get values from form passed in req
         const { segmentId, year, description } = req.body;
-        // Get user data
-        const {accessToken, refreshToken, tokenExpire} = user
+        // Get tokenExpire
+        const tokenExpire = user.tokenExpire
         currentTime = Math.floor(Date.now() / 1000);
 
-        // First check if Token has expired - if so refresh
+        console.log("current Time:", currentTime)
+        console.log("tokenExpire:", tokenExpire)
+        console.log("user:", user)
+
+        // First check if Token has expired - if expired refresh
         if (currentTime >= tokenExpire) {
             console.log("Access Token expired. Refreshing...")
             // Execute refreshToken function to refresh expired Token
@@ -117,12 +122,12 @@ router.post('/segment', async (req, res) => {
         }
 
         // Fetch segment information from Strava using the fetchSegmentData utility function
-        // ****** If this doesn't work when Token expires, I may need to call user.accessToken to get the updated Token *****
-        const segmentData = await fetchSegmentData(segmentId, accessToken);
+        const segmentData = await fetchSegmentData(segmentId, user.accessToken);
 
         // ************* Delete me after testing ************
         console.log("segmentData", segmentData)
         
+        // If segment not found
         if (!segmentData) {
             return res.status(400).json({ message: 'No Strava segment found with this id' });
         }

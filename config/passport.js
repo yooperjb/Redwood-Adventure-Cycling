@@ -66,8 +66,8 @@ passport.use(new StravaStrategy({
               elevation: activity.total_elevation_gain
             }));
 
-            // userprofile is req.user that is passed from passport-StravaStrategy. I believe this is where I would add tokens if wanting to save them to the session. And send userprofile instead of ...profile to only pass user data across session instead of the whole strava profile.
-            const userprofile = { id, accessToken, displayName: profile.displayName, username, firstname, lastname, sex, city, state, bio, profile_medium, activities, accessToken, refreshToken, tokenExpire };
+            // userprofile is req.user that is passed from passport-StravaStrategy. Send user info and tokens with requests. 
+            const userprofile = { id, displayName: profile.displayName, username, firstname, lastname, sex, city, state, bio, profile_medium, accessToken, refreshToken, tokenExpire, activities };
 
             // cb function used to pass authenticated user to serializeUser() function
             return cb(null, { ...userprofile, isAdmin: user.admin });
