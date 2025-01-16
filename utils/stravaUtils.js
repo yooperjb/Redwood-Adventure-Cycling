@@ -2,11 +2,15 @@ const https = require('https');
 
 async function refresh_Token(user) {
     const postData = JSON.stringify({
-        clientId: process.env.STRAVA_CLIENT_ID,
-        clientSecret: process.env.STRAVA_CLIENT_SECRET,
+        client_id: process.env.STRAVA_CLIENT_ID,
+        client_secret: process.env.STRAVA_CLIENT_SECRET,
         grant_type: "refresh_token",
-        refreshToken: user.refreshToken, // Current refresh token from user profile
+        refresh_token: user.refreshToken, // Current refresh token from user profile
     });
+
+    console.log("clientId:",process.env.STRAVA_CLIENT_ID )
+    console.log("clientSecret:",process.env.STRAVA_CLIENT_SECRET )
+    console.log("refreshToken:", user.refreshToken)
 
     const options = {
         hostname: "www.strava.com",
@@ -29,9 +33,11 @@ async function refresh_Token(user) {
 
             // Handle end of response
             res.on("end", () => {
+                // console.log("Response Body:", data)
                 if (res.statusCode >= 200 && res.statusCode < 300) {
                     try {
                         const tokenData = JSON.parse(data);
+                        console.log("tokenData:", tokenData)
 
                         // Update user's tokens and expiration time
                         user.accessToken = tokenData.access_token;

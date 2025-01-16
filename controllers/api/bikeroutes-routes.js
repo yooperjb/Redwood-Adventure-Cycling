@@ -110,10 +110,6 @@ router.post('/segment', async (req, res) => {
         const tokenExpire = user.tokenExpire
         currentTime = Math.floor(Date.now() / 1000);
 
-        console.log("current Time:", currentTime)
-        console.log("tokenExpire:", tokenExpire)
-        console.log("user:", user)
-
         // First check if Token has expired - if expired refresh
         if (currentTime >= tokenExpire) {
             console.log("Access Token expired. Refreshing...")
