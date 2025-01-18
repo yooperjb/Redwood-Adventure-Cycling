@@ -10,7 +10,7 @@
         {{!-- Build the ability to star segment with star after the title --}}
         <h4>{{this.name}}</h4>
         {{#if this.ridden}}
-        <span class="{{this.ridden}}"><img src="/images/checkmark.svg"></span>
+        <span class="{{this.ridden}}"><img src="/images/checkmark.svg" alt="Checkmark for route ridden" title="Route Has Been Ridden"></span>
         {{/if}}
     </div>
     <!--Data-->
@@ -41,6 +41,7 @@
             </table>
         </div>
 
+        {{!-- Ridewithgps profile needs to be removed for Strava Segment years --}}
         <div class="bike-route-profile">
             {{!-- <img src="https://ridewithgps.com/routes/{{this.id}}/elevation_profile.jpg"
                 alt="Elevation Profile of {{this.name}} Route" /> --}}
@@ -50,7 +51,8 @@
             <div class="description-content collapsed">
                 <p>{{this.description}}</p>
             </div>
-            <button class="toggle-description">Read More</button>
+            {{!-- Turn button back on if profile is included --}}
+            {{!-- <button class="toggle-description">Read More</button> --}}
         </div>
 
     </div>
@@ -62,6 +64,7 @@
         {{!-- If I decide to use embedded Ridewithgps interactive maps this is an example. --}}
         {{!-- <iframe src="https://ridewithgps.com/embeds?type=route&id=41552569"
             style="width: 1px; min-width: 100%; height: 100%; border: none;" scrolling="no"></iframe> --}}
+        {{!-- If i get strava segment mapbox maps working possibly use that here with the VV profile only version (embed) --}}
         <iframe style="width:100%;height:500px;" src="https://veloviewer.com/segments/{{this.id}}/embed2?units=i" frameborder="0" scrolling="no"></iframe>
     </div>
 

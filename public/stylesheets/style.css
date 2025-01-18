@@ -765,6 +765,8 @@ article.bike-route {
   overflow: hidden;
   max-width: 100%;
   text-overflow: ellipsis;
+  text-align: justify;
+  text-justify: inter-character;
 }
 
 .description-content {
@@ -773,8 +775,9 @@ article.bike-route {
   transition: max-height 0.8s ease-in-out;
 }
 
+/* Change this back to 100px for description collapse */
 .description-content.collapsed {
-  max-height: 100px;
+  max-height: 600px;
 }
 
 .toggle-description {
