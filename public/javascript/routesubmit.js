@@ -7,6 +7,7 @@ async function routeSubmitFormHandler(event) {
     // acceptable image file types
     const file_types = ['image/png', 'image/jpg', 'image/jpeg', 'image/webp'];
     // grab values from route-submit form inputs
+    // ******** This needs to be changed so Stava Ride values aren't passed to html attributes, but use ID to request strava ride data when writing to DB
     const inputs = document.querySelectorAll("#route_id, #ride_link, #photo");
     let rideData = document.querySelector("#ride_link").selectedOptions[0];
     const photoFile = document.querySelector('#photo').files[0];
@@ -17,8 +18,11 @@ async function routeSubmitFormHandler(event) {
     inputs.forEach(input => {
         formData.append(input.id, input.value.trim());
     })
+    // This will probably be removed if Strava Ride logic is changes
     formData.append('ride_time', rideData.getAttribute("data-ride-time"))
     formData.append('date_completed', rideData.getAttribute("data-ride-date"))
+    formData.append('ride_miles', rideData.getAttribute("data-ride-length"))
+    formData.append('ride_elevation', rideData.getAttribute("data-ride-elevation"))
 
     // if photo file submitted check file type and size
     if (photoFile) {

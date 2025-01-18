@@ -8,7 +8,9 @@ module.exports = {
     },
     
     format_time: time_string => {
-        return time_string.split(":")[0] +":"+ time_string.split(":")[1];
+        const time = time_string.split(":");
+        // return time_string.split(":")[0] +":"+ time_string.split(":")[1]+":" + time_string.split(":")[2];
+        return time[0] + ":" + time[1] + ":" + time[2];
     },
     
     format_month_day: full_date => {

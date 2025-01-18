@@ -22,4 +22,12 @@ const day = padZero(date.getDate());
 return `${year}-${month}-${day}`;
 }
 
-module.exports = {formatTime, padZero, formatDate};
+function formatDistance(distance) {
+  return distance * 0.000621371
+}
+
+function formatElevation(elevation) {
+  return elevation * 3.28084
+}
+
+module.exports = {formatTime, padZero, formatDate, formatDistance, formatElevation};

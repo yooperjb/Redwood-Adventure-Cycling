@@ -7,7 +7,7 @@ const path = require('path');
 const fs = require('fs').promises;
 const multer = require('multer');
 const { checkSubmissionDate } = require('../../utils/date');
-const { getBonusPoints } = require('../../utils/routeUtils');
+const { getPoints, getBonusPoints } = require('../../utils/routeUtils');
 
 // GET /api/user-routes
 router.get('/', async (req, res) => {
@@ -36,12 +36,13 @@ router.get('/', async (req, res) => {
 router.post('/', upload.single('photo'), async (req, res) => {
     try {
         
+        console.log("routeSubmissionbody", req.body);
         // Check if submission is currently allowed
         checkSubmissionDate();
         
         const activity = req.user.activities;
         // Count the number of routes submitted for bonus points
-        // this could be moved to a separate function
+        // this could be moved to a separate function (add to getBonusPoints function)
         const routeCount = await User_Routes.count({
             where: {
                 route_id: req.body.route_id
@@ -60,6 +61,9 @@ router.post('/', upload.single('photo'), async (req, res) => {
            
         // Assign bonus points based on route submission counts
         const bonus_points = getBonusPoints(routeCount);
+
+        // Calculate Ride points based on mileage and elevation
+        const points = getPoints(req.body.ride_miles * 0.000621371, req.body.ride_elevation * 3.28084);
     
         // if photo submitted resize and save to file
         // create two size files!!!
@@ -85,6 +89,7 @@ router.post('/', upload.single('photo'), async (req, res) => {
             user_id: req.user.id,
             // Use this when testing with Insomnia
             route_id: req.body.route_id,
+            points: points
         });
             
         res.json(dbRoutesData);

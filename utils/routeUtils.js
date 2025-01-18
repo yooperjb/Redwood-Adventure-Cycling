@@ -75,7 +75,7 @@ const fetchSegmentData = (segmentId, accessToken) => {
     });
 }
 
-  const getPoints = (miles,elevation) => {
+const getPoints = (miles,elevation) => {
     
     diff = elevation/miles;
     let ratio_points = 0;

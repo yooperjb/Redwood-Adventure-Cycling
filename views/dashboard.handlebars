@@ -35,8 +35,9 @@
                         <select required name="strava-ride-name" id="ride_link">
                             <option value="" disabled selected>Strava Rides...</option>
                             {{#each user.activities as |activities|}}
+                            {{!-- Pass activity data to data attributes --}}
                             <option data-ride-time="{{activities.elapsed_time}}"
-                                data-ride-date="{{activities.start_date_local}}" value="{{activities.id}}">
+                                data-ride-date="{{activities.start_date_local}}" data-ride-length="{{activities.distance}}" data-ride-elevation="{{activities.elevation}}" value="{{activities.id}}">
 
                                 {{activities.name}}</option>
                             {{/each}}
@@ -74,19 +75,19 @@
 {{!-- MODALS Partial --}}
 {{> dashboard-modal modals}}
 
-        {{!-- Route submission success modal --}}
-        <div id="successModal" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4>Route Submitted</h4><span class="close">&times;</span>
-                </div>
-                <div class="modal-body">
-                    <p>Congrats, your ride was successfully submitted! You will now see it in your dashboard and will appear in
-                        the leaderboard once approved.
-                    </p>
-                </div>
+    {{!-- Route submission success modal --}}
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Route Submitted</h4><span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Congrats, your ride was successfully submitted! You will now see it in your dashboard and will appear in
+                    the leaderboard once approved.
+                </p>
             </div>
         </div>
+    </div>
 
 {{!-- User Completed Routes Section --}}
 {{!-- Possibly put this into a partial --}}

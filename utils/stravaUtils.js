@@ -8,10 +8,6 @@ async function refresh_Token(user) {
         refresh_token: user.refreshToken, // Current refresh token from user profile
     });
 
-    console.log("clientId:",process.env.STRAVA_CLIENT_ID )
-    console.log("clientSecret:",process.env.STRAVA_CLIENT_SECRET )
-    console.log("refreshToken:", user.refreshToken)
-
     const options = {
         hostname: "www.strava.com",
         path: "/api/v3/oauth/token",
@@ -37,7 +33,6 @@ async function refresh_Token(user) {
                 if (res.statusCode >= 200 && res.statusCode < 300) {
                     try {
                         const tokenData = JSON.parse(data);
-                        console.log("tokenData:", tokenData)
 
                         // Update user's tokens and expiration time
                         user.accessToken = tokenData.access_token;
