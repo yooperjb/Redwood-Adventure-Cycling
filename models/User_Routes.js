@@ -40,7 +40,7 @@ User_Routes.init(
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW
     },
-    points: {
+    ride_points: {
         type: DataTypes.INTEGER,
         allowNull: false,
         defaultValue: 0

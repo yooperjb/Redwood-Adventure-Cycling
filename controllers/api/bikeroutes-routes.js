@@ -106,12 +106,11 @@ router.post('/segment', async (req, res) => {
         const user = req.user;
         // Get values from form passed in req
         const { segmentId, year, description } = req.body;
-        // Get tokenExpire
-        const tokenExpire = user.tokenExpire
+        // Get current time
         currentTime = Math.floor(Date.now() / 1000);
 
         // First check if Token has expired - if expired refresh
-        if (currentTime >= tokenExpire) {
+        if (currentTime >= user.tokenExpire) {
             console.log("Access Token expired. Refreshing...")
             // Execute refreshToken function to refresh expired Token
             await refresh_Token(user)
@@ -128,13 +127,13 @@ router.post('/segment', async (req, res) => {
             return res.status(400).json({ message: 'No Strava segment found with this id' });
         }
 
-        // Extract segment properties
+        // Extract Strava segment properties
         const { name, distance, elevationGain } = segmentData;
 
         // Convert mileage and elevation data
         const mileage = distance * .0006213712;
         const elevation = elevationGain * 3.281;
-        const points = getPoints(mileage, elevation);
+        const points = getPoints(mileage, elevation);// These points are solely for difficulty rating
         const difficulty = getDifficulty(points);
         
         // Create a new route (segment)
@@ -144,7 +143,7 @@ router.post('/segment', async (req, res) => {
             name,
             mileage,
             elevation,
-            points,
+            points: 0,
             difficulty,
             description
         });
@@ -156,7 +155,7 @@ router.post('/segment', async (req, res) => {
     }
 });
 
-// update bike route api/bikeroutes
+// update Ridewithgps route description api/bikeroutes
 router.put('/', async (req, res) => {
     try {
         const { route_id } = req.body;

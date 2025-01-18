@@ -22,9 +22,6 @@ async function createSegmentFormHandler(event) {
     // Create success modal here...
     if (response.ok) {
         console.log("Response OK");
-        // document.querySelector('#ridewithgps-id').value = "";
-        // document.querySelector('#year').value = "";
-        // console.log(response);
         openModal("createSegmentModal")
     } else {
         console.log("Segment NOT Created");

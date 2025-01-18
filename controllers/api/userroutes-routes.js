@@ -87,9 +87,8 @@ router.post('/', upload.single('photo'), async (req, res) => {
             date_completed: req.body.date_completed,
             bonus_points,
             user_id: req.user.id,
-            // Use this when testing with Insomnia
-            route_id: req.body.route_id,
-            points: points
+            route_id: req.body.route_id, // Use this when testing with Insomnia
+            ride_points: points
         });
             
         res.json(dbRoutesData);
