@@ -7,25 +7,11 @@ require('dotenv').config();
 // route to leaderboard page /leaderboard
 router.get('/', async (req, res) => {
   try {
-    let genderOptions = {};
-    let gender = "Overall";
-
-    // check if gender query was sent, pass to where object for filtering
-    if (req.query.gender) {
-      genderOptions = {
-        where: {
-          gender: req.query.gender
-        }
-      }
-      switch (req.query.gender) {
-        case 'M':
-          gender = "Male";
-          break;
-        case 'F':
-          gender = "W/T/F";
-          break;
-      }
-    }
+ 
+    const genderOptions = req.query.gender ? { where: { gender: req.query.gender } } : {};
+    const gender = req.query.gender === 'M' ? 'Male' : req.query.gender === 'F' ? 'W/T/F' : 'Overall';
+    const year = process.env.YEAR;
+    const dateRange = [`${year}-01-01`, `${year}-12-31`];
 
     const [userPoints, userRoutes, attackerPoints] = await Promise.all([
       // get all ridden routes that have been approved for "Overall Points" Section and is current year
@@ -33,15 +19,13 @@ router.get('/', async (req, res) => {
         where: {
           approved: 1,
           date_completed: {
-            [Op.between]: [`${process.env.YEAR}-01-01`, `${process.env.YEAR}-12-01`],
+            [Op.between]: dateRange,
           },
         },
         // get user_route info and sum points, elevation, mileage fields. Count ridden routes.
         attributes: [
           'user_id',
-          [sequelize.fn('sum', sequelize.col('points')), 't_points'],
-          [sequelize.fn('sum', sequelize.col('bonus_points')), 't_bonus_points'],
-          [sequelize.fn('sum', sequelize.where(sequelize.col('points'), '+', sequelize.col('bonus_points'))), 'total_points'],
+          [sequelize.literal('SUM(points + bonus_points + ride_points)'), 'total_points'],
           [sequelize.fn('sum', sequelize.col('elevation')), 'total_elevation'],
           [sequelize.fn('sum', sequelize.col('mileage')), 'total_miles'],
           [sequelize.fn('count', sequelize.col('user_id')), 'total_routes']
@@ -71,11 +55,12 @@ router.get('/', async (req, res) => {
         where: {
           approved: 1,
           date_completed: {
-            [Op.between]: [`${process.env.YEAR}-01-01`, `${process.env.YEAR}-12-01`],
+            [Op.between]: dateRange,
           },
         },
         attributes: [
-          'user_id', 'date_completed', 'date_submitted', 'bonus_points', 'route_id', 'photo'
+          // 'user_id', 'date_completed', 'date_submitted', 'bonus_points', 'route_id', 'photo'
+          'user_id', 'date_submitted', 'route_id', 'photo'
         ],
         include: [
           {
@@ -84,7 +69,8 @@ router.get('/', async (req, res) => {
           },
           {
             model: Routes,
-            attributes: ['name', 'points'],
+            // attributes: ['name', 'points'],
+            attributes: ['name'],
           },
         ],
         order: [['date_submitted', 'ASC']]
@@ -103,7 +89,7 @@ router.get('/', async (req, res) => {
               approved: 1,
               bonus_points: [5, 3, 1],
               date_completed: {
-                [Op.between]: [`${process.env.YEAR}-01-01`, `${process.env.YEAR}-12-01`],
+                [Op.between]: dateRange,
               },
             },
 
@@ -128,19 +114,20 @@ router.get('/', async (req, res) => {
     const serializedUserPoints = userPoints.map(user => user.get({ plain: true }));
 
     // used for Submitted Routes Table
-    const serializedUserRoutes = userRoutes.map(route => route.get({ plain: true }))
+    const serializedUserRoutes = userRoutes.map(route => route.get({ plain: true }));
 
     // used for Bonus Points Attacker Table
     const serializedAttackerPoints = attackerPoints.map(route => route.get({ plain: true }));
-    console.log(process.env.YEAR)
+
+    // Render leaderboard page
     res.render('leaderboard', {
-      title: '2024 Leaderboard',
-      gender: gender,
+      title: `${year} Leaderboard`,
+      gender,
       user: req.user,
       userPoints: { userPoints: serializedUserPoints },
       userRoutes: { userRoutes: serializedUserRoutes },
       attackerPoints: { attackerPoints: serializedAttackerPoints },
-      year: process.env.YEAR,
+      year,
     });
   } catch (err) {
     console.error('Error in leaderboard route:', err);
