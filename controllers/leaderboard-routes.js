@@ -23,6 +23,7 @@ router.get('/', async (req, res) => {
           },
         },
         // get user_route info and sum points, elevation, mileage fields. Count ridden routes.
+        // this eventually needs to be changed to calculate ride elevation and miles, not segment
         attributes: [
           'user_id',
           [sequelize.literal('SUM(points + bonus_points + ride_points)'), 'total_points'],
