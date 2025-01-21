@@ -115,7 +115,7 @@
                     </tr>
                     <tr>
                         <td>Points Earned</td>
-                        <td>{{userRoute.route.points}}</td>
+                        <td>{{userRoute.total_ride_points}}</td>
                     </tr>
                     <tr>
                         <td>Bonus Points</td>
@@ -130,6 +130,10 @@
                             No
                             {{/if}}
                         </td>
+                    </tr>
+                    <tr>
+                        <td>Ride Link</td>
+                        <td><a href="{{userRoute.ride_link}}" target="_blank">Strava Activity</a></td>
                     </tr>
                     <tr>
                         <td>Photo</td>

@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { ensureLoggedIn } = require('connect-ensure-login');
 const { User_Routes, Routes } = require('../models');
 const modals = require('../public/data/modal.json');
+const sequelize = require('../config/connection');
 
 // GET route /dashboard
 router.get('/', ensureLoggedIn('/login'), async (req, res) => {
@@ -11,7 +12,7 @@ router.get('/', ensureLoggedIn('/login'), async (req, res) => {
             findAllRoutes(),
         ]);
 
-        // Serialize data to pass to template
+        // Serialize data to pass to Handlebar template
         const userRoutes = userRoutesData.map(route => route.get({ plain: true }));
         let routes = routesData.map(route => route.get({ plain: true }));
 
@@ -24,7 +25,7 @@ router.get('/', ensureLoggedIn('/login'), async (req, res) => {
             userRoutes: { userRoutes },
             routes: { routes },
             user: req.user,
-            modals: modals,
+            modals,
         });
     } catch (err) {
         console.error(err);
@@ -33,6 +34,7 @@ router.get('/', ensureLoggedIn('/login'), async (req, res) => {
 });
     
 // Function to find all routes user has completed
+// If this function is used elsewhere put in separate js file
 const findUserRoutes = (userId) => {
     return User_Routes.findAll({
         where: {
@@ -46,8 +48,13 @@ const findUserRoutes = (userId) => {
                 'ride_link',
                 'date_completed',
                 'bonus_points',
+                'ride_points',
                 "approved",
                 "user_id",
+                // Sum User_Routes 'ride_points' with Routes 'points'
+                [
+                    sequelize.literal('ride_points + `Route`.`points`'), 'total_ride_points',
+                ],
         ],
         include: [
                 // include Route data
@@ -62,9 +69,10 @@ const findUserRoutes = (userId) => {
         ],
         order: [[Routes, 'name', 'ASC']]
     });
-};  
+};
 
 // Function to find all routes in routes table for dropdown selection
+// If this function is used elsewhere put in separate js file
 const findAllRoutes = () => {
     return Routes.findAll({
         where: {
