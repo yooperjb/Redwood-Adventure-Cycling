@@ -1,5 +1,25 @@
 const https = require('https');
+const { User_Routes, User } = require('../models');
 
+// Get Route User Count
+const getRouteCount = async (routeId, userGender) => {
+    return User_Routes.count({
+        where: {
+            route_id: routeId,
+        },
+        include: [
+            {
+                model: User,
+                attributes: ['id', 'gender'],
+                where: {
+                    gender: userGender,
+                },
+            },
+        ],
+    });
+};
+
+// Get RidewithGPS Route Data
 const fetchRouteData = (routeId) => {
     return new Promise((resolve, reject) => {
       https.get(`https://ridewithgps.com/routes/${routeId}.json?apikey=${process.env.RWGPS_APIKEY}&auth_token=${process.env.RWGPS_AUTH}`, (resp) => {
@@ -19,6 +39,7 @@ const fetchRouteData = (routeId) => {
     });
   };
 
+// Get Strava Segment Data
 const fetchSegmentData = (segmentId, accessToken) => {
     const options = {
         hostname: "www.strava.com",
@@ -121,7 +142,7 @@ const getPoints = (miles,elevation) => {
 }
 
 const getDifficulty = (points) => {
-    console.log("points", points)
+    
     if (points >=130) {
         return "Epic";
     } else if (points >= 110) {
@@ -151,5 +172,5 @@ const getBonusPoints = (routeCount) => {
 }
   
 module.exports = {
-    fetchRouteData, fetchSegmentData, getPoints, getDifficulty, getBonusPoints
+    getRouteCount, fetchRouteData, fetchSegmentData, getPoints, getDifficulty, getBonusPoints
 };

@@ -45,6 +45,8 @@ const findUserRoutes = (userId) => {
                 'route_id',
                 'photo',
                 'ride_time',
+                'ride_miles',
+                'ride_elevation',
                 'ride_link',
                 'date_completed',
                 'bonus_points',

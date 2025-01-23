@@ -2,8 +2,9 @@ const moment = require('moment');
 
 const checkSubmissionDate = () => {
     currentDate = moment();
-    const submissionStartDate = moment('2025-01-01');// For testing purposes be sure to change for production
     
+    // These dates should be part of env variables for ease of changing
+    const submissionStartDate = moment('2025-01-01');// For testing purposes be sure to change for production
     const submissionEndDate = moment(`2025-11-30`); // For testing purposes be sure to change for production
 
     if (!currentDate.isBetween(submissionStartDate, submissionEndDate, 'day', '[]')) {

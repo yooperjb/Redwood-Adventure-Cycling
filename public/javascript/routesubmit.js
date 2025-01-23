@@ -18,11 +18,11 @@ async function routeSubmitFormHandler(event) {
     inputs.forEach(input => {
         formData.append(input.id, input.value.trim());
     })
-    // This will probably be removed if Strava Ride logic is changes
-    formData.append('ride_time', rideData.getAttribute("data-ride-time"))
-    formData.append('date_completed', rideData.getAttribute("data-ride-date"))
-    formData.append('ride_miles', rideData.getAttribute("data-ride-length"))
-    formData.append('ride_elevation', rideData.getAttribute("data-ride-elevation"))
+    // This will probably be removed if Strava Ride logic is changed
+    formData.append('ride_time', rideData.getAttribute("data-ride-time"));
+    formData.append('date_completed', rideData.getAttribute("data-ride-date"));
+    formData.append('ride_miles', rideData.getAttribute("data-ride-length"));
+    formData.append('ride_elevation', rideData.getAttribute("data-ride-elevation"));
 
     // if photo file submitted check file type and size
     if (photoFile) {
@@ -32,7 +32,7 @@ async function routeSubmitFormHandler(event) {
             typeError.setAttribute('class', 'type-error active');
             return;
         } else if (photoFile.size > 12500000) {
-            console.log("File size must be < 12mb")
+            console.log("File size must be < 12mb");
             // turn on hidden span here
             sizeError.setAttribute('class', 'size-error active');
             return;

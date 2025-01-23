@@ -1,7 +1,6 @@
 // import Model Class and Datatypes from sequelize
 const { Model, DataTypes, Sequelize } = require('sequelize');
 const sequelize = require('../config/connection');
-const moment = require('moment');
 
 // create the User Model - inherits from Model
 class User_Routes extends Model {};
@@ -26,6 +25,14 @@ User_Routes.init(
         // HH:MM:SS
         type: DataTypes.TIME,
         allowNull: false,
+    },
+    ride_miles: {
+        type: DataTypes.FLOAT,
+        allowNull: true,
+    },
+    ride_elevation: {
+        type: DataTypes.FLOAT,
+        allowNull: true,
     },
     ride_link: {
         type: DataTypes.STRING,
