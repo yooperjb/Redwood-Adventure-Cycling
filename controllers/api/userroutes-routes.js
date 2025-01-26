@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { User_Routes, User, Routes } = require('../../models');
-// const sequelize = require('../../config/connection'); chatgpt thinks i don't need this. 
 const upload = require('../../utils/upload');
 const Resize = require('../../utils/Resize');
 const path = require('path');
@@ -35,15 +34,32 @@ router.get('/', async (req, res) => {
 // POST /api/user-routes - create new user route
 router.post('/', upload.single('photo'), async (req, res) => {
     try {
-        
+        let routeCount;
+        let bonus_points;
+
         // Check if submission is currently allowed for this date
-        checkSubmissionDate();
+        try {
+            checkSubmissionDate();
+        } catch (err) {
+            console.error("Error checking submission date:", err);
+            return res.status(400).json({ error: true, message: err.message});
+        }
         
         // Get Route User count for bonus points
-        const routeCount = await getRouteCount(req.body.route_id, req.user.sex);
-           
+        try {
+            routeCount = await getRouteCount(req.body.route_id, req.user.sex);
+        } catch (err) {
+            console.error("Error getting route count:", err);
+            return res.status(500).json({ error: true, message: err.message });
+        }
+        
         // Assign bonus points based on route submission counts
-        const bonus_points = getBonusPoints(routeCount);
+        try {
+            bonus_points = getBonusPoints(routeCount);
+        } catch (err) {
+            console.error('Error calculating bonus points:', err);
+            return res.status(500).json({ error: true, message: 'Error calculating bonus points.' });
+        }
 
         // Calculate Ride points based on mileage and elevation
         const ride_miles = req.body.ride_miles * 0.000621371;

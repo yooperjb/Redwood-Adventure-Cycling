@@ -1,16 +1,26 @@
 const moment = require('moment');
 
 const checkSubmissionDate = () => {
-    currentDate = moment();
+    const currentDate = moment();
     
-    // These dates should be part of env variables for ease of changing
-    const submissionStartDate = moment('2025-01-01');// For testing purposes be sure to change for production
-    const submissionEndDate = moment(`2025-11-30`); // For testing purposes be sure to change for production
+    // Submission start and end dates
+    const submissionStartDate = moment(process.env.SUBMISSION_START_DATE, 'YYYY-MM-DD');
+    const submissionEndDate = moment(process.env.SUBMISSION_END_DATE, 'YYYY-MM-DD');
 
-    if (!currentDate.isBetween(submissionStartDate, submissionEndDate, 'day', '[]')) {
-        throw new Error(`Route submission is not allowed at this time. Adventure Series starts on ${submissionStartDate.format('YYYY-MM-DD')} and ends ${submissionEndDate.format('YYYY-MM-DD')}.`);
+    // Check if dates are valid
+    if (!submissionStartDate.isValid() || !submissionEndDate.isValid()) {
+        throw new Error(
+            `Route submission is not allowed at this time. Submissions are open from ${submissionStartDate.format('YYYY-MM-DD')} to ${submissionEndDate.format('YYYY-MM-DD')}.`
+        );
     }
-}
+
+    // Check if the current date is within the submission period
+    if (!currentDate.isBetween(submissionStartDate, submissionEndDate, 'day', '[]')) {
+        throw new Error(
+            `Route submission is not allowed at this time. Adventure Series starts on ${submissionStartDate.format('YYYY-MM-DD')} and ends ${submissionEndDate.format('YYYY-MM-DD')}.`
+        );
+    }
+};
 
 module.exports = {
     checkSubmissionDate

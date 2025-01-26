@@ -3,20 +3,32 @@ const { User_Routes, User } = require('../models');
 
 // Get Route User Count
 const getRouteCount = async (routeId, userGender) => {
-    return User_Routes.count({
-        where: {
-            route_id: routeId,
-        },
-        include: [
-            {
-                model: User,
-                attributes: ['id', 'gender'],
-                where: {
-                    gender: userGender,
-                },
+    try{
+        // Validate input parameters
+        if (!routeId || !userGender){
+            throw new Error("Invalid parameters: routeId and UserGender are required.");
+        }
+
+        // Count user routes
+        const count = await User_Routes.count({
+            where: {
+                route_id: routeId,
             },
-        ],
-    });
+            include: [
+                {
+                    model: User,
+                    attributes: ['id', 'gender'],
+                    where: {
+                        gender: userGender,
+                    },
+                },
+            ],
+        });
+        return count;
+    } catch (err) {
+        console.error("Error in getRlouteCount:", err);
+        throw new Error("Failed to fetch route count. Please try again later.");
+    }
 };
 
 // Get RidewithGPS Route Data
@@ -157,18 +169,21 @@ const getDifficulty = (points) => {
 }
 
 const getBonusPoints = (routeCount) => {
-    let bonus_points;
+    if (typeof routeCount !== 'number' || routeCount < 0){
+        throw new Error('Invalid route count provided.');
+    }
+    // let bonus_points;
 
     if (routeCount === 0) {
-        bonus_points = 5;
+        return 5;
     } else if (routeCount === 1 ) {
-        bonus_points = 3;
+        return 3;
     } else if ( routeCount === 2) {
-        bonus_points = 1;
+        return 1;
     } else {
-        bonus_points = 0;
+       return 0;
     }
-    return bonus_points;
+    // return bonus_points;
 }
   
 module.exports = {

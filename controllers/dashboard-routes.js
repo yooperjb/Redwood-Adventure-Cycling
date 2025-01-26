@@ -62,7 +62,7 @@ const findUserRoutes = (userId) => {
                 // include Route data
                 {
                     model: Routes,
-                    attributes: ['id', 'name', 'points', 'year'],
+                    attributes: ['name', 'points', 'year'],
                     // Filter for Series Year in ENV file
                     where: {
                         year: process.env.YEAR
