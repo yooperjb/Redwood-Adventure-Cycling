@@ -6,20 +6,21 @@ require('dotenv').config();
 // /bikeroutes
 router.get('/', async (req, res) => {
     try {
-        // filter for current year set in ENV file
-        const routes = (await Routes.findAll({
-            where: {
-                // YEAR is set in ENV file
-                year: process.env.YEAR
-            },
-            order:[['name', 'ASC']]
-        },
+        const routeType = process.env.ROUTE_TYPE || 'routes'; // default to 'routes'
 
-        )).map(route => route.toJSON()) //converts to plain object
+        const bikeRoutes = (await Routes.findAll({
+                where: {
+                    // YEAR is set in ENV file
+                    year: process.env.YEAR
+                },
+                order:[['name', 'ASC']]
+            },
+            )).map(route => route.toJSON()) //converts to plain object
         
         // If user signed in get routes they've ridden for route check mark
+        let userRoutes = [];
         if (req.user) {
-            const user_routes = (await User_Routes.findAll({
+            userRoutes = (await User_Routes.findAll({
                 where: {
                     user_id: req.user.id
                 },
@@ -28,20 +29,26 @@ router.get('/', async (req, res) => {
                 ]
             })).map(route => route.toJSON().route_id)
             
-            // add ridden attribute to routes to specify if current user has ridden.
-            routes.map(route => {
-                (user_routes.includes(route.id) ? route.ridden="ridden" : route.ridden="unridden")
+            // add ridden attribute to routes/segments to specify if current user has ridden.
+            bikeRoutes.map(route => {
+                (userRoutes.includes(route.id) ? route.ridden="ridden" : route.ridden="unridden")
             })
         }
+
+        // Pass the correct data key based on route type
+        const templateData = {
+            title: process.env.YEAR + ' Bike Routes',
+            user: req.user,
+            routeData: routeType === 'routes' ? bikeRoutes : null,
+            segmentData: routeType === 'segments' ? bikeRoutes : null
+        };
         
         // render bikeroutes page with all bike routes
-        res.render('bikeroutes', { 
-            title: process.env.YEAR+' Bike Routes',
-            routes,
-            user: req.user });
+        res.render('bikeroutes', templateData)
+
     } catch (err) {
-        console.log(err);
-        res.status(500).json(err.message);
+        console.error("Error fetching bike routes:", err);
+        res.status(500).json({ error: true, message: "Failed to load bike routes." })
     }
 })
 

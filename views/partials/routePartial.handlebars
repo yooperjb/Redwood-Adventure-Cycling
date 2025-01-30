@@ -1,0 +1,50 @@
+<article class="bike-route">
+    <div class="bike-route-title">
+        <h4>{{this.name}}</h4>
+        {{#if this.ridden}}
+        <span class="{{this.ridden}}"><img src="/images/checkmark.svg" alt="Checkmark for route ridden"
+                title="Route Has Been Ridden"></span>
+        {{/if}}
+    </div>
+
+    <div class="bike-route-col1">
+        <div class="bike-route-table">
+            <table>
+                <tr>
+                    <td>Mileage</td>
+                    <td>{{format_miles this.mileage}}</td>
+                </tr>
+                <tr>
+                    <td>Total Elevation</td>
+                    <td>{{format_thousands this.elevation}}'</td>
+                </tr>
+                <tr>
+                    <td>Difficulty</td>
+                    <td>{{this.difficulty}}</td>
+                </tr>
+                <tr>
+                    <td>Route Link</td>
+                    <td><a href="https://ridewithgps.com/routes/{{this.id}}" target="_blank">RidewithGPS Route</a></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="bike-route-profile">
+            <img src="https://ridewithgps.com/routes/{{this.id}}/elevation_profile.jpg"
+                alt="Elevation Profile of {{this.name}} Route" />
+        </div>
+
+        <div class="bike-route-description">
+            <div class="description-content collapsed">
+                <p>{{this.description}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="bike-route-map">
+        <a href="https://ridewithgps.com/routes/{{this.id}}" target="_blank">
+            <img class="route-map" src="https://ridewithgps.com/routes/full/{{this.id}}.png"
+                alt="Map of {{this.name}} Route" />
+        </a>
+    </div>
+</article>

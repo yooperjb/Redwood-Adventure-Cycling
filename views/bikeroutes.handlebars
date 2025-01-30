@@ -1,74 +1,14 @@
-<h2>Bike Routes (segments) - 2025</h2>
-{{!-- Since bike route info changes from Ridewithgps routes to Strava segments, create a logical if/else for how to represent the data for different years. --}}
+<h2>Bike Routes - 2025</h2>
 
-{{!-- If routes exist for given year, process maps. --}}
-{{#if routes}}
-{{#each routes}}
-<article class="bike-route">
-
-    <div class="bike-route-title">
-        {{!-- Build the ability to star segment with star after the title --}}
-        <h4>{{this.name}}</h4>
-        {{#if this.ridden}}
-        <span class="{{this.ridden}}"><img src="/images/checkmark.svg" alt="Checkmark for route ridden" title="Route Has Been Ridden"></span>
-        {{/if}}
-    </div>
-    <!--Data-->
-    <div class="bike-route-col1">
-        <div class="bike-route-table">
-            <table>
-                <tr>
-                    <td>Mileage</td>
-                    <td>{{format_miles this.mileage}}</td>
-                </tr>
-                <tr>
-                    <td>Total Elevation</td>
-                    <td>{{format_thousands this.elevation}}'</td>
-                </tr>
-                <tr>
-                    <td>Difficulty</td>
-                    <td>{{this.difficulty}}</td>
-                </tr>
-                {{!-- <tr>
-                    <td>Points</td>
-                    <td>{{this.points}}</td>
-                </tr> --}}
-                <tr>
-                    <td>Segment Link</td>
-                    <td><a href="https://www.strava.com/segments/{{this.id}}" target="_blank">Strava Segment</a></td>
-                </tr>
-            </table>
-        </div>
-
-        {{!-- Ridewithgps profile needs to be removed for Strava Segment years --}}
-        <div class="bike-route-profile">
-            {{!-- <img src="https://ridewithgps.com/routes/{{this.id}}/elevation_profile.jpg"
-                alt="Elevation Profile of {{this.name}} Route" /> --}}
-        </div>
-        
-        <div class="bike-route-description">
-            <div class="description-content collapsed">
-                <p>{{this.description}}</p>
-            </div>
-            {{!-- Turn button back on if profile is included --}}
-            {{!-- <button class="toggle-description">Read More</button> --}}
-        </div>
-
-    </div>
-
-    <div class="bike-route-map">
-        {{!-- <a href="https://ridewithgps.com/routes/{{this.id}}" target="_blank"><img class="route-map"
-                src="https://ridewithgps.com/routes/full/{{this.id}}.png" alt="Map of {{this.name}} Route" /></a> --}}
-
-        {{!-- If I decide to use embedded Ridewithgps interactive maps this is an example. --}}
-        {{!-- <iframe src="https://ridewithgps.com/embeds?type=route&id=41552569"
-            style="width: 1px; min-width: 100%; height: 100%; border: none;" scrolling="no"></iframe> --}}
-        {{!-- If i get strava segment mapbox maps working possibly use that here with the VV profile only version (embed) --}}
-        <iframe style="width:100%;height:500px;" src="https://veloviewer.com/segments/{{this.id}}/embed2?units=i" frameborder="0" scrolling="no"></iframe>
-    </div>
-
-</article>
-{{/each}}
+{{!-- If routes exist for the given year, process maps. --}}
+{{#if segmentData}}
+    {{#each segmentData}}
+        {{> segmentPartial}}
+    {{/each}}
+{{else if routeData}}
+    {{#each routeData}}
+        {{> routePartial}}
+    {{/each}}
 {{/if}}
 
 <script src="/javascript/description.js"></script>
