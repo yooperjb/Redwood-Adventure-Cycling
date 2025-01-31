@@ -23,8 +23,12 @@
                     <td>{{this.difficulty}}</td>
                 </tr>
                 <tr>
-                    <td>Segment Link</td>
+                    <td>Strava</td>
                     <td><a href="https://www.strava.com/segments/{{this.id}}" target="_blank">Strava Segment</a></td>
+                </tr>
+                <tr>
+                    <td>Veloviewer</td>
+                    <td><a href="https://veloviewer.com/segments/{{this.id}}" target="_blank">Veloviewer Segment</a></td>
                 </tr>
             </table>
         </div>
@@ -36,15 +40,11 @@
         </div>
     </div>
 
-    {{!-- <div class="bike-route-map">
-        <iframe style="width:100%;height:500px;" src="https://veloviewer.com/segments/{{this.id}}/embed2?units=i"
-            frameborder="0" scrolling="no">
-        </iframe>
-    </div> --}}
-
     <div class="bike-route-map">
-        <div class="iframe-container" data-segment-id="{{this.id}}">
-            <button class="load-map-btn" data-segment-id="{{this.id}}">Load Map</button>
-        </div>
+        <iframe class="segment-map" data-segment-id="{{this.id}}"
+            src="https://veloviewer.com/segments/{{this.id}}/embed?units=i" width="100%" height="500px" frameborder="0"
+            scrolling="no" loading="lazy" fetchpriority="high">
+        </iframe>
     </div>
+
 </article>
