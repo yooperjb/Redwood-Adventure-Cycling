@@ -46,6 +46,15 @@ router.get('/sponsors',
     });
   });
 
+// route to humboldt composite mtb page /hcmtb
+router.get('/hcmtb',
+  function (req, res) {
+    res.render('hcmtb', {
+      title: 'HCMTB',
+      user: req.user
+    });
+  });
+
 // route to northcoast bike rides page /ncbr
 router.get('/ncbr',
   function (req, res) {
@@ -76,16 +85,6 @@ router.get('/login',
 // route to login/strava authentication
 router.get('/login/strava',
   passport.authenticate('strava'));
-
-//change to post and move to api route
-// route to /return occurs after authentication happens
-// router.get('/return',
-//   // if authentication fails return to login page
-//   passport.authenticate('strava', { failureRedirect: '/login' }),
-//   // if user authenticated go to homepage
-//   function (req, res) {
-//     res.redirect('/');
-//   });
 
 router.get('/return', async (req, res, next) => {
   passport.authenticate('strava', async (err, user, info) => {

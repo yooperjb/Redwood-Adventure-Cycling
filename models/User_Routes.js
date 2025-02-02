@@ -16,7 +16,6 @@ User_Routes.init(
         primaryKey: true,
         autoIncrement: true
     },
-    // submitted photo
     photo: {
         type: DataTypes.STRING,
         allowNull: true

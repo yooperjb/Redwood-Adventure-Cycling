@@ -78,6 +78,11 @@ h4 {
   margin: 10px 0 5px 5px;
 }
 
+h5{ 
+  font-size: 1rem;
+  text-align: center;
+}
+
 a {
   color: var(--eight-color);
   text-decoration: none;
@@ -141,6 +146,13 @@ hr {
   margin-left: 10px;
   margin-bottom: 8px;
   filter: drop-shadow(5px 5px 5px gray);
+}
+
+.opener {
+  border: 2px solid var(--quad-color);
+  border-radius: 8px;
+  background-color: rgb(240, 240, 240);
+  padding: 10px;
 }
 
 /************************************
@@ -369,7 +381,7 @@ footer div img {
 ╔╦╗┌─┐┌─┐┬ ┬┌┐ ┌─┐┌─┐┬─┐┌┬┐  ╔═╗┌┬┐┬ ┬┬  ┌─┐┌─┐
  ║║├─┤└─┐├─┤├┴┐│ │├─┤├┬┘ ││  ╚═╗ │ └┬┘│  ├┤ └─┐
 ═╩╝┴ ┴└─┘┴ ┴└─┘└─┘┴ ┴┴└──┴┘  ╚═╝ ┴  ┴ ┴─┘└─┘└─┘
-* ===========================================*/
+* ===============Dashboard===================*/
 
 .dashboard-container {
   margin: auto;
@@ -563,7 +575,7 @@ div.checkbox input {
 ╔═╗ ┬ ┬┌─┐┌─┐┌┬┐┬┌─┐┌┐┌┌─┐  ╔═╗┌┬┐┬ ┬┬  ┌─┐┌─┐
 ║═╬╗│ │├┤ └─┐ │ ││ ││││└─┐  ╚═╗ │ └┬┘│  ├┤ └─┐
 ╚═╝╚└─┘└─┘└─┘ ┴ ┴└─┘┘└┘└─┘  ╚═╝ ┴  ┴ ┴─┘└─┘└─┘
-============================================*/
+=============11 Questions===================*/
 
 .questions {
   padding: 10px;
@@ -605,7 +617,7 @@ div.checkbox input {
 ╔═╗┌─┐┌─┐┌┐┌┌─┐┌─┐┬─┐  ╔═╗┌┬┐┬ ┬┬  ┌─┐┌─┐
 ╚═╗├─┘│ ││││└─┐│ │├┬┘  ╚═╗ │ └┬┘│  ├┤ └─┐
 ╚═╝┴  └─┘┘└┘└─┘└─┘┴└─  ╚═╝ ┴  ┴ ┴─┘└─┘└─┘
-* =====================================*/
+* =============Sponsor=================*/
 
 .spons {
   display: flex;
@@ -685,7 +697,7 @@ div.checkbox input {
 ╔╗ ┬┬┌─┌─┐  ╦═╗┌─┐┬ ┬┌┬┐┌─┐┌─┐
 ╠╩╗│├┴┐├┤   ╠╦╝│ ││ │ │ ├┤ └─┐
 ╚═╝┴┴ ┴└─┘  ╩╚═└─┘└─┘ ┴ └─┘└─┘
-* ==========================*/
+* ======Bike Routes=========*/
 article.bike-route {
   display: flex;
   flex-wrap: wrap;
@@ -812,11 +824,11 @@ article.bike-route {
   padding: 0;
 }
 
-/*===========
-╔═╗┌┬┐┌┬┐┬┌┐┌
-╠═╣ │││││││││
-╩ ╩─┴┘┴ ┴┴┘└┘
-===========*/
+/*==============================
+╔═╗┌┬┐┌┬┐┬┌┐┌  ╔═╗┌┬┐┬ ┬┬  ┌─┐┌─┐
+╠═╣ │││││││││  ╚═╗ │ └┬┘│  ├┤ └─┐
+╩ ╩─┴┘┴ ┴┴┘└┘  ╚═╝ ┴  ┴ ┴─┘└─┘└─┘
+=============Admin=============*/
 
 #admin-container {
   display: flex;
@@ -835,7 +847,7 @@ article.bike-route {
 ╦  ┌─┐┌─┐┌┬┐┌─┐┬─┐┌┐ ┌─┐┌─┐┬─┐┌┬┐
 ║  ├┤ ├─┤ ││├┤ ├┬┘├┴┐│ │├─┤├┬┘ ││
 ╩═╝└─┘┴ ┴─┴┘└─┘┴└─└─┘└─┘┴ ┴┴└──┴┘
-===============================*/
+==========Leaderboard==========*/
 
 #gender-filter, #route-filter {
   width: 150px;
@@ -884,7 +896,7 @@ table.leaderboard td.route-title {
 ╔═╗┬─┐┌─┐┌┬┐┌┬┐┬ ┬  ╦┌┬┐┌─┐┌─┐┌─┐┌─┐
 ╠═╝├┬┘├┤  │  │ └┬┘  ║│││├─┤│ ┬├┤ └─┐
 ╩  ┴└─└─┘ ┴  ┴  ┴   ╩┴ ┴┴ ┴└─┘└─┘└─┘
-==================================*/
+========Pretty Images=============*/
 
 .pretty-images {
   height: 250px;
@@ -904,9 +916,11 @@ table.leaderboard td.route-title {
   box-shadow: 0px 3px 8px 3px rgba(0, 0, 0, 0.25);
 }
 
-/*===========================================
-    MOBILE RESPONSIVE MEDIA QUERIES
-* ========================================== */
+/*================================
+╔╦╗┌─┐┌┬┐┬┌─┐  ╔═╗ ┬ ┬┌─┐┬─┐┬┌─┐┌─┐
+║║║├┤  │││├─┤  ║═╬╗│ │├┤ ├┬┘│├┤ └─┐
+╩ ╩└─┘─┴┘┴┴ ┴  ╚═╝╚└─┘└─┘┴└─┴└─┘└─┘
+* ========Media Queries========= */
 
 /* MEDIA QUERY FOR SMALL DESKTOP SCREENS AND SMALLER 980-780*/
 @media screen and (max-width: 980px) {
@@ -1039,7 +1053,7 @@ table.leaderboard td.route-title {
     padding: 1rem;
   }
 
-  /* Turn on hamburger menu */
+  /* Turn hamburger menu ON */
   header {
     height: 50px;
   }
