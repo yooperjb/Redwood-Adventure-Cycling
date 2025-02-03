@@ -52,6 +52,7 @@ const fetchRouteData = (routeId) => {
   };
 
 // Get Strava Segment Data
+// ******** Need to check access token expire and refresh if necessary **************
 const fetchSegmentData = (segmentId, accessToken) => {
     const options = {
         hostname: "www.strava.com",

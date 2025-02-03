@@ -55,13 +55,14 @@ const findUserRoutes = (userId) => {
                 "user_id",
                 // Sum User_Routes 'ride_points' with Routes 'points'
                 [
-                    sequelize.literal('ride_points + `Route`.`points`'), 'total_ride_points',
+                    sequelize.literal('ride_points + `route`.`points`'), 'total_ride_points',
                 ],
         ],
         include: [
                 // include Route data
                 {
                     model: Routes,
+                    as: 'route',
                     attributes: ['name', 'points', 'year'],
                     // Filter for Series Year in ENV file
                     where: {

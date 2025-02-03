@@ -118,9 +118,6 @@ router.post('/segment', async (req, res) => {
 
         // Fetch segment information from Strava using the fetchSegmentData utility function
         const segmentData = await fetchSegmentData(segmentId, user.accessToken);
-
-        // ************* Delete me after testing ************
-        console.log("segmentData", segmentData)
         
         // If segment not found
         if (!segmentData) {
