@@ -40,7 +40,8 @@ router.get('/', async (req, res) => {
             title: process.env.YEAR + ' Bike Routes',
             user: req.user,
             routeData: routeType === 'routes' ? bikeRoutes : null,
-            segmentData: routeType === 'segments' ? bikeRoutes : null
+            segmentData: routeType === 'segments' ? bikeRoutes : null,
+            year: process.env.YEAR
         };
         
         // render bikeroutes page with all bike routes

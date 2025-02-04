@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const passport = require('../config/passport');
 const sequelize = require('../config/connection');
+require('dotenv').config();
 
 // route to home page
 router.get('/', async (req, res) => {
@@ -15,12 +16,27 @@ router.get('/', async (req, res) => {
   }
 });
 
+// route to about page /about
+router.get('/about', async (req, res) =>{
+  try{
+    res.render('about', {
+      title: 'RAC-About',
+      user: req.user,
+      year: process.env.YEAR
+    });
+  } catch (error) {
+    console.err(error);
+    res.status(500).send("Internal Server Error")
+  }
+});
+
 // route to guidelines page /guidelines
 router.get('/guidelines', async (req, res) => {
   try {
     res.render('guidelines', {
       title: 'RAC-Guidelines',
-      user: req.user
+      user: req.user,
+      year: process.env.YEAR
     });
   } catch (error) {
     console.error(error);
@@ -28,23 +44,19 @@ router.get('/guidelines', async (req, res) => {
   }
 });
 
-// route to about page /about
-router.get('/about',
-  function (req, res) {
-    res.render('about', {
-      title: 'RAC-About',
-      user: req.user
-    });
-  });
-
 // route to sponsors page /sponsors
-router.get('/sponsors',
-  function (req, res) {
+router.get('/sponsors', async (req, res) => {
+  try {
     res.render('sponsors', {
       title: 'RAC-Sponsors',
-      user: req.user
+      user: req.user,
+      year: process.env.YEAR
     });
-  });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error")
+  }
+});
 
 // route to humboldt composite mtb page /hcmtb
 router.get('/hcmtb',
