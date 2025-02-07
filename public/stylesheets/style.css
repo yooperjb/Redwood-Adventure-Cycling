@@ -81,6 +81,7 @@ h4 {
 h5{ 
   font-size: 1rem;
   text-align: center;
+  margin-top: 10px;
 }
 
 a {
@@ -153,6 +154,10 @@ hr {
   border-radius: 8px;
   background-color: rgb(240, 240, 240);
   padding: 10px;
+}
+
+.author {
+  font-style: italic;
 }
 
 /************************************

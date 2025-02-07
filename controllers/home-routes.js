@@ -1,18 +1,23 @@
 const router = require('express').Router();
 const passport = require('../config/passport');
 const sequelize = require('../config/connection');
+const quotes = require('../utils/quotes.js');
 require('dotenv').config();
 
 // route to home page
 router.get('/', async (req, res) => {
   try {
+    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    randomQuote.text = randomQuote.text.replace(/\n/g, '<br>'),
+
     res.render('homepage', {
       title: 'Redwood Adventure Cycling',
-      user: req.user
+      user: req.user,
+      quote: randomQuote
     });
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Internal Server Error")
+  } catch (err) {
+    console.error("Error loading homepage:", err);
+    res.status(500).json({ error: true, message: "Failed to load homepage." })
   }
 });
 
