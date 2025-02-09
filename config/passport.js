@@ -66,9 +66,12 @@ passport.use(new StravaStrategy({
               elevation: formatElevation(activity.total_elevation_gain)
             }));
 
+            console.log('activities:', activities)
+
             // userprofile is req.user that is passed from passport-StravaStrategy. Send user info and tokens with requests. 
             const userprofile = { id, displayName: profile.displayName, username, firstname, lastname, sex, city, state, bio, profile_medium, accessToken, refreshToken, tokenExpire, activities };
 
+            console.log("userprofile:", userprofile)
             // cb function used to pass authenticated user to serializeUser() function
             return cb(null, { ...userprofile, isAdmin: user.admin });
           } catch (error) {

@@ -61,9 +61,9 @@ router.post('/', upload.single('photo'), async (req, res) => {
             return res.status(500).json({ error: true, message: 'Error calculating bonus points.' });
         }
 
-        // Calculate Ride points based on mileage and elevation
-        const ride_miles = req.body.ride_miles * 0.000621371;
-        const ride_elevation = req.body.ride_elevation * 3.28084;
+        // Calculate Ride points based on mileage and elevation   
+        const ride_miles = req.body.ride_miles
+        const ride_elevation = req.body.ride_elevation
         const ride_points = getPoints(ride_miles, ride_elevation);
     
         // if photo submitted resize and save to file
