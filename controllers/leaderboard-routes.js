@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
     const genderOptions = req.query.gender ? { where: { gender: req.query.gender } } : {};
     const gender = req.query.gender === 'M' ? 'Male' : req.query.gender === 'F' ? 'W/T/F' : 'Overall';
     const year = process.env.YEAR;
-    const dateRange = [`${year}-01-01`, `${year}-12-31`];
+    const dateRange = [`${year}-01-01`, `${year}-12-01`];
 
     const [userPoints, userRoutes, attackerPoints] = await Promise.all([
       // get all ridden routes that have been approved for "Overall Points" Section and is current year
@@ -26,10 +26,13 @@ router.get('/', async (req, res) => {
         // this eventually needs to be changed to calculate ride elevation and miles, not segment
         attributes: [
           'user_id',
+          // This adds route points and ride points columns (one of these should be 0)
           [sequelize.literal('SUM(points + bonus_points + ride_points)'), 'total_points'],
           [sequelize.fn('sum', sequelize.col('elevation')), 'total_elevation'],
           [sequelize.fn('sum', sequelize.col('mileage')), 'total_miles'],
-          [sequelize.fn('count', sequelize.col('user_id')), 'total_routes']
+          [sequelize.fn('count', sequelize.col('user_id')), 'total_routes'],
+          [sequelize.fn('sum', sequelize.col('ride_miles')), 'total_ride_miles'],
+          [sequelize.fn('sum', sequelize.col('ride_elevation')), 'total_ride_elevation']
         ],
         // include user model to get user name and gender
         // include Routes model to get all route data
@@ -60,22 +63,22 @@ router.get('/', async (req, res) => {
           },
         },
         attributes: [
-          // 'user_id', 'date_completed', 'date_submitted', 'bonus_points', 'route_id', 'photo'
-          'user_id', 'date_submitted', 'route_id', 'photo'
+          'user_id','route_id','photo','date_submitted','ride_link'
         ],
         include: [
           {
             model: User,
-            attributes: ['name', 'gender'],
+            // attributes: ['name', 'gender'],
+            attributes: ['name'],
           },
           {
             model: Routes,
-            // attributes: ['name', 'points'],
             attributes: ['name'],
           },
         ],
         order: [['date_submitted', 'ASC']]
       }),
+      
       // get all approved and current year submitted routes for "Route Bonus (Attacker) Points" Table
       Routes.findAll({
         attributes: [

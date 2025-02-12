@@ -2,42 +2,22 @@
 
 {{!-- Do not show tables if no routes have been submitted --}}
 {{#if userRoutes.userRoutes}}
+
+<select id="gender-filter" name="gender-filter">
+    <option value="" disabled selected>Gender Filter</option>
+    <option value="">Overall</option>
+    <option value="F">W/T/F</option>
+    <option value="M">Male</option>
+</select>
+<span id="filter">{{gender}}</span>
+
 {{!-- Overall Points Table --}}
-<article>
-    <h4>Overall Points</h4>
-    
-    {{!-- leaderboard gender filter --}}
-    <select id="gender-filter" name="gender-filter">
-        <option value="" disabled selected>Gender Filter</option>
-        <option value="">Overall</option>
-        <option value="F">W/T/F</option>
-        <option value="M">Male</option>
-    </select>
-    <span id="filter">{{gender}}</span>
-
-    <table class="leaderboard">
-        <tr>
-            <th>#</th>
-            <th>Rider Name</th>
-            <th>Elevation</th>
-            <th>Miles</th>
-            <th>Routes</th>
-            <th>Points</th>
-        </tr>
-        
-        {{#each userPoints.userPoints as |userPoints|}}
-        <tr>
-            <td>{{add1 @index}}</td>
-            <td>{{userPoints.user.name}}</td>
-            <td>{{format_thousands userPoints.total_elevation}}</td>
-            <td>{{format_miles userPoints.total_miles}}</td>
-            <td>{{userPoints.total_routes}}</td>
-            <td class="points">{{userPoints.total_points}}</td>
-        </tr>
-        {{/each}}
-    </table>
-</article>
-
+{{!-- Use different table partial for different years --}}
+{{#if (or (eq year 2023) (eq year 2024))}}
+    {{>overallPoints_routes}}
+{{else}}
+    {{>overallPoints_segments}}
+{{/if}}
 <hr>
 
 {{!-- Route Bonus Points Table --}}
@@ -77,7 +57,7 @@
         <tr>
             <th>#</th>
             <th>Rider Name</th>
-            <th>Route</th>
+            <th>Route/Segment</th>
             <th>Photo</th>
             <th>Submitted</th>
         </tr>
@@ -86,7 +66,7 @@
         <tr>
             <td>{{add1 @index}}</td>
             <td>{{userRoutes.user.name}}</td>
-            <td>{{userRoutes.route.name}}</td>
+            <td><a href="{{userRoutes.ride_link}}" target="_blank">{{userRoutes.route.name}}</a></td>
             <td>
                 {{#if userRoutes.photo}}
                 <a href="/photos/{{../year}}/{{userRoutes.photo}}">Photo</a>

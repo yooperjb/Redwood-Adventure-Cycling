@@ -32,5 +32,9 @@ module.exports = {
 
     uppercase: lowercase => {
         return lowercase.toUpperCase();
-    }
+    },
+
+    eq: (a,b) => a === b,
+
+    or: (...args) => args.slice(0,-1).some(Boolean),
 }

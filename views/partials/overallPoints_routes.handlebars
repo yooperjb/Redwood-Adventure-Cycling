@@ -1,0 +1,25 @@
+<article>
+    <h4>Overall Points</h4>
+
+    <table class="leaderboard">
+        <tr>
+            <th>#</th>
+            <th>Rider Name</th>
+            <th>Elevation</th>
+            <th>Miles</th>
+            <th>Routes</th>
+            <th>Points</th>
+        </tr>
+
+        {{#each userPoints.userPoints as |userPoints|}}
+        <tr>
+            <td>{{add1 @index}}</td>
+            <td>{{userPoints.user.name}}</td>
+            <td>{{format_thousands userPoints.total_elevation}}</td> 
+            <td>{{format_miles userPoints.total_miles}}</td>
+            <td>{{userPoints.total_routes}}</td>
+            <td class="points">{{userPoints.total_points}}</td>
+        </tr>
+        {{/each}}
+    </table>
+</article>
