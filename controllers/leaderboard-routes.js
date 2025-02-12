@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
  
     const genderOptions = req.query.gender ? { where: { gender: req.query.gender } } : {};
     const gender = req.query.gender === 'M' ? 'Male' : req.query.gender === 'F' ? 'W/T/F' : 'Overall';
-    const year = process.env.YEAR;
+    const year = req.query.year || process.env.YEAR;
     const dateRange = [`${year}-01-01`, `${year}-12-01`];
 
     const [userPoints, userRoutes, attackerPoints] = await Promise.all([

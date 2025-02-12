@@ -5,8 +5,8 @@
         <tr>
             <th>#</th>
             <th>Rider Name</th>
-            <th>Elevation</th>
             <th>Miles</th>
+            <th>Elevation</th>
             <th>Routes</th>
             <th>Points</th>
         </tr>
@@ -15,8 +15,8 @@
         <tr>
             <td>{{add1 @index}}</td>
             <td>{{userPoints.user.name}}</td>
-            <td>{{format_thousands userPoints.total_elevation}}</td> 
             <td>{{format_miles userPoints.total_miles}}</td>
+            <td>{{format_thousands userPoints.total_elevation}}</td>
             <td>{{userPoints.total_routes}}</td>
             <td class="points">{{userPoints.total_points}}</td>
         </tr>

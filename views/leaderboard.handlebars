@@ -2,18 +2,32 @@
 
 {{!-- Do not show tables if no routes have been submitted --}}
 {{#if userRoutes.userRoutes}}
+<div id="filters">
+    
+    <div class="filter">
+        <select id="gender-filter" name="gender-filter">
+            <option value="" disabled selected>Gender Filter</option>
+            <option value="">Overall</option>
+            <option value="F">W/T/F</option>
+            <option value="M">Male</option>
+        </select>
+        <span id="filter">{{gender}}</span>
+    </div>
+    
+    <div class="filter">
+        <label for="year-filter">Select Year:</label>
+        <select id="year-filter" name="year-filter">
+            <option value="2025" {{#if (eq year "2025" )}}selected{{/if}}>2025</option>
+            <option value="2024" {{#if (eq year "2024" )}}selected{{/if}}>2024</option>
+            <option value="2023" {{#if (eq year "2023" )}}selected{{/if}}>2023</option>
+        </select>
+    </div>
 
-<select id="gender-filter" name="gender-filter">
-    <option value="" disabled selected>Gender Filter</option>
-    <option value="">Overall</option>
-    <option value="F">W/T/F</option>
-    <option value="M">Male</option>
-</select>
-<span id="filter">{{gender}}</span>
+</div>
 
 {{!-- Overall Points Table --}}
 {{!-- Use different table partial for different years --}}
-{{#if (or (eq year 2023) (eq year 2024))}}
+{{#if (or (eq year '2023') (eq year '2024'))}}
     {{>overallPoints_routes}}
 {{else}}
     {{>overallPoints_segments}}

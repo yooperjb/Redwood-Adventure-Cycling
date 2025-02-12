@@ -1,35 +1,44 @@
 
 async function genderFilterHandler(event) {
-    filter = document.querySelector("#gender-filter").value;
-    const url = window.location.href.split('?')[0];
+    const genderFilter = document.querySelector("#gender-filter").value;
+    const urlParams = new URLSearchParams(window.location.search);
 
-    if (filter) {
-        
-        query = `?gender=${filter}`;
-        window.location.href = url+query;
+    if (genderFilter) {
+        urlParams.set('gender', genderFilter);
 
     } else {
-       window.location.href = url;
+       urlParams.delete('gender');
     }
-}
 
-async function routeFilterHandler(event) {
-    filter = document.querySelector("#route-filter").value;
-    const url = window.location.href.split('?')[0];
-    // const url = new URL(window.location.href.split('?')[0])
-    // console.log("filter",filter)
-    if (filter) {
-        query = `?route=${filter}`;
-        window.location.href = url+query;
-        // url.searchParams.set("route", filter)
-        // window.history.pushState({}, '', url.toString());
-    } else {
-        window.location.href = url;
+    // Preserve year filter if exists
+    const yearFilter = document.querySelector("#year-filter").value;
+    if (yearFilter) {
+        urlParams.set('year', yearFilter)
     }
-    console.log('url', url)
-    console.log("filter",filter)
-    console.log(window.location.href)
-}
+    window.location.href = window.location.pathname + '?' + urlParams.toString();
+};
+
+async function yearFilterHandler(event) {
+    const yearFilter = document.querySelector("#year-filter").value;
+    const urlParams = new URLSearchParams(window.location.search);
+
+    if (yearFilter) {
+        urlParams.set('year', yearFilter); // Update or add year filter
+    } else {
+        urlParams.delete('year'); // Remove year filter if none is selected
+    }
+
+    // Preserver gender filter if exists
+    const genderFilter = document.querySelector("#gender-filter").value;
+    if (genderFilter) {
+        urlParams.set('gender', genderFilter);
+    } else {
+        urlParams.delete('gender'); // Remove gender filter if none is selected
+    }
+
+    window.location.href = window.location.pathname + '?' + urlParams.toString();
+};
+
 
 document.querySelector('#gender-filter').addEventListener('change', genderFilterHandler);
-// document.querySelector('#route-filter').addEventListener('change', routeFilterHandler);
+document.querySelector('#year-filter').addEventListener('change', yearFilterHandler);
