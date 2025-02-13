@@ -75,6 +75,9 @@
         the scoring system. These are intended as a general guide—some may find routes easier or harder than their
         assigned rating.
     </p>
+    <p>
+        We now use an elevation/miles ratio multiplier to score overall points. This helps to enhance rather than dominate extreme ratio rides which our old scoring system tended to do. Now, short, steep rides won't score higher than long, moderate rides.
+    </p>
     {{!-- Route Points Tables --}}
     <div id="route-points">
         <table class="two-column">
@@ -132,27 +135,27 @@
         <table class="two-column">
             <tr>
                 <th>Ratio (feet/mile)</th>
-                <th>Points</th>
+                <th>Multiplier</th>
             </tr>
             <tr>
                 <td>&#60;= 40</td>
-                <td>10</td>
+                <td>1.1</td>
             </tr>
             <tr>
                 <td>41-80</td>
-                <td>20</td>
+                <td>1.2</td>
             </tr>
             <tr>
                 <td>81-120</td>
-                <td>30</td>
+                <td>1.3</td>
             </tr>
             <tr>
                 <td>121-160</td>
-                <td>40</td>
+                <td>1.4</td>
             </tr>
             <tr>
                 <td>&#62; 160</td>
-                <td>50</td>
+                <td>1.5</td>
             </tr>
         </table>
         <table class="two-column">
