@@ -31,7 +31,7 @@ const getRouteCount = async (routeId, userGender) => {
     }
 };
 
-// Get RidewithGPS Route Data
+// Get RidewithGPS Route Data for route creation
 const fetchRouteData = (routeId) => {
     return new Promise((resolve, reject) => {
       https.get(`https://ridewithgps.com/routes/${routeId}.json?apikey=${process.env.RWGPS_APIKEY}&auth_token=${process.env.RWGPS_AUTH}`, (resp) => {
@@ -51,7 +51,7 @@ const fetchRouteData = (routeId) => {
     });
   };
 
-// Get Strava Segment Data
+// Get Strava Segment Data for segment creation
 // ******** Need to check access token expire and refresh if necessary **************
 const fetchSegmentData = (segmentId, accessToken) => {
     const options = {
@@ -112,19 +112,20 @@ const fetchSegmentData = (segmentId, accessToken) => {
 const getPoints = (miles,elevation) => {
     
     diff = elevation/miles;
-    let ratio_points = 0;
+    let multiplier = 0;
+
     if (diff <= 40) {
-        ratio_points = 10;
+        multiplier = 1.1;
     } else if (diff <= 80) {
-        ratio_points = 20;
+        multiplier = 1.2;
     } else if (diff <= 120) {
-        ratio_points = 30;
+        multiplier = 1.3;
     } else if (diff <= 160) {
-        ratio_points = 40;
+        multiplier = 1.4;
     } else {
-        ratio_points = 50
+        multiplier = 1.5
     }
-    
+      
     let mile_points = 0;
     if (miles < 25) {
         mile_points = 10;
@@ -151,7 +152,7 @@ const getPoints = (miles,elevation) => {
         elev_points = 50;
     }
 
-    return ratio_points + mile_points + elev_points;
+    return (mile_points + elev_points) * multiplier;
 }
 
 const getDifficulty = (points) => {
