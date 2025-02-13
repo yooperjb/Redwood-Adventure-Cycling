@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
     const dateRange = [`${year}-01-01`, `${year}-12-01`];
 
     const [userPoints, userRoutes, attackerPoints] = await Promise.all([
-      // get all ridden routes that have been approved for "Overall Points" Section and is current year
+      // Get all ridden, approved routes for "Overall Points" section for selected year
       User_Routes.findAll({
         where: {
           approved: 1,
@@ -23,18 +23,19 @@ router.get('/', async (req, res) => {
           },
         },
         // get user_route info and sum points, elevation, mileage fields. Count ridden routes.
-        // this eventually needs to be changed to calculate ride elevation and miles, not segment
         attributes: [
           'user_id',
           // This adds route points and ride points columns (one of these should be 0)
-          [sequelize.literal('SUM(points + bonus_points + ride_points)'), 'total_points'],
           [sequelize.fn('sum', sequelize.col('elevation')), 'total_elevation'],
           [sequelize.fn('sum', sequelize.col('mileage')), 'total_miles'],
           [sequelize.fn('count', sequelize.col('user_id')), 'total_routes'],
           [sequelize.fn('sum', sequelize.col('ride_miles')), 'total_ride_miles'],
-          [sequelize.fn('sum', sequelize.col('ride_elevation')), 'total_ride_elevation']
+          [sequelize.fn('sum', sequelize.col('ride_elevation')), 'total_ride_elevation'],
+          [sequelize.fn('SUM', sequelize.literal(`
+            COALESCE(points, 0) + COALESCE(bonus_points, 0) + COALESCE(ride_points, 0)
+        `)), 'total_points']
         ],
-        // include user model to get user name and gender
+        // include User model to get user name and gender
         // include Routes model to get all route data
         include: [
           {
@@ -49,12 +50,12 @@ router.get('/', async (req, res) => {
             attributes: [],
           },
         ],
-        // group the summed output by the user_id and order by total_points column
+        // Group by user_id and order by total_points column
         group: ['user_id'],
         order: sequelize.literal('total_points DESC')
       }),
-      // get all ridden routes that have been approved and current year for "Submitted Routes" Table
-      // does not filter in gender query
+      // Get all ridden, approved routes for selected year for "Submitted Routes" Table
+      // * Does NOT filter in gender query
       User_Routes.findAll({
         where: {
           approved: 1,
@@ -79,7 +80,7 @@ router.get('/', async (req, res) => {
         order: [['date_submitted', 'ASC']]
       }),
       
-      // get all approved and current year submitted routes for "Route Bonus (Attacker) Points" Table
+      // Get all approved routes for selected year for "Route Bonus (Attacker) Points" Table
       Routes.findAll({
         attributes: [
           'id', 'name'
@@ -122,7 +123,7 @@ router.get('/', async (req, res) => {
 
     // used for Bonus Points Attacker Table
     const serializedAttackerPoints = attackerPoints.map(route => route.get({ plain: true }));
-
+    console.log('userPoints:', serializedUserPoints)
     // Render leaderboard page
     res.render('leaderboard', {
       title: `${year} Leaderboard`,
