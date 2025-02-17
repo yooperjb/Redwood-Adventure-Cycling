@@ -123,7 +123,7 @@ router.get('/', async (req, res) => {
 
     // used for Bonus Points Attacker Table
     const serializedAttackerPoints = attackerPoints.map(route => route.get({ plain: true }));
-    console.log('userPoints:', serializedUserPoints)
+
     // Render leaderboard page
     res.render('leaderboard', {
       title: `${year} Leaderboard`,
