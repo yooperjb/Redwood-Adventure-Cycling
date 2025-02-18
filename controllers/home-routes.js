@@ -63,6 +63,20 @@ router.get('/sponsors', async (req, res) => {
   }
 });
 
+// route to point calculator page /calculator
+router.get('/calculator', async (req, res) => {
+  try {
+    res.render('calculator', {
+      title: 'Calculator',
+      user: req.user,
+      year: process.env.YEAR
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error")
+  }
+});
+
 // route to humboldt composite mtb page /hcmtb
 router.get('/hcmtb',
   function (req, res) {

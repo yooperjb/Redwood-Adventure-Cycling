@@ -1,0 +1,36 @@
+<h2>Point Calculator</h2>
+
+<section class="opener">
+    <p>Use this calculator to quickly determine points for a ride. This is helpful when planning a route, you know the approximate mileage and elevation of a ride and want to know the amount of points it would earn. Simply enter the estimated miles and elevation to calculate the points. </p>
+</section>
+
+<article>
+    <div class="calculate-points-container">
+        <div class="form-container">
+            <h4>Points Calculator</h4>
+            <form id="rideForm">
+                <div>
+                    <label for="mileage">Estimated Mileage:</label><br>
+                    <input type="number" id="mileage" name="mileage" placeholder="Enter miles" required><br>
+                </div>
+                <div>
+                    <label for="elevation">Estimated Elevation Gain (ft):</label><br>
+                    <input type="number" id="elevation" name="elevation" placeholder="Enter elevation" required><br>
+                </div>
+                <div>
+                    <button type="button" onclick="calculatePoints()">Calculate Points</button>
+                </div>
+            </form>
+
+            {{!-- <p id="result"></p> --}}
+        </div>
+        {{!-- <div class="results-container"> --}}
+        <div class="form-container">
+        <h4>Ride Points</h4>
+            <div id="results"></div>
+        </div>
+    </div>
+   
+</article>
+
+<script src="/javascript/calculator.js"></script>

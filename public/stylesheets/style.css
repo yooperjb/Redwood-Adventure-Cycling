@@ -388,7 +388,7 @@ footer div img {
 ═╩╝┴ ┴└─┘┴ ┴└─┘└─┘┴ ┴┴└──┴┘  ╚═╝ ┴  ┴ ┴─┘└─┘└─┘
 * ===============Dashboard===================*/
 
-.dashboard-container {
+.dashboard-container  {
   margin: auto;
   width: 100%;
   display: flex;
@@ -830,6 +830,38 @@ article.bike-route {
 }
 
 /*==============================
+=============Calculator=============*/
+
+.calculate-points-container {
+  display: flex;
+  margin: auto;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.title {
+  margin: .2em;
+}
+
+#results {
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-columns: 120px 120px;
+}
+
+.point-box {
+  font-size: 3em;
+  /* padding-bottom: 2px; */
+  line-height: normal;
+}
+
+#box1, #box2, #box3, #box4 {
+  text-align: center;
+  border: 1px solid var(--quad-color);
+}
+
+/*==============================
 ╔═╗┌┬┐┌┬┐┬┌┐┌  ╔═╗┌┬┐┬ ┬┬  ┌─┐┌─┐
 ╠═╣ │││││││││  ╚═╗ │ └┬┘│  ├┤ └─┐
 ╩ ╩─┴┘┴ ┴┴┘└┘  ╚═╝ ┴  ┴ ┴─┘└─┘└─┘
@@ -1195,3 +1227,5 @@ table.leaderboard td.route-title {
     width: 30px;
   }
 }
+
+/* https://patorjk.com/software/taag/#p=display&f=Calvin%20S&t=Media%20Queries */
