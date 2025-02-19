@@ -10,22 +10,27 @@
             <h4>Points Calculator</h4>
             <form id="rideForm">
                 <div>
-                    <label for="mileage">Estimated Mileage:</label><br>
-                    <input type="number" id="mileage" name="mileage" placeholder="Enter miles" required><br>
+                    <div class="error">
+                    <label for="mileage">Miles:</label>
+                    <span id="miles-error" class="type-error inactive">Please enter a number</span>
+                    </div>
+                    <input type="number" id="mileage" name="mileage" placeholder="Enter miles" required>
                 </div>
                 <div>
-                    <label for="elevation">Estimated Elevation Gain (ft):</label><br>
-                    <input type="number" id="elevation" name="elevation" placeholder="Enter elevation" required><br>
+                    <div class="error">
+                    <label for="elevation">Elevation Gain (ft):</label>
+                    <span id="elev-error" class="type-error inactive">Please enter a number</span>
+                    </div>
+                    <input type="number" id="elevation" name="elevation" placeholder="Enter elevation" required>
                 </div>
                 <div>
                     <button type="button" onclick="calculatePoints()">Calculate Points</button>
                 </div>
             </form>
 
-            {{!-- <p id="result"></p> --}}
         </div>
         {{!-- <div class="results-container"> --}}
-        <div class="form-container">
+        <div id="ride-points-container" class="form-container inactive">
         <h4>Ride Points</h4>
             <div id="results"></div>
         </div>

@@ -3,10 +3,23 @@ function calculatePoints() {
     const miles = parseFloat(document.getElementById("mileage").value);
     const elevation = parseFloat(document.getElementById("elevation").value);
 
+    // Get error span elements
+    const mileageError = document.querySelector('#miles-error');
+    const elevError = document.querySelector('#elev-error');
+
     // Validate inputs
-    if (isNaN(miles) || isNaN(elevation) || miles <= 0 || elevation < 0) {
-        document.getElementById("result").innerHTML = "Please enter valid mileage and elevation.";
+    if (isNaN(miles) || miles <= 0 ) {
+        mileageError.setAttribute('class', 'type-error active');
         return;
+    } else {
+        mileageError.setAttribute('class', 'type-error inactive');
+    }
+
+    if (isNaN(elevation) || elevation <= 0) {
+        elevError.setAttribute('class', 'type-error active');
+        return;
+    } else {
+        elevError.setAttribute('class', 'type-error inactive');
     }
 
     // Calculate points
@@ -87,6 +100,9 @@ function getRatioMultiplier(elevation, miles) {
 
 function displayResults(results) {
     const resultContainer = document.getElementById("results");
+    const ridePointsContainer = document.getElementById("ride-points-container");
+
+    ridePointsContainer.classList.remove("inactive");
 
     resultContainer.innerHTML = `
     <div id='box1'>
@@ -109,12 +125,4 @@ function displayResults(results) {
     <p class='point-box'><strong>${results.totalPoints}</strong></p>
     </div>
     `;
-    // resultContainer.innerHTML = `
-    // <ul class="no-dot">
-    // <li>Mileage Points: <strong>${results.milePoints}</strong></li>
-    // <li>Elevation Points: <strong>${results.elevPoints}</strong></li>
-    // <li>Ratio Multiplier: <strong>${results.ratioMultiplier}</strong></li>
-    // <li>Total Points: <strong>${results.totalPoints}</strong></li>
-    // </ul>
-    // `;
 }

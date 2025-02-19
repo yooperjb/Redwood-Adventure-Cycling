@@ -840,6 +840,10 @@ article.bike-route {
   justify-content: space-evenly;
 }
 
+#ride-points-container.inactive {
+  display: none;
+}
+
 .title {
   margin: .2em;
 }
